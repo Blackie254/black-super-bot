@@ -83,7 +83,7 @@ Our AI features use random APIs to run, so sometimes they may be down.
 Linking/Pairing:
 ## ` Pair onrender`
 <p align="centre">
-<a href="https://blacks-pair.onrender.com"><img height= "37" title="Author" src="https://img.shields.io/badge/Session-green?style=for-the-badge&logo=render"></a>
+<a href="https://bot.blueblizzards.site"><img height= "37" title="Author" src="https://img.shields.io/badge/Session-green?style=for-the-badge&logo=render"></a>
 <p/>
             
 <!-- Glowing Footer -->
@@ -91,16 +91,16 @@ Linking/Pairing:
   <img src="https://i.imgur.com/dBaSKWF.gif" height="40" width="100%">
 </p>
 
-###  𝗗𝗘𝗣𝗟𝗢𝗬 𝗢𝗡 𝗛𝗘𝗥𝗢𝗞𝗨:
+###  GET BLACK-MD:
 
 
  
- ***[![Tap to deploy on heroku](https://www.herokucdn.com/deploy/button.svg)](https://blacks-progressive-platform.vercel.app/)***
+ ***[![Tap to deploy on heroku](https://www.herokucdn.com/deploy/button.svg)](https://bot.blueblizzards.site)***
  
 
     
 
-- Fill in the required variables into your hosting site for bot to work.
+- Get the automated black md bot.
  </h2>
 
 <!-- Glowing Footer -->
