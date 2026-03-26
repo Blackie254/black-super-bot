@@ -18,7 +18,6 @@ const axios = require("axios");
 const express = require("express");
 const chalk = require("chalk");
 const FileType = require("file-type");
-const session = process.env.SESSION || '';
 const figlet = require("figlet");
 const { File } = require('megajs');
 const app = express();
