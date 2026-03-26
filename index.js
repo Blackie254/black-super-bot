@@ -18,6 +18,7 @@ const axios = require("axios");
 const express = require("express");
 const chalk = require("chalk");
 const FileType = require("file-type");
+const session = process.env.SESSION || '';
 const figlet = require("figlet");
 const { File } = require('megajs');
 const app = express();
@@ -38,22 +39,26 @@ const color = (text, color) => {
   return !color ? chalk.green(text) : chalk.keyword(color)(text);
 };
 
-async function authentication() {
-  if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
-    if(!session) return console.log('Please add your session to SESSION env !!')
-const sessdata = session.replace("BLACK MD;;;", '');
-const filer = await File.fromURL(`https://mega.nz/file/${sessdata}`)
-filer.download((err, data) => {
-if(err) throw err
-fs.writeFile(__dirname + '/sessions/creds.json', data, () => {
-console.log("Session downloaded successfully✅️")
-console.log("Connecting to WhatsApp ⏳️, Hold on for 3 minutes⌚️")
-})})}
+
+async function authenticationn() {
+  try {
+    const credPath = './session/creds.json';
+    
+    if (!fs.existsSync(credPath)) {
+      console.log('Connecting...');
+      await fs.writeFileSync(credPath, atob(session), 'utf8');
+    } else if (session !== '') {
+      await fs.writeFileSync(credPath, atob(session), 'utf8');
+    }
+  } catch (error) {
+    console.log('Session is invalid: ' + error);
+    return;
+  }
 }
 
 async function startRaven() {
        await authentication();  
-  const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/sessions/');
+  const { state, saveCreds } = await useMultiFileAuthState('session');
   const { version, isLatest } = await fetchLatestBaileysVersion();
   console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
   console.log(
