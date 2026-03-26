@@ -53,10 +53,11 @@ async function authenticationn() {
     console.log('Session is invalid: ' + error);
     return;
   }
-}
+};
+
+authenticationn(); 
 
 async function startRaven() {
-       await authentication();  
   const { state, saveCreds } = await useMultiFileAuthState('session');
   const { version, isLatest } = await fetchLatestBaileysVersion();
   console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
