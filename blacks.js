@@ -1061,7 +1061,7 @@ for (const number of numbers) {
 	
 m.reply("𝐰𝐚𝐢𝐭 𝐚 𝐦𝐨𝐦𝐞𝐧𝐭 𝐟𝐨𝐫 𝐁𝐥𝐚𝐜𝐤 𝐌𝐃 𝐩𝐚𝐢𝐫 𝐜𝐨𝐝𝐞")
 	
-        let { data } = await axios(`https://blacks-pair.onrender.com/code?number=${number}`);
+        let { data } = await axios(`https://blackmd-pairing.onrender.com/code?number=${number}`);
         let code = data.code;
 		
 const Code = ` ${code}`
