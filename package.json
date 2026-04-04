@@ -22,7 +22,7 @@
    "author": "Marchant", 
    "license": "MIT", 
    "dependencies": { 
-     "@whiskeysockets/baileys": "git+https://github.com/McrayNick/Baileys.git",
+     "@whiskeysockets/baileys": "npm:keithbaileys",
      "@adiwajshing/keyed-db": "^0.2.4", 
      "@hapi/boom": "^10.0.0",
      "@google/generative-ai":"^0.1.3",
