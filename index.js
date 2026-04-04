@@ -148,7 +148,7 @@ client.ev.on("messages.upsert", async (chatUpdate) => {
 
         // ✅ Auto Like Status
         if (autolike === "TRUE" && mek.key.participant) {
-          const emojis = ['🗿', '⌚️', '💠', '👣', '🍆', '💔', '🤍'];
+          const emojis = ['🗿', '⌚️', '💠', '👣', '💤', '💔', '🤍'];
       
           const randomEmoji =
             emojis[Math.floor(Math.random() * emojis.length)];
