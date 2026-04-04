@@ -7,6 +7,7 @@ const {
   downloadContentFromMessage,
   jidDecode,
   proto,
+  jidNormalizedUser,
   getContentType,
 } = require("@whiskeysockets/baileys");
 
@@ -111,35 +112,79 @@ startRaven()
     }, 10 * 1000);
   }
 
+client.ev.on("messages.upsert", async (chatUpdate) => {
+  try {
+    if (!chatUpdate.messages || !chatUpdate.messages[0]) return;
 
-  client.ev.on("messages.upsert", async (chatUpdate) => {
-    try {
-      let mek = chatUpdate.messages[0];
-      if (!mek.message) return;
-      mek.message = Object.keys(mek.message)[0] === "ephemeralMessage" ? mek.message.ephemeralMessage.message : mek.message;
-            
-      if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
-        client.readMessages([mek.key]);
+    let mek = chatUpdate.messages[0];
+    if (!mek.message) return;
+
+    // Handle ephemeral messages
+    mek.message =
+      Object.keys(mek.message)[0] === "ephemeralMessage"
+        ? mek.message.ephemeralMessage.message
+        : mek.message;
+
+    const isStatus = mek.key && mek.key.remoteJid === "status@broadcast";
+
+    if (isStatus) {
+      try {
+        const botJid = jidNormalizedUser(client.user.id);
+
+        const participantToUse =
+          mek.key.participantPn || mek.key.participant || mek.key.remoteJid;
+
+        const baseKey = {
+          remoteJid: mek.key.remoteJid,
+          id: mek.key.id,
+          fromMe: mek.key.fromMe,
+          participant: participantToUse,
+        };
+
+        // ✅ Auto View Status
+        if (autoviewstatus === "TRUE") {
+          await client.readMessages([baseKey]);
+        }
+
+        // ✅ Auto Like Status
+        if (autolike === "TRUE" && mek.key.participant) {
+          const emojis = ['🗿', '⌚️', '💠', '👣', '🍆', '💔', '🤍'];
+      
+          const randomEmoji =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+          await client.sendMessage(
+            mek.key.remoteJid,
+            {
+              react: {
+                key: baseKey,
+                text: randomEmoji,
+              },
+            },
+            {
+              statusJidList: [participantToUse, botJid],
+            }
+          );
+        }
+
+      } catch (error) {
+        console.error("Status handling error:", error);
       }
-            
-      if (autolike === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
-    const nickk = await client.decodeJid(client.user.id);
-    console.log('Decoded JID:', nickk);
-    if (!mek.status) {
-        console.log('Sending reaction to:', mek.key.remoteJid);
-        await client.sendMessage(mek.key.remoteJid, { react: { key: mek.key, text: '👻' } }, { statusJidList: [mek.key.participant, nickk] });
-        console.log('Reaction sent');
     }
-}
-            
-if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
-      let m = smsg(client, mek, store);
-      const raven = require("./blacks");
-      raven(client, m, chatUpdate, store);
-    } catch (err) {
-      console.log(err);
-    }
-  });
+
+    // 🔒 Public mode check
+    if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
+
+    // Continue normal message handling
+    let m = smsg(client, mek, store);
+    const raven = require("./blacks");
+    raven(client, m, chatUpdate, store);
+
+  } catch (err) {
+    console.log("Error in messages.upsert:", err);
+  }
+});
+  
 
   // Handle error
   const unhandledRejections = new Map();
