@@ -1566,6 +1566,58 @@ m.reply("*Wait a moment...*");
 
 //========================================================================================================================//		      
 
+
+case "music": {
+  const yts = require("yt-search");
+  const fetch = require("node-fetch");
+
+  try {
+    if (!text) {
+      return m.reply("What song do you want to download?");
+    }
+
+    let search = await yts(text);
+    if (!search.all.length) {
+      return m.reply("No results found for your query.");
+    }
+
+    let video = search.all[0];
+    let link = video.url;
+
+    const apiUrl = `https://apis.xcasper.space/api/downloader/ytmp3?url=${encodeURIComponent(link)}`;
+    let response = await fetch(apiUrl);
+    let data = await response.json();
+
+    if (!data.success || !data.url) {
+      return m.reply("Unable to fetch the song. Please try again later.");
+    }
+
+    await client.sendMessage(
+      m.chat,
+      {
+        document: { url: data.url },
+        mimetype: "audio/mp3",
+        caption: "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓",
+        fileName: `${data.title.replace(/[^a-zA-Z0-9 ]/g, "")}.mp3`,
+      },
+      { quoted: m }
+    );
+
+    await client.sendMessage(
+      m.chat,
+      {
+        audio: { url: data.url },
+        mimetype: "audio/mp4",
+      },
+      { quoted: m }
+    );
+
+    return;
+  } catch (error) {
+    return m.reply(`An error occurred: ${error.message}`);
+  }
+}
+break;
 //========================================================================================================================//		      
 	      case 'water':{
 		      var mumaker = require("mumaker");
