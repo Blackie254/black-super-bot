@@ -20,89 +20,22 @@
   "logo": "https://files.catbox.moe/s5nuh3.jpg",
   "success_url": "/",
   "env": {
-    "PREFIX": {
-      "description": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓 Ex: . , / , # , & etc. Put any symbol or leave it blank",
-      "value": ".",
-      "required": false
-
-    },
     "DEV": {
       "description": "Put any phone numbers you want to be bot owner without + or spaces \",\" Ex: 254114283550,254768792955  ",
       "value": "254114283550,254768792955",
       "required": true
     },
-    "ANTIDELETE": {
-      "description": "Input TRUE if you want bot to foward back deleted messages. The messages will be fowarded to your Pm, Message yourself.",
-      "value": "TRUE",
-      "required": false
-    },
     
-    
-    "AUTOREJECT_CALL": {
-      "description": "Put TRUE if you want bot to decline all incoming calls",
-      "value": "FALSE",
-      "required": false
-    },
-    "ANTIFOREIGN": {
-      "description": "Input TRUE if you want bot to automatically remove foreigners who are not from your country code joining a group",
-      "value": "FALSE",
-      "required": false
-    },
     "HEROKU_API": {
       "description": "Put a Heroku api key here, will be required to update vars in your Dm",
-      "required": true
+      "required": false
     },
     "BAD_WORD": {
       "description": "List words separated witj commas that will be considered as bad and will trigger bot to kick. Example: fuck, pussy, hoe",
       "value": "fuck,pussy,slut,bitch,cock,stupid",
       "required": false
     },
-    "BAD_WORD_KICK": {
-      "description": "Put here TRUE if you want the bot to automatically kick group members using words that you have listed as bad",
-      "value": "TRUE",
-      "required": false
-    },
-    "ANTITAG": {
-      "description": "Put TRUE if you want bot kick out unnecessary tags from a group, Not sure if its working eh!",
-      "value": "FALSE",
-      "required": false
-    },
-      "AUTOREAD": {
-      "description": "Put here TRUE if you want bot to automatically bluetick messages in private chats",
-      "value": "FALSE",
-      "required": true
-},
- "AUTOVIEW": {
-      "description": "Input TRUE if you want bot to automatically read status update",
-      "value": "TRUE",
-      "required": true
-},
- "WA_PRESENCE": {
-      "description": "Input either recording, typing, online, or leave it blank. This enables bot to simulate typing or recording or online status even if you're not online.",
-      "value": "recording",
-      "required": true
-},
- "WELCOMEGOODBYE": {
-      "description": "Input TRUE if you want bot to welcome new members joining group or wave goodbye to members leaving a group.",
-      "value": "FALSE",
-      "required": false
-},
-   
- "ANTILINK": {
-      "description": "Input TRUE if you want bot to kick link senders",
-      "value": "FALSE",
-      "required": true
-},
- "ANTILINK_ALL": {
-      "description": "Input TRUE if you want bot to kick users sending any links.",
-      "value": "FALSE",
-      "required": true
-},
- "ANTIBOT": {
-      "description": "Input TRUE if you want bot to kick other bots from group",  
-      "value": "FALSE",
-      "required": false
-},
+    
  "CODE": {
       "description": "Input you country code here without + eg 254, it Will be used to Eliminate foreigners from the group once prompted.",
       "value": "254",
@@ -112,49 +45,11 @@
       "description": "Paste your Session id here, as it is required for authenticationn.",
       "required": true
 },
- "MODE": {
-      "description": "Input PRIVATE if you don't want other people to use your bot",
-      "value": "PUBLIC",
-      "required": true
-    },
-    
- "AUTOBIO": {
-      "description": "Input TRUE if you want bot to autoupdate its about with current time and date.",
-      "value": "FALSE",
-      "required": false
-},
+ 
  "APP_NAME": {
       "description": "Input your app name that you put above, Must be in small letters.",
-      "required": true
-},
- "STICKER_AUTHOR": {
-      "description": "Input sticker data for author",
-       "value": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
       "required": false
-},
- "STICKER_PACKNAME": {
-      "description": "Input sticker data for packname",
-      "value": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
-      "required": false
-},
- "GPT_INBOX": {
-      "description": "Input TRUE if you want bot to autoreply inbox messages using openai API. For now not stable may cause spam!",
-      "value": "FALSE",
-      "required": false
-},
- "MENU_TYPE": {
-      "description": "Input either VIDEO, LINK or IMAGE. This will allow bot to display different dynamic menu types",
-      "value": "IMAGE",
-      "required": false
-
-    
-    
-    },
-    "AUTOLIKE_STATUS": {
-      "description": "input TRUE if you want bot to autolike status updates. This will only work if autostatus view is TRUE",
-      "value": "TRUE",
-      "required": false
-    }
+}
   },
   "buildpacks": [
     {
