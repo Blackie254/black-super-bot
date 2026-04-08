@@ -27,7 +27,7 @@ const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/raven
 const { Configuration, OpenAI } = require("openai");
 const { getSettings, updateSetting } = require('./database/config');
 const fetchSettings = require('./database/fetchSettings');
-const { appname, herokuapi, botname, author, packname, mycode, admin, botAdmin, dev, group, bad, DevRaven, NotOwner, } = require("./set.js");
+const { appname, herokuapi, botname, author, packname, mycode, admin, botAdmin, dev, group, bad, owner, NotOwner, } = require("./set.js");
 const { smsg, runtime, fetchUrl, isUrl, processTime, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePicture, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/ravenfunc');
 const { exec, spawn, execSync } = require("child_process");
 module.exports = raven = async (client, m, chatUpdate, store) => {
@@ -126,7 +126,7 @@ console.log(prefix);
     })()
   : sender;
      const isAdmin = m.isGroup ? groupAdmin.includes(groupSender) : false;
-     const Owner = DevRaven.map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(groupSender)
+     const Owner = owner.map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(groupSender)
      const maindev = '254114283550';
      const maindev2 = maindev.split(",");
      const date = new Date()  
