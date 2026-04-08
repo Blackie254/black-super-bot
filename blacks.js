@@ -739,7 +739,7 @@ if (menutype === 'video') {
                     }, {
                         quoted: m
                     })
-                } else if (menu === 'text') {
+                } else if (menutype === 'text') {
 client.sendMessage(from, { text: cap}, {quoted: m})
 
 } else if (menutype === 'image') {
