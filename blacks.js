@@ -2717,7 +2717,7 @@ case "support": {
     let _0x3439a2 = await client.downloadAndSaveMediaMessage(m.quoted);
     let _0x3dfb7c = await uploadToCatbox(_0x3439a2);
     m.reply("𝗔 𝗺𝗼𝗺𝗲𝘁, 𝗹𝗲𝗺𝗺𝗲 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗜𝗺𝗮𝗴𝗲...");
-    const _0x4e9e6a = new _0x817910("AIzaSyDJUtskTG-MvQdlT4tNE319zBqLMFei8nQ");
+    const _0x4e9e6a = new _0x817910("AIzaSyDPvQVAidnXZDs3bQNQlMTCRGBYSYeWpIg");
     async function _0x309a3c(_0x1400ed, _0x1a081e) {
       const _0x53e4b2 = {
         responseType: "arraybuffer"
@@ -2734,7 +2734,7 @@ case "support": {
       return _0x14b65d;
     }
     const _0x22a6bb = {
-      model: "gemini-1.5-flash"
+      model: "gemini-2.0-flash"
     };
     const _0x42849d = _0x4e9e6a.getGenerativeModel(_0x22a6bb);
     const _0x2c743f = [await _0x309a3c(_0x3dfb7c, "image/jpeg")];
