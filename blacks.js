@@ -25,7 +25,7 @@ const ytdl = require("ytdl-core");
 const Client = new Genius.Client("TUoAEhL79JJyU-MpOsBDkFhJFWFH28nv6dgVgPA-9R1YRwLNP_zicdX2omG2qKE8gYLJat5F5VSBNLfdnlpfJg"); // Scrapes if no key is provided
 const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/ravenupload');
 const { Configuration, OpenAI } = require("openai");
-const { menu, autoread, mode, antidel, antitag, appname, herokuapi, gptdm, botname, antibot, prefix, author, packname, mycode, admin, botAdmin, dev, group, bad, DevRaven, NotOwner, antilink, antilinkall, wapresence, badwordkick } = require("./set.js");
+const { menu, appname, herokuapi, botname, author, packname, mycode, admin, botAdmin, dev, group, bad, DevRaven, NotOwner, } = require("./set.js");
 const { smsg, runtime, fetchUrl, isUrl, processTime, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePicture, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/ravenfunc');
 const { exec, spawn, execSync } = require("child_process");
 module.exports = raven = async (client, m, chatUpdate, store) => {
@@ -745,7 +745,225 @@ client.sendMessage(m.chat, {
 
 }
 break;
+
+			  case "antilink": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.antilink;
+  if (!text) return reply(`🛡️ Antilink is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: antilink on/off");
+  if (text === current) return reply(`✅ Antilink is already *${text.toUpperCase()}*`);
+  await updateSetting("antilink", text);
+  reply(`✅ Antilink has been turned *${text.toUpperCase()}*`);
+}
+break;
+
+case "antilinkall": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.antilinkall;
+  if (!text) return reply(`🛡️ Antilinkall is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: antilinkall on/off");
+  if (text === current) return reply(`✅ Antilinkall is already *${text.toUpperCase()}*`);
+  await updateSetting("antilinkall", text);
+  reply(`✅ Antilinkall has been turned *${text.toUpperCase()}*`);
+}
+break;		      
+
+case "antidelete": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.antidelete;
+  if (!text) return reply(`😊 Antidelete is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: antidelete on/off");
+  if (text === current) return reply(`✅ Antidelete is already *${text.toUpperCase()}*`);
+  await updateSetting("antidelete", text);
+  reply(`✅ Antidelete has been turned *${text.toUpperCase()}*`);
+}
+break;	
 		      
+case "gptdm": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.gptdm;
+  if (!text) return reply(`🙂‍↕️ gptdm is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: gptdm on/off");
+  if (text === current) return reply(`✅ Gptdm is already *${text.toUpperCase()}*`);
+  await updateSetting("gptdm", text);
+  reply(`✅ Gptdm has been turned *${text.toUpperCase()}*`);
+}
+break;
+		      
+case "autoread": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.autoread;
+  if (!text) return reply(`📨 Autoread is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: autoread on/off");
+  if (text === current) return reply(`✅ Autoread is already *${text.toUpperCase()}*`);
+  await updateSetting("autoread", text);
+  reply(`✅ Autoread has been set to *${text.toUpperCase()}*`);
+}
+break;
+
+case "mode": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.mode;
+  if (!text) return reply(`👥️ Mode is currently *${current.toUpperCase()}*`);
+  if (!["public", "private"].includes(text)) return reply("Usage: mode public/private");
+  if (text === current) return reply(`✅ Mode is already *${text.toUpperCase()}*`);
+  await updateSetting("mode", text);
+  reply(`✅ Mode changed to *${text.toUpperCase()}*`);
+}
+break;
+
+case "prefix": {
+if(!Owner) throw NotOwner;
+  const newPrefix = args[0];
+  const settings = await getSettings();
+
+if (newPrefix === 'none') {
+      if (!settings.prefix) {
+        return await m.reply(`✅ The bot was already prefixless.`);
+      }
+      await updateSetting('prefix', '');
+      await m.reply(`✅ The bot is now prefixless.`);
+    } else if (newPrefix) {
+      if (settings.prefix === newPrefix) {
+        return await m.reply(`✅ The prefix was already set to: ${newPrefix}`);
+      }
+      await updateSetting('prefix', newPrefix);
+      await m.reply(`✅ Prefix has been updated to: ${newPrefix}`);
+    } else {
+      await m.reply(`👤 Prefix is currently: ${settings.prefix || 'No prefix set.'}\n\nUse _${settings.prefix || '.'}prefix none to remove the prefix.`);
+    }
+  }
+break;
+
+case "autolike": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.autolike;
+  if (!text) return reply(`🫠 Autolike is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: autolike on/off");
+  if (text === current) return reply(`✅ Autolike is already *${text.toUpperCase()}*`);
+  await updateSetting("autolike", text);
+  reply(`✅ Autolike has been turned *${text.toUpperCase()}*`);
+	
+}
+break;
+
+case "autobio": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.autobio;
+  if (!text) return reply(`😇 Autobio is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: autobio on/off");
+  if (text === current) return reply(`✅ Autobio is already *${text.toUpperCase()}*`);
+  await updateSetting("autobio", text);
+  reply(`✅ Autobio has been turned *${text.toUpperCase()}*`);
+	
+}
+break;
+		      
+case "autoview": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.autoview;
+  if (!text) return reply(`👀 Auto view status is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: autoview on/off");
+  if (text === current) return reply(`✅ Auto view status is already *${text.toUpperCase()}*`);
+  await updateSetting("autoview", text);
+  reply(`✅ Auto view status updated to *${text.toUpperCase()}*`);
+	
+}
+break;
+			  
+ case "menutype": {
+       if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.menutype;
+  if (!text) return reply(`👤 menutype is currently *${current}*`);
+  if (!["video", "image", "link", "text"].includes(text)) return reply("Usage: menutype video/image/link/text");
+  if (text === current) return reply(`✅ menutype is already *${text}*`);
+  await updateSetting("menutype", text);
+  reply(`✅ menutype updated to *${text}*`);
+}
+break;
+
+case "wapresence": {
+       if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.wapresence;
+  if (!text) return reply(`👤 Presence is currently *${current}*`);
+  if (!["typing", "online", "offline", "recording"].includes(text)) return reply("Usage: wapresence typing/online/offline/recording");
+  if (text === current) return reply(`✅ Presence is already *${text}*`);
+  await updateSetting("wapresence", text);
+  reply(`✅ Presence updated to *${text}*`);
+}
+break;
+
+case "badword": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.badword;
+  if (!text) return reply(`😈 Badword is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: badword on/off");
+  if (text === current) return reply(`✅ Badword is already *${text.toUpperCase()}*`);
+  await updateSetting("badword", text);
+  reply(`✅ Badword has been turned *${text.toUpperCase()}*`);
+}
+break;	
+		
+case "anticall": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.anticall;
+  if (!text) return reply(`🔰 Anticall is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: Anticall on/off");
+  if (text === current) return reply(`✅ Anticall is already *${text.toUpperCase()}*`);
+  await updateSetting("anticall", text);
+  reply(`✅ Anticall has been turned *${text.toUpperCase()}*`);
+}
+break;
+	
+   case "antibot": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.antibot;
+  if (!text) return reply(`👾 Antibot is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: antibot on/off");
+  if (text === current) return reply(`✅ Antibot is already *${text.toUpperCase()}*`);
+  await updateSetting("antibot", text);
+  reply(`✅ Antibot has been turned *${text.toUpperCase()}*`);
+}
+break;	
+	
+case "antitag": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.antitag;
+  if (!text) return reply(`🤖 Antitag is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: antitag on/off");
+  if (text === current) return reply(`✅ Antitag is already *${text.toUpperCase()}*`);
+  await updateSetting("antitag", text);
+  reply(`✅ Antitag has been turned *${text.toUpperCase()}*`);
+}
+break;	 
+	
+case "welcomegoodbye": {
+	if(!Owner) throw NotOwner;
+  const settings = await getSettings();
+  const current = settings.welcomegoodbye;
+  if (!text) return reply(`🕳 Welcomegoodbye is currently *${current.toUpperCase()}*`);
+  if (!["on", "off"].includes(text)) return reply("Usage: welcomegoodbye on/off");
+  if (text === current) return reply(`✅ Welcomegoodbye is already *${text.toUpperCase()}*`);
+  await updateSetting("welcomegoodbye", text);
+  reply(`✅ Welcomegoodbye has been turned *${text.toUpperCase()}*`);
+	
+}
+break;	 
 //========================================================================================================================//
 //========================================================================================================================//
 case "advice":
