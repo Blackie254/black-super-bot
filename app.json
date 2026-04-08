@@ -30,11 +30,6 @@
       "description": "Put a Heroku api key here, will be required to update vars in your Dm",
       "required": false
     },
-    "BAD_WORD": {
-      "description": "List words separated witj commas that will be considered as bad and will trigger bot to kick. Example: fuck, pussy, hoe",
-      "value": "fuck,pussy,slut,bitch,cock,stupid",
-      "required": false
-    },
     
  "CODE": {
       "description": "Input you country code here without + eg 254, it Will be used to Eliminate foreigners from the group once prompted.",
