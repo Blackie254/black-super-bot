@@ -33,8 +33,8 @@ const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/ravenfunc');
 const { sessionName, session, port, mycode, antiforeign, packname } = require("./set.js");
 const makeInMemoryStore = require('./store/store.js'); 
-const { initializeDatabase } = require('../database/config');
-const fetchSettings = require('../database/fetchSettings');
+const { initializeDatabase } = require('./database/config');
+const fetchSettings = require('./database/fetchSettings');
 const store = makeInMemoryStore({ logger: logger.child({ stream: 'store' }) });
 //const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
 const color = (text, color) => {
