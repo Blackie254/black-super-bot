@@ -1136,7 +1136,7 @@ try {
   const genAI = new GoogleGenerativeAI("AIzaSyDPvQVAidnXZDs3bQNQlMTCRGBYSYeWpIg");
 
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash", // ✅ cheaper & better for bots
+    model: "gemini-2.0-flash", // ✅ cheaper & better for bots
   });
 
   // ✅ Convert directly to base64
