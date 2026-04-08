@@ -110,7 +110,7 @@ startRaven()
   } else if (connection === 'open') {
 
     try {
-      await initializeDatabase();
+      initializeDatabase();
   console.log("✅ PostgreSQL database initialized successfully.");
 } catch (err) {
   console.error("❌ Failed to initialize database:", err.message || err);
