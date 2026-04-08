@@ -31,8 +31,10 @@ const logger = pino({ level: 'silent' });
 const PhoneNumber = require("awesome-phonenumber");
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/ravenexif');
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/ravenfunc');
-const { sessionName, session, mode, prefix, autobio, autolike, port, mycode, anticall, antiforeign, packname, autoviewstatus } = require("./set.js");
+const { sessionName, session, port, mycode, antiforeign, packname } = require("./set.js");
 const makeInMemoryStore = require('./store/store.js'); 
+const { initializeDatabase } = require('../database/config');
+const fetchSettings = require('../database/fetchSettings');
 const store = makeInMemoryStore({ logger: logger.child({ stream: 'store' }) });
 //const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
 const color = (text, color) => {
@@ -59,6 +61,20 @@ async function authenticationn() {
 authenticationn(); 
 
 async function startRaven() {
+  let autobio, autolike, autoview, mode, prefix, anticall;
+
+try {
+  const settings = await fetchSettings();
+  console.log("😴 settings object:", settings);
+
+  
+  ({ autobio, autolike, autoview, mode, prefix, anticall } = settings);
+
+  console.log("✅ Settings loaded successfully.... indexfile");
+} catch (error) {
+  console.error("❌ Failed to load settings:...indexfile", error.message || error);
+  return;
+}
   const { state, saveCreds } = await useMultiFileAuthState('session');
   const { version, isLatest } = await fetchLatestBaileysVersion();
   console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
@@ -92,6 +108,13 @@ client.ev.on('connection.update', (update) => {
 startRaven()
   }
   } else if (connection === 'open') {
+
+    try {
+      await initializeDatabase();
+  console.log("✅ PostgreSQL database initialized successfully.");
+} catch (err) {
+  console.error("❌ Failed to initialize database:", err.message || err);
+    }
       console.log(color("Congrats, BLACK MD has successfully connected to this server", "green"));
       console.log(color("Follow me on github as Blackie254", "red"));
       console.log(color("Text the bot number with menu to check my command list"));
@@ -103,7 +126,7 @@ startRaven()
   
     client.ev.on("creds.update", saveCreds);
   
-  if (autobio === 'TRUE') {
+  if (autobio === 'on') {
     setInterval(() => {
       const date = new Date();
       client.updateProfileStatus(
@@ -142,12 +165,12 @@ client.ev.on("messages.upsert", async (chatUpdate) => {
         };
 
         // ✅ Auto View Status
-        if (autoviewstatus === "TRUE") {
+        if (autoview === "on") {
           await client.readMessages([baseKey]);
         }
 
         // ✅ Auto Like Status
-        if (autolike === "TRUE" && mek.key.participant) {
+        if (autolike === "on" && mek.key.participant) {
           const emojis = ['🗿', '⌚️', '💠', '👣', '💤', '💔', '🤍'];
       
           const randomEmoji =
@@ -216,7 +239,7 @@ client.ev.on("messages.upsert", async (chatUpdate) => {
   });
 
   client.ev.on("group-participants.update", async (update) => {
-        if (antiforeign === 'TRUE' && update.action === "add") {
+        if (antiforeign === 'on' && update.action === "add") {
             for (let participant of update.participants) {
                 const jid = client.decodeJid(participant);
                 const phoneNumber = jid.split("@")[0];
@@ -235,7 +258,7 @@ client.ev.on("messages.upsert", async (chatUpdate) => {
     });
 
  client.ev.on('call', async (callData) => {
-    if (anticall === 'TRUE') {
+    if (anticall === 'on') {
       const callId = callData[0].id;
       const callerId = callData[0].from;
 
