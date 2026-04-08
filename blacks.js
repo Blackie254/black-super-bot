@@ -1112,6 +1112,62 @@ case 'quran': {
   }
  }
   break;
+		  case "ai4": {
+			  const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+try {
+  if (!m.quoted) {
+    return m.reply("Quote an image with instructions!");
+  }
+
+  if (!text) {
+    return m.reply("Provide instructions!");
+  }
+
+  if (!/image/.test(mime)) {
+    return m.reply("That is not an image!");
+  }
+
+  // ✅ Download image directly (NO catbox, saves quota & speed)
+  let media = await client.downloadMediaMessage(m.quoted);
+
+  m.reply("Analyzing image...");
+
+  const genAI = new GoogleGenerativeAI("AIzaSyDPvQVAidnXZDs3bQNQlMTCRGBYSYeWpIg");
+
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash", // ✅ cheaper & better for bots
+  });
+
+  // ✅ Convert directly to base64
+  const imagePart = {
+    inlineData: {
+      data: media.toString("base64"),
+      mimeType: "image/jpeg",
+    },
+  };
+
+  // ✅ Small delay (prevents rate limit)
+  await new Promise(r => setTimeout(r, 1500));
+
+  const result = await model.generateContent([text, imagePart]);
+  const response = await result.response;
+
+  const output = response.text();
+
+  await m.reply(output);
+
+} catch (err) {
+  console.log("Gemini Error:", err);
+
+  if (err.message?.includes("quota")) {
+    m.reply("⚠️ API quota exceeded. Try again later.");
+  } else {
+    m.reply("❌ Error analyzing image.");
+  }
+}
+		  }
+			  break;
 //========================================================================================================================//
   case "play": {		      
  if (!text) {
