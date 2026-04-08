@@ -61,5 +61,8 @@
     {
       "url": "https://github.com/heroku/heroku-buildpack-activestorage-preview"
     }
+  ],
+  "addons": [
+    "heroku-postgresql"
   ]
     }
