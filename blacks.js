@@ -1376,11 +1376,11 @@ try {
 ║     💙 *BLUEBLIZZARDS* 💙            
 ║     Premium Services Hub             
 ╠══════════════════════════════════════╣
-║ 🤖 *BOT SHOP*       $19 - $99        
+║ 🤖 *BOT SHOP*       kes100        
 ║    ▸ Anti-ban • Auto-reply           
 ║    └─ *.botservice*                  
 ╠══════════════════════════════════════╣
-║ 🚀 *DEPLOYMENT*    $5.99 - $14.99    
+║ 🚀 *DEPLOYMENT*    BLACK-MD   
 ║    ▸ 5-min setup • DDoS protection   
 ║    └─ *.deployservice*               
 ╠══════════════════════════════════════╣
@@ -1392,7 +1392,7 @@ try {
 ║    ▸ HD/4K • Ad-free                 
 ║    └─ *.flixservice*                 
 ╠══════════════════════════════════════╣
-║ 💰 *AFFILIATE*     30% commission    
+║ 💰 *AFFILIATE*     TRADING    
 ║    └─ *.affiliateservice*            
 ╠══════════════════════════════════════╣
 ║ 📞 *SUPPORT*       24/7 Live chat    
