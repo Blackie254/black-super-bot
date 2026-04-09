@@ -1368,7 +1368,89 @@ await sleep(3000);
     }
 };
 break;	      
-//========================================================================================================================//		      
+//========================================================================================================================//
+case "blue":
+try {
+  const menu = `
+╔══════════════════════════════════════╗
+║     💙 *BLUEBLIZZARDS* 💙            
+║     Premium Services Hub             
+╠══════════════════════════════════════╣
+║ 🤖 *BOT SHOP*       $19 - $99        
+║    ▸ Anti-ban • Auto-reply           
+║    └─ *.botservice*                  
+╠══════════════════════════════════════╣
+║ 🚀 *DEPLOYMENT*    $5.99 - $14.99    
+║    ▸ 5-min setup • DDoS protection   
+║    └─ *.deployservice*               
+╠══════════════════════════════════════╣
+║ 📊 *TRADING*       Crypto/Forex      
+║    ▸ AI signals • 1:500 leverage     
+║    └─ *.tradingservice*              
+╠══════════════════════════════════════╣
+║ 🎬 *FREE FLIX*     10,000+ movies    
+║    ▸ HD/4K • Ad-free                 
+║    └─ *.flixservice*                 
+╠══════════════════════════════════════╣
+║ 💰 *AFFILIATE*     30% commission    
+║    └─ *.affiliateservice*            
+╠══════════════════════════════════════╣
+║ 📞 *SUPPORT*       24/7 Live chat    
+║    └─ *.supportservice*              
+╚══════════════════════════════════════╝
+⭐ 4.9/5 • 10k+ users • 🟢 All systems go
+💬 *Click a service command to access*`;
+
+  await client.sendMessage(from, { text: menu }, { quoted: m });
+} catch (error) {
+  reply(`❌ Error: ${error.message}`);
+  console.log(error);
+}
+break;
+
+// SERVICE COMMANDS (links only shown here when user clicks)
+case "botservice":
+  await client.sendMessage(from, { 
+    text: `🤖 *Blueblizzards Bot Shop*\n\nPurchase WhatsApp bots:\n🔗 Access: https://bot.blueblizzards.site\n\nBasic: $19 | Pro: $49 | Ultimate: $99\n\n*.order <package>* to buy`,
+    quoted: m 
+  });
+  break;
+
+case "deployservice":
+  await client.sendMessage(from, { 
+    text: `🚀 *Blueblizzards Deployment Portal*\n\nDeploy your bot instantly:\n🔗 Access: https://deploy.blueblizzards.site\n\nQuick: $5.99/mo | Custom: $14.99/mo\n\n*.startdeploy* to begin`,
+    quoted: m 
+  });
+  break;
+
+case "tradingservice":
+  await client.sendMessage(from, { 
+    text: `📊 *Blueblizzards Trading Platform*\n\nTrade crypto & forex:\n🔗 Access: https://blueblizzards.site\n\nAI signals • 1:500 leverage • 0.1% fees\n\n*.opentrade* to start`,
+    quoted: m 
+  });
+  break;
+
+case "flixservice":
+  await client.sendMessage(from, { 
+    text: `🎬 *FreeFlix by Blueblizzards*\n\nWatch free movies & series:\n🔗 Access: https://freeflix.blueblizzards.site\n\n10,000+ titles • HD/4K • Ad-free\n\n*.search <movie>* to watch`,
+    quoted: m 
+  });
+  break;
+
+case "affiliateservice":
+  await client.sendMessage(from, { 
+    text: `💰 *Blueblizzards Affiliate Program*\n\nEarn 30% recurring commission:\n🔗 Register: https://blueblizzards.site/affiliate\n\n$5 per signup • Daily payouts\n\n*.myref* for your link`,
+    quoted: m 
+  });
+  break;
+
+case "supportservice":
+  await client.sendMessage(from, { 
+    text: `📞 *Blueblizzards 24/7 Support*\n\nLive chat: https://nexus.blueblizzards.site/support\nEmail: support@blueblizzards.site\nTelegram: @BlueblizzardsSupport\n\n*.ticket <issue>* for help`,
+    quoted: m 
+  });
+  break;
+			  
 //========================================================================================================================//
 	      case "song2": {
 const yts = require("yt-search");
