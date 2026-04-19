@@ -1202,6 +1202,11 @@ m.reply("_Please wait your download is in progress_");
           }, { quoted: m });
 	} 
 	
+	await client.sendMessage(from, {
+          audio: { url: data.downloadLink },
+          mimetype: 'audio/mp3',
+          fileName
+        }, { quoted: m });
 	
 await client.sendMessage(from, {
           document: { url: data.downloadLink },
@@ -4818,28 +4823,56 @@ case 'sc': case 'script': case 'repo':
  break; 
 
 //========================================================================================================================//		      
-     case "hidetag": case "tag": { 
-             if (!m.isGroup) throw group; 
-             if (!isBotAdmin) throw botAdmin; 
-             if (!isAdmin) throw admin; 
-            client.sendMessage(m.chat, { text : q ? q : 'BLACKY 𝗕𝗹𝗶𝗻𝗱 𝗧𝗮𝗴𝘀😅' , mentions: participants.map(a => a.id)}, { quoted: m }); 
-             } 
- break; 
+     case "hidetag":
+case "tag": {
+  if (!m.isGroup) throw group;
+  if (!isBotAdmin) throw botAdmin;
+  if (!isAdmin) throw admin;
+
+  // ✅ fetch group participants properly
+  let groupMetadata = await client.groupMetadata(m.chat);
+  let participants = groupMetadata.participants;
+
+  let mentionIds = participants.map(p => p.id);
+
+  await client.sendMessage(
+    m.chat,
+    {
+      text: q ? q : "@all",
+      mentions: mentionIds
+    },
+    { quoted: m }
+  );
+}
+break;
 
 //========================================================================================================================//		      
-      case "tagall": { 
-                 if (!m.isGroup) throw group; 
-                 if (!isBotAdmin) throw botAdmin; 
-                 if (!isAdmin) throw admin; 
- let teks = `𝖇𝖑𝖆𝖈𝖐-𝖒𝖉 𝖙à𝖌𝖘🚀: 
-   
-  Message ${q ? q : ''}*\n\n`; 
-                 for (let mem of participants) { 
-                 teks += `𓅂 @${mem.id.split('@')[0]}\n`; 
-                 } 
-                 client.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m }); 
-                 } 
- break;
+      case "tagall": {
+  if (!m.isGroup) throw group;
+  if (!isBotAdmin) throw botAdmin;
+  if (!isAdmin) throw admin;
+
+  // ✅ fetch participants
+  let groupMetadata = await client.groupMetadata(m.chat);
+  let participants = groupMetadata.participants;
+
+  let teks = `🚀 *BLACK-MD TAG ALL*\n\n`;
+  teks += `Message: ${q ? q : "No message"}\n\n`;
+
+  for (let mem of participants) {
+    teks += `𓅂 @${mem.id.split("@")[0]}\n`;
+  }
+
+  await client.sendMessage(
+    m.chat,
+    {
+      text: teks,
+      mentions: participants.map(a => a.id)
+    },
+    { quoted: m }
+  );
+}
+break;
 
 //========================================================================================================================//		      
 case "whatsong": case "shazam":
