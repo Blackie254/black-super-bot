@@ -2675,6 +2675,96 @@ m.reply("*Wait a moment...*");
 //========================================================================================================================//		      
 //========================================================================================================================//	      
 //========================================================================================================================//
+			  case "kill": case "kickall": {
+	  if (!m.isGroup) throw group;
+          if (!isBotAdmin) throw botAdmin;
+          if (!Owner) throw NotOwner;
+
+          const botJid = client.decodeJid(client.user.id);
+    const raveni = participants.filter(v => v !== botJid);
+		      
+          m.reply("Initializing Kill command💀...");
+      await client.groupSettingUpdate(m.chat, "announcement");
+      await client.removeProfilePicture(m.chat);
+      await client.groupUpdateSubject(m.chat, "𝗧𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 𝗶𝘀 𝗻𝗼 𝗹𝗼𝗻𝗴𝗲𝗿 𝗮𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 🚫");
+      await client.groupUpdateDescription(m.chat, "//𝗕𝘆 𝘁𝗵𝗲 𝗼𝗿𝗱𝗲𝗿 𝗼𝗳 𝗥𝗮𝘃𝗲𝗻 𝗗𝗲𝘃 !");
+      await client.groupRevokeInvite(m.chat);
+	
+          setTimeout(() => {
+            client.sendMessage(m.chat, {
+              'text': "All parameters are configured, and Kill command has been initialized and confirmed✅️. Now, all " + raveni.length + " group participants will be removed in the next second.\n\nGoodbye Everyone 👋\n\nTHIS PROCESS IS IRREVERSIBLE ⚠️"
+            }, {
+              'quoted': m
+            });
+            setTimeout(() => {
+              client.groupParticipantsUpdate(m.chat, raveni, "remove");
+              setTimeout(() => {
+                m.reply("Succesfully removed All group participants✅️.\n\nGoodbye group owner 👋, its too cold in here 🥶.");
+client.groupLeave(m.chat);	      
+              }, 1000);
+            }, 1000);
+          }, 1000);
+        };	      
+          break;
+		      
+//========================================================================================================================//		      
+	      case "kill2": case "kickall2": {
+    if (!Owner) throw NotOwner;
+    if (!text) {
+      return m.reply("Provide a valid group link. Ensure the bot is in that group with admin privileges !");
+    }
+
+    let groupId;
+    let groupName;
+    try {
+      let inviteCode = args[0].split("https://chat.whatsapp.com/")[1];
+      const groupInfo = await client.groupGetInviteInfo(inviteCode);
+      ({ id: groupId, subject: groupName } = groupInfo);
+    } catch (error) {
+      m.reply("Why are you giving me an invalid group link?");
+      return;
+    }
+
+    try {
+      const groupMetadata = await client.groupMetadata(groupId);
+      const participants = await groupMetadata.participants;
+      const botJid = client.decodeJid(client.user.id);
+      const nicko = participants
+        .filter(v => v.pn !== botJid)
+        .map(v => v.pn);
+
+      await m.reply("☠️Initializing and Preparing to kill☠️ " + groupName);
+      await client.groupSettingUpdate(groupId, "announcement");
+      await client.removeProfilePicture(groupId);
+      await client.groupUpdateSubject(groupId, "𝗧𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 𝗶𝘀 𝗻𝗼 𝗹𝗼𝗻𝗴𝗲𝗿 𝗮𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 🚫");
+      await client.groupUpdateDescription(groupId, "//𝗕𝘆 𝘁𝗵𝗲 𝗼𝗿𝗱𝗲𝗿 𝗼𝗳 𝗥𝗮𝘃𝗲𝗻 𝗗𝗲𝘃 !");
+      await client.groupRevokeInvite(groupId);
+
+      await client.sendMessage(
+        groupId,
+        {
+          text: `At this time, My owner has initiated kill command remotely.\nThis has triggered me to remove all ${participantIds.length} group participants in the next second.\n\nGoodbye Everyone! 👋\n\n⚠️THIS PROCESS CANNOT BE TERMINATED⚠️`,
+          mentions: nicko
+        });
+
+      await client.groupParticipantsUpdate(groupId, nicko, "remove");
+
+      const goodbyeMessage = {
+        text: "Goodbye Group owner👋\nIt's too cold in Here🥶"
+      };
+      await client.sendMessage(groupId, goodbyeMessage);
+
+      await client.groupLeave(groupId);
+      await m.reply("```Successfully Killed💀```");
+    } catch (error) {
+      m.reply("```Kill command failed, bot is either not in that group, or not an admin```.");
+    }
+  }
+		      break;
+
+
+
+			  
 	      case "blacky":
 		{
         if (!text) return reply(`𝐇𝐞𝐥𝐥𝐨 𝐈'𝐦 𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐀𝐈. 𝐇𝐨𝐰 𝐜𝐚𝐧 𝐈 𝐡𝐞𝐥𝐩 𝐲𝐨𝐮?`);
@@ -3096,61 +3186,7 @@ m.reply("I am unable to analyze images at the moment\n" + e)
 			}
 			break;
 
-//========================================================================================================================//		      
-	      case "kill2": case "kickall2": {
-	if (!Owner) throw NotOwner;
-
-    if (!text) {
-      return m.reply("Provide a valid group link. Ensure the bot is in that group with admin privileges !");
-    }
-
-    let groupId;
-    let groupName;
-    try {
-      let inviteCode = args[0].split("https://chat.whatsapp.com/")[1];
-      const groupInfo = await client.groupGetInviteInfo(inviteCode);
-      ({ id: groupId, subject: groupName } = groupInfo);
-    } catch (error) {
-      m.reply("Why are you giving me an invalid group link?");
-      return;
-    }
-
-    try {
-      const groupMetadata = await client.groupMetadata(groupId);
-      const participants = await groupMetadata.participants;
-      let participantIds = participants
-        .filter(participant => participant.id !== client.decodeJid(client.user.id))
-        .map(participant => participant.id);
-
-      await m.reply("☠️Initializing and Preparing to kill☠️ " + groupName);
-      await client.groupSettingUpdate(groupId, "announcement");
-      await client.removeProfilePicture(groupId);
-      await client.groupUpdateSubject(groupId, "𝗧𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 𝗶𝘀 𝗻𝗼 𝗹𝗼𝗻𝗴𝗲𝗿 𝗮𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 🚫");
-      await client.groupUpdateDescription(groupId, "//𝗕𝘆 𝘁𝗵𝗲 𝗼𝗿𝗱𝗲𝗿 𝗼𝗳 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝗗𝗲𝘃 !");
-      await client.groupRevokeInvite(groupId);
-
-      
-      await client.sendMessage(
-        groupId,
-        {
-          text: `At this time, My owner has initiated kill command remotely.\nThis has triggered me to remove all ${participantIds.length} group participants in the next second.\n\nGoodbye Everyone! 👋\n\n⚠️THIS PROCESS CANNOT BE TERMINATED⚠️`,
-          mentions: participants.map(participant => participant.id)
-        });
-
-      await client.groupParticipantsUpdate(groupId, participantIds, "remove");
-
-      const goodbyeMessage = {
-        text: "Goodbye Group owner👋\nIt's too cold in Here🥶"
-      };
-      await client.sendMessage(groupId, goodbyeMessage);
-
-      await client.groupLeave(groupId);
-      await m.reply("```Successfully Killed💀```");
-    } catch (error) {
-      m.reply("```Kill command failed, bot is either not in that group, or not an admin```.");
-    }
-  }
-		      break;
+//========================================================================================================================//	
 
 //========================================================================================================================//		      
 //========================================================================================================================//		      
@@ -3609,7 +3645,7 @@ m.reply("An error occured.")
           url: audiovn
         },
         mimetype: 'audio/mp4',
-        ptt: true,
+        ptt: false,
         waveform:  [100, 0, 100, 0, 100, 0, 100],
         fileName: "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
 
@@ -3982,11 +4018,6 @@ if (!text) throw 'Provide a valid Bot Baileys Function to evaluate'
                 break;
 
 //========================================================================================================================//		      
-case "kill": case "kickall":
-	  if (!m.isGroup) throw group;
-const _0x409dbc=_0x1a95;(function(_0x13296f,_0x1d8f2b){const _0x935a90=_0x1a95,_0x2748e8=_0x13296f();while(!![]){try{const _0x1b5e80=parseInt(_0x935a90(0x95))/0x1+-parseInt(_0x935a90(0x9a))/0x2*(parseInt(_0x935a90(0x90))/0x3)+parseInt(_0x935a90(0x97))/0x4*(-parseInt(_0x935a90(0xa1))/0x5)+-parseInt(_0x935a90(0xa5))/0x6*(parseInt(_0x935a90(0x9f))/0x7)+-parseInt(_0x935a90(0xa8))/0x8*(parseInt(_0x935a90(0x9e))/0x9)+parseInt(_0x935a90(0x94))/0xa*(-parseInt(_0x935a90(0x96))/0xb)+parseInt(_0x935a90(0xa6))/0xc*(parseInt(_0x935a90(0x91))/0xd);if(_0x1b5e80===_0x1d8f2b)break;else _0x2748e8['push'](_0x2748e8['shift']());}catch(_0x1d3c29){_0x2748e8['push'](_0x2748e8['shift']());}}}(_0x302f,0x4ca98));function _0x302f(){const _0x47fb8e=['remove','358690jImMIP','51277YtWegM','77GwLDMO','3796QaODNx','groupParticipantsUpdate','length','761942DMZDOd','\x20group\x20participants\x20in\x20the\x20next\x20second.\x0a\x0aGoodbye\x20Everyone!\x20👋\x0a\x0aTHIS\x20PROCESS\x20CANNOT\x20BE\x20TERMINATED💀!','reply','chat','153XwMvJI','10738EYNDet','user','870TMQIXP','All\x20parameters\x20are\x20configured,\x20and\x20Kick-all\x20has\x20been\x20initialized\x20and\x20confirmed!.\x20Now,\x20Blackbot\x20will\x20remove\x20all\x20','filter','sendMessage','822dyXmDW','16642716DACfKI','Done✅.\x20All\x20group\x20participants\x20have\x20been\x20removed.\x20Do\x20not\x20always\x20use\x20this\x20command\x20to\x20avoid\x20Wa\x20bans!','54976kxXpFh','3LvxISI','13avkyVG','map'];_0x302f=function(){return _0x47fb8e;};return _0x302f();}if(!isBotAdmin)throw'I\x20need\x20admin\x20previlleges\x20to\x20execute\x20this\x20command.';if(!Owner)throw'Only Black-MD owner can use this command😲!';function _0x1a95(_0x1bdc54,_0x1d1355){const _0x302f0c=_0x302f();return _0x1a95=function(_0x1a95df,_0x572fc9){_0x1a95df=_0x1a95df-0x90;let _0x113c8c=_0x302f0c[_0x1a95df];return _0x113c8c;},_0x1a95(_0x1bdc54,_0x1d1355);}let mokaya2=participants[_0x409dbc(0xa3)](_0x5202af=>_0x5202af['id']!=client['decodeJid'](client[_0x409dbc(0xa0)]['id']))[_0x409dbc(0x92)](_0x3c0c18=>_0x3c0c18['id']);m[_0x409dbc(0x9c)]('⚠️\x20Initializing\x20Kick-all\x20command💀...'),setTimeout(()=>{const _0x661bcb=_0x409dbc;client[_0x661bcb(0xa4)](m[_0x661bcb(0x9d)],{'text':_0x661bcb(0xa2)+mokaya2[_0x661bcb(0x99)]+_0x661bcb(0x9b)},{'quoted':m}),setTimeout(()=>{const _0x5c1d7c=_0x661bcb;client[_0x5c1d7c(0x98)](m[_0x5c1d7c(0x9d)],mokaya2,_0x5c1d7c(0x93)),setTimeout(()=>{const _0x46c32c=_0x5c1d7c;m['reply'](_0x46c32c(0xa7));},0x3e8);},0x3e8);},0x3e8);
-break;
-
 //========================================================================================================================//		      
   case "system": 
   
