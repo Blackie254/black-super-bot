@@ -1190,12 +1190,6 @@ m.reply("_Please wait your download is in progress_");
           }, { quoted: m });
 	} 
 	
-	await client.sendMessage(from, {
-          audio: { url: data.downloadLink },
-          mimetype: 'audio/mp4',
-          fileName
-        }, { quoted: m });
-	
 await client.sendMessage(from, {
           document: { url: data.downloadLink },
           mimetype: 'audio/mpeg',
@@ -4629,25 +4623,28 @@ break;
 }
 break;	  
 //========================================================================================================================//	
-			  case "eplscorers":
-case "topscorers": {
+			  
+			  
+case "eplscorers": {
   try {
     await client.sendMessage(m.chat, { react: { text: "⚽", key: m.key } });
 
     let res = await axios.get(`${api}/epl/scorers`);
     let data = res.data;
 
-    if (!data.status || !Array.isArray(data.result)) {
-      return m.reply("❌ Failed to fetch EPL top scorers.");
+    if (!data.status || !Array.isArray(data.result?.topScorers)) {
+      return m.reply("❌ Failed to fetch EPL scorers.");
     }
 
     let text = `⚽ *Premier League Top Scorers*\n\n`;
 
-    data.result.slice(0, 10).forEach((p, i) => {
-      text += `🏅 ${i + 1}. *${p.player}*\n`;
-      text += `Team: ${p.team}\n`;
-      text += `Goals: ${p.goals}\n\n`;
-    });
+    for (let s of data.result.topScorers.slice(0, 10)) {
+      let medal = s.rank == 1 ? "🥇" : s.rank == 2 ? "🥈" : s.rank == 3 ? "🥉" : "⚽";
+
+      text += `${medal} *${s.rank}. ${s.player}* (${s.team})\n`;
+      text += `Goals: ${s.goals} | Assists: ${s.assists}\n`;
+      text += `Penalties: ${s.penalties}\n\n`;
+    }
 
     m.reply(text);
 
@@ -4657,7 +4654,7 @@ case "topscorers": {
   }
 }
 break;
-
+			  
 			case "laligascorers": {
   try {
     let res = await axios.get(`${api}/laliga/scorers`);
@@ -4665,8 +4662,8 @@ break;
 
     let text = `⚽ *La Liga Top Scorers*\n\n`;
 
-    data.result.slice(0, 10).forEach((p, i) => {
-      text += `${i + 1}. ${p.player} (${p.team}) - ${p.goals}⚽\n`;
+    data.result.topScorers.slice(0, 10).forEach(s => {
+      text += `${s.rank}. ${s.player} (${s.team}) - ${s.goals}⚽\n`;
     });
 
     m.reply(text);
@@ -4675,7 +4672,78 @@ break;
   }
 }
 break;
+			  
+			case "bundesligascorers": {
+  try {
+    let res = await axios.get(`${api}/bundesliga/scorers`);
+    let data = res.data;
 
+    let text = `⚽ *Bundesliga Top Scorers*\n\n`;
+
+    data.result.topScorers.slice(0, 10).forEach(s => {
+      text += `${s.rank}. ${s.player} - ${s.goals}⚽\n`;
+    });
+
+    m.reply(text);
+  } catch {
+    m.reply("❌ Error fetching Bundesliga scorers.");
+  }
+}
+break;  
+
+			  case "serieascorers": {
+  try {
+    let res = await axios.get(`${api}/seriea/scorers`);
+    let data = res.data;
+
+    let text = `⚽ *Serie A Top Scorers*\n\n`;
+
+    data.result.topScorers.slice(0, 10).forEach(s => {
+      text += `${s.rank}. ${s.player} - ${s.goals}⚽\n`;
+    });
+
+    m.reply(text);
+  } catch {
+    m.reply("❌ Error fetching Serie A scorers.");
+  }
+}
+break;
+			  
+			 case "ligue1scorers": {
+  try {
+    let res = await axios.get(`${api}/ligue1/scorers`);
+    let data = res.data;
+
+    let text = `⚽ *Ligue 1 Top Scorers*\n\n`;
+
+    data.result.topScorers.slice(0, 10).forEach(s => {
+      text += `${s.rank}. ${s.player} - ${s.goals}⚽\n`;
+    });
+
+    m.reply(text);
+  } catch {
+    m.reply("❌ Error fetching Ligue 1 scorers.");
+  }
+}
+break;
+
+			  case "uclscorers": {
+  try {
+    let res = await axios.get(`${api}/ucl/scorers`);
+    let data = res.data;
+
+    let text = `🏆 *UCL Top Scorers*\n\n`;
+
+    data.result.topScorers.slice(0, 10).forEach(s => {
+      text += `${s.rank}. ${s.player} - ${s.goals}⚽\n`;
+    });
+
+    m.reply(text);
+  } catch {
+    m.reply("❌ Error fetching UCL scorers.");
+  }
+}
+break;
 			  
 case 'sc': case 'script': case 'repo':
 
