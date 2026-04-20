@@ -1164,6 +1164,7 @@ case 'quran': {
 break;
 			  
 //========================================================================================================================//
+			
 case "ytmp4":
 case "video": {
   const axios = require("axios");
@@ -1176,7 +1177,7 @@ case "video": {
     let videoUrl;
     let videoTitle;
 
-    // 🔍 If input is YouTube URL
+    // 🔍 Check if input is YouTube link
     if (text.match(/(youtube\.com|youtu\.be)/i)) {
       videoUrl = text;
 
@@ -1189,7 +1190,7 @@ case "video": {
       videoTitle = "YouTube Video";
 
     } else {
-      // 🔎 Search
+      // 🔎 Search for video
       let search = await axios.get(`${api}/search/yts?query=${encodeURIComponent(text)}`);
       let videos = search.data?.result;
 
@@ -1198,16 +1199,37 @@ case "video": {
       }
 
       let first = videos[0];
-
       videoUrl = first.url;
       videoTitle = first.title;
     }
 
-    // 📥 Download video
-    let download = await axios.get(`${api}/download/video?url=${encodeURIComponent(videoUrl)}`);
-    let downloadUrl = download.data?.result;
+    // 📥 Get download link (force lower quality if supported)
+    let download = await axios.get(
+      `${api}/download/video?url=${encodeURIComponent(videoUrl)}`
+    );
 
+    let downloadUrl = download.data?.result;
     if (!downloadUrl) return m.reply("❌ Failed to get video.");
+
+    // 🔍 Validate file type
+    let head = await axios.head(downloadUrl).catch(() => null);
+
+    if (!head || !head.headers["content-type"]?.includes("video")) {
+      return m.reply("❌ Invalid video format from API.");
+    }
+
+    // 📦 Download as buffer (FIXES CORRUPTION)
+    let response = await axios.get(downloadUrl, {
+      responseType: "arraybuffer"
+    });
+
+    // 📏 Check size (limit ~50MB)
+    let size = response.headers["content-length"];
+    if (size && size > 50 * 1024 * 1024) {
+      return m.reply("❌ Video too large. Try another one.");
+    }
+
+    let buffer = Buffer.from(response.data);
 
     let fileName = `${videoTitle}.mp4`.replace(/[^\w\s.-]/gi, "");
 
@@ -1215,7 +1237,7 @@ case "video": {
     await client.sendMessage(
       m.chat,
       {
-        video: { url: downloadUrl },
+        video: buffer,
         mimetype: "video/mp4",
         fileName,
         caption: `🎬 ${videoTitle}`
@@ -1223,20 +1245,9 @@ case "video": {
       { quoted: m }
     );
 
-    // 📄 Optional: send as document
-    await client.sendMessage(
-      m.chat,
-      {
-        document: { url: downloadUrl },
-        mimetype: "video/mp4",
-        fileName
-      },
-      { quoted: m }
-    );
-
   } catch (err) {
     console.log("Video error:", err);
-    m.reply("❌ Error downloading video.");
+    m.reply("❌ Error downloading video. API may be unstable.");
   }
 }
 break;
