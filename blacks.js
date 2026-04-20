@@ -634,7 +634,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😊, ${getGreeting()}\n\n╔═━�
 ║   📅 Ucl
 ║   🇦🇨 fifa
 ║   🏳️‍🌈 Euro
-║    𝐭𝐨𝐩𝐬𝐜𝐨𝐫𝐞𝐫𝐬
+║    Epl𝐬𝐜𝐨𝐫𝐞𝐫𝐬
 ║    𝐥𝐚𝐥𝐢𝐠𝐚𝐬𝐜𝐨𝐫𝐞𝐫𝐬
 ║    𝐛𝐮𝐧𝐝𝐞𝐬𝐥𝐢𝐠𝐚𝐬𝐜𝐨𝐫𝐞𝐫𝐬
 ║    𝐬𝐞𝐫𝐢𝐚𝐬𝐜𝐨𝐫𝐞𝐫𝐬
@@ -1108,64 +1108,87 @@ case 'quran': {
   }
  }
   break;
-		  case "ai4": {
-			  const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-try {
-  if (!m.quoted) {
-    return m.reply("Quote an image with instructions!");
-  }
+			  case "play": {
+  const axios = require("axios");
 
-  if (!text) {
-    return m.reply("Provide instructions!");
-  }
+  if (!text) return m.reply("🔎 Provide a song name or YouTube link!");
 
-  if (!/image/.test(mime)) {
-    return m.reply("That is not an image!");
-  }
+  try {
+    await client.sendMessage(m.chat, { react: { text: "🎧", key: m.key } });
 
-  // ✅ Download image directly (NO catbox, saves quota & speed)
-  let media = await client.downloadMediaMessage(m.quoted);
+    let videoUrl;
+    let videoTitle;
+    let videoThumbnail;
 
-  m.reply("Analyzing image...");
+    // 🔍 If input is YouTube URL
+    if (text.match(/(youtube\.com|youtu\.be)/i)) {
+      videoUrl = text;
 
-  const genAI = new GoogleGenerativeAI("AIzaSyDPvQVAidnXZDs3bQNQlMTCRGBYSYeWpIg");
+      const videoId = videoUrl.match(
+        /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i
+      )?.[1];
 
-  const model = genAI.getGenerativeModel({
-    model: "gemini-2.0-flash", // ✅ cheaper & better for bots
-  });
+      if (!videoId) return m.reply("❌ Invalid YouTube link.");
 
-  // ✅ Convert directly to base64
-  const imagePart = {
-    inlineData: {
-      data: media.toString("base64"),
-      mimeType: "image/jpeg",
-    },
-  };
+      videoTitle = "YouTube Audio";
+      videoThumbnail = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 
-  // ✅ Small delay (prevents rate limit)
-  await new Promise(r => setTimeout(r, 1500));
+    } else {
+      // 🔎 Search
+      let search = await axios.get(`${api}/search/yts?query=${encodeURIComponent(text)}`);
+      let videos = search.data?.result;
 
-  const result = await model.generateContent([text, imagePart]);
-  const response = await result.response;
+      if (!Array.isArray(videos) || videos.length === 0) {
+        return m.reply("❌ No results found.");
+      }
 
-  const output = response.text();
+      let first = videos[0];
 
-  await m.reply(output);
+      videoUrl = first.url;
+      videoTitle = first.title;
+      videoThumbnail = first.thumbnail;
+    }
 
-} catch (err) {
-  console.log("Gemini Error:", err);
+    // 📥 Download audio
+    let download = await axios.get(`${api}/download/audio?url=${encodeURIComponent(videoUrl)}`);
+    let downloadUrl = download.data?.result;
 
-  if (err.message?.includes("quota")) {
-    m.reply("⚠️ API quota exceeded. Try again later.");
-  } else {
-    m.reply("❌ Error analyzing image.");
+    if (!downloadUrl) return m.reply("❌ Failed to get audio.");
+
+    let fileName = `${videoTitle}.mp3`.replace(/[^\w\s.-]/gi, "");
+
+    // 🎧 Send audio
+    await client.sendMessage(
+      m.chat,
+      {
+        audio: { url: downloadUrl },
+        mimetype: "audio/mpeg",
+        fileName
+      },
+      { quoted: m }
+    );
+
+    // 📄 Send document version
+    await client.sendMessage(
+      m.chat,
+      {
+        document: { url: downloadUrl },
+        mimetype: "audio/mpeg",
+        fileName
+      },
+      { quoted: m }
+    );
+
+  } catch (err) {
+    console.log("Play error:", err);
+    m.reply("❌ Error downloading audio.");
   }
 }
-		  }
-			  break;
+break;
+			  
 //========================================================================================================================//
-  case "play": {		      
+  case "video": {		      
  if (!text) {
       return client.sendMessage(from, { text: 'Please provide a song name.' }, { quoted: m });
     }
@@ -1196,8 +1219,8 @@ m.reply("_Please wait your download is in progress_");
 	} 
 	
 await client.sendMessage(from, {
-          document: { url: data.downloadLink },
-          mimetype: 'audio/mpeg',
+          video: { url: data.downloadLink },
+          mimetype: 'video/mp4',
           fileName
         }, { quoted: m });
 
@@ -1629,92 +1652,9 @@ break;
 			  
 //========================================================================================================================//		      
 //========================================================================================================================//
-case "video": {		      
-if (!text) {
-    return m.reply("Please provide a video name!");
-  }
-
-  try {
-    const { videos } = await yts(text);
-    if (!videos || videos.length === 0) {
-      return m.reply("❌ No videos found.");
-    }
-
-    const video = videos[0];
-    const url = video.url;
-
-    await m.reply("_Please wait your download is on progress..._");
-
-    let mp4 = null;
-    try {
-      const result = await ytdownload(url);
-      mp4 = result?.mp4;
-    } catch (e) {}
-
-    if (mp4) {
-      await client.sendMessage(m.chat, {
-        video: { url: mp4 },
-        mimetype: "video/mp4",
-        fileName: `${video.title}.mp4`
-      }, { quoted: m });
-    } else {
-      await m.reply("⚠️ Fast method failed. Downloading video, please wait...");
-      const filePath = await downloadVideo(url, '360p');
-
-      await client.sendMessage(m.chat, {
-        video: fs.readFileSync(filePath),
-        mimetype: "video/mp4",
-        fileName: `${video.title}.mp4`
-      }, { quoted: m });
-
-      fs.unlinkSync(filePath);
-    }
-
-  } catch (err) {
-    return m.reply("❌ Download failed: " + err);
-  }
-}
-  break;
 
 //========================================================================================================================//		      
-case 'video2': { 
-    if (!text) reply("What video you want to download?");
- 
- try { 
-    let search = await yts(text);
-    if (!search.all.length) reply("No results found for your query.");
-    let link = search.all[0].url; 
-    const apiUrl = `https://apis-keith.vercel.app/download/dlmp4?url=${link}`;
-    let response = await fetch(apiUrl);
-    let data = await response.json();
 
-    if (data.status && data.result) {
-      const videoData = {
-        title: data.result.title,
-        downloadUrl: data.result.downloadUrl,
-        thumbnail: search.all[0].thumbnail,
-        format: data.result.format,
-        quality: data.result.quality,
-      };
-
- await client.sendMessage(
-        m.chat,
-        {
-          video: { url: videoData.downloadUrl },
-          mimetype: "video/mp4",
-          caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗕𝗟𝗔𝗖𝗞-𝗠𝗗",
-        },
-        { quoted: m }
-      );
-      return;
-    } else {
-      return reply("Unable to fetch the video. Please try again later.");
-    }
-  } catch (error) {
-    return reply(`An error occurred: ${error.message}`);
-  }
-};
-  break;
 //========================================================================================================================//		      
 	      case "update": case "redeploy": {
 		      const axios = require('axios');
@@ -1785,81 +1725,7 @@ let options = []
 		break;
 
 //========================================================================================================================//		      
-	      case 'song':{
-const axios = require('axios');
-const yts = require("yt-search");
-const ffmpeg = require("fluent-ffmpeg");
-const fs = require("fs");
-const path = require("path");
-
-  try {
-    if (!text) return m.reply("What song do you want to download?");
-
-    let search = await yts(text);
-    let link = search.all[0].url;
-
-    const apis = [
-      `https://xploader-api.vercel.app/ytmp3?url=${link}`,
-      `https://apis.davidcyriltech.my.id/youtube/mp3?url=${link}`,
-      `https://api.ryzendesu.vip/api/downloader/ytmp3?url=${link}`,
-      `https://api.dreaded.site/api/ytdl/audio?url=${link}`
-       ];
-
-    for (const api of apis) {
-      try {
-        let data = await fetchJson(api);
-
-        // Checking if the API response is successful
-        if (data.status === 200 || data.success) {
-          let videoUrl = data.result?.downloadUrl || data.url;
-          let outputFileName = `${search.all[0].title.replace(/[^a-zA-Z0-9 ]/g, "")}.mp3`;
-          let outputPath = path.join(__dirname, outputFileName);
-
-          const response = await axios({
-            url: videoUrl,
-            method: "GET",
-            responseType: "stream"
-          });
-
-          if (response.status !== 200) {
-            m.reply("sorry but the API endpoint didn't respond correctly. Try again later.");
-            continue;
-          }
-		ffmpeg(response.data)
-            .toFormat("mp3")
-            .save(outputPath)
-            .on("end", async () => {
-              await client.sendMessage(
-                m.chat,
-                {
-                  document: { url: outputPath },
-                  mimetype: "audio/mp3",
-		  caption: "𝔇𝔬𝔴𝔫𝔩𝔬𝔞𝔡𝔢𝔡 𝔟𝔶>>>𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓",
-                  fileName: outputFileName,
-                },
-                { quoted: m }
-              );
-              fs.unlinkSync(outputPath);
-            })
-            .on("error", (err) => {
-              m.reply("Download failed\n" + err.message);
-            });
-
-          return;
-        }
-      } catch (e) {
-        // Continue to the next API if one fails
-        continue;
-      }
-   }
-
-    // If no APIs succeeded
-    m.reply("An error occurred. All APIs might be down or unable to process the request.");
-  } catch (error) {
-    m.reply("Download failed\n" + error.message);
-  }
-}
-	  break;
+	
 
 //========================================================================================================================//		      
 	      case "inspect": {
@@ -2668,7 +2534,7 @@ m.reply("*Wait a moment...*");
           if (!Owner) throw NotOwner;
 
           const botJid = client.decodeJid(client.user.id);
-    const raveni = participants.filter(v => v !== botJid);
+    const raveni = participants.filter(p => p.id !== botJid);
 		      
           m.reply("Initializing Kill command💀...");
       await client.groupSettingUpdate(m.chat, "announcement");
@@ -2717,8 +2583,8 @@ client.groupLeave(m.chat);
       const participants = await groupMetadata.participants;
       const botJid = client.decodeJid(client.user.id);
       const nicko = participants
-        .filter(v => v.pn !== botJid)
-        .map(v => v.pn);
+        .filter(p => p.id !== botJid)
+        .map(p => p.id);
 
       await m.reply("☠️Initializing and Preparing to kill☠️ " + groupName);
       await client.groupSettingUpdate(groupId, "announcement");
@@ -2748,41 +2614,6 @@ client.groupLeave(m.chat);
     }
   }
 		      break;
-
-
-
-			  
-	      case "blacky":
-		{
-        if (!text) return reply(`𝐇𝐞𝐥𝐥𝐨 𝐈'𝐦 𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐀𝐈. 𝐇𝐨𝐰 𝐜𝐚𝐧 𝐈 𝐡𝐞𝐥𝐩 𝐲𝐨𝐮?`);
-          let d = await fetchJson(
-            `https://bk9.fun/ai/llama?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-      }
-                break;
-//========================================================================================================================//
-case "gpt4":
-           {
-        if (!text) return reply(`Hello there, what's your question?`);
-          let d = await fetchJson(
-            `https://bk9.fun/ai/Aoyo?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-		     }
-                      break;
 
 //========================================================================================================================//		      
 //========================================================================================================================//
@@ -2852,26 +2683,7 @@ case "support": {
     break;
 }
 
-//========================================================================================================================//		      
-//========================================================================================================================//		      
-//========================================================================================================================//		      
-		      case "gpt2":
-		{
-        if (!text) return reply(`What's your question ?`);
-          let d = await fetchJson(
-            `https://bk9.fun/ai/jeeves-chat?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-      }
-                break;
-
-//========================================================================================================================//		      
+//========================================================================================================================//		      		      
 //========================================================================================================================//
 //========================================================================================================================//		      
 	      case 'trt': case 'translate':{
@@ -3652,67 +3464,6 @@ m.reply("An error occured.")
 		 break;
 		      
 //========================================================================================================================//		      
-	case "removebg": {
-		      try {
-
-const cap = "𝗘𝗱𝗶𝘁𝗲𝗱 𝗯𝘆 𝐁𝐋𝐀𝐂𝐊 𝐌𝐃 𝐁𝐎𝐓";
-
-if (!m.quoted) return m.reply("Send the image then tag it with the command.");
-
-   if (!/image/.test(mime)) return m.reply("That is not an image, try again while quoting an actual image.");             
-
-let fdr = await client.downloadAndSaveMediaMessage(m.quoted)
-
-                    let fta = await uploadtoimgur(fdr)
-                    m.reply("𝗔 𝗺𝗼𝗺𝗲𝗻𝘁, BLACKMARCHANT 𝗶𝘀 𝗲𝗿𝗮𝘀𝗶𝗻𝗴 𝘁𝗵𝗲 𝗯𝗮𝗰𝗸𝗴𝗿𝗼𝘂𝗻𝗱. . .");
-
-const image = `https://api.dreaded.site/api/removebg?imageurl=${fta}`
-
-await client.sendMessage(m.chat, { image: { url: image }, caption: cap}, {quoted: m });
-
-} catch (error) {
-m.reply("An error occured...")
-
-}
-
-      }
-	break;
-
-//========================================================================================================================//		      
-		     case 'fact': {
-	try {
-const data = await fetchJson('https://api.dreaded.site/api/fact');
-
-const fact = data.fact;
-
-await m.reply(fact);
-
-} catch (error) {
-
-m.reply('Something is wrong.')
-
-}
-	      }
-    break;
-
-//========================================================================================================================//		      
- case 'catfact': {
-	try {
-const data = await fetchJson('https://api.dreaded.site/api/catfact');
-
-const fact = data.fact;
-
-await m.reply(fact);
-
-} catch (error) {
-
-m.reply('Something is wrong.')
-
-}
-
-    }
-	      break;
-
 //========================================================================================================================//		      
 	  case 'tts': case 'say': {
 
@@ -3731,22 +3482,6 @@ const url = googleTTS.getAudioUrl(text, {
 	 break;
 
 //========================================================================================================================//		      
- case "gpt":
-           {
-        if (!text) return reply(`Hello there, what's your question?`);
-          let d = await fetchJson(
-            `https://bk9.fun/ai/jeeves-chat2?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-		     }
-                      break;
-
 //========================================================================================================================//		      
  case 'weather': {
 		      try {
@@ -3899,7 +3634,7 @@ let isTele = /image\/(png|jpe?g|gif)|video\/mp4/.test(mime)
 if (isTele) {
 let fta2 = await client.downloadAndSaveMediaMessage(q)
 
-    let link = await uploadtoimgur(fta2)
+    let link = await uploadToCatbox(fta2)
 
     const fileSizeMB = (mediaBuffer.length / (1024 * 1024)).toFixed(2)
 
@@ -4012,33 +3747,7 @@ if (!text) throw 'Provide a valid Bot Baileys Function to evaluate'
  break;
 
 //========================================================================================================================//		      
-case "vcf": case "group-vcf": {
-if (!m.isGroup) return m.reply("Command meant for groups");
 
-const fs = require("fs");
-let gcdata = await client.groupMetadata(m.chat)
-let gcmem = participants.map(a => a.id)
-
-let vcard = ''
-let noPort = 0
-
-for (let a of gcdata.participants) {
-    vcard += `BEGIN:VCARD\nVERSION:3.0\nFN:[${noPort++}] +${a.id.split("@")[0]}\nTEL;type=CELL;type=VOICE;waid=${a.id.split("@")[0]}:+${a.id.split("@")[0]}\nEND:VCARD\n`
-}
-
-let cont = './contacts.vcf'
-
-await m.reply('𝗔 𝗺𝗼𝗺𝗲𝗻𝘁, BLACKY 𝗶𝘀 𝗖𝗼𝗺𝗽𝗶𝗹𝗶𝗻𝗴 '+gcdata.participants.length+' 𝗖𝗼𝗻𝘁𝗮𝗰𝘁𝘀 𝗶𝗻𝘁𝗼 𝗮 𝗩𝗰𝗳...');
-
-await fs.writeFileSync(cont, vcard.trim())
-
-await client.sendMessage(m.chat, {
-    document: fs.readFileSync(cont), mimetype: 'text/vcard', fileName: 'Group contacts.vcf', caption: 'VCF for '+gcdata.subject+'\n'+gcdata.participants.length+' contacts'
-}, {ephemeralExpiration: 86400, quoted: m})
-fs.unlinkSync(cont)
-
-}
-   break;
 
 //========================================================================================================================//		      
 case "faker":
@@ -4065,23 +3774,7 @@ await client.sendMessage(m.chat, { text: `Quoted text is your token. To fetch me
       }
        break;
 
-//========================================================================================================================//		      
-       case "hacker2": {
-       if (!/image/.test(mime)) return m.reply("Hello hacker 👋, quote an image, probably a clear image of yourself or a person.");  
-
-let fdr = await client.downloadAndSaveMediaMessage(qmsg);
-
-                    const fta = await uploadtoimgur(fdr);
-
-   await  UploadFileUgu()
-
-const imagelink = `https://aemt.me/hacker2?link=${fta}`;
-
-await client.sendMessage(m.chat, { image: { url: imagelink}, caption: "Converted by Raven! 🦄"}, { quoted: m});
-
-}
-  break;
-
+//========================================================================================================================//		    
 //========================================================================================================================//		      
         case "inbox": {
 	 if (!text) return m.reply("To fetch messages from your mail, provide the email address which was issued.")
@@ -4306,70 +3999,6 @@ const { igdl } = require("ruhend-scraper");
 break;
 
 //========================================================================================================================//
-  case "twitter": case "twtdl": {
-if (!text) return m.reply("𝗽𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝘁𝘄𝗶𝘁𝘁𝗲𝗿 𝗹𝗶𝗻𝗸 !");
-
-try {
-
-const data = await fetchJson(`https://api.dreaded.site/api/alldl?url=${text}`);
-
-if (!data || data.status !== 200 || !data.data || !data.data.videoUrl) {
-            return m.reply("𝗦𝗼𝗿𝗿𝘆 𝘁𝗵𝗲 𝗔𝗣𝗜 𝗱𝗶𝗱𝗻'𝘁 𝗿𝗲𝘀𝗽𝗼𝗻𝗱 𝗰𝗼𝗿𝗿𝗲𝗰𝘁𝗹𝘆. 𝗣𝗹𝗲𝗮𝘀𝗲 𝘁𝗿𝘆 𝗔𝗴𝗮𝗶𝗻 𝗹𝗮𝘁𝗲𝗿!");
-        }
-
-const twtvid = data.data.videoUrl;
-
-await client.sendMessage(m.chat,{video : {url : twtvid },caption : `𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓`,gifPlayback : false },{quoted : m}) 
-
-} catch (e) {
-
-m.reply("An error occured. API might be down\n" + e)
-
-}
-
- }
-  break;
-
-//========================================================================================================================//		      
-	 case "facebook": case "fb": case "fbdl": {
-if (!text) {
-        return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗳𝗮𝗰𝗲𝗯𝗼𝗼𝗸 𝗹𝗶𝗻𝗸 !");
-    }
-
-    if (!text.includes("facebook.com")) {
-        return m.reply("That is not a facebook link.");
-    }
-
-    try {
-                let data = await fetchJson(`https://api.dreaded.site/api/facebook?url=${text}`);
-
-
-        if (!data || data.status !== 200 || !data.facebook || !data.facebook.sdVideo) {
-            return m.reply("𝗦𝗼𝗿𝗿𝘆 𝘁𝗵𝗲 𝗔𝗣𝗜 𝗱𝗶𝗱𝗻'𝘁 𝗿𝗲𝘀𝗽𝗼𝗻𝗱 𝗰𝗼𝗿𝗿𝗲𝗰𝘁𝗹𝘆. 𝗣𝗹𝗲𝗮𝘀𝗲 𝘁𝗿𝘆 𝗔𝗴𝗮𝗶𝗻 𝗹𝗮𝘁𝗲𝗿!");
-        }
-
-        const fbvid = data.facebook.sdVideo;
-
-        if (!fbvid) {
-            return m.reply("Wrong facebook data. Please ensure the video exists.");
-        }
-
-        await client.sendMessage(
-            m.chat,
-            {
-                video: { url: fbvid },
-                caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐁𝐋𝐀𝐂𝐊 𝐁𝐎𝐓",
-                gifPlayback: false,
-            },
-            { quoted: m }
-        );
-    } catch (e) {
-        console.error("Error occurred:", e);
-        m.reply("An error occurred. API might be down. Error: " + e.message);
-    }
-}
-break;
-
 //========================================================================================================================//		      
       case "tiktok": case "tikdl":  {
 if (!text) {
@@ -5068,8 +4697,7 @@ media = msgR.videoMessage
 var result = await client.downloadAndSaveMediaMessage(media);
 
 let stickerResult = new Sticker(result, {
-            pack: packname,
-            author: author,
+            pack: pushname,
             type: StickerTypes.FULL,
             categories: ["🤩", "🎉"],
             id: "12345",
@@ -5167,7 +4795,6 @@ var result = await client.downloadAndSaveMediaMessage(media);
 
 let stickerResult = new Sticker(result, {
             pack: pushname,
-            author: pushname,
             type: StickerTypes.FULL,
             categories: ["🤩", "🎉"],
             id: "12345",
@@ -5206,89 +4833,6 @@ case 'ytsearch':
     break;
 
 //========================================================================================================================//		      
-case "ytmp3": case "yta": {
-const ytSearch = require("yt-search");
-const fetch = require('node-fetch');
-try {
-
-if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗬𝗼𝘂𝘁𝘂𝗯𝗲 𝗹𝗶𝗻𝗸!")
-
-	let urls = text.match(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch\?v=|v\/|embed\/|shorts\/|playlist\?list=)?)([a-zA-Z0-9_-]{11})/gi);
-	if (!urls) return m.reply('𝗧𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮 𝗬𝗼𝘂𝘁𝘂𝗯𝗲 𝗟𝗶𝗻𝗸');
-	let urlIndex = parseInt(text) - 1;
-	if (urlIndex < 0 || urlIndex >= urls.length)
-		return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗟𝗶𝗻𝗸.');
-
-        const { videos } = await yts(text);
-        if (!videos || videos.length === 0) return m.reply("No songs found!");
-
-        const urlYt = videos[0].url;
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/audio?url=${urlYt}`);
-
-        if (!data || !data.result || !data.result.url) {
-            return m.reply("Failed to fetch audio from the API.");
-        }
-
-        const audioUrl = data.result.url;
-const title = data.result.title;
-
-        await client.sendMessage(
-            m.chat,
-            {
-                audio: { url: audioUrl },
-                mimetype: "audio/mpeg",
-                fileName: `${title}.mp3`,
-            },
-            { quoted: m }
-        );
-    } catch (error) {
-        m.reply("Download failed\n" + error.message);
-    }
-}
-  break;
-
-//========================================================================================================================//		      
-case 'ytmp4':
-case "ytv": {
-	try {
-
-if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗬𝗼𝘂𝗧𝘂𝗯𝗲 𝗹𝗶𝗻𝗸!")
-
-        let urls = text.match(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch\?v=|v\/|embed\/|shorts\/|playlist\?list=)?)([a-zA-Z0-9_-]{11})/gi);
-        if (!urls) return m.reply('𝗧𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮 𝗬𝗼𝘂𝗧𝘂𝗯𝗲 𝗹𝗶𝗻𝗸');
-        let urlIndex = parseInt(text) - 1;
-        if (urlIndex < 0 || urlIndex >= urls.length)
-                return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗹𝗶𝗻𝗸.');
-
-        const { videos } = await yts(text);
-        if (!videos || videos.length === 0) return m.reply("No songs found!");
-
-        const urlYt = videos[0].url;
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/video?url=${urlYt}`);
-
-        if (!data || !data.result || !data.result.url) {
-            return m.reply("Failed to fetch video from the API.");
-        }
-
-        const audioUrl = data.result.url;
-const title = data.result.title;
-
-
-        await client.sendMessage(
-            m.chat,
-            {
-                video: { url: audioUrl },
-                mimetype: "video/mpeg",
-                fileName: `${title}.mp4`,
-            },
-            { quoted: m }
-        );
-    } catch (error) {
-        m.reply("Download failed\n" + error.message);
-    }
-}        
-break;
-
 //========================================================================================================================//		      
     case "ping": case "speed": {
                  
@@ -5328,8 +4872,8 @@ break;
   case "apk":
       case "app":{
           if (!text) return reply("Where is the app name?");
-        let kyuu = await fetchJson (`https://bk9.fun/search/apk?q=${text}`);
-        let tylor = await fetchJson (`https://bk9.fun/download/apk?id=${kyuu.BK9[0].id}`);
+        let kyuu = await fetchJson (`https://api.bk9.dev/search/apk?q=${text}`);
+        let tylor = await fetchJson (`https://api.bk9.dev/download/apk?id=${kyuu.BK9[0].id}`);
          await client.sendMessage(
               m.chat,
               {
@@ -5561,23 +5105,7 @@ if (!text) return m.reply("No emojis provided ? ")
  }
  break;
 
-//========================================================================================================================//		      
-        case "setvar": 
- if (!Owner) throw NotOwner;  
- if(!text.split('=')[1]) return reply('Incorrect Usage:\nProvide the key and value correctly\nExample: setvar AUTOVIEW_STATUS=TRUE')  
- const herok = new Heroku({  
-            token: herokuapi,  
-          });  
-          let baseURI = "/apps/" + appname;  
- await herok.patch(baseURI + "/config-vars", {  
-            body: {  
-                    [text.split('=')[0]]: text.split('=')[1],  
-            },  
- });  
-          await reply(`✅ The variable ${text.split('=')[0]} = ${text.split('=')[1]} has been set Successfuly.\nWait 20s for changes to effect!`);  
-  
- break;
-		      
+//========================================================================================================================//		            
 //========================================================================================================================//	
 		      case "dlt": case "dil": { 
  if (!m.quoted) throw `No message quoted for deletion`; 
@@ -5651,7 +5179,7 @@ case "block": {
         case 'gpt3': {
         if (!text) return reply(`Hello there, How can i help you?`);
           let d = await fetchJson(
-            `https://bk9.fun/ai/blackbox?q=${text}`
+            `https://api.tps.dev/ai/blackbox?q=${text}`
           );
           if (!d.BK9) {
             return reply(
