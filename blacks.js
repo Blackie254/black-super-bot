@@ -8,6 +8,7 @@ global.axios = require('axios').default
 const chalk = require("chalk");
 const fetch = require('node-fetch');
 const uploadToCatbox = require('./lib/catbox.js');
+const uploadToUguu = require('./lib/uugu');
 const speed = require("performance-now");
 const Genius = require("genius-lyrics");
 const yts = require("yt-search");
