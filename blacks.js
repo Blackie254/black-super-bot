@@ -4518,7 +4518,7 @@ break;
     let text = `📊 *La Liga Standings*\n\n`;
 
     for (let t of data.result.standings) {
-      text += `⚽ *${t.position}. ${t.team}*\nPts:${t.points}\n\n`;
+      text += `🇪🇦 ${t.position}. ${t.team} - ${t.points} pts\n`;
     }
 
     m.reply(text);
@@ -4667,6 +4667,24 @@ case "topscorers": {
   } catch (e) {
     console.log(e);
     m.reply("❌ Error fetching EPL scorers.");
+  }
+}
+break;
+
+			case "laligascorers": {
+  try {
+    let res = await axios.get(`${api}/laliga/scorers`);
+    let data = res.data;
+
+    let text = `⚽ *La Liga Top Scorers*\n\n`;
+
+    data.result.slice(0, 10).forEach((p, i) => {
+      text += `${i + 1}. ${p.player} (${p.team}) - ${p.goals}⚽\n`;
+    });
+
+    m.reply(text);
+  } catch {
+    m.reply("❌ Error fetching La Liga scorers.");
   }
 }
 break;
