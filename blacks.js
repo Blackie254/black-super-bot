@@ -17,6 +17,7 @@ const { DateTime } = require('luxon');
 const uploadtoimgur = require('./lib/imgur');
 const advice = require("badadvice");
 const BASE_URL = 'https://noobs-api.top';
+const api = 'https://apiskeith.top';
 const ytdownload = require("./lib/ytdl");
 const downloadVideo = require('./lib/ytdl2');
 const {c, cpp, node, python, java} = require('compile-run');
@@ -4474,21 +4475,39 @@ if (imageUrl) {
 break;
 		      
 //========================================================================================================================//
-	      case "epl": case "epl-table": {
-		      
-try {
-        const data = await fetchJson('https://api.dreaded.site/api/standings/PL');
-        const standings = data.data;
+	      case "epl":
+case "premierleague": {
+  try {
+    await client.sendMessage(m.chat, { react: { text: "📊", key: m.key } });
 
-        const message = ` 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗘𝗽𝗹 𝗧𝗮𝗯𝗹𝗲 𝗦𝘁𝗮𝗻𝗱𝗶𝗻𝗴𝘀:-\n\n${standings}`;
+    let res = await axios.get(`${api}/epl/standings`);
+    let data = res.data;
 
-        await m.reply(message);
-    } catch (error) {
-        m.reply('Something went wrong. Unable to fetch 𝗘𝗽𝗹 standings.');
+    if (!data.status || !Array.isArray(data.result?.standings)) {
+      return m.reply("❌ Failed to fetch Premier League standings.");
     }
 
- }
-	break;
+    let text = `📊 *Premier League Standings*\n\n`;
+
+    for (let team of data.result.standings) {
+      let tag = "🧱";
+      if (team.position <= 4) tag = "🏆";
+      else if (team.position <= 6) tag = "🥈";
+      else if (team.position >= 18) tag = "⚠️";
+
+      text += `${tag} *${team.position}. ${team.team}*\n`;
+      text += `P:${team.played} W:${team.won} D:${team.draw} L:${team.lost}\n`;
+      text += `Pts:${team.points} GD:${team.goalDifference}\n\n`;
+    }
+
+    m.reply(text);
+
+  } catch (e) {
+    console.log(e);
+    m.reply("❌ Error fetching EPL standings.");
+  }
+}
+break;
 		      
 //========================================================================================================================//
 	      case "laliga": case "pd-table": {
