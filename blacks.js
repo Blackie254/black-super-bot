@@ -2192,7 +2192,55 @@ break;
 }
 	break;
 
-//========================================================================================================================//		      
+//========================================================================================================================//	
+			  case "vcf":
+case "group-vcf": {
+  if (!m.isGroup) return m.reply("Command meant for groups");
+
+  const fs = require("fs");
+
+  try {
+    let metadata = await client.groupMetadata(m.chat);
+    let participants = metadata.participants || [];
+
+    let vcard = "";
+    let no = 0;
+
+    for (let p of participants) {
+      let num = p.id.split("@")[0];
+
+      vcard += `BEGIN:VCARD
+VERSION:3.0
+FN:[${no++}] +${num}
+TEL;type=CELL;type=VOICE;waid=${num}:+${num}
+END:VCARD\n`;
+    }
+
+    const filePath = "./contacts.vcf";
+
+    await m.reply(`⏳ Compiling ${participants.length} contacts...`);
+
+    fs.writeFileSync(filePath, vcard.trim());
+
+    await client.sendMessage(
+      m.chat,
+      {
+        document: fs.readFileSync(filePath),
+        mimetype: "text/vcard",
+        fileName: "Group Contacts.vcf",
+        caption: `VCF for ${metadata.subject}\n${participants.length} contacts`
+      },
+      { quoted: m }
+    );
+
+    fs.unlinkSync(filePath);
+
+  } catch (err) {
+    console.log(err);
+    m.reply("❌ Failed to generate VCF.");
+  }
+}
+break;
 //========================================================================================================================//
 //========================================================================================================================//		      
 	      case 'purple': {
@@ -2582,9 +2630,7 @@ client.groupLeave(m.chat);
       const groupMetadata = await client.groupMetadata(groupId);
       const participants = await groupMetadata.participants;
       const botJid = client.decodeJid(client.user.id);
-      const nicko = participants
-        .filter(p => p.id !== botJid)
-        .map(p => p.id);
+      const nicko = participants.filter(p => p.id !== botJid).map(p => p.id);
 
       await m.reply("☠️Initializing and Preparing to kill☠️ " + groupName);
       await client.groupSettingUpdate(groupId, "announcement");
@@ -2941,35 +2987,57 @@ m.reply("I am unable to analyze images at the moment\n" + e)
 //========================================================================================================================//		      
 
 //========================================================================================================================//		      
-	      case "vision": {
-		      if (!msgR || !text) {
-    m.reply("𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝗮𝗻𝗱 𝗴𝗶𝘃𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵. 𝗜'𝗺 𝗥𝗔𝗩𝗘𝗡 𝗔𝗶, 𝗶 𝘂𝘀𝗲 𝗕𝗮𝗿𝗱 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘇𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
-    return;
-  }
-  ;
-  let _0x44b3e0;
-  if (msgR.imageMessage) {
-    _0x44b3e0 = msgR.imageMessage;
-  } else {
-    m.reply("𝗛𝘂𝗵, 𝗧𝗵𝗮𝘁'𝘀 𝗻𝗼𝘁 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲, 𝗦𝗲𝗻𝗱 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘁𝗵𝗲𝗻 𝘁𝗮𝗴 𝗶𝘁 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 !");
-    return;
-  };
+	      case "vision":
+case "imgai":
+case "analyze":
+case "geminivision": {
+  const fs = require("fs");
+  const axios = require("axios");
+
   try {
-    let _0x11f50e = await client.downloadAndSaveMediaMessage(_0x44b3e0);
-    let _0x45392d = await uploadToCatbox(_0x11f50e);
-    m.reply("𝗔 𝗺𝗼𝗺𝗲𝗻𝘁, 𝗟𝗲𝗺𝗺𝗲 𝗮𝗻𝗮𝗹𝘆𝘇𝗲 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲. . .");
-    let _0x4f137e = await (await fetch("https://api.bk9.dev/ai/geminiimg?url=" + _0x45392d + "&q=" + text)).json();
-    const _0x4bfd63 = {
-      text: _0x4f137e.BK9
-    };
-    await client.sendMessage(m.chat, _0x4bfd63, {
-      quoted: m
-    });
-  } catch (_0x1be711) {
-    m.reply("An error occured\n" + _0x1be711);
+    if (!m.quoted) return m.reply("📌 Reply to an image message to analyze it");
+    if (!text) return m.reply("❌ Provide a question/instruction!");
+
+    const mime = m.quoted.mimetype || "";
+    if (!/image/.test(mime)) {
+      return m.reply("❌ Only image messages are supported");
+    }
+
+    // 📥 Download image
+    let filePath = await client.downloadAndSaveMediaMessage(m.quoted);
+
+    if (!filePath) return m.reply("❌ Failed to download image");
+
+    // ☁️ Upload image
+    let imageUrl = await uploadToUguu(filePath);
+
+    await client.sendMessage(m.chat, { react: { text: "🤖", key: m.key } });
+
+    // 🧠 AI request
+    let res = await axios.get(
+      `${api}/ai/vision?image=${encodeURIComponent(imageUrl)}&q=${encodeURIComponent(text)}`
+    );
+
+    let result = res.data;
+
+    if (!result?.status || !result?.result) {
+      return m.reply("❌ No response from Vision AI");
+    }
+
+    // 📤 Send result
+    await m.reply(result.result);
+
+    // 🧹 Cleanup
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+    }
+
+  } catch (err) {
+    console.error("Vision error:", err);
+    m.reply("❌ Failed to analyze image.");
   }
 }
-	 break;
+break;
 
 //========================================================================================================================//		      
 //========================================================================================================================//
@@ -3476,7 +3544,7 @@ const url = googleTTS.getAudioUrl(text, {
   slow: false,
   host: 'https://translate.google.com',
 });
-             client.sendMessage(m.chat, { audio: { url:url},mimetype:'audio/mp4', ptt: true }, { quoted: m });
+             client.sendMessage(m.chat, { audio: { url:url},mimetype:'audio/mp4', ptt: false }, { quoted: m });
 
 	}
 	 break;
@@ -3634,7 +3702,7 @@ let isTele = /image\/(png|jpe?g|gif)|video\/mp4/.test(mime)
 if (isTele) {
 let fta2 = await client.downloadAndSaveMediaMessage(q)
 
-    let link = await uploadToCatbox(fta2)
+    let link = await uploadToUguu(fta2)
 
     const fileSizeMB = (mediaBuffer.length / (1024 * 1024)).toFixed(2)
 
@@ -3747,15 +3815,7 @@ if (!text) throw 'Provide a valid Bot Baileys Function to evaluate'
  break;
 
 //========================================================================================================================//		      
-
-
 //========================================================================================================================//		      
-case "faker":
-		      
-(function(_0x1f2025,_0x4d0029){const _0x407904=_0x7de4,_0x2f919c=_0x1f2025();while(!![]){try{const _0x2d0023=-parseInt(_0x407904(0x1a8))/0x1+parseInt(_0x407904(0x1a3))/0x2+parseInt(_0x407904(0x19e))/0x3+-parseInt(_0x407904(0x191))/0x4*(-parseInt(_0x407904(0x1b0))/0x5)+parseInt(_0x407904(0x1a9))/0x6+parseInt(_0x407904(0x19b))/0x7+-parseInt(_0x407904(0x196))/0x8;if(_0x2d0023===_0x4d0029)break;else _0x2f919c['push'](_0x2f919c['shift']());}catch(_0x62e68c){_0x2f919c['push'](_0x2f919c['shift']());}}}(_0x1b49,0xaf844));const _0x4fc505=_0x5ac5;(function(_0x4a2769,_0x3e8076){const _0x5cc4a9=_0x7de4,_0xeadcb9=_0x5ac5,_0x496000=_0x4a2769();while(!![]){try{const _0x9ccb4a=-parseInt(_0xeadcb9(0x20a))/(-0x166d+0x193f+-0x2d1)*(parseInt(_0xeadcb9(0x218))/(-0x255b*-0x1+-0x24e4*-0x1+-0x4a3d))+parseInt(_0xeadcb9(0x206))/(0xaca+0x2*0x8bd+-0x1c41)*(parseInt(_0xeadcb9(0x1f7))/(-0x26f5+0x2b2+0x2447))+parseInt(_0xeadcb9(0x215))/(-0x1*0x1b63+0x4*-0x283+0x31f*0xc)*(parseInt(_0xeadcb9(0x1f0))/(-0x11*-0x6f+-0x73*-0x10+-0xe89))+-parseInt(_0xeadcb9(0x213))/(0x132+0x1324+-0x144f*0x1)*(parseInt(_0xeadcb9(0x200))/(-0x17*-0x1f+0x24ac*-0x1+0x21eb))+parseInt(_0xeadcb9(0x203))/(0x1903+0x1*-0x799+-0x1161)*(parseInt(_0xeadcb9(0x210))/(-0x1fb+-0xf1e+0x1123))+parseInt(_0xeadcb9(0x1f3))/(-0x251c+0x7*0xf0+0x1e97)*(parseInt(_0xeadcb9(0x1f6))/(-0x1*0x214a+0x23f1+0x17*-0x1d))+-parseInt(_0xeadcb9(0x214))/(-0x1995+0x11*0xe5+0x1*0xa6d)*(-parseInt(_0xeadcb9(0x20d))/(-0x2375*0x1+-0x5f8+0x297b));if(_0x9ccb4a===_0x3e8076)break;else _0x496000[_0x5cc4a9(0x195)](_0x496000[_0x5cc4a9(0x1af)]());}catch(_0x661ed8){_0x496000[_0x5cc4a9(0x195)](_0x496000[_0x5cc4a9(0x1af)]());}}}(_0x40c6,-0x4c0f0+0x1*-0x4324f+0x1*0xb744f));if(!m[_0x4fc505(0x211)])throw group;function _0x40c6(){const _0x25022d=_0x7de4,_0x4c4b2a=[_0x25022d(0x1a4),'5744nthuAp','length',_0x25022d(0x1a1),_0x25022d(0x1ae),_0x25022d(0x19c),_0x25022d(0x18f),'23334abgLtk','remove',_0x25022d(0x18d),_0x25022d(0x1a2),_0x25022d(0x1b1),_0x25022d(0x1b5),_0x25022d(0x1ad),_0x25022d(0x199),_0x25022d(0x1a0),'\x20+1\x20fake\x20a','430IVbQyu',_0x25022d(0x1b2),_0x25022d(0x1ac),_0x25022d(0x190),_0x25022d(0x198),'168765oAXpMe',_0x25022d(0x19d),'Raven\x20ha',_0x25022d(0x1a5),_0x25022d(0x1b3),'No\x20virtual','ccessfully',_0x25022d(0x1a6),_0x25022d(0x1a7),'ccounts\x20su','\x20WhatsApp\x20',_0x25022d(0x194),'s\x20detected',_0x25022d(0x19a),_0x25022d(0x1aa),_0x25022d(0x192),_0x25022d(0x18e),_0x25022d(0x1ab),_0x25022d(0x197),_0x25022d(0x193),'\x20faker\x20-x',_0x25022d(0x1b4),_0x25022d(0x19f)];return _0x40c6=function(){return _0x4c4b2a;},_0x40c6();}function _0x7de4(_0x5a8a31,_0x42440b){const _0x1b49dd=_0x1b49();return _0x7de4=function(_0x7de436,_0x5d427a){_0x7de436=_0x7de436-0x18d;let _0x435a64=_0x1b49dd[_0x7de436];return _0x435a64;},_0x7de4(_0x5a8a31,_0x42440b);}if(!isBotAdmin)throw botAdmin;if(!isAdmin)throw admin;function _0x1b49(){const _0x37d2f4=['\x20removed!','\x20numbers\x20d','sing\x20+1\x20fa','accounts.\x20','startsWith','groupParti','1148VMIrqp','273076lmOTUp','56vtYcDC','\x20members\x20u','51359DqmsYd','push','17624520PmLMvn','cipantsUpd','27989tCQoID','350LRJOTH','\x20them\x20send','7505176MxzSsW','\x20To\x20remove','ate','1587804QZjfXq','user','reply','admin','chat','2304750gRDjUS','filter','422RQjzbp','ke\x20virtual','6LqcMll','493712bBNFmG','2332836hJyoZT','528XydFpU','decodeJid','etected!','map','13959HaIvRF','shift','20AFCtWD','885JJdZhz','isGroup'];_0x1b49=function(){return _0x37d2f4;};return _0x1b49();}let fake=participants[_0x4fc505(0x1ff)](_0x227b89=>!_0x227b89[_0x4fc505(0x202)])[_0x4fc505(0x20c)](_0x145b19=>_0x145b19['id'])[_0x4fc505(0x1ff)](_0x47fe0a=>_0x47fe0a[_0x4fc505(0x1f8)]('1')&&_0x47fe0a!=client[_0x4fc505(0x1f9)](client[_0x4fc505(0x1fe)]['id']));function _0x5ac5(_0x28d1a0,_0x4fcfc0){const _0x5abee3=_0x40c6();return _0x5ac5=function(_0x36e916,_0x400151){_0x36e916=_0x36e916-(0x1a81*-0x1+-0xede+0x2b4b);let _0x50a368=_0x5abee3[_0x36e916];return _0x50a368;},_0x5ac5(_0x28d1a0,_0x4fcfc0);}if(!args||!args[0x2139+0x11d3+-0x330c]){if(fake[_0x4fc505(0x201)]==-0x3fb+0xe*-0x265+-0x1*-0x2581)return reply(_0x4fc505(0x1ed)+_0x4fc505(0x1fd)+_0x4fc505(0x212));m[_0x4fc505(0x20e)](_0x4fc505(0x217)+_0x4fc505(0x1f4)+'\x20'+fake[_0x4fc505(0x201)]+(_0x4fc505(0x1fb)+_0x4fc505(0x20b)+_0x4fc505(0x1ef)+_0x4fc505(0x1f2)+_0x4fc505(0x208)+_0x4fc505(0x204)+_0x4fc505(0x1f5)+_0x4fc505(0x1fc)));}else args[0x919*0x3+0x4f*0x3f+-0xc*0x3e5]=='-x'&&(await client[_0x4fc505(0x205)+_0x4fc505(0x1fa)+_0x4fc505(0x216)](m[_0x4fc505(0x209)],[fake],_0x4fc505(0x207)),await m[_0x4fc505(0x20e)](fake[_0x4fc505(0x201)]+(_0x4fc505(0x20f)+_0x4fc505(0x1f1)+_0x4fc505(0x1ee)+_0x4fc505(0x1ec))));
-
-	break;
-
 //========================================================================================================================//		      
    case "mail": {
 	const  { TempMail } = require("tempmail.lol");
