@@ -1,4 +1,5 @@
-// Copy paste 🤏🏼😁😁
+
+
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const path = require('path');
@@ -4210,7 +4211,7 @@ case "pin": {
     }
 
     // 🎯 Detect type (image or video)
-    let mediaUrl = result.video || result.image;
+    let mediaUrl = result.media.sd || result.media.hd;
 
     if (!mediaUrl) {
       return m.reply("❌ No downloadable media found.");
