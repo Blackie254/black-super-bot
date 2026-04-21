@@ -137,6 +137,7 @@ console.log(prefix);
      const Rspeed = speed() - timestamp 
 //========================================================================================================================//
 //========================================================================================================================//
+
 const baseDir = "./message_data";
 
 // 📁 Ensure base folder exists
@@ -191,24 +192,22 @@ async function handleDelete(client, msg) {
 
     if (deletedBy.includes(botJid)) return;
 
-    // 📍 GET CHAT NAME
+    // 📍 CHAT NAME
     let chatName = "Private Chat";
-    let isGroup = jid.endsWith("@g.us");
-
-    if (isGroup) {
+    if (jid.endsWith("@g.us")) {
       try {
-        let metadata = await client.groupMetadata(jid);
-        chatName = metadata.subject;
+        const meta = await client.groupMetadata(jid);
+        chatName = meta.subject;
       } catch {
         chatName = "Unknown Group";
       }
     }
 
-    // 👤 ORIGINAL SENDER
+    // 👤 SENDER
     const sender =
       original.key.participant || original.key.remoteJid;
 
-    // 🧾 BASE MESSAGE
+    // 🧾 HEADER
     let notify = `👀 *ANTI DELETE*\n\n`;
     notify += `📍 *Chat:* ${chatName}\n`;
     notify += `👤 *Sender:* @${sender.split("@")[0]}\n`;
@@ -216,7 +215,7 @@ async function handleDelete(client, msg) {
 
     const target = botJid;
 
-    // 📩 TEXT
+    // 💬 TEXT
     if (original.message?.conversation) {
       notify += `💬 *Message:* ${original.message.conversation}`;
       return client.sendMessage(target, {
@@ -225,7 +224,6 @@ async function handleDelete(client, msg) {
       });
     }
 
-    // 📩 EXTENDED TEXT
     if (original.message?.extendedTextMessage) {
       notify += `💬 *Message:* ${original.message.extendedTextMessage.text}`;
       return client.sendMessage(target, {
@@ -236,73 +234,115 @@ async function handleDelete(client, msg) {
 
     // 📸 IMAGE
     if (original.message?.imageMessage) {
-      const buffer = await client.downloadMediaMessage(original);
+      try {
+        const buffer = await client.downloadMediaMessage(original);
+        if (!buffer) throw "No buffer";
 
-      const caption =
-        original.message.imageMessage.caption
-          ? `\n\n💬 *Caption:* ${original.message.imageMessage.caption}`
-          : "";
+        const caption =
+          original.message.imageMessage.caption
+            ? `\n\n💬 *Caption:* ${original.message.imageMessage.caption}`
+            : "";
 
-      return client.sendMessage(target, {
-        image: buffer,
-        caption: notify + "📸 [Image]" + caption
-      });
+        return client.sendMessage(target, {
+          image: buffer,
+          caption: notify + "📸 [Image]" + caption
+        });
+
+      } catch {
+        return client.sendMessage(target, {
+          text: notify + "📸 Image deleted (media expired)"
+        });
+      }
     }
 
     // 🎬 VIDEO
     if (original.message?.videoMessage) {
-      const buffer = await client.downloadMediaMessage(original);
+      try {
+        const buffer = await client.downloadMediaMessage(original);
+        if (!buffer) throw "No buffer";
 
-      const caption =
-        original.message.videoMessage.caption
-          ? `\n\n💬 *Caption:* ${original.message.videoMessage.caption}`
-          : "";
+        const caption =
+          original.message.videoMessage.caption
+            ? `\n\n💬 *Caption:* ${original.message.videoMessage.caption}`
+            : "";
 
-      return client.sendMessage(target, {
-        video: buffer,
-        caption: notify + "🎬 [Video]" + caption
-      });
+        return client.sendMessage(target, {
+          video: buffer,
+          caption: notify + "🎬 [Video]" + caption
+        });
+
+      } catch {
+        return client.sendMessage(target, {
+          text: notify + "🎬 Video deleted (media expired)"
+        });
+      }
     }
 
     // 🎵 AUDIO
     if (original.message?.audioMessage) {
-      const buffer = await client.downloadMediaMessage(original);
+      try {
+        const buffer = await client.downloadMediaMessage(original);
+        if (!buffer) throw "No buffer";
 
-      return client.sendMessage(target, {
-        audio: buffer,
-        mimetype: "audio/mpeg"
-      });
+        return client.sendMessage(target, {
+          audio: buffer,
+          mimetype: "audio/mpeg"
+        });
+
+      } catch {
+        return client.sendMessage(target, {
+          text: notify + "🎵 Audio deleted (media expired)"
+        });
+      }
     }
 
     // 📄 DOCUMENT
     if (original.message?.documentMessage) {
-      const buffer = await client.downloadMediaMessage(original);
+      try {
+        const buffer = await client.downloadMediaMessage(original);
+        if (!buffer) throw "No buffer";
 
-      const caption =
-        original.message.documentMessage.caption
-          ? `\n\n💬 *Caption:* ${original.message.documentMessage.caption}`
-          : "";
+        const caption =
+          original.message.documentMessage.caption
+            ? `\n\n💬 *Caption:* ${original.message.documentMessage.caption}`
+            : "";
 
-      return client.sendMessage(target, {
-        document: buffer,
-        fileName: original.message.documentMessage.fileName || "file",
-        caption: notify + "📄 [Document]" + caption
-      });
+        return client.sendMessage(target, {
+          document: buffer,
+          fileName: original.message.documentMessage.fileName || "file",
+          caption: notify + "📄 [Document]" + caption
+        });
+
+      } catch {
+        return client.sendMessage(target, {
+          text: notify + "📄 Document deleted (media expired)"
+        });
+      }
     }
 
     // 🧾 STICKER
     if (original.message?.stickerMessage) {
-      const buffer = await client.downloadMediaMessage(original);
+      try {
+        const buffer = await client.downloadMediaMessage(original);
+        if (!buffer) throw "No buffer";
 
-      return client.sendMessage(target, {
-        sticker: buffer
-      });
+        return client.sendMessage(target, {
+          sticker: buffer
+        });
+
+      } catch {
+        return client.sendMessage(target, {
+          text: notify + "🧾 Sticker deleted (expired)"
+        });
+      }
     }
 
   } catch (err) {
     console.log("Anti-delete error:", err);
   }
 }
+
+    
 //========================================================================================================================//
 //========================================================================================================================//	  
     // Push Message To Console
