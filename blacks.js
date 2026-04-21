@@ -208,7 +208,7 @@ async function handleDelete(client, msg) {
       original.key.participant || original.key.remoteJid;
 
     // 🧾 HEADER
-    let notify = `👀 *ANTI DELETE*\n\n`;
+    let notify = `👀 *BLACK-MD ANTI DELETE*\n\n`;
     notify += `📍 *Chat:* ${chatName}\n`;
     notify += `👤 *Sender:* @${sender.split("@")[0]}\n`;
     notify += `🗑️ *Deleted By:* @${deletedBy.split("@")[0]}\n\n`;
@@ -235,7 +235,7 @@ async function handleDelete(client, msg) {
     // 📸 IMAGE
     if (original.message?.imageMessage) {
       try {
-        const buffer = await client.downloadMediaMessage(original);
+        const buffer = await client.downloadMediaMessage(original.message?.imageMessage);
         if (!buffer) throw "No buffer";
 
         const caption =
@@ -258,7 +258,7 @@ async function handleDelete(client, msg) {
     // 🎬 VIDEO
     if (original.message?.videoMessage) {
       try {
-        const buffer = await client.downloadMediaMessage(original);
+        const buffer = await client.downloadMediaMessage(original.message?.videoMessage);
         if (!buffer) throw "No buffer";
 
         const caption =
@@ -281,7 +281,7 @@ async function handleDelete(client, msg) {
     // 🎵 AUDIO
     if (original.message?.audioMessage) {
       try {
-        const buffer = await client.downloadMediaMessage(original);
+        const buffer = await client.downloadMediaMessage(original.message?.audioMessage);
         if (!buffer) throw "No buffer";
 
         return client.sendMessage(target, {
@@ -299,7 +299,7 @@ async function handleDelete(client, msg) {
     // 📄 DOCUMENT
     if (original.message?.documentMessage) {
       try {
-        const buffer = await client.downloadMediaMessage(original);
+        const buffer = await client.downloadMediaMessage(original.message?.documentMessage);
         if (!buffer) throw "No buffer";
 
         const caption =
@@ -323,7 +323,7 @@ async function handleDelete(client, msg) {
     // 🧾 STICKER
     if (original.message?.stickerMessage) {
       try {
-        const buffer = await client.downloadMediaMessage(original);
+        const buffer = await client.downloadMediaMessage(original.message?.stickerMessage);
         if (!buffer) throw "No buffer";
 
         return client.sendMessage(target, {
@@ -340,7 +340,7 @@ async function handleDelete(client, msg) {
   } catch (err) {
     console.log("Anti-delete error:", err);
   }
-			}
+}
         
 //========================================================================================================================//
 //========================================================================================================================//	  
