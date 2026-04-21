@@ -3004,7 +3004,7 @@ case "support": {
 case "chatgpt": {
   const axios = require("axios");
 
-  if (!text) return m.reply("💬 Ask me something!");
+  if (!text) return m.reply("Please provide a context!");
 
   try {
     // ⏳ Wait message
@@ -3019,6 +3019,37 @@ case "chatgpt": {
 
     if (!data?.status || !data?.result) {
       return m.reply("❌ No response from API.");
+    }
+
+    // 🧠 Send reply
+    await m.reply(data.result);
+
+  } catch (err) {
+    console.log("GPT error:", err);
+    m.reply("❌ Error getting AI response.");
+  }
+}
+break;
+//========================================================================================================================//
+//========================================================================================================================//
+			  case "gemini": {
+  const axios = require("axios");
+
+  if (!text) return m.reply("This is gemini ai Ask me something!");
+
+  try {
+    // ⏳ Wait message
+    await m.reply("🤖 Thinking...");
+
+    // 📡 API request (using your API base)
+    let res = await axios.get(
+      `${api}/ai/gpt4?q=${encodeURIComponent(text)}`
+    );
+
+    let data = res.data;
+
+    if (!data?.status || !data?.result) {
+      return m.reply("❌ No response from AI.");
     }
 
     // 🧠 Send reply
@@ -3470,26 +3501,7 @@ let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
 		    }
 		      break;
 
-//========================================================================================================================//		      
-       case 'darkgpt':{
-
-if (!text) { return m.reply("Hey there Fuckface😈, I'm Darkgpt, I respond to anything be it harmful, I'm a pure Evil👿, What sort of dark and delightful nonsense do you want to dive into Today😈 ?");
-	   }
-	try {
-     const data = await fetchJson(`https://api.dreaded.site/api/makgpt?text=${text}`);
-		
-    if (data && data.result) {
-	    const res = data.result;
-	    await m.reply(res);
-    } else {
-	    m.reply("Huh, the silence is deafening, no response whatsoever💀.The API seems to have vanished into the abyss...😔");
-    }
-	} catch (error) {
-reply('An error occured while communicating with the APIs\n' + error);
-}
-  }
-break;
-
+//========================================================================================================================//		     
 //========================================================================================================================//		      
 		case 'github': {
  if (!text) return m.reply('Provide a github username to stalk');
@@ -4231,7 +4243,7 @@ case "pin": {
     await client.sendMessage(m.chat, { react: { text: "📌", key: m.key } });
 
     // 📡 API request
-    let apiUrl = `${api}/download/pinterest?url=${encodeURIComponent(text)}`;
+    let apiUrl = `${api}/download/pindl2?url=${encodeURIComponent(text)}`;
     let response = await axios.get(apiUrl, { timeout: 100000 });
 
     let result = response.data?.result;
@@ -5155,52 +5167,7 @@ if (!text) return m.reply("No emojis provided ? ")
       }
 	  break;
 
-//========================================================================================================================//		      
-          case "lyrics": {
-		      const fetch = require('node-fetch');
- const apiUrl = `https://api.dreaded.site/api/lyrics?title=${encodeURIComponent(text)}`;
-
-    try {
-        if (!text) return m.reply("Provide a song name!");
-
-        const data = await fetchJson(apiUrl);
-
-        if (!data.success || !data.result || !data.result.lyrics) {
-            return m.reply(`Sorry, I couldn't find any lyrics for "${text}".`);
-        }
-
-        const { title, artist, link, thumb, lyrics } = data.result;
-
-        const imageUrl = thumb || "https://i.imgur.com/Cgte666.jpeg";
-
-        const imageBuffer = await fetch(imageUrl)
-            .then(res => res.buffer())
-            .catch(err => {
-                console.error('Error fetching image:', err);
-                return null;
-            });
-
-        if (!imageBuffer) {
-            return m.reply("An error occurred while fetching the image.");
-        }
-
-        const caption = `**Title**: ${title}\n**Artist**: ${artist}\n\n${lyrics}`;
-
-        await client.sendMessage(
-            m.chat,
-            {
-                image: imageBuffer,
-                caption: caption
-            },
-            { quoted: m }
-        );
-    } catch (error) {
-        console.error(error);
-        m.reply(`An error occurred while fetching the lyrics for "${text}".`);
-    }
-      }
-	break;
-
+//========================================================================================================================//		              
 //========================================================================================================================//		      
         case "toimage": case "photo": { 
     if (!quoted) throw 'Tag a static video with the command!'; 
@@ -5303,25 +5270,7 @@ if (!text) return m.reply("No emojis provided ? ")
      } 
  break;
 
-//========================================================================================================================//		      
- case "gemini": {
-    try {
-        if (!text) return m.reply("This is Black-MD, an AI using Gemini APIs to process text, provide yr query");
-    
-        const { default: Gemini } = await import('gemini-ai');
-
-        const gemini = new Gemini("AIzaSyDJUtskTG-MvQdlT4tNE319zBqLMFei8nQ");
-        const chat = gemini.createChat();
-
-        const res = await chat.ask(text);
-
-        await m.reply(res);
-    } catch (e) {
-        m.reply("I am unable to generate responses\n\n" + e);
-    }
- }
- break;
-
+//========================================================================================================================//
 //========================================================================================================================//		            
 //========================================================================================================================//	
 		      case "dlt": case "dil": { 
@@ -5393,21 +5342,6 @@ case "block": {
 	break;
 
 //========================================================================================================================//		      
-        case 'gpt3': {
-        if (!text) return reply(`Hello there, How can i help you?`);
-          let d = await fetchJson(
-            `https://api.tps.dev/ai/blackbox?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-	}
-break;
-
 //========================================================================================================================//		      
 	      case 'gcprofile': {
  function convertTimestamp(timestamp) {
