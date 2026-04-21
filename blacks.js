@@ -771,7 +771,9 @@ client.sendMessage(m.chat, {
 
 }
 break;
-
+//========================================================================================================================//
+			  //========================================================================================================================//
+			  //========================================================================================================================//
 			  case "antilink": {
 	if(!Owner) throw NotOwner;
   const settings = await getSettings();
@@ -991,6 +993,8 @@ case "welcomegoodbye": {
 }
 break;	 
 //========================================================================================================================//
+			  //========================================================================================================================//
+			  //========================================================================================================================//
 //========================================================================================================================//
 case "advice":
 reply(advice());
@@ -1083,7 +1087,8 @@ case 'quran': {
   }
  }
   break;
-
+//========================================================================================================================//
+	//========================================================================================================================//
 			  case "play":
 		      case "ytmp3": {
   const axios = require("axios");
@@ -1164,7 +1169,8 @@ case 'quran': {
 break;
 			  
 //========================================================================================================================//
-			
+//========================================================================================================================//
+			  
 case "ytmp4":
 case "video": {
   const axios = require("axios");
@@ -1251,7 +1257,8 @@ case "video": {
   }
 }
 break;
-			  
+//========================================================================================================================//
+//========================================================================================================================//			  
   case "video2": {		      
  if (!text) {
       return client.sendMessage(from, { text: 'Please provide a song name.' }, { quoted: m });
@@ -1296,6 +1303,9 @@ await client.sendMessage(from, {
 }
 }
 break;
+			  
+//========================================================================================================================//
+//========================================================================================================================//			  
 			  case "play2": {		      
  if (!text) {
       return client.sendMessage(from, { text: 'Please provide a song name.' }, { quoted: m });
@@ -1493,7 +1503,8 @@ await sleep(3000);
         await reply("An error occurred. Please try again later.");
     }
 };
-break;	      
+break;	
+//========================================================================================================================//			  
 //========================================================================================================================//
 case "blue":
 try {
@@ -1533,7 +1544,9 @@ try {
   console.log(error);
 }
 break;
-
+			  
+//========================================================================================================================//
+//========================================================================================================================//
 // SERVICE COMMANDS (links only shown here when user clicks)
 case "botservice":
   await client.sendMessage(from, { 
@@ -1768,8 +1781,6 @@ let options = []
 		break;
 
 //========================================================================================================================//		      
-	
-
 //========================================================================================================================//		      
 	      case "inspect": {
 		      const fetch = require('node-fetch');
@@ -1960,8 +1971,6 @@ m.reply("*Wait a moment...*");
 	 break;
 
 //========================================================================================================================//		      
-
-
 case "music": {
   const yts = require("yt-search");
   const fetch = require("node-fetch");
@@ -2826,7 +2835,7 @@ case "support": {
     if (!Owner) throw NotOwner;
       if (!m.isGroup) throw group;
     if (!text) return m.reply(`provide a text to cast !`);
-    let mem = await participants.filter(v => v.id.endsWith('.net')).map(v => v.id)
+    let mem = await participants.filter(p => p.id.endsWith('.net')).map(p => p.id)
     m.reply(`Success in casting the message to contacts\n\nDo not allways use this Command to avoid WA-bans ! `);
     for (let pler of mem) {
     client.sendMessage(pler, { text: q})
@@ -2991,44 +3000,6 @@ case "support": {
 //========================================================================================================================//		      
 //========================================================================================================================//
 //========================================================================================================================//		      
-	      case "ai2": {
-		const axios = require("axios");
-
-try {
-
-if (!m.quoted) return m.reply("Send the image then tag it with the instruction.");
-
-if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 Blackmachant AI 𝗨𝘀𝗲 𝗚𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
-
-
-
-   if (!/image/.test(mime)) return m.reply("That is not an image, try again while quoting an actual image.");             
-
-let fdr = await client.downloadAndSaveMediaMessage(m.quoted)
-
-
-                    let fta = await uploadToCatbox(fdr)
-                    m.reply("𝗔 𝗠𝗼𝗺𝗲𝗻𝘁, 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 [𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓-𝗔𝗜] 𝗶𝘀 𝗮𝗻𝗮𝗹𝘆𝘇𝗶𝗻𝗴 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲. . .");
-
-
-const data = await fetchJson(`https://api.dreaded.site/api/gemini-vision?url=${fta}&instruction=${text}`);
-
-let res = data.result
-
-await m.reply(res);
-
-  
-
-} catch (e) {
-
-m.reply("I am unable to analyze images at the moment\n" + e)
-
-}
-	      }
-		break;
-
-//========================================================================================================================//		      
-
 //========================================================================================================================//		      
 	      case "vision":
 case "imgai":
@@ -4061,7 +4032,7 @@ if (users == "254114283550@s.whatsapp.net") return m.reply("It's an Owner Number
 
 }
   break;
-
+//========================================================================================================================//
 //========================================================================================================================//		      
     case "instagram": case "igdl": case "ig": {
 		      
@@ -4146,52 +4117,158 @@ await client.sendMessage(m.chat, {
   }
 }
   break;
+//========================================================================================================================//			  
 //========================================================================================================================//
-  case "pinterest": case "pin":
-	      {      
-	if (!text) return reply('𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗽𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘁 𝗹𝗶𝗻𝗸 !');
-		      
-if (!text.includes("pin.it")) {
-        return m.reply("That is not a pinterest link.");
-    }	
-await client.sendMessage(m.chat, {
-      react: { text: '✅️', key: m.key }
-    });
- 
-try {
-        const pinterestUrl = text;
-        const response = await axios.get(`https://api.bk9.dev/download/pinterest?url=${encodeURIComponent(pinterestUrl)}`);
+			  case "facebook":
+case "fb":
+case "fbdl": {
+  const axios = require("axios");
 
-        if (!response.data.status) {
-            return reply('Unable to fetch pinterest data.');
-        }
+  if (!text || !text.startsWith("http")) {
+    return m.reply("📌 Provide a valid Facebook video link!");
+  }
 
-        const media = response.data.BK9;
-        const capp = `𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗕𝗟𝗔𝗖𝗞-𝗠𝗗`;
+  try {
+    // ⏳ Wait message
+    await m.reply("⏳ Please wait, fetching your video...");
 
-if (media.length > 0) {
-            const videoUrl = media.find(item => item.url.includes('.mp4'))?.url;
-            const imageUrl = media.find(item => item.url.includes('.jpg'))?.url;
+    await client.sendMessage(m.chat, { react: { text: "📥", key: m.key } });
 
-if (videoUrl) {
-                await client.sendMessage(m.chat, { video: { url: videoUrl }, caption: capp }, { quoted: m });
-            } else 
-if (imageUrl) {
-                await client.sendMessage(m.chat, { image: { url: imageUrl }, caption: capp }, { quoted: m });
-            } else {
-                reply('No Video found!');
-            }
-        } else {
-            reply('No Image found.');
-        }
-    } catch (e) {
-        console.error(e);
-        await client.sendMessage(m.chat, { react: { text: '☠️', key: mek.key } });
-        reply('An error occurred while processing your request.');
+    // 📡 API request
+    let apiUrl = `${api}/download/fbdown?url=${encodeURIComponent(text)}`;
+    let response = await axios.get(apiUrl, { timeout: 100000 });
+
+    let result = response.data?.result;
+
+    if (!result?.media?.sd) {
+      return m.reply("❌ Failed to fetch Facebook video.");
     }
+
+    // 🎯 Pick HD if available
+    let videoUrl = result.media.hd || result.media.sd;
+
+    // 🔍 Validate file
+    let head = await axios.head(videoUrl).catch(() => null);
+    if (!head || !head.headers["content-type"]?.includes("video")) {
+      return m.reply("❌ Invalid video format.");
+    }
+
+    // 📦 Download buffer
+    let res = await axios.get(videoUrl, {
+      responseType: "arraybuffer"
+    });
+
+    let size = res.headers["content-length"];
+    if (size && size > 50 * 1024 * 1024) {
+      return m.reply("❌ Video too large.");
+    }
+
+    let buffer = Buffer.from(res.data);
+
+    // 🎬 Send video
+    await client.sendMessage(
+      m.chat,
+      {
+        video: buffer,
+        mimetype: "video/mp4",
+        caption: "📘 Facebook Video"
+      },
+      { quoted: m }
+    );
+
+  } catch (err) {
+    console.log("FB error:", err);
+    m.reply("❌ Error downloading Facebook video.");
+  }
 }
 break;
-		      
+//========================================================================================================================//
+//========================================================================================================================//			  
+  case "pinterest":
+case "pindl":
+case "pin": {
+  const axios = require("axios");
+
+  if (!text || !text.startsWith("http")) {
+    return m.reply("📌 Provide a valid Pinterest link!");
+  }
+
+  try {
+    // ⏳ Wait message
+    await m.reply("⏳ Please wait, fetching your Pinterest media...");
+
+    await client.sendMessage(m.chat, { react: { text: "📌", key: m.key } });
+
+    // 📡 API request
+    let apiUrl = `${api}/download/pinterest?url=${encodeURIComponent(text)}`;
+    let response = await axios.get(apiUrl, { timeout: 100000 });
+
+    let result = response.data?.result;
+
+    if (!result) {
+      return m.reply("❌ Failed to fetch Pinterest media.");
+    }
+
+    // 🎯 Detect type (image or video)
+    let mediaUrl = result.video || result.image;
+
+    if (!mediaUrl) {
+      return m.reply("❌ No downloadable media found.");
+    }
+
+    // 🔍 Validate
+    let head = await axios.head(mediaUrl).catch(() => null);
+    if (!head) return m.reply("❌ Invalid media.");
+
+    let contentType = head.headers["content-type"];
+
+    // 📦 Download buffer
+    let res = await axios.get(mediaUrl, {
+      responseType: "arraybuffer"
+    });
+
+    let size = res.headers["content-length"];
+    if (size && size > 50 * 1024 * 1024) {
+      return m.reply("❌ File too large.");
+    }
+
+    let buffer = Buffer.from(res.data);
+
+    // 🎬 If video
+    if (contentType.includes("video")) {
+      await client.sendMessage(
+        m.chat,
+        {
+          video: buffer,
+          mimetype: "video/mp4",
+          caption: "📌 Pinterest Video"
+        },
+        { quoted: m }
+      );
+    } 
+    // 🖼️ If image
+    else if (contentType.includes("image")) {
+      await client.sendMessage(
+        m.chat,
+        {
+          image: buffer,
+          caption: "📌 Pinterest Image"
+        },
+        { quoted: m }
+      );
+    } 
+    else {
+      m.reply("❌ Unsupported media type.");
+    }
+
+  } catch (err) {
+    console.log("Pinterest error:", err);
+    m.reply("❌ Error downloading Pinterest media.");
+  }
+}
+break;
+
+//========================================================================================================================//		      
 //========================================================================================================================//
 	      case "epl":
 case "premierleague": {
@@ -4214,7 +4291,7 @@ case "premierleague": {
       else if (team.position >= 18) tag = "⚠️";
 
       text += `${tag} *${team.position}. ${team.team}*\n`;
-      text += `P:${team.played} W:${team.won} D:${team.draw} L:${team.lost}\n`;
+      text += `P:${team.played} W:${team.won} D:${team.draw} L:${team.lost}`;
       text += `Pts:${team.points} GD:${team.goalDifference}\n\n`;
     }
 
@@ -4391,6 +4468,7 @@ case "eplscorers": {
   }
 }
 break;
+//========================================================================================================================//
 			  
 			case "laligascorers": {
   try {
@@ -4409,6 +4487,7 @@ break;
   }
 }
 break;
+//========================================================================================================================//
 			  
 			case "bundesligascorers": {
   try {
@@ -4427,7 +4506,8 @@ break;
   }
 }
 break;  
-
+//========================================================================================================================//
+			  
 			  case "serieascorers": {
   try {
     let res = await axios.get(`${api}/seriea/scorers`);
@@ -4445,6 +4525,7 @@ break;
   }
 }
 break;
+//========================================================================================================================//
 			  
 			 case "ligue1scorers": {
   try {
@@ -4463,7 +4544,8 @@ break;
   }
 }
 break;
-
+//========================================================================================================================//
+			  
 			  case "uclscorers": {
   try {
     let res = await axios.get(`${api}/ucl/scorers`);
@@ -4481,6 +4563,7 @@ break;
   }
 }
 break;
+//========================================================================================================================//
 			  
 case 'sc': case 'script': case 'repo':
 
