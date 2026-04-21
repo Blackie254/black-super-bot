@@ -250,7 +250,7 @@ contextInfo: {
           thumbnailUrl: "https://files.catbox.moe/0ykpd2.jpeg",
           sourceUrl: '',
           mediaType: 1,
-          renderLargerThumbnail: true
+          renderLargerThumbnail: false
           }}});
       } else if (originalMessage.message?.documentMessage) {
         notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Document]`;
@@ -278,7 +278,7 @@ contextInfo: {
           thumbnailUrl: "https://files.catbox.moe/7f98vp.jpg",
           sourceUrl: '',
           mediaType: 1,
-          renderLargerThumbnail: true
+          renderLargerThumbnail: false
           }}});
       } else if (originalMessage.message?.audioMessage) {
 	      notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Audio]`;
@@ -293,7 +293,7 @@ contextInfo: {
           thumbnailUrl: "https://files.catbox.moe/0ykpd2.jpeg",
           sourceUrl: '',
           mediaType: 1,
-          renderLargerThumbnail: true
+          renderLargerThumbnail: false
           }}});
       }	      
     } catch (error) {
@@ -600,20 +600,17 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😊, ${getGreeting()}\n\n╔═━�
 ║   🔄 𝐫𝐞𝐬𝐭𝐚𝐫𝐭
 ║   📢 𝐜𝐚𝐬𝐭
 ║   ➕ 𝐣𝐨𝐢𝐧
-║   ♻ 𝐫𝐞𝐝𝐞𝐩𝐥𝐨𝐲
-║   ⚙ 𝐬𝐞𝐭𝐯𝐚𝐫
+║   ♻ 𝐫𝐞𝐝𝐞𝐩𝐥𝐨y
 ║   🖼 𝐟𝐮𝐥𝐥𝐩𝐩
 ║   ✅ 𝐮𝐧𝐛𝐥𝐨𝐜𝐤
 ║   ☠ 𝐤𝐢𝐥𝐥𝟐
 ║   👑 𝐚𝐝𝐦𝐢𝐧
 ║   📢 𝐛𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭
-║   📊 𝐠𝐞𝐭𝐯𝐚𝐫
 ║   🔄 𝐮𝐩𝐝𝐚𝐭𝐞 
 ║   🤖 𝐛𝐨𝐭𝐩𝐩
 ║   ⛔ 𝐛𝐥𝐨𝐜𝐤
 ║   ☠ 𝐤𝐢𝐥𝐥
 ║   💾 𝐬𝐚𝐯𝐞
-║   > >
 ╚═══════════════════════╝
 
 ╔═══════════════════════╗
@@ -1348,6 +1345,61 @@ await client.sendMessage(from, {
 }
 }
 break;
+	//========================================================================================================================//
+		//========================================================================================================================//
+			  case "music": {
+  const yts = require("yt-search");
+  const fetch = require("node-fetch");
+
+  try {
+    if (!text) {
+      return m.reply("What song do you want to download?");
+    }
+
+    let search = await yts(text);
+    if (!search.all.length) {
+      return m.reply("No results found for your query.");
+    }
+
+    let video = search.all[0];
+    let link = video.url;
+
+    const apiUrl = `https://apis.xcasper.space/api/downloader/ytmp3?url=${encodeURIComponent(link)}`;
+    let response = await fetch(apiUrl);
+    let data = await response.json();
+
+    if (!data.success || !data.url) {
+      return m.reply("Unable to fetch the song. Please try again later.");
+    }
+
+    await client.sendMessage(
+      m.chat,
+      {
+        document: { url: data.url },
+        mimetype: "audio/mp3",
+        caption: "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓",
+        fileName: `${data.title.replace(/[^a-zA-Z0-9 ]/g, "")}.mp3`,
+      },
+      { quoted: m }
+    );
+
+    await client.sendMessage(
+      m.chat,
+      {
+        audio: { url: data.url },
+        mimetype: "audio/mp4",
+      },
+      { quoted: m }
+    );
+
+    return;
+  } catch (error) {
+    return m.reply(`An error occurred: ${error.message}`);
+  }
+}
+break;
+//========================================================================================================================//		      
+	      
 //========================================================================================================================//
 case 'tg':
 case 'telegram': {
@@ -1969,83 +2021,6 @@ m.reply("*Wait a moment...*");
 	 break;
 
 //========================================================================================================================//		      
-case "music": {
-  const yts = require("yt-search");
-  const fetch = require("node-fetch");
-
-  try {
-    if (!text) {
-      return m.reply("What song do you want to download?");
-    }
-
-    let search = await yts(text);
-    if (!search.all.length) {
-      return m.reply("No results found for your query.");
-    }
-
-    let video = search.all[0];
-    let link = video.url;
-
-    const apiUrl = `https://apis.xcasper.space/api/downloader/ytmp3?url=${encodeURIComponent(link)}`;
-    let response = await fetch(apiUrl);
-    let data = await response.json();
-
-    if (!data.success || !data.url) {
-      return m.reply("Unable to fetch the song. Please try again later.");
-    }
-
-    await client.sendMessage(
-      m.chat,
-      {
-        document: { url: data.url },
-        mimetype: "audio/mp3",
-        caption: "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓",
-        fileName: `${data.title.replace(/[^a-zA-Z0-9 ]/g, "")}.mp3`,
-      },
-      { quoted: m }
-    );
-
-    await client.sendMessage(
-      m.chat,
-      {
-        audio: { url: data.url },
-        mimetype: "audio/mp4",
-      },
-      { quoted: m }
-    );
-
-    return;
-  } catch (error) {
-    return m.reply(`An error occurred: ${error.message}`);
-  }
-}
-break;
-//========================================================================================================================//		      
-	      case 'water':{
-		      var mumaker = require("mumaker");
-		     
-		      if (!text || text == "") {
-    m.reply("Example usage: " + prefix + "Water myself");
-    return;
-  } 
-  try {
-	
-  var hunterr = await mumaker.ephoto("https://en.ephoto360.com/create-water-effect-text-online-295.html", text);
-m.reply("*Wait a moment...*");
-    await client.sendMessage(m.chat, {
-      image: {
-        url: hunterr.image
-      },
-      caption: `𝔊𝔢𝔫𝔢𝔯𝔞𝔱𝔢𝔡 𝔟𝔶>>>𝐁𝐋𝐀𝐂𝐊-𝐌𝐃`
-    }, {
-      quoted: m
-    });
-  } catch(_0x9ddf9) {
-    m.reply("💀💀" + _0x9ddf9);
-  }
-}
-	 break;
-
 //========================================================================================================================//		      
 case 'joke': {
 try {
@@ -2945,56 +2920,36 @@ case "support": {
 //========================================================================================================================//		      
 //========================================================================================================================//		      
 //========================================================================================================================//		      
-		      case "ai": {
-			      const {
-    GoogleGenerativeAI: _0x817910
-  } = require("@google/generative-ai");
-  const _0xc0423b = require("axios");
-		      
+	
+case "ai": {
+  const fetch = require("node-fetch");
+
+  if (!text) return m.reply("💬 Ask something!");
+
   try {
-    if (!m.quoted) {
-      return m.reply("𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵!");
+    // ⏳ Wait message
+    await m.reply("🤖 Thinking...");
+
+    // 📡 API request
+    let res = await fetch(
+      `https://APIs.xcasper.space/ai/gemini?prompt=${encodeURIComponent(text)}`
+    );
+
+    let data = await res.json();
+
+    if (!data || !data.result) {
+      return m.reply("❌ No response from Gemini.");
     }
-    if (!text) {
-      return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 𝗶𝘀 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝗔𝗶, 𝘂𝘀𝗶𝗻𝗴 𝗴𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
-    }
-    if (!/image/.test(mime)) {
-      return m.reply("𝗛𝘂𝗵 𝘁𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲! 𝗣𝗹𝗲𝗮𝘀𝗲 𝗧𝗮𝗴 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵 !");
-    }
-    let _0x3439a2 = await client.downloadAndSaveMediaMessage(m.quoted);
-    let _0x3dfb7c = await uploadToCatbox(_0x3439a2);
-    m.reply("𝗔 𝗺𝗼𝗺𝗲𝘁, 𝗹𝗲𝗺𝗺𝗲 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗜𝗺𝗮𝗴𝗲...");
-    const _0x4e9e6a = new _0x817910("AIzaSyDPvQVAidnXZDs3bQNQlMTCRGBYSYeWpIg");
-    async function _0x309a3c(_0x1400ed, _0x1a081e) {
-      const _0x53e4b2 = {
-        responseType: "arraybuffer"
-      };
-      const _0x1175d9 = await _0xc0423b.get(_0x1400ed, _0x53e4b2);
-      const _0x2a4862 = Buffer.from(_0x1175d9.data).toString("base64");
-      const _0x2f6e31 = {
-        data: _0x2a4862,
-        mimeType: _0x1a081e
-      };
-      const _0x14b65d = {
-        inlineData: _0x2f6e31
-      };
-      return _0x14b65d;
-    }
-    const _0x22a6bb = {
-      model: "gemini-2.0-flash"
-    };
-    const _0x42849d = _0x4e9e6a.getGenerativeModel(_0x22a6bb);
-    const _0x2c743f = [await _0x309a3c(_0x3dfb7c, "image/jpeg")];
-    const _0xcf53e3 = await _0x42849d.generateContent([text, ..._0x2c743f]);
-    const _0x195f9c = await _0xcf53e3.response;
-    const _0x3db5a3 = _0x195f9c.text();
-    await m.reply(_0x3db5a3);
-  } catch (_0x4b3921) {
-    m.reply("I am unable to analyze images at the moment\n" + _0x4b3921);
+
+    // 🧠 Reply
+    await m.reply(data.result);
+
+  } catch (err) {
+    console.log("Gemini error:", err);
+    m.reply("❌ Error getting response.");
   }
 }
- break;
-
+break;	      
 //========================================================================================================================//		      
 //========================================================================================================================//
 			  case "gpt":
@@ -4026,19 +3981,6 @@ m.reply("𝗣𝗲𝗻𝗱𝗶𝗻𝗴 𝗣𝗮𝗿𝘁𝗶𝗰𝗶𝗽𝗮𝗻�
           break;
 
 //========================================================================================================================//		      
-       case "getvar": 
- if (!Owner) throw NotOwner;  
-     const heroku = new Heroku({  
-         token: herokuapi, // Replace 'heroku' with your actual Heroku token 
-     });  
-     let baseUR = "/apps/" + appname;  
-     let h9 = await heroku.get(baseUR + '/config-vars');  
-     let stoy = '*𝗕𝗲𝗹𝗼𝘄 𝗔𝗿𝗲 𝗛𝗲𝗿𝗼𝗸𝘂 𝗩𝗮𝗿𝗶𝗮𝗯𝗹𝗲𝘀 𝗙𝗼𝗿 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓:*\n\n';  
-     for ( vrt in h9) { // Added 'const' to declare 'vr' 
-         stoy += vrt + '=' + h9[vrt] + '\n\n'; // Fixed variable name 'str' to 'sto' 
-     }  
-     reply(stoy); 
-            break;
 
 //========================================================================================================================//		      
 case 'restart':  
