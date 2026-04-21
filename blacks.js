@@ -4211,7 +4211,7 @@ case "pin": {
     }
 
     // 🎯 Detect type (image or video)
-    let mediaUrl = result.media.sd || result.media.hd;
+    let mediaUrl = result.image.sd || result.image.hd || result.video.sd || result.video.hd;
 
     if (!mediaUrl) {
       return m.reply("❌ No downloadable media found.");
