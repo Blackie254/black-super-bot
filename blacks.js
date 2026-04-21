@@ -3000,6 +3000,36 @@ case "support": {
 
 //========================================================================================================================//		      
 //========================================================================================================================//
+			  case "gpt":
+case "chatgpt": {
+  const axios = require("axios");
+
+  if (!text) return m.reply("💬 Ask me something!");
+
+  try {
+    // ⏳ Wait message
+    await m.reply("🤖 Thinking...");
+
+    // 📡 API request (using your API base)
+    let res = await axios.get(
+      `${api}/ai/gpt?q=${encodeURIComponent(text)}`
+    );
+
+    let data = res.data;
+
+    if (!data?.status || !data?.result) {
+      return m.reply("❌ No response from API.");
+    }
+
+    // 🧠 Send reply
+    await m.reply(data.result);
+
+  } catch (err) {
+    console.log("GPT error:", err);
+    m.reply("❌ Error getting AI response.");
+  }
+}
+break;
 //========================================================================================================================//		      
 //========================================================================================================================//		      
 	      case "vision":
