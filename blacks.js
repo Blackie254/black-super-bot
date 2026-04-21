@@ -1205,7 +1205,7 @@ case "video": {
 
     // 📥 Get download link (force lower quality if supported)
     let download = await axios.get(
-      `${api}/download/video?url=${encodeURIComponent(videoUrl)}`
+      `${api}/download/mp4?url=${encodeURIComponent(videoUrl)}`
     );
 
     let downloadUrl = download.data?.result;
