@@ -137,170 +137,170 @@ console.log(prefix);
      const Rspeed = speed() - timestamp 
 //========================================================================================================================//
 //========================================================================================================================//
-const baseDir = 'message_data';
+const baseDir = "./message_data";
+
+// 📁 Ensure base folder exists
 if (!fs.existsSync(baseDir)) {
-  fs.mkdirSync(baseDir);
+  fs.mkdirSync(baseDir, { recursive: true });
 }
 
-function loadChatData(remoteJid, messageId) {
-  const chatFilePath = path.join(baseDir, remoteJid, `${messageId}.json`);
+// 📥 SAVE MESSAGE
+function saveMessage(message) {
   try {
-    const data = fs.readFileSync(chatFilePath, 'utf8');
-    return JSON.parse(data) || [];
-  } catch (error) {
-    return [];
+    const jid = message.key.remoteJid;
+    const msgId = message.key.id;
+
+    const dir = path.join(baseDir, jid);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+
+    const file = path.join(dir, `${msgId}.json`);
+    fs.writeFileSync(file, JSON.stringify(message, null, 2));
+  } catch (err) {
+    console.log("Save error:", err);
   }
 }
 
-function saveChatData(remoteJid, messageId, chatData) {
-  const chatDir = path.join(baseDir, remoteJid);
-
-  if (!fs.existsSync(chatDir)) {
-    fs.mkdirSync(chatDir, { recursive: true });
-  }
-
-  const chatFilePath = path.join(chatDir, `${messageId}.json`);
-
+// 📤 LOAD MESSAGE
+function loadMessage(jid, msgId) {
   try {
-    fs.writeFileSync(chatFilePath, JSON.stringify(chatData, null, 2));
-  } catch (error) {
-    console.error('Error saving chat data:', error);
+    const file = path.join(baseDir, jid, `${msgId}.json`);
+    if (!fs.existsSync(file)) return null;
+
+    return JSON.parse(fs.readFileSync(file));
+  } catch {
+    return null;
   }
 }
 
-function handleIncomingMessage(message) {
-  const remoteJid = message.key.remoteJid;
-  const messageId = message.key.id;
+// 🗑️ HANDLE DELETE
+async function handleDelete(client, msg) {
+  try {
+    if (!msg.message?.protocolMessage) return;
 
-  const chatData = loadChatData(remoteJid, messageId);
-  chatData.push(message);
-  saveChatData(remoteJid, messageId, chatData);
-}
+    const deletedKey = msg.message.protocolMessage.key;
+    const jid = deletedKey.remoteJid;
+    const msgId = deletedKey.id;
 
-async function handleMessageRevocation(client, revocationMessage) {
-  const remoteJid = revocationMessage.key.remoteJid;
-  const messageId = revocationMessage.message.protocolMessage.key.id;
+    const original = loadMessage(jid, msgId);
+    if (!original) return;
 
-  const chatData = loadChatData(remoteJid, messageId);
-  const originalMessage = chatData[0];
+    const botJid = client.decodeJid(client.user.id);
 
-  if (originalMessage) {
-    const deletedBy = revocationMessage.participant || revocationMessage.key.participant || revocationMessage.key.remoteJid;
-    const sentBy = originalMessage.key.participant || originalMessage.key.remoteJid;
+    const deletedBy =
+      msg.participant || msg.key.participant || msg.key.remoteJid;
 
-    const deletedByFormatted = `@${deletedBy.split('@')[0]}`;
-    const sentByFormatted = `@${sentBy.split('@')[0]}`;
+    if (deletedBy.includes(botJid)) return;
 
-    if (deletedBy.includes(client.user.id) || sentBy.includes(client.user.id)) return;
+    // 📍 GET CHAT NAME
+    let chatName = "Private Chat";
+    let isGroup = jid.endsWith("@g.us");
 
-    let notificationText = `░𝙃𝙤𝙡𝙡𝙖...𝘽𝙇𝘼𝘾𝙆-𝙈𝘿 𝘼𝙉𝙏𝙄𝘿𝙀𝙇𝙀𝙏𝙀░\n\n` +
-      ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗯𝘆: ${deletedByFormatted}\n\n`;
-
-    try {
-      if (originalMessage.message?.conversation) {
-        // Text message
-        const messageText = originalMessage.message.conversation;
-        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝘀𝘀𝗮𝗴𝗲: ${messageText}`;
-        await client.sendMessage(client.user.id, { text: notificationText });
-      } 
-      else if (originalMessage.message?.extendedTextMessage) {
-        // Extended text message (quoted messages)
-        const messageText = originalMessage.message.extendedTextMessage.text;
-        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗖𝗼𝗻𝘁𝗲𝗻𝘁: ${messageText}`;
-        await client.sendMessage(client.user.id, { text: notificationText });
+    if (isGroup) {
+      try {
+        let metadata = await client.groupMetadata(jid);
+        chatName = metadata.subject;
+      } catch {
+        chatName = "Unknown Group";
       }
-      else if (originalMessage.message?.imageMessage) {
-        // Image message
-        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Image]`;
-        try {
-          const buffer = await client.downloadMediaMessage(originalMessage.message.imageMessage);
-          await client.sendMessage(client.user.id, { 
-            image: buffer,
-	    caption: `${notificationText}\n\nImage caption: ${originalMessage.message.imageMessage.caption}`
-          });
-        } catch (mediaError) {
-          console.error('Failed to download image:', mediaError);
-          notificationText += `\n\n⚠️ Could not recover deleted image (media expired)`;
-          await client.sendMessage(client.user.id, { text: notificationText });
-        }
-      } 
-      else if (originalMessage.message?.videoMessage) {
-        // Video message
-        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Video]`;
-        try {
-          const buffer = await client.downloadMediaMessage(originalMessage.message.videoMessage);
-          await client.sendMessage(client.user.id, { 
-            video: buffer, 
-            caption: `${notificationText}\n\nVideo caption: ${originalMessage.message.videoMessage.caption}`
-          });
-        } catch (mediaError) {
-          console.error('Failed to download video:', mediaError);
-          notificationText += `\n\n⚠️ Could not recover deleted video (media expired)`;
-          await client.sendMessage(client.user.id, { text: notificationText });
-        }
-      } else if (originalMessage.message?.stickerMessage) {
-	 notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Sticker]`;
-      // Sticker message
-      const buffer = await client.downloadMediaMessage(originalMessage.message.stickerMessage);      
-      await client.sendMessage(client.user.id, { sticker: buffer, 
-contextInfo: {
-          externalAdReply: {
-          title: notificationText,
-          body: `DELETED BY: ${deletedByFormatted}`,
-          thumbnailUrl: "https://files.catbox.moe/0ykpd2.jpeg",
-          sourceUrl: '',
-          mediaType: 1,
-          renderLargerThumbnail: false
-          }}});
-      } else if (originalMessage.message?.documentMessage) {
-        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Document]`;
-        // Document message
-        const docMessage = originalMessage.message.documentMessage;
-        const fileName = docMessage.fileName || `document_${Date.now()}.dat`;
-        console.log('Attempting to download document...');
-        const buffer = await client.downloadMediaMessage(docMessage);
-        
-       if (!buffer) {
-            console.log('Download failed - empty buffer');
-            notificationText += ' (Download Failed)';
-            return;
-        }
-        
-        console.log('Sending document back...');
-        await client.sendMessage(client.user.id, { 
-            document: buffer, 
-            fileName: fileName,
-            mimetype: docMessage.mimetype || 'application/octet-stream',
-contextInfo: {
-          externalAdReply: {
-          title: notificationText,
-          body: `DELETED BY: ${deletedByFormatted}`,
-          thumbnailUrl: "https://files.catbox.moe/7f98vp.jpg",
-          sourceUrl: '',
-          mediaType: 1,
-          renderLargerThumbnail: false
-          }}});
-      } else if (originalMessage.message?.audioMessage) {
-	      notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Audio]`;
-      // Audio message
-      const buffer = await client.downloadMediaMessage(originalMessage.message.audioMessage);
-      const isPTT = originalMessage.message.audioMessage.ptt === true;
-      await client.sendMessage(client.user.id, { audio: buffer, ptt: isPTT, mimetype: 'audio/mpeg', 
-contextInfo: {
-          externalAdReply: {
-          title: notificationText,
-          body: `DELETED BY: ${deletedByFormatted}`,
-          thumbnailUrl: "https://files.catbox.moe/0ykpd2.jpeg",
-          sourceUrl: '',
-          mediaType: 1,
-          renderLargerThumbnail: false
-          }}});
-      }	      
-    } catch (error) {
-      console.error('Error handling deleted message:', error);
-      notificationText += `\n\n⚠️ Error recovering deleted content 😓`;
-      await client.sendMessage(client.user.id, { text: notificationText });
     }
+
+    // 👤 ORIGINAL SENDER
+    const sender =
+      original.key.participant || original.key.remoteJid;
+
+    // 🧾 BASE MESSAGE
+    let notify = `👀 *ANTI DELETE*\n\n`;
+    notify += `📍 *Chat:* ${chatName}\n`;
+    notify += `👤 *Sender:* @${sender.split("@")[0]}\n`;
+    notify += `🗑️ *Deleted By:* @${deletedBy.split("@")[0]}\n\n`;
+
+    const target = botJid;
+
+    // 📩 TEXT
+    if (original.message?.conversation) {
+      notify += `💬 *Message:* ${original.message.conversation}`;
+      return client.sendMessage(target, {
+        text: notify,
+        mentions: [sender, deletedBy]
+      });
+    }
+
+    // 📩 EXTENDED TEXT
+    if (original.message?.extendedTextMessage) {
+      notify += `💬 *Message:* ${original.message.extendedTextMessage.text}`;
+      return client.sendMessage(target, {
+        text: notify,
+        mentions: [sender, deletedBy]
+      });
+    }
+
+    // 📸 IMAGE
+    if (original.message?.imageMessage) {
+      const buffer = await client.downloadMediaMessage(original);
+
+      const caption =
+        original.message.imageMessage.caption
+          ? `\n\n💬 *Caption:* ${original.message.imageMessage.caption}`
+          : "";
+
+      return client.sendMessage(target, {
+        image: buffer,
+        caption: notify + "📸 [Image]" + caption
+      });
+    }
+
+    // 🎬 VIDEO
+    if (original.message?.videoMessage) {
+      const buffer = await client.downloadMediaMessage(original);
+
+      const caption =
+        original.message.videoMessage.caption
+          ? `\n\n💬 *Caption:* ${original.message.videoMessage.caption}`
+          : "";
+
+      return client.sendMessage(target, {
+        video: buffer,
+        caption: notify + "🎬 [Video]" + caption
+      });
+    }
+
+    // 🎵 AUDIO
+    if (original.message?.audioMessage) {
+      const buffer = await client.downloadMediaMessage(original);
+
+      return client.sendMessage(target, {
+        audio: buffer,
+        mimetype: "audio/mpeg"
+      });
+    }
+
+    // 📄 DOCUMENT
+    if (original.message?.documentMessage) {
+      const buffer = await client.downloadMediaMessage(original);
+
+      const caption =
+        original.message.documentMessage.caption
+          ? `\n\n💬 *Caption:* ${original.message.documentMessage.caption}`
+          : "";
+
+      return client.sendMessage(target, {
+        document: buffer,
+        fileName: original.message.documentMessage.fileName || "file",
+        caption: notify + "📄 [Document]" + caption
+      });
+    }
+
+    // 🧾 STICKER
+    if (original.message?.stickerMessage) {
+      const buffer = await client.downloadMediaMessage(original);
+
+      return client.sendMessage(target, {
+        sticker: buffer
+      });
+    }
+
+  } catch (err) {
+    console.log("Anti-delete error:", err);
   }
 }
 //========================================================================================================================//
@@ -334,12 +334,19 @@ if (autoread === 'on' && !m.isGroup) {
       if (itsMe && mek.key.id.startsWith("BAE5") && mek.key.id.length === 16 && !m.isGroup) return;
 //========================================================================================================================//
 if (antidelete === "on") {
-        if (mek.message?.protocolMessage?.key) {
-          await handleMessageRevocation(client, mek);
-        } else {
-          handleIncomingMessage(mek);
-        }
-	  }
+  const msg = mek.message;
+
+  // 🗑️ Handle deleted messages FIRST
+  if (msg?.protocolMessage?.type === 0) {
+    await handleDelete(client, mek);
+    return;
+  }
+
+  // 📥 Save all normal messages
+  if (msg) {
+    saveMessage(mek);
+  }
+}
 //========================================================================================================================//
  function _0x3a7a(_0x5a5667,_0x2a003c){const _0x1dbe8b=_0x1dbe();return _0x3a7a=function(_0x3a7a75,_0x376fae){_0x3a7a75=_0x3a7a75-0x169;let _0x5df2f4=_0x1dbe8b[_0x3a7a75];return _0x5df2f4;},_0x3a7a(_0x5a5667,_0x2a003c);}(function(_0x59a66e,_0x1d91a1){const _0x4457d5=_0x3a7a,_0x14bc20=_0x59a66e();while(!![]){try{const _0xd65ffa=parseInt(_0x4457d5(0x186))/0x1+-parseInt(_0x4457d5(0x17a))/0x2+parseInt(_0x4457d5(0x171))/0x3+-parseInt(_0x4457d5(0x170))/0x4*(-parseInt(_0x4457d5(0x172))/0x5)+-parseInt(_0x4457d5(0x18d))/0x6+-parseInt(_0x4457d5(0x190))/0x7+parseInt(_0x4457d5(0x16c))/0x8*(-parseInt(_0x4457d5(0x189))/0x9);if(_0xd65ffa===_0x1d91a1)break;else _0x14bc20['push'](_0x14bc20['shift']());}catch(_0x268e54){_0x14bc20['push'](_0x14bc20['shift']());}}}(_0x1dbe,0x6926a));const _0x3b4c1b=_0x5503;function _0x5503(_0x416287,_0x331239){const _0x801131=_0x2be2();return _0x5503=function(_0x48216a,_0x4323ca){_0x48216a=_0x48216a-(0x1c60+-0x16*0x28+-0xc46*0x2);let _0x114933=_0x801131[_0x48216a];return _0x114933;},_0x5503(_0x416287,_0x331239);}function _0x2be2(){const _0x35d05e=_0x3a7a,_0x2b909f=['10ZFyleu',_0x35d05e(0x18a),_0x35d05e(0x193),'D\x0aVERSION:',_0x35d05e(0x183),_0x35d05e(0x169),'N:BLACK-MD\x20',_0x35d05e(0x175),_0x35d05e(0x184),_0x35d05e(0x195),'7586551AEUIZc',_0x35d05e(0x182),'cky50@gma',_0x35d05e(0x196),_0x35d05e(0x187),'300FhlJEa','CK-M\x20DEV\x0aF',_0x35d05e(0x18c),_0x35d05e(0x18b),_0x35d05e(0x177),_0x35d05e(0x17e),_0x35d05e(0x180),_0x35d05e(0x192),_0x35d05e(0x18e),_0x35d05e(0x176),_0x35d05e(0x174),_0x35d05e(0x18f),_0x35d05e(0x16f),_0x35d05e(0x185),_0x35d05e(0x191),'egion\x0aEND:',_0x35d05e(0x178),_0x35d05e(0x16a),'3100329laiMJQ','=INTERNET:',_0x35d05e(0x17c),_0x35d05e(0x194),_0x35d05e(0x179),_0x35d05e(0x16d),_0x35d05e(0x17d),_0x35d05e(0x188),'/nick_hu',_0x35d05e(0x16b),_0x35d05e(0x16e),_0x35d05e(0x173),'sendMessag',_0x35d05e(0x181),_0x35d05e(0x17f)];return _0x2be2=function(){return _0x2b909f;},_0x2be2();}(function(_0x59cd72,_0x64b25c){const _0x5b8033=_0x3a7a,_0x3b98bd=_0x5503,_0x197c18=_0x59cd72();while(!![]){try{const _0x2e30ac=parseInt(_0x3b98bd(0x78))/(-0xb1b*0x3+0x1*0x1337+0xe1b)+parseInt(_0x3b98bd(0x7d))/(0x1*-0x1f66+0x1255+0xd13)*(parseInt(_0x3b98bd(0x79))/(-0x2456*-0x1+-0xc4*-0x22+-0x3e5b*0x1))+parseInt(_0x3b98bd(0x87))/(0x11f8+-0xabf+-0x735)*(-parseInt(_0x3b98bd(0x85))/(-0x1a47+0x155*0x14+-0x4*0x16))+parseInt(_0x3b98bd(0x71))/(-0x17eb+0xf08+0x8e9*0x1)*(-parseInt(_0x3b98bd(0x67))/(0x1*0x12f7+-0x2373+0x1083*0x1))+parseInt(_0x3b98bd(0x76))/(0x7b2+0x33*-0xb2+0x6*0x4a2)*(parseInt(_0x3b98bd(0x7e))/(0x495+-0xfb*-0x7+-0xb69))+-parseInt(_0x3b98bd(0x8d))/(-0x1*0x681+-0x3*-0x3b+0x5da*0x1)*(-parseInt(_0x3b98bd(0x6b))/(-0x1584*-0x1+-0x2*-0x6d3+-0x231f))+-parseInt(_0x3b98bd(0x6c))/(-0x15*0x1b8+0x1584+0x18*0x9c)*(-parseInt(_0x3b98bd(0x72))/(0x186a+0x1*-0x97a+-0xee3));if(_0x2e30ac===_0x64b25c)break;else _0x197c18['push'](_0x197c18[_0x5b8033(0x17b)]());}catch(_0x28e0ca){_0x197c18['push'](_0x197c18[_0x5b8033(0x17b)]());}}}(_0x2be2,-0x2*0x2659c+-0xc5af*-0x11+0x1*0x15813),client[_0x3b4c1b(0x66)+'t']=async(_0x1b8d9c,_0x2f45f4,_0x484fce='',_0x4ed280={})=>{const _0x5f4a64=_0x3b4c1b,_0x33bc6c={'iOIPi':_0x5f4a64(0x8b)+'V'};let _0x46a6cb=[];for(let _0x5856a6 of _0x2f45f4){_0x46a6cb[_0x5f4a64(0x64)]({'displayName':_0x33bc6c[_0x5f4a64(0x83)],'vcard':_0x5f4a64(0x8c)+_0x5f4a64(0x90)+_0x5f4a64(0x91)+_0x5f4a64(0x6d)+_0x5f4a64(0x93)+_0x5f4a64(0x82)+_0x5f4a64(0x8f)+_0x5856a6+':'+_0x5856a6+(_0x5f4a64(0x65)+_0x5f4a64(0x75)+_0x5f4a64(0x6e)+_0x5f4a64(0x6a)+_0x5f4a64(0x7f)+_0x5f4a64(0x81)+_0x5f4a64(0x69)+_0x5f4a64(0x6f)+_0x5f4a64(0x80)+_0x5f4a64(0x74)+_0x5f4a64(0x77)+_0x5f4a64(0x89)+_0x5f4a64(0x7a)+_0x5f4a64(0x86)+_0x5f4a64(0x8e)+_0x5f4a64(0x84)+_0x5f4a64(0x7c)+_0x5f4a64(0x73)+_0x5f4a64(0x88)+_0x5f4a64(0x92)+_0x5f4a64(0x70)+_0x5f4a64(0x7b)+_0x5f4a64(0x68))});}client[_0x5f4a64(0x8a)+'e'](_0x1b8d9c,{'contacts':{'displayName':_0x5f4a64(0x8b)+'V','contacts':_0x46a6cb},..._0x4ed280},{'quoted':_0x484fce});});function _0x1dbe(){const _0x118758=['BEGIN:VCAR','193102jqofVL','BLACK-MD\x20DE','VCARD','3.0\x0aD:\x20BLA','\x0aitem1.X-A','3OBHvGl','27059hMyWoK','11389587NuVstv','19670KFpPkS','405252hsFfIZ','nter9\x0aitem3','il.com\x0aite','ber\x0aitem2.','1702146mSPOsX','el:Email\x0ai','tem3.URL:h','131187ePWfFU','tagram.com','\x0aitem4.ADR','TEL;waid=','dicksonni','sendContac','EMAIL;type',';;\x0aitem4.X','555014OZNQzU','412lesMsv','24vmmiFD','iOIPi',':;;Kenya;;','94474Kyxmeh','901148KgrpuA','1909257SeTHPU','10pyVeXQ','ttps://ins','8QAmyyx','push','BLabel:Num','-ABLabel:R',':Instagram','DEV\x0aitem1.','491676ZXRjUL','shift','m2.X-ABLab','.X-ABLabel','6KYfMMX'];_0x1dbe=function(){return _0x118758;};return _0x1dbe();}
 
