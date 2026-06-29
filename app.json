@@ -1,7 +1,7 @@
 
 {
   "name": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
-  "description": " A simple commonjs WhatsApp bot",
+  "description": "A simple commonjs WhatsApp bot",
   "stack": "heroku-26",
   "keywords": [
     "bot",
@@ -18,12 +18,12 @@
   "env": {
     "DEV": {
       "description": "Put any phone numbers you want to be bot owner without + or spaces \",\" Ex: 254114283550,254768792955  ",
-      "value": "254114283550,254768792955",
-      "required": true
+      "value": "254114283550",
+      "required": false
     },
     
     "HEROKU_API": {
-      "description": "Put a Heroku api key here, will be required to update vars in your Dm",
+      "description": "Put a Heroku api key here, will be required to update bot in your Dm",
       "required": false
     },
   
