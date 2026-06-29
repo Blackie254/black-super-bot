@@ -7,6 +7,10 @@
   "scripts": {
     "start": "node index.js"
   },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0" 
+  },
   "keywords": [
     "whatsapp-bot",
     "whatsapp-baileys",
@@ -30,8 +34,8 @@
     "express": "latest",
     "compile-run": "^2.3.4",
     "javascript-obfuscator": "^4.1.0",
-    "node-fetch": "^2.6.1",
-    "jimp": "^0.16.13",
+    "node-fetch": "^2.7.0",
+    "jimp": "^0.22.12",
     "human-readable": "^0.2.1",
     "pg": "^8.13.3",
     "dotenv": "^17.3.1",
@@ -40,10 +44,10 @@
     "mumaker": "^2.0.0",
     "pdfkit": "^0.18.0",
     "docx": "^9.7.1",
-    "xlsx": "0.18.5",  
+    "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz",  
     "ruhend-scraper": "latest",
     "yt-search": "^2.12.1",
-    "pino": "^7.0.5",
+    "pino": "^10.3.1",
     "wa-sticker-formatter": "^4.3.2",
     "fs-extra": "^11.2.0",
     "mime-types": "^2.1.35",
