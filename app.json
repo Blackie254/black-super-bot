@@ -1,20 +1,15 @@
 
 {
-  "name": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓",
-  "description": "I don't know what I'm doing",
+  "name": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
+  "description": " A simple commonjs WhatsApp bot",
   "keywords": [
     "bot",
-    "whatsapp",
-    "raven",
-    "whatsapp-stickers",
-    "anime",
     "whatsapp-bot",
-    "whatsapp-sticker-bot",
-    "whatsapp-botto",
-    "baileys",
-    "baileys-md",
-    "md-bot"
+    "anime",
+    "black-md",
+    "botto",
   ],
+  "stack": "heroku-26",
   "website": "https://github.com/Blackie254/black-super-bot#readme",
   "repository": "https://github.com/Blackie254/black-super-bot.git",
   "logo": "https://files.catbox.moe/s5nuh3.jpg",
@@ -30,12 +25,7 @@
       "description": "Put a Heroku api key here, will be required to update vars in your Dm",
       "required": false
     },
-    
- "CODE": {
-      "description": "Input you country code here without + eg 254, it Will be used to Eliminate foreigners from the group once prompted.",
-      "value": "254",
-      "required": true
-},
+  
  "SESSION": {
       "description": "Paste your Session id here, as it is required for authenticationn.",
       "required": true
@@ -50,12 +40,6 @@
     {
       "url": "heroku/nodejs"
     },
-    {
-      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-activestorage-preview"
-    }
   ],
   "addons": [
     "heroku-postgresql"
