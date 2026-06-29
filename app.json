@@ -2,14 +2,15 @@
 {
   "name": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
   "description": " A simple commonjs WhatsApp bot",
+  "stack": "heroku-26",
   "keywords": [
     "bot",
     "whatsapp-bot",
     "anime",
     "black-md",
-    "botto",
+    "botto"
   ],
-  "stack": "heroku-26",
+  
   "website": "https://github.com/Blackie254/black-super-bot#readme",
   "repository": "https://github.com/Blackie254/black-super-bot.git",
   "logo": "https://files.catbox.moe/s5nuh3.jpg",
