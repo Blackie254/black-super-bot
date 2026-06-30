@@ -40,7 +40,7 @@
   "buildpacks": [
     {
       "url": "heroku/nodejs"
-    },
+    }
   ],
   "addons": [
     "heroku-postgresql"
