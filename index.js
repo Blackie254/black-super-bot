@@ -1,5 +1,6 @@
 // BLACK-MD v3
 
+require('dotenv').config({ path: './.Env' });
 const {
   default: ravenConnect,
   useMultiFileAuthState,
@@ -14,7 +15,6 @@ const pino = require("pino");
 const { Boom } = require("@hapi/boom");
 const fs = require("fs");
 const path = require('path');
-require('dotenv').config({ path: './.Env' });
 const express = require("express");
 const chalk = require("chalk");
 const FileType = require("file-type");
@@ -211,7 +211,7 @@ async function startRaven() {
       if (liveSettings.autobio === 'on') {
         const date = new Date();
         client.updateProfileStatus(
-          `${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.>`
+          `${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
         );
       }
     } catch (e) {
