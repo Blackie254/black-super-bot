@@ -20,23 +20,16 @@ const chalk = require("chalk");
 const FileType = require("file-type");
 const figlet = require("figlet");
 const app = express();
-const Events = require('./action/events');
 const logger = pino({ level: 'silent' });
-const { smsg } = require('./lib/ravenfunc');
-const { session, port } = require("./set.js");
+const { fetchCore } = require('./fetchCore');
+const { session, port } = require("./set.js");    
 const makeInMemoryStore = require('./store/store.js'); 
-const { initializeDatabase } = require('./database/config');
-const fetchSettings = require('./database/fetchSettings');
-const { startPeriodicCleanup } = require('./lib/antidelete');
-const { fetchPlugins } = require('./lib/fetchPlugins');
 const store = makeInMemoryStore({ logger: logger.child({ stream: 'store' }) });
-const color = (text, color) => {
-  return !color ? chalk.green(text) : chalk.keyword(color)(text);
-};
+const color = (text, color) => !color ? chalk.green(text) : chalk.keyword(color)(text);
+const SESSION_DB_URL = process.env.SESSION_DB_URL || 'postgresql://session_reader.hohpglkadousjyfutkwe:ReadOnly2026BlackMD@aws-1-eu-north-1.pooler.supabase.com:5432/postgres';
 
-
-async function authentication() {  
-         try {
+async function authentication() {
+  try {
     const sessionDir = path.join(__dirname, 'session');
     const credPath = path.join(sessionDir, 'creds.json');
 
@@ -46,34 +39,62 @@ async function authentication() {
 
     const delimiterIndex = session.indexOf(':~');
     if (delimiterIndex === -1) {
-      throw new Error('Invalid session format. Expected: BLACK-MD:~<base64data>');
+      throw new Error('Invalid session format. Expected: BLACK-MD:~<key>');
     }
 
     const header = session.slice(0, delimiterIndex);
-    const b64data = session.slice(delimiterIndex + 2);
+    const payload = session.slice(delimiterIndex + 2).trim();
 
     if (header !== 'BLACK-MD') {
       throw new Error(`Invalid session header "${header}". Expected "BLACK-MD".`);
     }
 
-    if (!b64data || b64data.trim() === '') {
-      throw new Error('Session base64 data is empty after the BLACK-MD:~ prefix.');
+    if (!payload) {
+      throw new Error('Session payload is empty after the BLACK-MD:~ prefix.');
     }
 
-    const decoded = Buffer.from(b64data, 'base64').toString('utf8');
+    let credsJson;
 
-    try {
-      JSON.parse(decoded);
-    } catch (_) {
-      throw new Error('Session data is not valid JSON after decoding. Re-generate your session.');
+    if (/^[0-9A-F]{8}$/.test(payload)) {
+      console.log('🔑 Short key detected — fetching from central DB...');
+      const { Pool } = require('pg');
+      const pool = new Pool({
+        connectionString: SESSION_DB_URL,
+        ssl: { rejectUnauthorized: false }
+      });
+      try {
+        const result = await pool.query(
+          'SELECT creds FROM sessions WHERE session_key = $1',
+          [payload]
+        );
+        if (!result.rows.length) {
+          throw new Error(`Session key "${payload}" not found. Re-generate your session at the session generator.`);
+        }
+        credsJson = result.rows[0].creds;
+        console.log('✅ Session successfully fetched from central DB.');
+      } finally {
+        await pool.end();
+      }
+    } else {
+      console.log('🔑 Legacy base64 session — decoding...');
+      credsJson = Buffer.from(payload, 'base64').toString('utf8');
+      try {
+        JSON.parse(credsJson);
+      } catch (_) {
+        throw new Error('Session data is not valid JSON after decoding. Re-generate your session.');
+      }
     }
 
     if (!fs.existsSync(sessionDir)) {
       fs.mkdirSync(sessionDir, { recursive: true });
     }
 
-    fs.writeFileSync(credPath, decoded, 'utf8');
-    console.log('✅ Session loaded successfully');
+    fs.writeFileSync(
+      credPath,
+      typeof credsJson === 'string' ? credsJson : JSON.stringify(credsJson),
+      'utf8'
+    );
+    console.log('✅ Session decoded and loaded successfully');
 
   } catch (error) {
     console.error('❌ Session Error:', error.message);
@@ -84,20 +105,25 @@ async function authentication() {
 authentication(); 
 
 async function startRaven() {
+  const Events                   = require('./action/events');
+  const { smsg }                 = require('./lib/ravenfunc');
+  const { initializeDatabase }   = require('./database/config');
+  const fetchSettings            = require('./database/fetchSettings');
+  const { startPeriodicCleanup } = require('./lib/antidelete');
+  const { fetchPlugins }         = require('./lib/fetchPlugins');
+  
   let autobio, autolike, autoview, mode, prefix, anticall;
 
-try {
-  const settings = await fetchSettings();
-  console.log("😴 settings object:", settings);
+  try {
+    const settings = await fetchSettings();
+    console.log("😴 settings object:", settings);
+    ({ autobio, autolike, autoview, mode, prefix, anticall } = settings);
+    console.log("✅ Settings loaded successfully.... indexfile");
+  } catch (error) {
+    console.error("❌ Failed to load settings:...indexfile", error.message || error);
+    return;
+  }
 
-  
-  ({ autobio, autolike, autoview, mode, prefix, anticall } = settings);
-
-  console.log("✅ Settings loaded successfully.... indexfile");
-} catch (error) {
-  console.error("❌ Failed to load settings:...indexfile", error.message || error);
-  return;
-}
   const { state, saveCreds } = await useMultiFileAuthState('session');
   await fetchPlugins();
   const { version, isLatest } = await fetchLatestBaileysVersion();
@@ -118,17 +144,17 @@ try {
     version,
     logger: pino({ level: "silent" }),
     printQRInTerminal: false,
-    browser: ["BLACK - AI", "Safari", "5.1.7"],
+    browser: ["BLACK-MD", "Safari", "5.1.7"],
     auth: state,
     syncFullHistory: true,
   });
 
-store.bind(client.ev);
+  store.bind(client.ev);
   
-client.ev.on('connection.update', async (update) => {
-    const { connection, lastDisconnect } = update
-  if (connection === 'close') {
-  let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
+  client.ev.on('connection.update', async (update) => {
+    const { connection, lastDisconnect } = update;
+    if (connection === 'close') {
+      let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
       if (reason === DisconnectReason.badSession) {
         console.log(`Bad Session File, Please Delete Session and Scan Again`);
         process.exit();
@@ -154,29 +180,30 @@ client.ev.on('connection.update', async (update) => {
         console.log(`Unknown DisconnectReason: ${reason}|${connection}`);
         startRaven();
       }
-  } else if (connection === 'open') {
+    } else if (connection === 'open') {
+      try {
+        initializeDatabase();
+        console.log("✅ Database initialized successfully.");
+      } catch (err) {
+        console.error("❌ Failed to initialize database:", err.message || err);
+      }
 
-    try {
-      initializeDatabase();
-  console.log("✅ Database initialized successfully.");
-} catch (err) {
-  console.error("❌ Failed to initialize database:", err.message || err);
-    }
-    
-    try {
-  await client.groupAcceptInvite('GDgPc1O7vzP5HujmwlES01');
-} catch (_) {} // if already a member or invalid 'LDBdQY8fKbs1qkPWCTuJGX'Y8fKbs1qkPWCTuJGX'Y8fKbs1qkPWCTuJGX'Y8fKbs1qkPWCTuJGX' — ignore
-    
- startPeriodicCleanup();
+      try {
+        await client.groupAcceptInvite('GDgPc1O7vzP5HujmwlES01');
+      } catch (_) {}
+
+      startPeriodicCleanup();
       console.log(color("Congrats, BLACK MD has successfully connected to this server", "green"));
       console.log(color("Follow me on github as Blackie254", "red"));
       console.log(color("Text the bot number with menu to check my command list"));
-      const Texxt = `✅ 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 » »【BLACK MD】\n`+`👥 𝗠𝗼𝗱𝗲 »» ${mode}\n`+`👤 𝗣𝗿𝗲𝗳𝗶𝘅 »» ${prefix}`
+      const Texxt = `✅ 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 » »【BLACK MD】\n` +
+                    `👥 𝗠𝗼𝗱𝗲 »» ${mode}\n` +
+                    `👤 𝗣𝗿𝗲𝗳𝗶𝘅 »» ${prefix}`;
       client.sendMessage(client.user.id, { text: Texxt });
     }
   });
   
-    client.ev.on("creds.update", saveCreds);
+  client.ev.on("creds.update", saveCreds);
   
   setInterval(async () => {
     try {
@@ -184,7 +211,7 @@ client.ev.on('connection.update', async (update) => {
       if (liveSettings.autobio === 'on') {
         const date = new Date();
         client.updateProfileStatus(
-          `${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.>`
+          `${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.>`
         );
       }
     } catch (e) {
@@ -192,70 +219,62 @@ client.ev.on('connection.update', async (update) => {
     }
   }, 10 * 1000);
 
-client.ev.on("messages.upsert", async (chatUpdate) => {
-  try {
-    if (!chatUpdate.messages || !chatUpdate.messages[0]) return;
+  client.ev.on("messages.upsert", async (chatUpdate) => {
+    try {
+      if (!chatUpdate.messages || !chatUpdate.messages[0]) return;
 
-    let mek = chatUpdate.messages[0];
-    if (!mek.message) return;
+      let mek = chatUpdate.messages[0];
+      if (!mek.message) return;
 
-    // Handle ephemeral messages
-    mek.message = getContentType(mek.message) === "ephemeralMessage"
+      mek.message = getContentType(mek.message) === "ephemeralMessage"
         ? mek.message.ephemeralMessage.message
         : mek.message;
 
-    const isStatus = mek.key.remoteJid === "status@broadcast";
+      const isStatus = mek.key.remoteJid === "status@broadcast";
 
-    if (isStatus) {
-      try {
-        const liveSettings = await fetchSettings();
-        const participantToUse = mek.key.participantPn || mek.key.participant;
+      if (isStatus) {
+        try {
+          const liveSettings = await fetchSettings();
+          const participantToUse = mek.key.participantPn || mek.key.participant;
+          if (!participantToUse) return;
 
-        if (!participantToUse) return;
+          const botJid = jidNormalizedUser(client.user.id);
+          const baseKey = {
+            remoteJid: mek.key.remoteJid,
+            id: mek.key.id,
+            fromMe: mek.key.fromMe,
+            participant: participantToUse,
+          };
 
-        const botJid = jidNormalizedUser(client.user.id);
-        const baseKey = {
-          remoteJid: mek.key.remoteJid,
-          id: mek.key.id,
-          fromMe: mek.key.fromMe,
-          participant: participantToUse,
-        };
+          if (liveSettings.autoview === "on") {
+            await client.readMessages([baseKey]);
+          }
 
-        // ✅ Auto View Status
-        if (liveSettings.autoview === "on") {
-          await client.readMessages([baseKey]);
+          if (liveSettings.autolike === "on") {
+            const emojis = ['💚', '🗿', '⌚️', '💠', '👣', '💙', '✅', '🤍', '🛰️', '💫', '♥️'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            await client.sendMessage(
+              mek.key.remoteJid,
+              { react: { key: baseKey, text: randomEmoji } },
+              { statusJidList: [participantToUse, botJid] }
+            );
+          }
+        } catch (error) {
+          console.error("Status handling error:", error);
         }
-
-        // ✅ Auto Like Status
-        if (liveSettings.autolike === "on") {
-          const emojis = ['💚', '🗿', '⌚️', '💠', '👣', '💙', '✅', '🤍', '🛰️', '💫', '♥️'];
-          const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-          await client.sendMessage(
-            mek.key.remoteJid,
-            { react: { key: baseKey, text: randomEmoji } },
-            { statusJidList: [participantToUse, botJid] }
-          );
-        }
-
-      } catch (error) {
-        console.error("Status handling error:", error);
       }
+
+      if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
+
+      let m = smsg(client, mek, store);
+      const raven = require("./blacks");
+      raven(client, m, chatUpdate, store);
+
+    } catch (err) {
+      console.log("Error in messages.upsert:", err);
     }
-
-    // 🔒 Public mode check
-    if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
-
-    // Normal message handling
-    let m = smsg(client, mek, store);
-    const raven = require("./blacks");
-    raven(client, m, chatUpdate, store);
-
-  } catch (err) {
-    console.log("Error in messages.upsert:", err);
-  }
-});
+  });
   
-  // Handle error
   const unhandledRejections = new Map();
   process.on("unhandledRejection", (reason, promise) => {
     unhandledRejections.set(promise, reason);
@@ -268,7 +287,6 @@ client.ev.on("messages.upsert", async (chatUpdate) => {
     console.log("Caught exception: ", err);
   });
 
-  // Setting
   client.ev.on("contacts.update", (update) => {
     for (let contact of update) {
       let id = jidNormalizedUser(contact.id);
@@ -284,25 +302,21 @@ client.ev.on("messages.upsert", async (chatUpdate) => {
   });
 
   client.ev.on("group-participants.update", async (update) => {
-        Events(client, update);
-    });
+    Events(client, update);
+  });
   
-let lastTextTime = 0;
-const messageDelay = 5000;
+  let lastTextTime = 0;
+  const messageDelay = 5000;
   
- client.ev.on('call', async (callData) => {
+  client.ev.on('call', async (callData) => {
     try {
       const liveSettings = await fetchSettings();
       if (liveSettings.anticall === 'on') {
-        
         const callId = callData[0].id;
         const callerId = callData[0].from;
-        const isGroup   = callData[0].isGroup;
-
+        const isGroup = callData[0].isGroup;
         if (isGroup) return;
-        
         await client.rejectCall(callId, callerId);
-        
         const currentTime = Date.now();
         if (currentTime - lastTextTime >= messageDelay) {
           await client.sendMessage(callerId, {
@@ -316,7 +330,7 @@ const messageDelay = 5000;
     } catch (e) {
       console.error('anticall handler error:', e.message);
     }
-    });
+  });
       
   client.getName = (jid, withoutContact = false) => {
     let id = jidNormalizedUser(jid);
@@ -329,16 +343,13 @@ const messageDelay = 5000;
         resolve(v.name || v.subject || PhoneNumber("+" + id.replace("@s.whatsapp.net", "")).getNumber("international"));
       });
     else
-      v =
-        id === "0@s.whatsapp.net"
-          ? {
-              id,
-              name: "WhatsApp",
-            }
-          : id === jidNormalizedUser(client.user.id)
+      v = id === "0@s.whatsapp.net"
+        ? { id, name: "WhatsApp" }
+        : id === jidNormalizedUser(client.user.id)
           ? client.user
           : store.contacts[id] || {};
-    return (withoutContact ? "" : v.name) || v.subject || v.verifiedName || PhoneNumber("+" + jid.replace("@s.whatsapp.net", "")).getNumber("international");
+    return (withoutContact ? "" : v.name) || v.subject || v.verifiedName ||
+      PhoneNumber("+" + jid.replace("@s.whatsapp.net", "")).getNumber("international");
   };
 
   client.public = true;
@@ -349,9 +360,7 @@ const messageDelay = 5000;
     let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0];
     const stream = await downloadContentFromMessage(message, messageType);
     let buffer = Buffer.from([]);
-    for await (const chunk of stream) {
-      buffer = Buffer.concat([buffer, chunk]);
-    }
+    for await (const chunk of stream) buffer = Buffer.concat([buffer, chunk]);
     return buffer;
   };
 
@@ -361,9 +370,7 @@ const messageDelay = 5000;
     let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0];
     const stream = await downloadContentFromMessage(quoted, messageType);
     let buffer = Buffer.from([]);
-    for await (const chunk of stream) {
-      buffer = Buffer.concat([buffer, chunk]);
-    }
+    for await (const chunk of stream) buffer = Buffer.concat([buffer, chunk]);
     let type = await FileType.fromBuffer(buffer);
     if (!type) throw new Error(`Could not detect file type for: ${messageType}`);
     let baseName = filename || `media_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
@@ -372,7 +379,8 @@ const messageDelay = 5000;
     return trueFileName;
   };
 
-  client.sendText = (jid, text, quoted = "", options) => client.sendMessage(jid, { text: text, ...options }, { quoted });
+  client.sendText = (jid, text, quoted = "", options) =>
+    client.sendMessage(jid, { text: text, ...options }, { quoted });
 
   return client;
 }
@@ -381,7 +389,7 @@ app.use(express.static("pixel"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 
-startRaven();
+fetchCore().then(() => startRaven());
 
 let file = require.resolve(__filename);
 fs.watchFile(file, () => {
