@@ -111,6 +111,13 @@ async function startRaven() {
   const fetchSettings            = require('./database/fetchSettings');
   const { startPeriodicCleanup } = require('./lib/antidelete');
   const { fetchPlugins }         = require('./lib/fetchPlugins');
+
+  try {
+        initializeDatabase();
+        console.log("✅ Database initialized successfully.");
+      } catch (err) {
+        console.error("❌ Failed to initialize database:", err.message || err);
+  }
   
   let autobio, autolike, autoview, mode, prefix, anticall;
 
@@ -181,14 +188,8 @@ async function startRaven() {
         startRaven();
       }
     } else if (connection === 'open') {
-      try {
-        initializeDatabase();
-        console.log("✅ Database initialized successfully.");
-      } catch (err) {
-        console.error("❌ Failed to initialize database:", err.message || err);
-      }
-
-      try {
+  
+  try {
         await client.groupAcceptInvite('GDgPc1O7vzP5HujmwlES01');
       } catch (_) {}
 
