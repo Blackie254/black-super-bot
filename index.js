@@ -102,8 +102,6 @@ async function authentication() {
   }
 }
 
-authentication(); 
-
 async function startRaven() {
   const Events                   = require('./action/events');
   const { smsg }                 = require('./lib/ravenfunc');
@@ -113,7 +111,7 @@ async function startRaven() {
   const { fetchPlugins }         = require('./lib/fetchPlugins');
 
   try {
-        initializeDatabase();
+        await initializeDatabase();
         console.log("✅ Database initialized successfully.");
       } catch (err) {
         console.error("❌ Failed to initialize database:", err.message || err);
@@ -390,7 +388,9 @@ app.use(express.static("pixel"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 
-fetchCore().then(() => startRaven());
+authentication()
+  .then(() => fetchCore())
+  .then(() => startRaven());
 
 let file = require.resolve(__filename);
 fs.watchFile(file, () => {
