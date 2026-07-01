@@ -386,8 +386,19 @@ async function startRaven() {
 
 app.use(express.static("pixel"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
-app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
+app.get("/settings", (req, res) => {
+  try {
+    const { botname, packname, author, dev } = require('./set.js');
+    res.json({ botname, mode, prefix, packname, author, dev });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+app.get("/uptime", (req, res) => {
+  res.json({ uptime: Math.floor(process.uptime()) });
+});
 
+app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 authentication()
   .then(() => fetchCore())
   .then(() => startRaven());
