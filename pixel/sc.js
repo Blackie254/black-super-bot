@@ -7,8 +7,8 @@ fetch('/settings')
     el('val-botname').textContent = set.botname || 'BLACK-MD';
     el('val-mode').textContent    = (set.mode   || 'public').toUpperCase();
     el('val-prefix').textContent  = set.prefix  || '.';
-    el('val-pack').textContent    = set.packname || 'skipper';
-    el('val-author').textContent  = set.author  || 'botto';
+    el('val-presence').textContent    = (set.wapresence || 'recording').toUpperCase();
+    el('val-menutype').textContent  = (set.menutype  || 'video').toUpperCase();
 
     const owners = set.dev ? set.dev.split(',') : [];
     if (owners.length > 0) {
