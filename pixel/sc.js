@@ -1,7 +1,7 @@
 fetch('/set.js')
   .then(r => r.text())
   .then(data => {
-    // Strip module.exports = and parse as JS object
+    
     const clean = data
       .replace(/^[\s\S]*?module\.exports\s*=\s*/, '')
       .replace(/;\s*$/, '')
@@ -10,7 +10,7 @@ fetch('/set.js')
 
     let set = {};
     try {
-      // Use Function to safely evaluate the object literal
+      
       set = Function('"use strict"; return (' + clean + ')')();
     } catch (e) {
       console.warn('Could not parse set.js:', e);
@@ -24,7 +24,6 @@ fetch('/set.js')
     el('val-pack').textContent    = set.packname  || 'skipper';
     el('val-author').textContent  = set.author    || 'botto';
 
-    // Show first owner number only, mask the rest for privacy
     const owners = set.dev ? set.dev.split(',') : [];
     if (owners.length > 0) {
       const num = owners[0].trim();
@@ -34,14 +33,12 @@ fetch('/set.js')
       el('val-owner').textContent = 'Not set';
     }
 
-    // Color-code mode
     const modeEl = el('val-mode');
     if ((set.mode || 'public') === 'private') {
       modeEl.style.color = '#febc2e';
     }
   })
   .catch(() => {
-    // Fallback — set.js not accessible from browser, show defaults
     document.getElementById('val-botname').textContent = 'BLACK-MD';
     document.getElementById('val-mode').textContent    = 'PUBLIC';
     document.getElementById('val-prefix').textContent  = '.';
