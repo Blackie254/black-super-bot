@@ -387,22 +387,22 @@ async function startRaven() {
 app.use(express.static("pixel"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
 app.get("/settings", async (req, res) => {
-  try {
-    const { botname, packname, author, dev } = require('./set.js');
+ try {
+    const { botname, dev } = require('./set.js');
     const fetchSettings = require('./database/fetchSettings');
     const db = await fetchSettings();
     res.json({
       botname,
-      packname,
-      author,
       dev,
+      wapresence: db.wapresence || 'recording',
+      menutype: db.menutype || 'video',
       mode:   db.mode   || 'public',
       prefix: db.prefix || '.'
     });
   } catch (e) {
     res.status(500).json({ error: e.message });
-  }
-});
+      }
+  });
 app.get("/uptime", (req, res) => {
   res.json({ uptime: Math.floor(process.uptime()) });
 });
