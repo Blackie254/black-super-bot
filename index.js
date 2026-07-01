@@ -403,6 +403,9 @@ app.get("/settings", async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 });
+app.get("/uptime", (req, res) => {
+  res.json({ uptime: Math.floor(process.uptime()) });
+});
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 
 authentication()
