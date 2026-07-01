@@ -386,19 +386,25 @@ async function startRaven() {
 
 app.use(express.static("pixel"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
-app.get("/settings", (req, res) => {
+app.get("/settings", async (req, res) => {
   try {
     const { botname, packname, author, dev } = require('./set.js');
-    res.json({ botname, mode, prefix, packname, author, dev });
+    const fetchSettings = require('./database/fetchSettings');
+    const db = await fetchSettings();
+    res.json({
+      botname,
+      packname,
+      author,
+      dev,
+      mode:   db.mode   || 'public',
+      prefix: db.prefix || '.'
+    });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });
-app.get("/uptime", (req, res) => {
-  res.json({ uptime: Math.floor(process.uptime()) });
-});
-
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
+
 authentication()
   .then(() => fetchCore())
   .then(() => startRaven());
