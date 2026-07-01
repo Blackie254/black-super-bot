@@ -1,22 +1,51 @@
 fetch('/set.js')
-  .then(response => response.text())
+  .then(r => r.text())
   .then(data => {
-    console.log('Received settings data:', data);
-    const set = JSON.parse(data.replace(/module.exports = /, ''));
-    console.log('Parsed settings:', set);
-   
+    // Strip module.exports = and parse as JS object
+    const clean = data
+      .replace(/^[\s\S]*?module\.exports\s*=\s*/, '')
+      .replace(/;\s*$/, '')
+      .replace(/\/\/[^\n]*/g, '')
+      .trim();
 
-   
-    const container = document.querySelector('.container');
+    let set = {};
+    try {
+      // Use Function to safely evaluate the object literal
+      set = Function('"use strict"; return (' + clean + ')')();
+    } catch (e) {
+      console.warn('Could not parse set.js:', e);
+    }
 
-    
-    const statusSection = document.createElement('div');
-    statusSection.innerHTML = `
-      <h2>BOT STATUS</h2>
-      <p>BOT NAME: ${set.botname}</p>
-      <p>MODE: ${set.mode}</p>
-      <p>PREFIX: ${set.prefix}</p>
-    `;
-    container.appendChild(statusSection);
+    const el = (id) => document.getElementById(id);
+
+    el('val-botname').textContent = set.botname  || 'BLACK-MD';
+    el('val-mode').textContent    = (set.mode     || 'public').toUpperCase();
+    el('val-prefix').textContent  = set.prefix    || '.';
+    el('val-pack').textContent    = set.packname  || 'skipper';
+    el('val-author').textContent  = set.author    || 'botto';
+
+    // Show first owner number only, mask the rest for privacy
+    const owners = set.dev ? set.dev.split(',') : [];
+    if (owners.length > 0) {
+      const num = owners[0].trim();
+      const masked = num.slice(0, 5) + '****' + num.slice(-3);
+      el('val-owner').textContent = masked + (owners.length > 1 ? ` +${owners.length - 1} more` : '');
+    } else {
+      el('val-owner').textContent = 'Not set';
+    }
+
+    // Color-code mode
+    const modeEl = el('val-mode');
+    if ((set.mode || 'public') === 'private') {
+      modeEl.style.color = '#febc2e';
+    }
   })
-  .catch(error => console.error('Error fetching settings:', error));
+  .catch(() => {
+    // Fallback — set.js not accessible from browser, show defaults
+    document.getElementById('val-botname').textContent = 'BLACK-MD';
+    document.getElementById('val-mode').textContent    = 'PUBLIC';
+    document.getElementById('val-prefix').textContent  = '.';
+    document.getElementById('val-pack').textContent    = 'skipper';
+    document.getElementById('val-author').textContent  = 'botto';
+    document.getElementById('val-owner').textContent   = '254****550';
+  });

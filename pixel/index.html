@@ -1,71 +1,466 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title style="color: #00698f;">BLACKY-TECH</title>
-	<style>
-		body {
-			background-image: url('https://i.imgur.com/XR1Neb9.jpeg') !important;
-			background-size: cover;
-			background-position: center;
-		}
-		
-		.container {
-			max-width: 800px;
-			margin: 40px auto;
-			padding: 20px;
-			background-color: #fff;
-			border: 1px solid #ddd;
-			border-radius: 10px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-		}
-		
-		h1 {
-			color: #00698f; /* blue color */
-			font-size: 36px;
-			margin-bottom: 10px;
-		}
-		
-		.beautified-text {
-			color: #00698f; /* blue color */
-			font-size: 24px;
-			font-weight: bold;
-			margin-bottom: 20px;
-			text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #33cc33; /* shiny effect */
-		}
-		
-		.beautified-text span {
-			color: #33cc33; /* green color */
-			font-size: 24px;
-			font-weight: bold;
-			text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #33cc33; /* shiny effect */
-		}
-		
-		.icons {
-			margin-top: 20px;
-		}
-		
-		.icons a {
-			margin-right: 10px;
-		}
-		
-		.icons img {
-			width: 24px;
-			height: 24px;
-		}
-	</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLACK-MD | Bot Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:   #00ff41;
+      --dkgreen: #00b32c;
+      --black:   #0a0a0a;
+      --panel:   rgba(0, 255, 65, 0.04);
+      --border:  rgba(0, 255, 65, 0.18);
+      --text:    #c8ffd4;
+      --dim:     rgba(0, 255, 65, 0.45);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--black);
+      color: var(--green);
+      font-family: 'Share Tech Mono', monospace;
+      overflow-x: hidden;
+    }
+
+    /* ── Matrix rain canvas ── */
+    #matrix-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      opacity: 0.13;
+      pointer-events: none;
+    }
+
+    /* ── Layout ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 48px;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .logo {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(28px, 6vw, 52px);
+      font-weight: 900;
+      letter-spacing: 6px;
+      color: var(--green);
+      text-shadow:
+        0 0 10px var(--green),
+        0 0 30px var(--green),
+        0 0 60px var(--dkgreen);
+      animation: flicker 4s infinite;
+    }
+
+    .logo span { color: #fff; }
+
+    .tagline {
+      margin-top: 8px;
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: var(--dim);
+      text-transform: uppercase;
+    }
+
+    /* ── Status pill ── */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 6px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--panel);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    /* ── Grid of cards ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, box-shadow .25s;
+    }
+
+    .card:hover {
+      border-color: var(--green);
+      box-shadow: 0 0 18px rgba(0,255,65,.12);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      opacity: .5;
+    }
+
+    .card-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 10px;
+    }
+
+    .card-value {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(16px, 3vw, 22px);
+      font-weight: 700;
+      color: #fff;
+      word-break: break-all;
+    }
+
+    .card-value.green { color: var(--green); }
+    .card-value.small { font-size: 14px; font-family: 'Share Tech Mono', monospace; }
+
+    .card-icon {
+      position: absolute;
+      top: 18px; right: 20px;
+      font-size: 22px;
+      opacity: .25;
+    }
+
+    /* ── Wide uptime card ── */
+    .card.wide { grid-column: 1 / -1; }
+
+    .uptime-display {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(22px, 5vw, 38px);
+      font-weight: 900;
+      color: var(--green);
+      text-shadow: 0 0 12px var(--green);
+      letter-spacing: 4px;
+    }
+
+    /* ── Terminal block ── */
+    .terminal {
+      width: 100%;
+      max-width: 900px;
+      margin-top: 16px;
+      background: rgba(0,0,0,.6);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .tb { width: 11px; height: 11px; border-radius: 50%; }
+    .tb.r { background: #ff5f57; }
+    .tb.y { background: #febc2e; }
+    .tb.g { background: #28c840; }
+
+    .terminal-title {
+      margin-left: 8px;
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 2px;
+    }
+
+    .log-line {
+      font-size: 13px;
+      line-height: 1.9;
+      color: var(--text);
+      opacity: 0;
+      animation: fadein .4s forwards;
+    }
+
+    .log-line .prompt { color: var(--dim); }
+    .log-line .cmd    { color: var(--green); }
+    .log-line .ok     { color: #28c840; }
+    .log-line .warn   { color: #febc2e; }
+    .log-line .err    { color: #ff5f57; }
+
+    /* ── Links row ── */
+    .links {
+      display: flex;
+      gap: 14px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--green);
+      text-decoration: none;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 2px;
+      transition: all .2s;
+    }
+
+    .btn:hover {
+      background: rgba(0,255,65,.1);
+      border-color: var(--green);
+      box-shadow: 0 0 14px rgba(0,255,65,.2);
+      color: #fff;
+    }
+
+    .btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 36px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--dim);
+      text-align: center;
+    }
+
+    /* ── Animations ── */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--green); }
+      50%       { opacity: .35; box-shadow: 0 0 3px var(--green); }
+    }
+
+    @keyframes flicker {
+      0%,19%,21%,23%,25%,54%,56%,100% {
+        text-shadow: 0 0 10px var(--green), 0 0 30px var(--green), 0 0 60px var(--dkgreen);
+      }
+      20%,22%,24%,55% { text-shadow: none; opacity: .85; }
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Skeleton loader ── */
+    .skeleton {
+      display: inline-block;
+      width: 120px; height: 20px;
+      background: linear-gradient(90deg, var(--border) 25%, rgba(0,255,65,.12) 50%, var(--border) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 4px;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+      .card.wide { grid-column: 1; }
+    }
+  </style>
 </head>
 <body>
-	<div class="container">
-		<h1>WELCOME TO BLACKY TECH</h1>
-	<p class="beautified-text">Holla, you have <span>successfully</span> connected to <span>BLACKMACHANT-BOT.</span>The bot is currently running and <span>ACTIVE</span>.</p>
-		
-		<div class="icons">
-			<a href="https://github.com/Blackie254/black-super-bot"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/github.svg" alt="GitHub Icon"></a>
-			<a href="https://wa.me/254114283550"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/whatsapp.svg" alt="WhatsApp Icon"></a>
-		</div>
-		<p>&copy; 2025 <span style="color: green;">BLACKMACHANT MD</span></p>
-	</div>
+
+<canvas id="matrix-canvas"></canvas>
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo"><span>BLACK</span>-MD</div>
+    <div class="tagline">WhatsApp Bot &nbsp;·&nbsp; Powered by Baileys</div>
+    <div class="status-pill">
+      <div class="dot"></div>
+      <span id="status-text">ONLINE</span>
+    </div>
+  </header>
+
+  <!-- Info cards -->
+  <div class="grid" id="cards">
+
+    <div class="card">
+      <div class="card-icon">🤖</div>
+      <div class="card-label">Bot Name</div>
+      <div class="card-value" id="val-botname"><span class="skeleton"></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <div class="card-label">Mode</div>
+      <div class="card-value green" id="val-mode"><span class="skeleton"></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <div class="card-label">Prefix</div>
+      <div class="card-value" id="val-prefix"><span class="skeleton"></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">👑</div>
+      <div class="card-label">Owner</div>
+      <div class="card-value small" id="val-owner"><span class="skeleton"></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎨</div>
+      <div class="card-label">Sticker Pack</div>
+      <div class="card-value small" id="val-pack"><span class="skeleton"></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <div class="card-label">Sticker Author</div>
+      <div class="card-value small" id="val-author"><span class="skeleton"></span></div>
+    </div>
+
+    <div class="card wide">
+      <div class="card-icon">⏱️</div>
+      <div class="card-label">Session Uptime</div>
+      <div class="uptime-display" id="val-uptime">00:00:00</div>
+    </div>
+
+  </div>
+
+  <!-- Terminal log -->
+  <div class="terminal" id="terminal-box">
+    <div class="terminal-bar">
+      <div class="tb r"></div>
+      <div class="tb y"></div>
+      <div class="tb g"></div>
+      <span class="terminal-title">black-md — startup log</span>
+    </div>
+    <div id="log-output"></div>
+  </div>
+
+  <!-- Links -->
+  <div class="links">
+    <a class="btn" href="https://github.com/Blackie254/black-super-bot" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 .3C5.4.3 0 5.7 0 12.3c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.7 18 5 18 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.1 24 17.6 24 12.3 24 5.7 18.6.3 12 .3z"/></svg>
+      GitHub
+    </a>
+    <a class="btn" href="https://wa.me/254114283550" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.2-.5 0-.2-.6-1.5-.8-2-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.1-1.3l-.2-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18.3a8.3 8.3 0 0 1-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
+      WhatsApp
+    </a>
+    <a class="btn" href="https://github.com/Blackie254/black-super-bot/fork" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      Fork Bot
+    </a>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 &nbsp;·&nbsp; BLACKY TECH &nbsp;·&nbsp; BLACK-MD BOT
+  </div>
+
+</div>
 
 <script src="sc.js"></script>
+<script>
+  // ── Matrix rain ──────────────────────────────────────────────────────────
+  const canvas = document.getElementById('matrix-canvas');
+  const ctx    = canvas.getContext('2d');
+  let cols, drops;
+
+  function initMatrix() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const fontSize = 14;
+    cols  = Math.floor(canvas.width / fontSize);
+    drops = Array(cols).fill(1);
+    ctx.font = fontSize + 'px Share Tech Mono';
+  }
+
+  function drawMatrix() {
+    ctx.fillStyle = 'rgba(10,10,10,0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00ff41';
+    const chars = 'アイウエオカキクケコ01BLACKMD!@#$%';
+    for (let i = 0; i < drops.length; i++) {
+      const ch = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(ch, i * 14, drops[i] * 14);
+      if (drops[i] * 14 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+
+  initMatrix();
+  setInterval(drawMatrix, 50);
+  window.addEventListener('resize', initMatrix);
+
+  // ── Uptime counter ───────────────────────────────────────────────────────
+  const startTime = Date.now();
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  setInterval(() => {
+    const s   = Math.floor((Date.now() - startTime) / 1000);
+    const h   = Math.floor(s / 3600);
+    const m   = Math.floor((s % 3600) / 60);
+    const sec = s % 60;
+    document.getElementById('val-uptime').textContent = `${pad(h)}:${pad(m)}:${pad(sec)}`;
+  }, 1000);
+
+  // ── Terminal log printer ─────────────────────────────────────────────────
+  const logEl = document.getElementById('log-output');
+  const logs  = [
+    { delay: 100,  html: '<span class="prompt">$</span> <span class="cmd">node index.js</span>' },
+    { delay: 600,  html: '<span class="ok">[✓]</span> Connecting to WhatsApp servers...' },
+    { delay: 1200, html: '<span class="ok">[✓]</span> Session authenticated successfully' },
+    { delay: 1800, html: '<span class="ok">[✓]</span> fetchCore() — downloading core files...' },
+    { delay: 2400, html: '<span class="ok">[✓]</span> Plugins loaded from McrayNick/BLACK-MD-PLUGINS' },
+    { delay: 3000, html: '<span class="ok">[✓]</span> Database connection established' },
+    { delay: 3600, html: '<span class="ok">[✓]</span> Bot is live and listening for messages' },
+    { delay: 4200, html: '<span class="warn">[~]</span> Keep-alive ping active (every 10 min)' },
+    { delay: 4800, html: '<span class="prompt">$</span> <span class="cmd">_</span>' },
+  ];
+
+  logs.forEach(({ delay, html }) => {
+    setTimeout(() => {
+      const line = document.createElement('div');
+      line.className = 'log-line';
+      line.style.animationDelay = '0s';
+      line.innerHTML = html;
+      logEl.appendChild(line);
+    }, delay);
+  });
+</script>
 </body>
-  </html>
+</html>
