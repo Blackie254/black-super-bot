@@ -413,17 +413,6 @@
   setInterval(drawMatrix, 50);
   window.addEventListener('resize', initMatrix);
 
-  const startTime = Date.now();
-  function pad(n) { return String(n).padStart(2, '0'); }
-
-  setInterval(() => {
-    const s   = Math.floor((Date.now() - startTime) / 1000);
-    const h   = Math.floor(s / 3600);
-    const m   = Math.floor((s % 3600) / 60);
-    const sec = s % 60;
-    document.getElementById('val-uptime').textContent = `${pad(h)}:${pad(m)}:${pad(sec)}`;
-  }, 1000);
-
   const logEl = document.getElementById('log-output');
   const logs  = [
     { delay: 100,  html: '<span class="prompt">$</span> <span class="cmd">node index.js</span>' },
