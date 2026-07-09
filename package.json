@@ -51,6 +51,13 @@
     "wa-sticker-formatter": "^4.3.2",
     "fs-extra": "^11.2.0",
     "mime-types": "^2.1.35",
-    "ffmpeg-static": "^5.2.0"
+    "ffmpeg-static": "^5.2.0",
+    "libsignal": "2.0.1"
+  },
+    "overrides": {
+    "libsignal": "2.0.1",
+    "@whiskeysockets/baileys": {
+      "libsignal": "2.0.1"
+    }
   }
 }
