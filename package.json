@@ -44,7 +44,7 @@
     "mumaker": "^2.0.0",
     "pdfkit": "^0.18.0",
     "docx": "^9.7.1",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz",  
+    "xlsx": "0.18.5",  
     "ruhend-scraper": "latest",
     "yt-search": "^2.12.1",
     "pino": "^10.3.1",
