@@ -9,7 +9,7 @@
   },
   "engines": {
     "node": ">=22.0.0",
-    "npm": ">=10.0.0" 
+    "npm": ">=10.0.0"
   },
   "keywords": [
     "whatsapp-bot",
@@ -44,7 +44,7 @@
     "mumaker": "^2.0.0",
     "pdfkit": "^0.18.0",
     "docx": "^9.7.1",
-    "xlsx": "0.18.5",  
+    "xlsx": "0.18.5",
     "ruhend-scraper": "latest",
     "yt-search": "^2.12.1",
     "pino": "^10.3.1",
@@ -52,9 +52,10 @@
     "fs-extra": "^11.2.0",
     "mime-types": "^2.1.35",
     "ffmpeg-static": "^5.2.0",
-    "libsignal": "2.0.1"
+    "libsignal": "2.0.1",
+    "sharp": "^0.33.5"
   },
-    "overrides": {
+  "overrides": {
     "libsignal": "2.0.1",
     "@whiskeysockets/baileys": {
       "libsignal": "2.0.1"
