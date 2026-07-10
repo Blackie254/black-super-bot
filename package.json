@@ -53,7 +53,7 @@
     "mime-types": "^2.1.35",
     "ffmpeg-static": "^5.2.0",
     "libsignal": "2.0.1",
-    "sharp": "^0.33.5"
+    "sharp": "^0.34.5"
   },
   "overrides": {
     "libsignal": "2.0.1",
