@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node index.js",
-    "postinstall": "npm rebuild sharp"
+    "start": "node index.js"
   },
   "engines": {
     "node": ">=22.0.0",
@@ -54,7 +53,8 @@
     "mime-types": "^2.1.35",
     "ffmpeg-static": "^5.2.0",
     "libsignal": "6.0.0",
-    "sharp": "0.34.5"
+    "sharp": "0.34.5",
+    "@img/sharp-linux-x64": "0.34.5"
   },
   "overrides": {
     "libsignal": "6.0.0",
