@@ -29,7 +29,7 @@
     "file-type": "^16.5.3",
     "form-data": "^4.0.0",
     "google-tts-api": "^2.0.2",
-    "figlet": "^1.5.2",
+    "figlet": "1.5.2",
     "fluent-ffmpeg": "^2.1.2",
     "express": "latest",
     "compile-run": "^2.3.4",
@@ -52,13 +52,13 @@
     "fs-extra": "^11.2.0",
     "mime-types": "^2.1.35",
     "ffmpeg-static": "^5.2.0",
-    "libsignal": "2.0.1",
-    "sharp": "^0.34.5"
+    "libsignal": "6.0.0",
+    "sharp": "0.34.5"
   },
   "overrides": {
-    "libsignal": "2.0.1",
+    "libsignal": "6.0.0",
     "@whiskeysockets/baileys": {
-      "libsignal": "2.0.1"
+      "libsignal": "6.0.0"
     }
   }
 }
