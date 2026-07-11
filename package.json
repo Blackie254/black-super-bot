@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "npm rebuild sharp --update-binary"
+    "postinstall": "npm rebuild sharp"
   },
   "engines": {
     "node": ">=22.0.0",
