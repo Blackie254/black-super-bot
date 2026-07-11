@@ -118,15 +118,36 @@ writeToFile(filename = 'store.json') {
         this.emit('messages.set', { chatId, messages })
     }
 
-    upsertMessage(message, type) {
+ upsertMessage(message, type) {
         const chatId = message.key.remoteJid
         if (!this.messages[chatId]) {
             this.messages[chatId] = {}
         }
         this.messages[chatId][message.key.id] = message
+        this._trimChatMessages(chatId)
         this.emit('messages.upsert', { messages: [message], type })
     }
 
+    _trimChatMessages(chatId, maxPerChat = 50) {
+        const chatMessages = this.messages[chatId]
+        if (!chatMessages) return
+        const ids = Object.keys(chatMessages)
+        if (ids.length <= maxPerChat) return
+        const sorted = ids
+            .map(id => ({ id, ts: chatMessages[id]?.messageTimestamp || 0 }))
+            .sort((a, b) => a.ts - b.ts)
+        const toRemove = sorted.slice(0, ids.length - maxPerChat)
+        for (const { id } of toRemove) {
+            delete chatMessages[id]
+        }
+    }
+
+    pruneAll(maxPerChat = 50) {
+        for (const chatId of Object.keys(this.messages)) {
+            this._trimChatMessages(chatId, maxPerChat)
+        }
+        this.logger.info('Store pruned old messages')
+    }
     updateMessage(updates) {
         for (const update of updates) {
             const chatId = update.key.remoteJid
