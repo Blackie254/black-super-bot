@@ -151,10 +151,18 @@ async function startRaven() {
     printQRInTerminal: false,
     browser: ["BLACK-MD", "Safari", "5.1.7"],
     auth: state,
-    syncFullHistory: true,
+    syncFullHistory: false,
   });
 
   store.bind(client.ev);
+  
+setInterval(() => {
+  try {
+    store.pruneAll(50);
+  } catch (e) {
+    console.error('store prune error:', e.message);
+  }
+}, 10 * 60 * 1000);
   
   client.ev.on('connection.update', async (update) => {
     const { connection, lastDisconnect } = update;
