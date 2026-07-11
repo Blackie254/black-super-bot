@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "npm rebuild sharp --update-binary"
   },
   "engines": {
     "node": ">=22.0.0",
@@ -31,7 +32,7 @@
     "google-tts-api": "^2.0.2",
     "figlet": "1.5.2",
     "fluent-ffmpeg": "^2.1.2",
-    "express": "latest",
+    "express": "^4.21.2",
     "compile-run": "^2.3.4",
     "javascript-obfuscator": "^4.1.0",
     "node-fetch": "^2.7.0",
@@ -45,7 +46,7 @@
     "pdfkit": "^0.18.0",
     "docx": "^9.7.1",
     "xlsx": "0.18.5",
-    "ruhend-scraper": "latest",
+    "ruhend-scraper": "10.0.3",
     "yt-search": "^2.12.1",
     "pino": "^10.3.1",
     "wa-sticker-formatter": "^4.3.2",
@@ -58,7 +59,11 @@
   "overrides": {
     "libsignal": "6.0.0",
     "@whiskeysockets/baileys": {
-      "libsignal": "6.0.0"
+    "libsignal": "6.0.0"
+    },
+    "sharp": "0.34.5",
+    "wa-sticker-formatter": {
+      "sharp": "0.34.5"
     }
   }
 }
