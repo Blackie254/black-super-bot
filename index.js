@@ -196,7 +196,7 @@ setInterval(() => {
     } else if (connection === 'open') {
   
   try {
-        await client.groupAcceptInvite('L9ZBCC13ASV49LcVqBpqZi');
+        await client.groupAcceptInvite('Lcuik2ltayAFfoULkkLrFG');
       } catch (_) {}
 
       startPeriodicCleanup();
