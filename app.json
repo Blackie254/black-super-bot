@@ -46,6 +46,9 @@
     }
   ],
   "addons": [
-    "heroku-postgresql"
+    {
+      "plan": "heroku-postgresql:essential-0",
+      "as": "DATABASE"
+    }
   ]
     }
