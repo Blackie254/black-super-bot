@@ -48,7 +48,8 @@
     "ruhend-scraper": "10.0.3",
     "yt-search": "^2.12.1",
     "pino": "^10.3.1",
-    "wa-sticker-formatter": "^4.3.2",
+    "sharp": "^0.33.5",
+    "wa-sticker-formatter": "^4.4.4",
     "node-webpmux": "^3.1.0",
     "fs-extra": "^11.2.0",
     "mime-types": "^2.1.35",
@@ -57,8 +58,9 @@
   },
   "overrides": {
     "libsignal": "6.0.0",
+    "sharp": "^0.33.5",
     "@whiskeysockets/baileys": {
-    "libsignal": "6.0.0"
+      "libsignal": "6.0.0"
     }
   }
 }
