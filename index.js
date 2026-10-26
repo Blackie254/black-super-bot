@@ -1,1253 +1,429 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BotFleet Hub | WhatsApp Bot Hosting Kenya – Deploy,Manage and Enjoy</title>
-<meta name="description" content="Host your WhatsApp bot in minutes. Pick a bot, paste your session ID and deploy. KES 50 per month per bot. Pay with M-Pesa or Airtel Money.">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#0057ff">
-<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BotFleet">
-<meta name="google-site-verification" content="CTbfB1bFzQ62_IA3G9bFRkMSXasUSJt_9Mc3hjSfTa8" />
-<link rel="canonical" href="__SITE__/">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
-<meta property="og:type" content="website"><meta property="og:site_name" content="BotFleet Hub">
-<meta property="og:title" content="BotFleet Hub | WhatsApp Bot Hosting in Kenya">
-<meta property="og:description" content="Pick a bot, paste your session ID, deploy. KES 50 per month. Pay with M-Pesa or Airtel Money.">
-<meta property="og:url" content="__SITE__/"><meta property="og:image" content="__SITE__/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_KE">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="BotFleet Hub | WhatsApp Bot Hosting in Kenya"><meta name="twitter:description" content="Deploy a WhatsApp bot in 60 seconds for KES 50 per month."><meta name="twitter:image" content="__SITE__/og.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"__SITE__/#org","name":"BotFleet Hub","url":"__SITE__/","logo":"__SITE__/og.png"},{"@type":"WebSite","@id":"__SITE__/#site","url":"__SITE__/","name":"BotFleet Hub","publisher":{"@id":"__SITE__/#org"},"inLanguage":"en-KE"},{"@type":"Service","name":"WhatsApp bot hosting","serviceType":"WhatsApp bot hosting","provider":{"@id":"__SITE__/#org"},"areaServed":"KE","description":"Deploy and host WhatsApp bots. Choose a bot, paste your session ID and go live. Pay with M-Pesa or Airtel Money.","offers":{"@type":"Offer","price":"50","priceCurrency":"KES","description":"Per bot, per month","url":"__SITE__/"}}]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Exo+2:wght@400;500;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-<script>try{document.documentElement.dataset.theme=localStorage.bfTheme||'light'}catch(e){}</script>
-<style>
-:root{--bg:#fff;--solid:#fff;--card:rgba(255,255,255,.9);--nav:rgba(255,255,255,.82);--blue:#0057ff;--cyan:#00d9ff;--ink:#07122e;--mute:#43557e;--line:rgba(0,87,255,.22);--btntxt:#fff;--ok:#007a4d;--bad:#d6204a;--p1:0,87,255;--p2:0,200,255;--glow:0 0 18px rgba(var(--p2),.55),0 0 2px var(--cyan)}
-[data-theme=midnight]{--bg:#050b1f;--solid:#0b1736;--card:rgba(11,23,54,.85);--nav:rgba(5,11,31,.85);--blue:#3d8bff;--cyan:#00e5ff;--ink:#eaf2ff;--mute:#a4b8de;--line:rgba(0,229,255,.3);--ok:#2dff9a;--bad:#ff6b88;--p1:61,139,255;--p2:0,229,255}
-[data-theme=aurora]{--bg:#0d0618;--solid:#1a0d2e;--card:rgba(26,13,46,.85);--nav:rgba(13,6,24,.85);--blue:#b266ff;--cyan:#ff4fd8;--ink:#f7ecff;--mute:#cdb2ee;--line:rgba(255,79,216,.32);--ok:#2dff9a;--bad:#ff6b88;--p1:178,102,255;--p2:255,79,216}
-[data-theme=matrix]{--bg:#020a05;--solid:#07180d;--card:rgba(7,24,13,.88);--nav:rgba(2,10,5,.88);--blue:#19ff7a;--cyan:#00ffd5;--ink:#e6ffee;--mute:#9fd9b4;--line:rgba(25,255,122,.3);--btntxt:#012010;--ok:#2dff9a;--bad:#ff6b88;--p1:25,255,122;--p2:0,255,213}
-[data-theme=sunset]{--bg:#14070a;--solid:#241014;--card:rgba(36,16,20,.88);--nav:rgba(20,7,10,.88);--blue:#ff8a2b;--cyan:#ffd23f;--ink:#fff1e6;--mute:#e3b9a3;--line:rgba(255,138,43,.34);--btntxt:#1c0a00;--ok:#2dff9a;--bad:#ff7a8e;--p1:255,138,43;--p2:255,210,63}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font:500 17px/1.55 'Exo 2',system-ui,sans-serif;color:var(--ink);background:var(--bg);transition:background .3s}
-#bg{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
-h1,h2,h3,.logo{font-family:Orbitron,sans-serif;letter-spacing:.02em;margin:0}
-a{color:var(--blue)}button,input{font:inherit}
-:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
-nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:20px;padding:14px max(20px,5vw);background:var(--nav);flex-wrap:wrap;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.logo{font-weight:800;font-size:22px;color:var(--ink)}.logo b{color:var(--blue);text-shadow:var(--glow)}
-nav .sp{flex:1}.bal{font-weight:700;padding:8px 14px;border:1.5px solid var(--cyan);border-radius:99px;box-shadow:var(--glow);background:var(--solid)}
-.btn{cursor:pointer;border:0;padding:12px 24px;border-radius:12px;font-weight:700;color:var(--btntxt);background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 6px 22px rgba(var(--p1),.35);transition:transform .15s,box-shadow .15s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,217,255,.55)}
-.btn.ghost{background:var(--solid);color:var(--blue);border:1.5px solid var(--blue);box-shadow:none}.btn.sm{padding:8px 14px;font-size:15px}.btn.red{background:var(--solid);color:var(--bad);border:1.5px solid var(--bad);box-shadow:none}
-.btn:disabled{opacity:.6;cursor:wait}
-main{max-width:1180px;margin:auto;padding:0 20px}
-.hero{padding:90px 0 60px;max-width:820px}
-.hero h1{font-size:clamp(34px,6vw,64px);line-height:1.08;font-weight:800}
-.hero h1 span{color:var(--blue);text-shadow:var(--glow)}
-.hero p{font-size:20px;color:var(--mute);max-width:600px;margin:22px 0 30px}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:10px 0 70px;counter-reset:s}
-.step{padding:20px;border:1.5px solid var(--line);border-radius:16px;background:var(--card);counter-increment:s}
-.step::before{content:counter(s);font:800 22px Orbitron;color:var(--cyan);text-shadow:0 0 10px var(--cyan)}
-.step b{display:block;margin:6px 0 2px}
-h2{font-size:clamp(24px,3.5vw,34px);margin:0 0 6px}.sub{color:var(--mute);margin:0 0 24px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:70px}
-@media(max-width:560px){.grid{gap:12px}.card .in{padding:12px}.card h3{font-size:15px}.card p{font-size:14px}.card .row .btn{flex:1;padding:10px 8px;font-size:14px;text-align:center}.card img{width:calc(100% - 20px);margin:10px 10px 0}}
-.card{border-radius:18px;overflow:hidden;background:var(--solid);border:1.5px solid var(--line);transition:.25s;display:flex;flex-direction:column}
-.card:hover{border-color:var(--cyan);box-shadow:var(--glow),0 14px 40px rgba(var(--p1),.2);transform:translateY(-4px)}
-.card img{width:calc(100% - 28px);margin:14px 14px 0;border-radius:12px;aspect-ratio:1/1;object-fit:cover;background:var(--solid)}
-.card .in{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}.card p{margin:0;color:var(--mute)}.card .row{display:flex;gap:10px;margin-top:auto;padding-top:10px;flex-wrap:wrap}
-.price{font:700 15px Orbitron;color:var(--blue)}
-.panel{padding:22px;border:1.5px solid var(--line);border-radius:18px;background:var(--card);margin-bottom:24px}
-.chips{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.chip{padding:8px 16px;border:1.5px solid var(--blue);border-radius:99px;background:var(--solid);color:var(--blue);font-weight:700;cursor:pointer}.chip:hover{background:var(--blue);color:var(--btntxt)}
-input,select,textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--solid);color:var(--ink);margin:6px 0 14px}
-input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:var(--glow);outline:0}label{font-weight:700;font-size:15px}
-table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line)}th{font:600 13px Orbitron;color:var(--mute)}
-.tag{padding:3px 12px;border-radius:99px;font-weight:700;font-size:14px;border:1.5px solid}.running{color:var(--ok);border-color:var(--ok)}.building{color:var(--blue);border-color:var(--blue)}.suspended,.failed,.crashed,.rejected{color:var(--bad);border-color:var(--bad)}
-dialog{max-height:92vh;overflow:auto;background:var(--solid);border:0;border-radius:20px;padding:28px;width:min(480px,92vw);box-shadow:0 0 0 2px var(--cyan),0 0 50px rgba(0,217,255,.5);color:var(--ink)}
-dialog::backdrop{background:rgba(7,18,46,.45);backdrop-filter:blur(4px)}
-.err{color:var(--bad);font-weight:700;min-height:22px}.hide{display:none!important}
-#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--solid);color:var(--ink);border:1.5px solid var(--cyan);padding:12px 22px;border-radius:12px;box-shadow:var(--glow);z-index:20}
-footer{text-align:center;color:var(--mute);padding:30px;border-top:1px solid var(--line);background:var(--nav)}
-.themes{display:flex;gap:8px;align-items:center}.sw{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0}.sw[aria-pressed=true]{outline:3px solid var(--cyan);outline-offset:2px}
-.tabs{display:flex;gap:10px;flex-wrap:wrap;padding:18px 0 4px}.chip[aria-pressed=true]{background:var(--blue);color:var(--btntxt)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}.stats .step::before{content:none}
-.copyrow{display:flex;gap:10px;flex-wrap:wrap}.copyrow input{flex:1;min-width:200px;margin:0}
-.pos{color:var(--ok);font-weight:700}.neg{color:var(--bad);font-weight:700}
-#logBox{max-height:300px;overflow:auto;background:var(--solid);border:1.5px solid var(--line);border-radius:12px;padding:10px;font-size:12px;white-space:pre-wrap;word-break:break-all}
-.av{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid var(--cyan);box-shadow:var(--glow);background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--btntxt);font:800 16px Orbitron,sans-serif;cursor:pointer;padding:0;vertical-align:middle}.av img{width:100%;height:100%;object-fit:cover}.av.big{width:84px;height:84px;font-size:34px;cursor:default}
-.banner{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px 16px;border:1.5px solid var(--cyan);border-radius:14px;background:var(--card);box-shadow:var(--glow);margin:14px 0}.banner.warn{border-color:var(--bad)}.banner button{flex:none}
-.legal{font-size:14px;margin:0 0 12px}.legal input{width:auto;margin:0 8px 0 0;vertical-align:middle}.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
-.bellb{position:relative;display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;border:2px solid var(--line);background:var(--solid);cursor:pointer;padding:0;font-size:18px;vertical-align:middle}.dot{position:absolute;top:-2px;right:-2px;width:12px;height:12px;border-radius:50%;background:var(--bad);border:2px solid var(--solid)}
-.track{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:4px}.bar{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan))}.tb{margin:12px 0}.tb span{display:flex;justify-content:space-between;gap:10px}
-.faq details{border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;margin:10px 0;background:var(--card)}.faq summary{cursor:pointer;font-weight:700}.faq p{margin:8px 0 0;color:var(--mute)}.botlist{list-style:none;padding:0;margin:0 0 30px;display:grid;gap:10px}.botlist li{padding:12px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card)}
-.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}.vcard{border:1.5px solid var(--line);border-radius:16px;overflow:hidden;background:var(--solid);cursor:pointer;transition:.2s}.vcard:hover{border-color:var(--cyan);box-shadow:var(--glow)}.vth{aspect-ratio:16/9;background:var(--card) center/cover no-repeat;display:grid;place-items:center}.vth span{width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;display:grid;place-items:center;font-size:20px}.vin{padding:12px;display:grid;gap:8px;justify-items:start}.vframe{position:relative;padding-top:56.25%;margin:0 0 12px}.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
-body:not(.in) .inn,body.in .out{display:none!important}
+// BLACK-MD v3
 
-.methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin:14px 0}
-.m{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 8px;border:1.5px solid var(--line);border-radius:14px;background:var(--solid);color:var(--ink);font-weight:700;cursor:pointer;transition:.2s}
-.m:hover{border-color:var(--cyan)}.m[aria-checked=true]{border-color:var(--cyan);box-shadow:var(--glow)}
-.lg{display:flex;gap:6px;align-items:center;justify-content:center;background:#fff;border-radius:8px;padding:5px 9px;height:36px;min-width:76px}.lg svg{height:24px;width:auto;display:block}
-.fab{position:fixed;right:16px;bottom:16px;z-index:15;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
-.fb{display:flex;align-items:center;gap:8px;padding:11px 16px;border-radius:99px;color:#fff;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .15s}.fb:hover{transform:translateY(-2px)}
-.fb svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.fb.wa{background:#1faa54}.fb.mail{background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--btntxt)}.fb.mail svg{stroke:var(--btntxt)}
-@media(max-width:560px){.fb span{display:none}.fb{padding:13px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+require('dotenv').config({ path: './.Env' });
+const {
+  default: ravenConnect,
+  useMultiFileAuthState,
+  DisconnectReason,
+  fetchLatestBaileysVersion,
+  downloadContentFromMessage,
+  jidNormalizedUser,
+  getContentType,
+} = require("@whiskeysockets/baileys");
 
-/* ===== Compact dashboard layout ===== */
-:root{--navh:58px}
-nav{flex-wrap:nowrap;gap:10px;padding:9px max(14px,4vw)}.logo{font-size:20px;white-space:nowrap}
-#navIn{display:flex;align-items:center;gap:8px}.bal{padding:6px 12px;font-size:15px;cursor:pointer;white-space:nowrap}
-body.in #themes{display:none}
-main{padding:0 16px}
-.tabs{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:10px 0 8px;position:sticky;top:var(--navh);z-index:4;background:linear-gradient(var(--bg) 78%,transparent)}
-.tabs::-webkit-scrollbar{display:none}.tabs .chip{flex:none;padding:7px 14px;font-size:15px}
-.hsum{display:grid;gap:14px;padding:16px;border:1.5px solid var(--cyan);border-radius:20px;background:linear-gradient(135deg,rgba(var(--p1),.16),rgba(var(--p2),.08)),var(--card);box-shadow:var(--glow);margin:6px 0 16px}
-.hbal small,.hgrid small{display:block;color:var(--mute);font-size:13px}.hbal b{display:block;font:800 28px Orbitron,sans-serif;margin:2px 0}.hbtns{margin-top:8px}
-.hgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.hgrid>div{padding:10px;border-radius:14px;background:var(--solid);border:1px solid var(--line)}.hgrid b{font-size:15px}
-.gs{padding:14px 16px}.gs ol{margin:8px 0 0;padding-left:20px;color:var(--mute);font-size:15px}.gs li{margin:3px 0}
-.shead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 0 10px}.shead h2{font-size:20px}
-.dlist{display:grid;gap:10px}.dcard{padding:12px 14px;border:1.5px solid var(--line);border-radius:16px;background:var(--card)}
-.dtop{display:flex;justify-content:space-between;align-items:center;gap:8px}.dmeta{color:var(--mute);font-size:14px;margin:2px 0 10px}
-.dact{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.dbtn{display:flex;gap:6px;flex-wrap:wrap}
-.sw2{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;cursor:pointer}.sw2 input{width:auto;margin:0}
-.empty{padding:18px;border:1.5px dashed var(--line);border-radius:16px;text-align:center;color:var(--mute)}
-.strip{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}.rk{flex:none;padding:6px 12px;border:1.5px solid var(--line);border-radius:99px;background:var(--solid);font-size:14px;white-space:nowrap}
-.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:40px}
-@media(min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hsum{grid-template-columns:1fr 1.4fr;align-items:center}}
-@media(min-width:1000px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.card img{aspect-ratio:4/3;width:calc(100% - 20px);margin:10px 10px 0}.card .in{padding:12px;gap:6px}.card h3{font-size:15px}.card p{font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card .row .btn{flex:1;padding:9px 8px;font-size:14px;text-align:center}
-.panel{padding:16px;margin-bottom:16px}
-.methods{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.m{padding:8px 4px;font-size:13px;gap:6px}.lg{height:30px;min-width:0;padding:3px 6px}.lg svg{height:20px}
-@media(max-width:560px){h2{font-size:20px}.logo{font-size:18px}#navOut .btn{padding:7px 12px;font-size:14px}#themes .sw{width:20px;height:20px}.hbal b{font-size:24px}}
-.pw{position:relative;margin:6px 0 14px}.pw input{margin:0;padding-right:48px}.pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:38px;height:38px;border:0;border-radius:10px;background:transparent;color:var(--mute);font-size:18px;cursor:pointer;display:grid;place-items:center}.pw button:hover{background:var(--line)}
-.msg{padding:10px 12px;border-radius:14px;margin:8px 0;border:1px solid var(--line);background:var(--solid)}.msg.admin{border-color:var(--cyan);background:var(--card)}.msg small{display:block;color:var(--mute);margin-bottom:2px}#tkMsgs{max-height:38vh;overflow:auto;margin-bottom:10px}
-.gear{flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--solid);color:var(--ink);font-size:17px;cursor:pointer;display:grid;place-items:center;padding:0}.gear:hover,.gear[aria-expanded=true]{border-color:var(--cyan);box-shadow:var(--glow)}
-#navOut{display:flex;align-items:center;gap:8px}#navOut .btn{padding:8px 14px;font-size:15px;white-space:nowrap}
-.pop{position:absolute;right:14px;top:calc(100% + 6px);z-index:30;width:min(270px,calc(100vw - 28px));padding:14px;border:1.5px solid var(--cyan);border-radius:16px;background:var(--solid);box-shadow:var(--glow),0 12px 30px rgba(0,0,0,.35);display:grid;gap:10px}.pop b{font-size:14px;color:var(--mute)}.pop .themes{gap:10px}.pop .sw{width:30px;height:30px}
-.logbox{max-height:200px;overflow:auto;font-size:12px;white-space:pre-wrap;word-break:break-all;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px;margin:6px 0 0}
-.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:2px 0 14px}
-.plan{position:relative;display:grid;gap:2px;justify-items:center;align-content:center;text-align:center;padding:12px 6px 10px;border:1.5px solid var(--line);border-radius:14px;background:var(--solid)}
-.plan b{font-size:14px}.plan .pp{font:800 18px Orbitron,sans-serif;color:var(--blue)}.plan small{color:var(--mute);font-size:12px;line-height:1.3}
-.plan.best{border-color:var(--cyan);box-shadow:var(--glow)}.plan .rb{position:absolute;top:-9px;padding:1px 8px;border-radius:99px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--btntxt);font-size:11px;font-weight:700;white-space:nowrap}
-/* ===== Compact admin panel (layout only) ===== */
-#admin{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;align-content:start}
-#admin>h2,#admin>h3,#admin>#aStats,#admin>#aSearch,#admin>.panel[style*="overflow-x"]{grid-column:1/-1}
-#admin>h2{margin:0}#admin>h3{margin:6px 0 0!important}#admin>#aSearch{margin:0}
-#admin .panel{padding:10px 12px;margin:0}
-#admin>.panel[style*="overflow-x"]{max-height:230px;overflow-y:auto}
-#admin td,#admin th{padding:6px 8px}
-#admin thead th{position:sticky;top:0;background:var(--solid);z-index:1}
-#admin .stats{margin:0;gap:8px}#admin .stats .step{padding:10px 12px}
-#admin #aChart{height:96px;margin-top:4px}
-#admin textarea{height:60px}
-#admin .copyrow{margin:6px 0!important}
-#admin .panel>div[style*="overflow-x"]{max-height:170px;overflow-y:auto}
-@media(min-width:900px){#admin{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.ah{display:flex;justify-content:space-between;align-items:center;gap:8px}.ah .btn{font-family:'Exo 2',system-ui,sans-serif;font-weight:700;letter-spacing:0}
-/* ===== Stat cards (admin and referral) ===== */
-.sc{--ac:var(--blue);--ac2:var(--cyan);position:relative;display:flex;gap:10px;min-width:0;padding:12px 14px 12px 18px;border-radius:16px;border:1.5px solid var(--line);background:linear-gradient(145deg,rgba(var(--p1),.15),rgba(var(--p2),.04) 70%),var(--card);overflow:hidden;transition:transform .18s,box-shadow .18s,border-color .18s}
-.sc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(var(--ac),var(--ac2))}
-.sc:hover{transform:translateY(-2px);border-color:var(--ac);box-shadow:0 8px 22px rgba(var(--p1),.22)}
-.sc.ok{--ac:var(--ok);--ac2:var(--cyan)}.sc.bad{--ac:var(--bad);--ac2:var(--bad)}.sc.gold{--ac:#ffb020;--ac2:var(--cyan)}
-.sc .ic{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:18px;background:linear-gradient(135deg,var(--ac),var(--ac2));box-shadow:0 0 14px rgba(var(--p2),.35)}
-.sc .tx{display:flex;flex-direction:column;gap:2px;min-width:0}
-.sc .lb{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);line-height:1.25}
-.sc .vl{font:800 21px Orbitron,sans-serif;line-height:1.15;overflow-wrap:anywhere}
-.sc.bad .vl{color:var(--bad)}
-.scg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.scg .sc{align-items:center}.scg>.sc:last-child:nth-child(odd){grid-column:1/-1}
-@media(min-width:760px){.scg{grid-template-columns:repeat(5,minmax(0,1fr))}.scg>.sc:last-child:nth-child(odd){grid-column:auto}}
-.sc3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:18px}
-.sc3 .sc{flex-direction:column;align-items:flex-start;gap:8px;padding:12px 10px 12px 16px}
-.sc3 .sc .ic{width:32px;height:32px;font-size:16px;border-radius:10px}.sc3 .sc .vl{font-size:18px}
-@media(max-width:380px){.sc3 .sc .lb{font-size:10px}.sc3 .sc .vl{font-size:16px}}
-.gsh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.gsh span{font:800 14px Orbitron,sans-serif;color:var(--blue)}
-.pbar{height:10px;border-radius:99px;background:var(--line);overflow:hidden}.pbar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:var(--glow);transition:width .6s}
-.gsl{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}.gsl li{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:15px}
-.gsl .dot{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;border:1.5px solid var(--line)}
-.gsl li.ok{color:var(--ink)}.gsl li.ok .dot{background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--btntxt);border-color:transparent}
-.gsl li.cur{color:var(--ink);font-weight:700}.gsl li.cur .dot{border-color:var(--cyan);box-shadow:var(--glow)}
-.gsf{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.gsf #gsMsg{color:var(--mute);font-size:14px}
-.gsr{display:flex;align-items:center;gap:10px}.gs.min .gsl,.gs.min .gsf{display:none}.gs.min .gsh{margin-bottom:8px}
-.copyrow .pw{flex:1;min-width:200px;margin:0}.copyrow select{flex:1;min-width:140px;margin:0}
-.hcoin{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}.hcoin span{font-weight:700}
-.ctbtn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--solid);color:var(--ink);cursor:pointer;margin:6px 0 14px;font:inherit}.ctbtn:hover{border-color:var(--cyan)}
-.ctl{max-height:52vh;overflow:auto;display:grid;gap:6px;padding-right:4px}
-.ctr{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;background:var(--solid);font-weight:500}.ctr input{width:auto;margin:0}.ctr .fl{font-size:22px;line-height:1}.ctr small{margin-left:auto;color:var(--mute);white-space:nowrap}
-.ctr:has(input:checked){border-color:var(--cyan);box-shadow:var(--glow)}.ctr.off{opacity:.5;cursor:not-allowed}
-#dPay{margin:0 0 12px}#dPay>label{display:block;margin-bottom:6px}.pw2{display:grid;gap:6px}
-.pkg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.pk{position:relative;display:grid;gap:2px;justify-items:center;text-align:center;padding:12px 8px;border:1.5px solid var(--line);border-radius:14px;background:var(--solid);color:var(--ink);cursor:pointer;font:inherit}
-.pk[aria-checked=true]{border-color:var(--cyan);box-shadow:var(--glow)}.pk b{font:800 20px Orbitron,sans-serif;color:var(--blue)}.pk small{color:var(--mute);font-size:12px}.pk .bn{position:absolute;top:-9px;padding:1px 8px;border-radius:99px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--btntxt);font-size:11px;font-weight:700}
-.pk:disabled{opacity:.45;cursor:not-allowed}
-</style>
-<style>
-/* ===== Landing (logged-out) redesign: UI only ===== */
-.logo{display:inline-flex;align-items:center;gap:0}.lmark{width:38px;height:38px;flex:none;margin-right:0;filter:drop-shadow(0 0 8px rgba(25,217,255,.55))}
-.gear svg{width:20px;height:20px}
-html[data-def] body:not(.in){--bg:#030a1e;--solid:#07132f;--card:rgba(8,20,48,.85);--nav:rgba(3,10,30,.92);--blue:#2a7bff;--cyan:#19d0ff;--ink:#fff;--mute:#b9c8e8;--line:rgba(36,110,255,.5);--ok:#2dff9a;--bad:#ff6b88;--p1:42,123,255;--p2:25,208,255;--btntxt:#fff;--glow:0 0 18px rgba(25,208,255,.45),0 0 2px #19d0ff}
-body:not(.in){background:radial-gradient(900px 500px at 85% 8%,rgba(var(--p1),.28),transparent 65%),radial-gradient(700px 500px at 0% 40%,rgba(var(--p2),.10),transparent 65%),var(--bg)}
-body:not(.in) .logo{font:800 clamp(24px,3vw,32px)/1 Poppins,system-ui,sans-serif;letter-spacing:0}
-body:not(.in) .logo b{color:var(--cyan);text-shadow:0 0 14px rgba(var(--p2),.6)}
-body:not(.in) nav{padding:14px max(16px,5vw);border-bottom:1px solid rgba(var(--p1),.55);box-shadow:0 1px 0 rgba(var(--p2),.15)}
-body:not(.in) #navOut{gap:12px}
-body:not(.in) #navOut .gear{width:46px;height:46px;border-radius:14px;border:1.5px solid var(--blue);background:var(--card);color:var(--ink)}
-body:not(.in) #navOut .btn{padding:11px 24px;font:600 17px Poppins,system-ui,sans-serif;border-radius:14px}
-body:not(.in) #navOut .btn.ghost{background:var(--card);color:var(--ink);border:1.5px solid var(--blue)}
-body:not(.in) #navOut .btn:not(.ghost){background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 0 22px rgba(var(--p2),.45)}
-body:not(.in) main{max-width:1240px;padding:0 max(16px,3vw)}
-.lp{font-family:Poppins,'Exo 2',system-ui,sans-serif}
-.hero.lp{max-width:none;padding:clamp(28px,4vw,52px) 0 clamp(28px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);align-items:center;gap:12px;position:relative}
-.hcopy{min-width:0}
-.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 22px;border:1.5px solid var(--cyan);border-radius:99px;background:var(--card);box-shadow:0 0 18px rgba(var(--p2),.25) inset,0 0 14px rgba(var(--p2),.2);color:var(--cyan);font:600 clamp(12px,1.5vw,17px) Poppins,sans-serif;letter-spacing:.04em}.badge svg{width:22px;height:22px;fill:var(--cyan);stroke:var(--cyan)}
-.hero.lp h1{font:800 clamp(30px,5.2vw,64px)/1.06 Poppins,system-ui,sans-serif;letter-spacing:-.02em;margin:22px 0 0}
-.hero.lp h1 span{display:block;color:var(--cyan);text-shadow:0 0 22px rgba(var(--p2),.55)}
-.hero.lp p{font:400 clamp(15px,1.6vw,19.5px)/1.65 Poppins,sans-serif;color:var(--ink);max-width:640px;margin:20px 0 28px}.hero.lp p .priceTxt{display:none}
-.hbtns2{display:flex;gap:16px;flex-wrap:wrap}
-.btn.big{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:17px 32px;border-radius:16px;font:600 clamp(16px,1.8vw,20px) Poppins,sans-serif;text-decoration:none;color:var(--btntxt)}
-.btn.big svg{width:26px;height:26px;flex:none}.btn.big:not(.ghost){background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 0 30px rgba(var(--p2),.45)}
-.btn.ghost.big{background:var(--card);border:2px solid var(--blue);color:var(--ink)}
-.paywith{display:flex;flex-wrap:wrap;align-items:center;gap:10px clamp(12px,2vw,22px);margin-top:26px;padding:14px clamp(14px,2vw,22px);border:1.5px solid var(--line);border-radius:16px;background:var(--card);width:fit-content;max-width:100%;font-weight:500}
-.paywith>span:first-child{font-weight:600}.pm{display:inline-flex;align-items:center;gap:10px;font-weight:500}.pm svg{width:30px;height:30px;color:var(--cyan)}
-.pm+.pm{padding-left:clamp(12px,2vw,22px);border-left:1px solid var(--line)}
-.pm i{display:grid;place-items:center;width:30px;height:30px;border-radius:7px;font:800 16px Poppins,sans-serif;font-style:normal;color:#fff}.pm .mp{background:#2eb34a}.pm .at{background:#e8212e;border-radius:50%}
-/* phones (decorative, scale with em) */
-.phones{position:relative;display:flex;justify-content:center;align-items:flex-start;gap:0;font-size:min(.9vw,11px);pointer-events:none;user-select:none;min-width:0}
-.ph{width:22em;flex:none;border:.35em solid var(--blue);border-radius:3em;padding:1.4em 1.3em;background:linear-gradient(180deg,var(--solid),var(--bg));box-shadow:0 0 3em rgba(var(--p1),.5),0 0 0 .15em rgba(var(--p2),.5) inset;position:relative;overflow:hidden;color:var(--ink);font-family:Poppins,sans-serif;line-height:1.3}
-.pa{margin-right:-1.5em;z-index:1;padding-bottom:5em}.pb2{margin-top:2.6em;z-index:0;padding-bottom:1.6em}
-.pn{position:absolute;top:.8em;left:50%;transform:translateX(-50%);width:6em;height:1.2em;border-radius:1em;background:#020716}
-.pt{display:flex;justify-content:space-between;font-size:1em;font-weight:600;padding:.4em .6em 0}
-.phd{display:flex;justify-content:space-between;align-items:center;margin:1em 0 .8em}.pl{font:800 1.5em Poppins,sans-serif}.pl b{color:var(--cyan)}
-.pcoin{border:.1em solid var(--cyan);border-radius:2em;padding:.35em .8em;font-size:1em;font-weight:600;background:var(--solid)}
-.pcoin u,.pcr u,.pcoin+u{display:inline-block;width:.9em;height:.9em;border-radius:50%;background:#ffc21a;vertical-align:-.1em;text-decoration:none}
-.ptab{display:flex;gap:.5em;margin-bottom:.9em;white-space:nowrap}.ptab i{font-style:normal;font-size:.95em;font-weight:600;padding:.35em .8em;border:.1em solid var(--blue);border-radius:2em;background:var(--solid);color:var(--cyan)}.ptab i.on{background:var(--blue);color:#fff}
-.pw1{border:.1em solid var(--blue);border-radius:1.2em;padding:1em;background:var(--solid)}.pw1>small,.pg3 small{display:block;font-size:.85em;color:var(--mute)}.pw1>b{display:block;font:800 2em Poppins,sans-serif;margin:.2em 0 .5em}
-.pbtn{display:inline-block;font-style:normal;font-weight:700;font-size:.95em;padding:.4em .9em;border-radius:.6em;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff}.pbtn.g{background:var(--solid);border:.1em solid var(--blue);color:var(--cyan)}
-.pcr{display:flex;align-items:center;gap:.8em;margin:.8em 0;font-size:1em}.pcr b{font-size:1.4em}
-.pg3{display:grid;grid-template-columns:repeat(3,1fr);gap:.4em}.pg3>div{padding:.5em;border:.08em solid var(--line);border-radius:.7em;background:var(--bg)}.pg3 b{font-size:1em}
-.pst{display:flex;justify-content:space-between;align-items:center;margin:1.1em 0 .6em;font-size:1.05em}
-.pdc{position:relative;border:.1em solid var(--blue);border-radius:1.1em;padding:.9em;margin-bottom:.7em;background:var(--solid)}.pdc small{display:block;font-size:.8em;color:var(--mute)}.pdc em{position:absolute;right:.9em;top:.9em;font-style:normal;font-size:.85em;font-weight:700;padding:.1em .7em;border:.1em solid #2eff9a;border-radius:2em;color:#2eff9a}.pdc em:not(.ok){color:var(--blue);border-color:var(--blue)}
-.pbb{display:flex;gap:.4em;margin-top:.5em}.pbb i{font-style:normal;font-weight:700;font-size:.9em;padding:.4em .9em;border-radius:.5em;background:linear-gradient(135deg,var(--blue),var(--cyan))}.pbb i.g{background:var(--solid);border:.1em solid var(--blue);color:var(--cyan)}.pbb i.r{border-color:#ff6b88;color:#ff6b88}.pbb.l{margin-top:.7em}
-.pfb{position:absolute;right:1.3em;font-size:.95em;font-weight:700;padding:.5em 1em;border-radius:2em}.pfb.wa{bottom:3.5em;background:#1faa54}.pfb.ml{bottom:1.3em;background:#1e7bff}
-.pwk{border:.1em solid var(--blue);border-radius:.9em;padding:.7em .9em;font-size:.95em;background:var(--solid);margin-bottom:.7em}.pwk small{font-size:1em;color:var(--mute)}
-.pchips{display:flex;gap:.4em;margin-bottom:.7em;white-space:nowrap}.pchips i{font-style:normal;font-size:.8em;font-weight:700;padding:.35em .7em;border:.1em solid var(--blue);border-radius:2em;background:var(--solid)}
-.psr{border:.1em solid var(--blue);border-radius:.9em;padding:.7em .9em;font-size:.95em;color:var(--mute);background:var(--solid);margin-bottom:.8em}
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:.7em}.pb{min-width:0;border:.1em solid var(--blue);border-radius:1em;padding:.5em;background:var(--solid)}.pb .pbb{gap:.3em}.pb .pbb i{font-size:.72em;padding:.35em .5em}.pb b{display:block;font-size:.9em;margin-top:.4em}.pb small{display:block;font-size:.7em;color:var(--mute);line-height:1.2}
-.pimg{height:7em;width:100%;border-radius:.8em}.i1{background:radial-gradient(circle at 50% 50%,#1fe0a0 0,#0a2a4a 55%,#05101f)}.i2{background:linear-gradient(135deg,#7be3ff,#2a6bd6 60%,#1a2a66)}.i3{background:linear-gradient(135deg,#ff9a3c,#8a3a1a 60%,#2a1208)}.i4{background:radial-gradient(circle,#19d070 0,#073a22 60%,#03140c)}
-/* features */
-.lpwrap{display:block}
-.fsec{text-align:center;padding:clamp(22px,3vw,40px) 0 10px;border-top:1px solid rgba(var(--p1),.55)}
-.dash{display:inline-flex;gap:8px}.dash i{width:44px;height:4px;border-radius:4px;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}.dash i:nth-child(2){width:46px;background:var(--blue)}
-.fsec h2{font:700 clamp(26px,4.2vw,46px)/1.15 Poppins,sans-serif;margin:16px 0 0}.fsec h2 span{display:block;color:var(--cyan);font-weight:700;text-shadow:0 0 18px rgba(var(--p2),.4)}
-.fsub{font:400 clamp(14px,1.6vw,19px)/1.5 Poppins,sans-serif;color:var(--ink);max-width:640px;margin:14px auto 28px}
-.fgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;text-align:left}
-.fc{padding:20px;border:1.5px solid var(--line);border-radius:14px;background:linear-gradient(160deg,rgba(var(--p1),.22),var(--card));transition:.2s}.fc:hover{border-color:var(--cyan);box-shadow:var(--glow)}
-.fi{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1.8px solid var(--cyan);background:rgba(var(--p2),.08);color:var(--ink);margin-bottom:14px;box-shadow:0 0 14px rgba(var(--p2),.3)}.fi svg{width:26px;height:26px}
-.fc b{display:block;font:600 clamp(15px,1.6vw,19px) Poppins,sans-serif}.fc p{margin:6px 0 0;font:400 clamp(13px,1.3vw,15.5px)/1.5 Poppins,sans-serif;color:var(--mute)}
-.gsp{margin:26px 0 20px;padding:18px clamp(14px,2vw,26px) 22px;border:1.5px solid var(--line);border-radius:14px;background:var(--card)}
-.gst{text-align:center}.gst span{display:inline-flex;align-items:center;gap:12px;color:var(--cyan);font:600 15px Poppins,sans-serif}.gst span::before,.gst span::after{content:"";width:clamp(20px,4vw,40px);height:2px;background:var(--cyan)}
-.gst h3{font:700 clamp(22px,3vw,32px) Poppins,sans-serif;margin:2px 0 14px}
-.sgrid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:start;gap:6px}
-.sp2{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"n i" "t t" "d d";align-items:center;column-gap:12px;row-gap:4px;text-align:center;padding:0 4px}
-.sn{grid-area:n;justify-self:end;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--blue);color:var(--btntxt);font:700 22px Poppins,sans-serif;box-shadow:0 0 16px rgba(var(--p1),.6)}
-.si{grid-area:i;justify-self:start;color:var(--ink)}.si svg{width:34px;height:34px}
-.sp2 b{grid-area:t;font:600 clamp(15px,1.5vw,18px) Poppins,sans-serif}.sp2 p{grid-area:d;margin:0;font:400 clamp(12px,1.2vw,14.5px)/1.4 Poppins,sans-serif;color:var(--mute)}
-.sa{align-self:center;color:var(--cyan);padding-top:6px}.sa svg{width:18px;height:18px}
-.ctap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px;padding:clamp(16px,2.5vw,26px) clamp(16px,3vw,34px);border:1.5px solid var(--line);border-radius:14px;background:linear-gradient(120deg,rgba(var(--p1),.26),var(--card))}
-.ctap h3{font:700 clamp(21px,2.6vw,30px)/1.15 Poppins,sans-serif}.ctap h3 span{display:block;color:var(--cyan)}.ctap p{margin:8px 0 0;font:400 clamp(13px,1.4vw,16px)/1.5 Poppins,sans-serif;color:var(--ink);max-width:420px}
-.ctab{display:flex;gap:14px;flex-wrap:wrap}.ctab .btn.big{padding:15px 26px;font-size:clamp(15px,1.5vw,18px)}.ctab .btn.big svg{width:24px;height:24px}
-/* footer */
-body:not(.in) footer{display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;text-align:left;padding:18px max(16px,5vw);font:400 13px Poppins,sans-serif;border-top:1px solid rgba(var(--p1),.55)}
-body:not(.in) .fl{display:inline-flex;align-items:center;gap:0}body:not(.in) .fl .lmark{width:34px;height:34px}body:not(.in) .fl .logo{font-size:24px}
-body:not(.in) .fm{flex:1;min-width:240px;text-align:center}body:not(.in) .fm small{font-size:14px}body:not(.in) .fm a{color:var(--ink);text-decoration:none;margin:0 6px}
-body:not(.in) .fr{display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-size:13.5px}.fr svg{width:34px;height:34px;color:var(--cyan);flex:none}
-footer .out{display:none}body:not(.in) footer .out{display:inline-flex}
-body.in footer .fm{display:block}
-@media(min-width:981px){.hero.lp h1{font-size:min(4.7vw,62px)}.hero.lp h1 span{white-space:nowrap}}
-/* responsive */
-@media(max-width:980px){
-.hero.lp{grid-template-columns:minmax(0,1fr);gap:26px}.phones{font-size:clamp(6px,1.9vw,10.5px);justify-content:center}
-.fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.sgrid{grid-template-columns:1fr 1fr;gap:18px 10px}.sa{display:none}
-.ctap{justify-content:center;text-align:center}.ctap p{margin-left:auto;margin-right:auto}.ctab{justify-content:center}
-body:not(.in) footer{justify-content:center;text-align:center}body:not(.in) .fr{justify-content:center}}
-@media(max-width:560px){
-body:not(.in) #navOut{gap:8px}body:not(.in) #navOut .gear{width:40px;height:40px;border-radius:12px}body:not(.in) #navOut .btn{padding:9px 13px;font-size:14px;border-radius:12px}
-.lmark{width:30px;height:30px}body:not(.in) .logo{font-size:22px;gap:0}
-.badge{padding:7px 14px;gap:8px;letter-spacing:.02em}.badge svg{width:18px;height:18px}
-.hbtns2{flex-direction:column}.hbtns2 .btn.big,.ctab .btn.big{width:100%}.btn.big{padding:15px 20px}
-.paywith{gap:8px 14px;padding:12px 14px;width:100%}.pm+.pm{padding-left:14px}.pm svg,.pm i{width:24px;height:24px}
-.phones{font-size:clamp(5.2px,1.95vw,8px)}
-.fgrid{gap:10px}.fc{padding:14px}.fi{width:44px;height:44px;margin-bottom:10px}.fi svg{width:22px;height:22px}
-.ctab{flex-direction:column;width:100%}}
-@media(max-width:360px){body:not(.in) nav{padding:10px 12px;gap:6px}body:not(.in) .logo{font-size:19px;gap:0}.lmark{width:26px;height:26px}body:not(.in) #navOut{gap:6px}body:not(.in) #navOut .gear{width:36px;height:36px}body:not(.in) #navOut .btn{padding:8px 9px;font-size:13px}.hero.lp h1{font-size:29px}.fgrid{grid-template-columns:1fr}}
-@media(max-width:310px){body:not(.in) nav{padding:8px 8px;gap:4px}body:not(.in) .logo{font-size:16px}.lmark{width:22px;height:22px}body:not(.in) #navOut{gap:4px}body:not(.in) #navOut .gear{width:30px;height:30px;border-radius:9px}.gear svg{width:16px;height:16px}body:not(.in) #navOut .btn{padding:7px 7px;font-size:11.5px;border-radius:9px}.hero.lp h1{font-size:25px}.badge{font-size:11px;padding:6px 10px}}
-/* bot images: show the whole picture, never crop */
-.card img{aspect-ratio:1/1!important;height:auto;object-fit:cover;object-position:center;background:var(--solid)}
-/* bot cards: full description; 2 columns on every phone, compact so they stay short */
-.card p{display:block;-webkit-line-clamp:unset;overflow:visible}
-@media(max-width:699px){
-.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.card{border-radius:14px}.card:hover{transform:none}
-.card img{width:calc(100% - 12px);margin:6px 6px 0;aspect-ratio:1/1;border-radius:10px}
-.card .in{padding:8px 8px 9px;gap:4px}
-.card h3{font-size:13.5px;line-height:1.2;overflow-wrap:anywhere}
-.card p{font-size:12px;line-height:1.35}
-.card .tag{font-size:11px;line-height:1.3;padding:2px 8px}
-.card .row{flex-direction:column;flex-wrap:nowrap;gap:6px;padding-top:6px}
-.card .row .btn{flex:none;width:100%}
-.card .row .btn,.card .in>.btn{padding:7px 6px!important;font-size:12.5px!important;line-height:1.2;white-space:normal;border-radius:10px}
-.card .in>.btn{margin-top:0!important}
+const pino = require("pino");
+const { Boom } = require("@hapi/boom");
+const fs = require("fs");
+const path = require('path');
+const express = require("express");
+const chalk = require("chalk");
+const FileType = require("file-type");
+const figlet = require("figlet");
+const app = express();
+const logger = pino({ level: 'silent' });
+const { fetchCore } = require('./fetchCore');
+const { session, port } = require("./set.js");    
+const makeInMemoryStore = require('./store/store.js'); 
+const store = makeInMemoryStore({ logger: logger.child({ stream: 'store' }) });
+const color = (text, color) => !color ? chalk.green(text) : chalk.keyword(color)(text);
+const SESSION_DB_URL = process.env.SESSION_DB_URL || 'postgresql://session_reader.hohpglkadousjyfutkwe:ReadOnly2026BlackMD@aws-1-eu-north-1.pooler.supabase.com:5432/postgres';
+
+async function authentication() {
+  try {
+    const sessionDir = path.join(__dirname, 'session');
+    const credPath = path.join(sessionDir, 'creds.json');
+
+    if (!session || typeof session !== 'string' || session.trim() === '') {
+      throw new Error('SESSION env variable is missing or empty. Set it in your environment.');
+    }
+
+    const delimiterIndex = session.indexOf(':~');
+    if (delimiterIndex === -1) {
+      throw new Error('Invalid session format. Expected: BLACK-MD:~<key>');
+    }
+
+    const header = session.slice(0, delimiterIndex);
+    const payload = session.slice(delimiterIndex + 2).trim();
+
+    if (header !== 'BLACK-MD') {
+      throw new Error(`Invalid session header "${header}". Expected "BLACK-MD".`);
+    }
+
+    if (!payload) {
+      throw new Error('Session payload is empty after the BLACK-MD:~ prefix.');
+    }
+
+    let credsJson;
+
+    if (/^[0-9A-F]{8}$/.test(payload)) {
+      console.log('🔑 Short key detected — fetching from central DB...');
+      const { Pool } = require('pg');
+      const pool = new Pool({
+        connectionString: SESSION_DB_URL,
+        ssl: { rejectUnauthorized: false }
+      });
+      try {
+        const result = await pool.query(
+          'SELECT creds FROM sessions WHERE session_key = $1',
+          [payload]
+        );
+        if (!result.rows.length) {
+          throw new Error(`Session key "${payload}" not found. Re-generate your session at the session generator.`);
+        }
+        credsJson = result.rows[0].creds;
+        console.log('✅ Session successfully fetched from central DB.');
+      } finally {
+        await pool.end();
+      }
+    } else {
+      console.log('🔑 Legacy base64 session — decoding...');
+      credsJson = Buffer.from(payload, 'base64').toString('utf8');
+      try {
+        JSON.parse(credsJson);
+      } catch (_) {
+        throw new Error('Session data is not valid JSON after decoding. Re-generate your session.');
+      }
+    }
+
+    if (!fs.existsSync(sessionDir)) {
+      fs.mkdirSync(sessionDir, { recursive: true });
+    }
+
+    fs.writeFileSync(
+      credPath,
+      typeof credsJson === 'string' ? credsJson : JSON.stringify(credsJson),
+      'utf8'
+    );
+    console.log('✅ Session decoded and loaded successfully');
+
+  } catch (error) {
+    console.error('❌ Session Error:', error.message);
+    process.exit(1);
+  }
 }
-@media(max-width:360px){.grid{gap:8px}.card h3{font-size:12.5px}.card p{font-size:11.5px}.card .row .btn,.card .in>.btn{font-size:12px!important}}
-.pm img.pl{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none;display:block;box-shadow:0 0 0 1.5px rgba(255,255,255,.35)}
-@media(max-width:560px){.pm img.pl{width:26px;height:26px}}
-.obtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px 14px;margin:0 0 10px;border:1.5px solid var(--line);border-radius:12px;background:var(--solid);color:var(--ink);font-weight:700;text-decoration:none;cursor:pointer}.obtn:hover{border-color:var(--cyan);box-shadow:var(--glow)}.obtn svg{width:22px;height:22px;flex:none}
-.oterms{margin:2px 0 10px;font-size:13px;color:var(--mute);text-align:center}.oterms a{color:var(--blue)}
-.oor{display:flex;align-items:center;gap:10px;margin:4px 0 12px;color:var(--mute);font-size:13px}.oor::before,.oor::after{content:"";flex:1;height:1px;background:var(--line)}
-/* tabs: give the sticky strip room so it no longer covers or squeezes the card below */
-.tabs{padding:10px 8px 16px;margin:0 -8px 14px;background:linear-gradient(var(--bg) 70%,transparent)}
-.tabs+*,.tabs~.wallet{margin-top:0}
-/* Cloudflare human check: centred in the form */
-#cf{display:flex;justify-content:center;align-items:center;width:100%;margin:12px 0}
-@media(max-width:370px){#cf{transform:scale(.92);transform-origin:center}}
-@media(max-width:335px){#cf{transform:scale(.82)}}
-/* ===== TECH SKIN: HUD-style containers (colours come from the active theme) ===== */
-:root{--txb:linear-gradient(135deg,rgba(var(--p1),.8),rgba(var(--p2),.2) 38%,rgba(var(--p1),.14) 62%,rgba(var(--p2),.8))}
-.panel,.dcard,.card,.step,.vcard,.faq details,.botlist li,.gs,.fc,.gsp,.ctap{position:relative;border:1.5px solid transparent;box-shadow:0 12px 30px -14px rgba(var(--p1),.55),inset 0 1px 0 rgba(255,255,255,.05);
-background:linear-gradient(165deg,rgba(var(--p1),.11),rgba(var(--p2),.035) 55%,transparent) padding-box,linear-gradient(var(--solid),var(--solid)) padding-box,var(--txb) border-box}
-.panel::after,.dcard::after,.card::after,.step::after,.vcard::after,.gs::after,.fc::after,.gsp::after,.ctap::after,.hsum::after{content:"";position:absolute;inset:5px;pointer-events:none;z-index:2;opacity:.55;transition:opacity .25s;background-repeat:no-repeat;
-background-image:linear-gradient(var(--cyan),var(--cyan)),linear-gradient(var(--cyan),var(--cyan)),linear-gradient(var(--cyan),var(--cyan)),linear-gradient(var(--cyan),var(--cyan)),linear-gradient(var(--cyan),var(--cyan)),linear-gradient(var(--cyan),var(--cyan)),linear-gradient(var(--cyan),var(--cyan)),linear-gradient(var(--cyan),var(--cyan));
-background-position:0 0,0 0,100% 0,100% 0,0 100%,0 100%,100% 100%,100% 100%;background-size:14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px}
-.panel:hover::after,.dcard:hover::after,.card:hover::after,.step:hover::after,.vcard:hover::after,.fc:hover::after{opacity:1}
-.card:hover,.vcard:hover,.fc:hover{border-color:transparent;box-shadow:0 18px 44px -14px rgba(var(--p2),.7),0 0 22px -4px rgba(var(--p2),.5),inset 0 1px 0 rgba(255,255,255,.08)}
-.card img{border:1px solid rgba(var(--p2),.45);box-shadow:0 0 18px -4px rgba(var(--p2),.55)}
-/* wallet card */
-.hsum{position:relative;overflow:hidden;border:1.5px solid transparent;
-background:linear-gradient(135deg,rgba(var(--p1),.2),rgba(var(--p2),.07)) padding-box,linear-gradient(var(--solid),var(--solid)) padding-box,var(--txb) border-box;
-box-shadow:var(--glow),0 20px 50px -20px rgba(var(--p1),.8)}
-.hsum::before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(var(--p2),.16),transparent);transform:skewX(-18deg);animation:txsweep 6s ease-in-out infinite}
-@keyframes txsweep{0%,55%{left:-60%}100%{left:135%}}
-.hbal b{text-shadow:0 0 20px rgba(var(--p2),.6)}
-.hgrid>div,.plan,.m,.rk{border:1px solid transparent;background:linear-gradient(var(--solid),var(--solid)) padding-box,linear-gradient(135deg,rgba(var(--p1),.55),rgba(var(--p2),.12) 50%,rgba(var(--p2),.5)) border-box}
-.hgrid>div{position:relative}.hgrid>div::before{content:"";position:absolute;left:10px;right:10px;top:0;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--cyan),transparent)}
-.hgrid b{font-family:Orbitron,sans-serif;letter-spacing:.02em}
-.plan:hover,.m:hover{box-shadow:0 0 16px -2px rgba(var(--p2),.6)}
-/* status tags */
-.tag{display:inline-block;white-space:nowrap;font:700 11.5px 'Exo 2',system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;vertical-align:middle;box-shadow:0 0 12px -3px currentColor;background:rgba(var(--p1),.07)}
-.tag.running::before,.tag.building::before,.tag.crashed::before,.tag.failed::before,.tag.suspended::before{content:"";display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor;vertical-align:1px}
-.tag.running::before,.tag.building::before{animation:txpulse 1.6s ease-in-out infinite}
-@keyframes txpulse{50%{opacity:.25;transform:scale(.7)}}
-/* headings, tables, chips, popups */
-.shead h2::before{content:"";display:inline-block;width:4px;height:.9em;margin-right:9px;border-radius:2px;vertical-align:-.08em;background:linear-gradient(var(--cyan),var(--blue));box-shadow:0 0 10px var(--cyan)}
-th{border-bottom:1.5px solid rgba(var(--p2),.5);font:700 12px 'Exo 2',system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}tbody tr{transition:background .15s}tbody tr:hover td{background:rgba(var(--p1),.08)}
-.tabs .chip[aria-pressed=true]{box-shadow:0 0 18px rgba(var(--p2),.55);border-color:var(--cyan)}
-.banner{background:linear-gradient(90deg,rgba(var(--p1),.16),transparent),var(--card);box-shadow:var(--glow),inset 3px 0 0 var(--cyan)}.banner.warn{box-shadow:0 0 18px -4px var(--bad),inset 3px 0 0 var(--bad)}
-.pop,#toast{background:linear-gradient(165deg,rgba(var(--p1),.14),transparent),var(--solid)}
-dialog{border:2px solid transparent;background:linear-gradient(165deg,rgba(var(--p1),.12),transparent 55%) padding-box,linear-gradient(var(--solid),var(--solid)) padding-box,var(--txb) border-box;box-shadow:0 0 0 1px rgba(var(--p2),.25),0 0 60px rgba(var(--p2),.35),0 30px 80px rgba(0,0,0,.45)}
-#logBox,.logbox{background:linear-gradient(rgba(var(--p2),.05),rgba(var(--p2),.05)),var(--bg);border:1px solid rgba(var(--p2),.4);font-family:ui-monospace,Menlo,Consolas,monospace;box-shadow:inset 0 0 24px rgba(0,0,0,.25)}
-.empty{background:repeating-linear-gradient(135deg,rgba(var(--p1),.05) 0 8px,transparent 8px 16px)}
-@media(prefers-reduced-motion:reduce){.hsum::before,.tag::before{animation:none!important}}
-/* forms + tables: wrap neatly and stay readable on any screen */
-.copyrow{align-items:stretch;gap:10px}.copyrow input{flex:1 1 170px;min-width:0}.copyrow select{flex:1 1 170px;min-width:0;margin:0}
-.copyrow .btn{flex:1 1 140px;white-space:nowrap}
-table .btn{padding:7px 12px;font-size:13px;white-space:nowrap}td small{overflow-wrap:anywhere}
-@media(max-width:560px){
-.panel{padding:16px 14px}
-.copyrow{gap:8px}.copyrow select{flex:1 1 100%}.copyrow input{flex:1 1 100%}.copyrow .btn{flex:1 1 calc(50% - 8px);padding:12px 8px}
-.panel input,.panel select,.panel textarea{font-size:16px;padding:11px 12px}
-td,th{padding:10px 6px}th{font-size:11px}
-.copyrow .btn{white-space:normal;font-size:15px;line-height:1.2}
-table:has(#hkList) thead{display:none}
-#hkList tr{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 10px;padding:10px 0;border-bottom:1px solid var(--line)}
-#hkList td{border:0;padding:0}#hkList td:first-child{grid-column:1/-1}#hkList td:nth-child(2){color:var(--mute)}#hkList td:nth-child(2)::before{content:"Bots: "}
-table:has(#aPromos) thead{display:none}
-#aPromos tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;align-items:center;gap:6px 10px;padding:10px 0;border-bottom:1px solid var(--line)}
-#aPromos td{border:0;padding:0;white-space:normal;min-width:0}
-#aPromos td:nth-child(1){grid-column:1/3;grid-row:1;font-weight:700;overflow-wrap:anywhere}#aPromos td:nth-child(4){grid-column:3;grid-row:1;justify-self:end}
-#aPromos td:nth-child(2){grid-column:1;grid-row:2;color:var(--mute)}#aPromos td:nth-child(3){grid-column:2;grid-row:2;color:var(--mute)}#aPromos td:nth-child(5){grid-column:3;grid-row:2;justify-self:end}
-#aPromos td:nth-child(2),#aPromos td:nth-child(3){font-size:13.5px}#aPromos td:nth-child(2)::before{content:"Value: "}#aPromos td:nth-child(3)::before{content:"Used: "}
-.panel>table{display:block;max-width:100%;overflow-x:auto}
+
+async function startRaven() {
+  const Events                   = require('./action/events');
+  const { smsg }                 = require('./lib/ravenfunc');
+  const { initializeDatabase }   = require('./database/config');
+  const fetchSettings            = require('./database/fetchSettings');
+  const { startPeriodicCleanup } = require('./lib/antidelete');
+  const { fetchPlugins }         = require('./lib/fetchPlugins');
+
+  try {
+        await initializeDatabase();
+        console.log("✅ Database initialized successfully.");
+      } catch (err) {
+        console.error("❌ Failed to initialize database:", err.message || err);
+  }
+  
+  let autobio, autolike, autoview, mode, prefix, anticall;
+
+  try {
+    const settings = await fetchSettings();
+    console.log("😴 settings object:", settings);
+    ({ autobio, autolike, autoview, mode, prefix, anticall } = settings);
+    console.log("✅ Settings loaded successfully.... indexfile");
+  } catch (error) {
+    console.error("❌ Failed to load settings:...indexfile", error.message || error);
+    return;
+  }
+
+  const { state, saveCreds } = await useMultiFileAuthState('session');
+  await fetchPlugins();
+  const { version, isLatest } = await fetchLatestBaileysVersion();
+  console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
+  console.log(
+    color(
+      figlet.textSync("BLACK-MD", {
+        font: "Standard",
+        horizontalLayout: "default",
+        verticalLayout: "default",
+        whitespaceBreak: false,
+      }),
+      "green"
+    )
+  );
+
+  const client = ravenConnect({
+    version,
+    logger: pino({ level: "silent" }),
+    printQRInTerminal: false,
+    browser: ["BLACK-MD", "Safari", "5.1.7"],
+    auth: state,
+    syncFullHistory: false,
+  });
+
+  store.bind(client.ev);
+  
+setInterval(() => {
+  try {
+    store.pruneAll(50);
+  } catch (e) {
+    console.error('store prune error:', e.message);
+  }
+}, 10 * 60 * 1000);
+  
+  client.ev.on('connection.update', async (update) => {
+    const { connection, lastDisconnect } = update;
+    if (connection === 'close') {
+      let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
+      if (reason === DisconnectReason.badSession) {
+        console.log(`Bad Session File, Please Delete Session and Scan Again`);
+        process.exit();
+      } else if (reason === DisconnectReason.connectionClosed) {
+        console.log("Connection closed, reconnecting....");
+        startRaven();
+      } else if (reason === DisconnectReason.connectionLost) {
+        console.log("Connection Lost from Server, reconnecting...");
+        startRaven();
+      } else if (reason === DisconnectReason.connectionReplaced) {
+        console.log("Connection Replaced, Another New Session Opened, Please Restart Bot");
+        process.exit();
+      } else if (reason === DisconnectReason.loggedOut) {
+        console.log(`Device Logged Out, Please Delete Session_id and Scan Again.`);
+        process.exit();
+      } else if (reason === DisconnectReason.restartRequired) {
+        console.log("Restart Required, Restarting...");
+        startRaven();
+      } else if (reason === DisconnectReason.timedOut) {
+        console.log("Connection TimedOut, Reconnecting...");
+        startRaven();
+      } else {
+        console.log(`Unknown DisconnectReason: ${reason}|${connection}`);
+        startRaven();
+      }
+    } else if (connection === 'open') {
+  
+  try {
+        await client.groupAcceptInvite('FGH5bzox8FN1R2H8cVHBFT');
+      } catch (_) {}
+
+      startPeriodicCleanup();
+      console.log(color("Congrats, BLACK MD has successfully connected to this server", "green"));
+      console.log(color("Follow me on github as Blackie254", "red"));
+      console.log(color("Text the bot number with menu to check my command list"));
+      const Texxt = `✅ 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 » »【BLACK MD】\n` +
+                    `👥 𝗠𝗼𝗱𝗲 »» ${mode}\n` +
+                    `👤 𝗣𝗿𝗲𝗳𝗶𝘅 »» ${prefix}`;
+      client.sendMessage(client.user.id, { text: Texxt });
+    }
+  });
+  
+  client.ev.on("creds.update", saveCreds);
+  
+  setInterval(async () => {
+    try {
+      const liveSettings = await fetchSettings();
+      if (liveSettings.autobio === 'on') {
+        const date = new Date();
+        client.updateProfileStatus(
+          `${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
+        );
+      }
+    } catch (e) {
+      console.error('autobio interval error:', e.message);
+    }
+  }, 10 * 1000);
+
+  client.ev.on("messages.upsert", async (chatUpdate) => {
+    try {
+      if (!chatUpdate.messages || !chatUpdate.messages[0]) return;
+
+      let mek = chatUpdate.messages[0];
+      if (!mek.message) return;
+
+      mek.message = getContentType(mek.message) === "ephemeralMessage"
+        ? mek.message.ephemeralMessage.message
+        : mek.message;
+
+      const isStatus = mek.key.remoteJid === "status@broadcast";
+
+      if (isStatus) {
+        try {
+          const liveSettings = await fetchSettings();
+          const participantToUse = mek.key.participantPn || mek.key.participant;
+          if (!participantToUse) return;
+
+          const botJid = jidNormalizedUser(client.user.id);
+          const baseKey = {
+            remoteJid: mek.key.remoteJid,
+            id: mek.key.id,
+            fromMe: mek.key.fromMe,
+            participant: participantToUse,
+          };
+
+          if (liveSettings.autoview === "on") {
+            await client.readMessages([baseKey]);
+          }
+
+          if (liveSettings.autolike === "on") {
+            const emojis = ['💚', '🗿', '⌚️', '💠', '👣', '💙', '✅', '🤍', '🛰️', '💫', '♥️'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            await client.sendMessage(
+              mek.key.remoteJid,
+              { react: { key: baseKey, text: randomEmoji } },
+              { statusJidList: [participantToUse, botJid] }
+            );
+          }
+        } catch (error) {
+          console.error("Status handling error:", error);
+        }
+      }
+
+      if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
+
+      let m = smsg(client, mek, store);
+      const raven = require("./blacks");
+      raven(client, m, chatUpdate, store);
+
+    } catch (err) {
+      console.log("Error in messages.upsert:", err);
+    }
+  });
+  
+  const unhandledRejections = new Map();
+  process.on("unhandledRejection", (reason, promise) => {
+    unhandledRejections.set(promise, reason);
+    console.log("Unhandled Rejection at:", promise, "reason:", reason);
+  });
+  process.on("rejectionHandled", (promise) => {
+    unhandledRejections.delete(promise);
+  });
+  process.on("uncaughtException", function (err) {
+    console.log("Caught exception: ", err);
+  });
+
+  client.ev.on("contacts.update", (update) => {
+    for (let contact of update) {
+      let id = jidNormalizedUser(contact.id);
+      if (store && store.contacts) store.contacts[id] = { id, name: contact.notify };
+    }
+  });
+  
+  client.ev.on("contacts.upsert", (contacts) => {
+    for (let contact of contacts) {
+      const id = jidNormalizedUser(contact.id);
+      if (store && store.contacts) store.contacts[id] = { id, name: contact.notify || contact.name || "" };
+    }
+  });
+
+  client.ev.on("group-participants.update", async (update) => {
+    Events(client, update);
+  });
+  
+  let lastTextTime = 0;
+  const messageDelay = 5000;
+  
+  client.ev.on('call', async (callData) => {
+    try {
+      const liveSettings = await fetchSettings();
+      if (liveSettings.anticall === 'on') {
+        const callId = callData[0].id;
+        const callerId = callData[0].from;
+        const isGroup = callData[0].isGroup;
+        if (isGroup) return;
+        await client.rejectCall(callId, callerId);
+        const currentTime = Date.now();
+        if (currentTime - lastTextTime >= messageDelay) {
+          await client.sendMessage(callerId, {
+            text: "🚫 Anticall is active! Only text messages are allowed"
+          });
+          lastTextTime = currentTime;
+        } else {
+          console.log('Message skipped to prevent overflow');
+        }
+      }
+    } catch (e) {
+      console.error('anticall handler error:', e.message);
+    }
+  });
+      
+  client.getName = (jid, withoutContact = false) => {
+    let id = jidNormalizedUser(jid);
+    withoutContact = client.withoutContact || withoutContact;
+    let v;
+    if (id.endsWith("@g.us"))
+      return new Promise(async (resolve) => {
+        v = store.contacts[id] || {};
+        if (!(v.name || v.subject)) v = client.groupMetadata(id) || {};
+        resolve(v.name || v.subject || PhoneNumber("+" + id.replace("@s.whatsapp.net", "")).getNumber("international"));
+      });
+    else
+      v = id === "0@s.whatsapp.net"
+        ? { id, name: "WhatsApp" }
+        : id === jidNormalizedUser(client.user.id)
+          ? client.user
+          : store.contacts[id] || {};
+    return (withoutContact ? "" : v.name) || v.subject || v.verifiedName ||
+      PhoneNumber("+" + jid.replace("@s.whatsapp.net", "")).getNumber("international");
+  };
+
+  client.public = true;
+  client.serializeM = (m) => smsg(client, m, store);
+
+  client.downloadMediaMessage = async (message) => {
+    let mime = (message.msg || message).mimetype || '';
+    let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0];
+    const stream = await downloadContentFromMessage(message, messageType);
+    let buffer = Buffer.from([]);
+    for await (const chunk of stream) buffer = Buffer.concat([buffer, chunk]);
+    return buffer;
+  };
+
+  client.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
+    let quoted = message.msg ? message.msg : message;
+    let mime = (message.msg || message).mimetype || '';
+    let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0];
+    const stream = await downloadContentFromMessage(quoted, messageType);
+    let buffer = Buffer.from([]);
+    for await (const chunk of stream) buffer = Buffer.concat([buffer, chunk]);
+    let type = await FileType.fromBuffer(buffer);
+    if (!type) throw new Error(`Could not detect file type for: ${messageType}`);
+    let baseName = filename || `media_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+    let trueFileName = attachExtension ? (baseName + '.' + type.ext) : baseName;
+    fs.writeFileSync(trueFileName, buffer);
+    return trueFileName;
+  };
+
+  client.sendText = (jid, text, quoted = "", options) =>
+    client.sendMessage(jid, { text: text, ...options }, { quoted });
+
+  return client;
 }
-/* bot card labels (Most deployed, 2nd most deployed...) wrap instead of being cut off */
-.card .tag{white-space:normal;text-align:center;line-height:1.25;border-radius:14px;padding:4px 10px;max-width:100%;letter-spacing:.03em}
-.card .tag::before{display:none}
-/* realistic rotating phones */
-.phones{perspective:1100px}
-.phones::after{content:"";position:absolute;left:8%;right:8%;bottom:-1.4em;height:2.6em;background:radial-gradient(ellipse at center,rgba(var(--p1),.55),transparent 70%);filter:blur(8px);z-index:-1;pointer-events:none}
-.phw{position:relative;width:22em;flex:none;will-change:transform;animation:phSwayA 7s ease-in-out infinite alternate}
-.phw.wa{margin-right:-1.5em;z-index:1}.phw.wb{margin-top:2.6em;z-index:0;animation-name:phSwayB;animation-delay:-2.5s}
-.sb{position:absolute;z-index:3;width:.32em;border-radius:.2em;background:linear-gradient(90deg,#5d6f95,#c4d0e8 50%,#5d6f95)}
-.sb.l1{left:-.5em;top:9em;height:3.2em}.sb.l2{left:-.5em;top:13.4em;height:3.2em}.sb.r1{right:-.5em;top:11em;height:5em}
-.ph{position:relative;width:100%;margin:0;border:.6em solid #04060b;border-radius:3.5em;padding:1.4em 1.3em;
-box-shadow:0 0 0 .2em #b4c2de,0 0 0 .34em #323d5f,inset 0 0 0 .14em #1b2238,0 0 3em rgba(var(--p1),.5),0 2.2em 3.5em -1em rgba(0,0,0,.65);backface-visibility:hidden}
-.ph.pa,.ph.pb2{margin:0}
-/* glass glare that drifts across the screen */
-.ph::before{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;border-radius:2.9em;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.17) 42%,rgba(255,255,255,.04) 52%,transparent 62%);background-size:260% 100%;animation:phGlare 7s ease-in-out infinite alternate}
-@keyframes phGlare{from{background-position:100% 0}to{background-position:0% 0}}
-.ph::after{content:"";position:absolute;left:50%;bottom:.7em;width:7em;height:.36em;transform:translateX(-50%);border-radius:.3em;background:rgba(255,255,255,.75);z-index:7;pointer-events:none}
-/* camera island + status bar */
-.pn{top:.75em;width:7em;height:1.7em;background:radial-gradient(circle at 82% 50%,#16224a 0 .3em,#0a0f20 .36em .5em,#02030a .56em);z-index:7;box-shadow:0 0 0 .1em #0b0f1c}
-.sts{display:inline-flex;align-items:center;gap:.4em}
-.sg{display:inline-block;width:1.3em;height:.85em;background:linear-gradient(currentColor,currentColor) 0 100%/.22em 35% no-repeat,linear-gradient(currentColor,currentColor) .36em 100%/.22em 55% no-repeat,linear-gradient(currentColor,currentColor) .72em 100%/.22em 78% no-repeat,linear-gradient(currentColor,currentColor) 1.08em 100%/.22em 100% no-repeat}
-.bt{display:inline-block;width:1.7em;height:.85em;border:.12em solid currentColor;border-radius:.3em;position:relative;opacity:.9}.bt::before{content:"";position:absolute;inset:.1em;right:.4em;background:currentColor;border-radius:.1em}
-@keyframes phSwayA{from{transform:rotateY(-24deg) rotateX(4deg) translateY(4px)}to{transform:rotateY(24deg) rotateX(-3deg) translateY(-12px)}}
-@keyframes phSwayB{from{transform:rotateY(22deg) rotateX(-3deg) translateY(-10px)}to{transform:rotateY(-22deg) rotateX(4deg) translateY(6px)}}
-@media(prefers-reduced-motion:reduce){.phw,.ph::before{animation:none}}
-/* payment method logos: scale with the screen so they never stick out of their box */
-.methods .m{min-width:0;overflow:hidden}
-.methods .lg{max-width:100%;box-sizing:border-box;overflow:hidden;gap:clamp(2px,1vw,6px);padding:3px clamp(3px,1.3vw,9px)}
-.methods .lg svg{flex:0 1 auto;min-width:0;height:clamp(13px,4.6vw,24px);overflow:visible}
-/* history tools, session checker, recent logins, due-soon */
-.hbar{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:12px 0 6px}.hbar select{width:auto;min-width:130px;margin:0;flex:0 1 auto}.hnote{font-size:14px;margin:0 0 12px}
-.sres{margin:6px 0 10px}.sr{font-size:14px;line-height:1.4;padding:6px 10px;margin:4px 0;border-radius:10px;border:1px solid var(--line);background:rgba(var(--p1),.06)}.sr.ok{border-color:var(--ok)}.sr.warn{border-color:#ffb020}.sr.bad{border-color:var(--bad);background:rgba(255,80,110,.08)}.sr.info{color:var(--mute)}
-.dev{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.dev>div{min-width:0}.dev small{display:block;color:var(--mute);font-size:13px;overflow-wrap:anywhere}
-.due{color:#ffb020;font-weight:700;white-space:nowrap}
-.hbar .btn{white-space:nowrap}
-@media(max-width:560px){.hbar .btn{flex:1 1 calc(50% - 8px);padding-left:8px;padding-right:8px}.hbar select{flex:1 1 100%}}
-/* compact profile page: less vertical scrolling */
-#profD{padding:16px 18px}
-#profD h2{margin:0 0 4px;font-size:22px}
-#profD label{margin:6px 0 0;font-size:14px}
-#profD input{margin:3px 0 8px;padding:9px 12px}
-#profD .ctbtn{margin:3px 0 8px;padding:9px 12px;min-height:0}
-#profD .err{min-height:0;margin:0}#profD .err:empty{display:none}
-#profD h3{font-size:15px!important;margin:0 0 4px!important}
-#profD .sub{margin:0 0 6px!important;font-size:13.5px!important;line-height:1.4}
-#profD .btn{padding:9px 14px}#profD .btn.sm{padding:7px 12px}
-#profD .prow{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin:0 0 8px}#profD .prow h3{margin:0!important}#profD .prow .themes,#profD .prow .chips{margin:0!important}
-#profD .dev{padding:7px 0}
-#profD .dev b{font-size:15px;font-weight:700}#profD .dev small{font-size:12.5px;line-height:1.35}#profD .dev .tag{margin-left:6px;font-size:10.5px;padding:2px 8px}
-#profD .chip{padding:6px 14px;font-size:14px}
-#profD hr{margin:12px 0!important}
-/* profile: compact, with long sections folded */
-#profD h2{margin:0 0 4px}
-#profD label{margin:8px 0 2px;font-size:14px}
-#profD input,#profD .ctbtn{margin:0 0 4px;padding:10px 12px}
-#profD .err{min-height:0;margin:2px 0}
-#profD hr{margin:8px 0!important}
-#profD .prow{margin:4px 0}
-#profD .av.big{width:56px;height:56px;font-size:22px;flex:none}
-#profD .btn.sm{padding:6px 10px;font-size:13px}
-#profD .prow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-#profD .prow h3{margin:0;font-size:15px}
-#profD .prow+.prow{margin-top:14px}
-#profD .chip{padding:6px 12px;font-size:14px}
-#profD>.btn,#profD .err+.btn{margin-top:6px}
-.pfold{border-top:1px solid var(--line);margin-top:8px}
-.pfold>summary{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;list-style:none;padding:12px 2px;font-weight:700;font-size:16px}
-.pfold>summary::-webkit-details-marker{display:none}
-.pfold>summary::after{content:"▾";color:var(--mute);transition:transform .2s}
-.pfold[open]>summary::after{transform:rotate(180deg)}
-.pfold>:not(summary){margin-bottom:8px}
-/* account switcher */
-.acts{display:flex;gap:6px;flex:none}
-#savedW{margin-bottom:8px}#savedW .obtn{margin-bottom:6px}
-/* promo code box */
-.promo-row .copyrow{flex-wrap:nowrap;align-items:stretch}.promo-row .copyrow input{flex:1 1 0;min-width:0;text-transform:uppercase}.promo-row .copyrow .btn{flex:0 0 auto;padding:0 18px!important;font-size:15px!important}
-/* BLACK MD settings guide: self-contained dark poster */
-.bsg{--bg1:#04091c;--ink:#eaf2ff;--mute:#9db3dd;--c:#00e5ff;--b:#3d8bff;position:relative;overflow:hidden;border-radius:22px;padding:clamp(16px,3.2vw,34px);color:#eaf2ff;background:radial-gradient(900px 420px at 50% -8%,rgba(61,139,255,.45),transparent 62%),radial-gradient(600px 400px at 100% 100%,rgba(0,229,255,.18),transparent 65%),radial-gradient(500px 360px at 0% 70%,rgba(61,139,255,.16),transparent 65%),#04091c;border:1.5px solid transparent;background-clip:padding-box;box-shadow:0 0 0 1.5px rgba(0,229,255,.55),0 0 38px rgba(0,229,255,.28),0 30px 70px -30px rgba(61,139,255,.8);font-family:Poppins,'Exo 2',system-ui,sans-serif}
-.bsg *{box-sizing:border-box}
-.bsg::before{content:"";position:absolute;inset:8px;border-radius:16px;border:1px solid rgba(0,229,255,.22);pointer-events:none}
-.bsg-hero{text-align:center;padding:6px 0 18px}
-.bsg-tag{display:inline-block;padding:5px 16px;border:1px solid var(--c);border-radius:99px;font:700 clamp(11px,2.4vw,13px) Orbitron,sans-serif;letter-spacing:.28em;color:var(--c);background:rgba(0,229,255,.08);box-shadow:0 0 16px rgba(0,229,255,.35)}
-.bsg-hero h2{margin:12px 0 4px;font:800 clamp(30px,8.4vw,62px)/1.02 Orbitron,Poppins,sans-serif;letter-spacing:.04em;background:linear-gradient(90deg,#fff,#7fe9ff 45%,#6aa8ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 0 18px rgba(0,229,255,.55))}
-.bsg-hero p{margin:0;color:var(--mute);font-size:clamp(13px,3.2vw,17px);letter-spacing:.08em;text-transform:uppercase}
-.bsg-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:6px 0 20px}
-.bsg-card{position:relative;padding:14px 16px 12px;border-radius:16px;background:linear-gradient(165deg,rgba(61,139,255,.18),rgba(4,9,28,.85));border:1px solid rgba(0,229,255,.38);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 28px -16px rgba(0,229,255,.7)}
-.bsg-card h3{margin:0 0 8px;display:flex;align-items:center;gap:8px;font:700 15px Orbitron,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--c)}.bsg-card h3 i{font-style:normal;font-size:18px}
-.bsg-card ul{list-style:none;margin:0;padding:0}
-.bsg-card li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-top:1px solid rgba(0,229,255,.14);font-size:15px}.bsg-card li:first-child{border-top:0}
-.bsg-p{flex:none;min-width:58px;text-align:center;padding:2px 10px;border-radius:99px;font:800 12px Orbitron,sans-serif;letter-spacing:.08em}
-.bsg-p.on{color:#2dff9a;background:rgba(45,255,154,.1);border:1px solid #2dff9a;box-shadow:0 0 12px -2px #2dff9a}
-.bsg-p.off{color:#ff7a92;background:rgba(255,107,136,.08);border:1px solid rgba(255,107,136,.8)}
-.bsg-p.val{color:#7fe9ff;background:rgba(0,229,255,.1);border:1px solid var(--c);box-shadow:0 0 12px -3px var(--c);text-transform:uppercase}
-.bsg-sec h3{margin:6px 0 4px;text-align:center;font:800 clamp(16px,4.2vw,22px) Orbitron,sans-serif;letter-spacing:.2em;color:#fff;display:flex;align-items:center;gap:12px}
-.bsg-sec h3::before,.bsg-sec h3::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,transparent,var(--c));box-shadow:0 0 10px var(--c)}.bsg-sec h3::after{transform:scaleX(-1)}
-.bsg-sub{text-align:center;color:var(--mute);margin:4px auto 14px;max-width:640px;font-size:14px}
-.bsg-cmds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.bsg-cmd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:rgba(4,9,28,.8);border:1px solid rgba(61,139,255,.5);box-shadow:inset 3px 0 0 var(--c)}
-.bsg-cmd>div{min-width:0}.bsg-cmd em{display:block;font-style:normal;font-weight:700;font-size:14px;color:#fff}.bsg-cmd small{display:block;color:var(--mute);font-size:12px;margin-top:1px;overflow-wrap:anywhere}
-.bsg code{font-family:ui-monospace,Menlo,Consolas,monospace}
-.bsg-cmd code{display:inline-block;margin-top:6px;padding:4px 10px;border-radius:8px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.45);color:#7fe9ff;font-size:15px;font-weight:700;overflow-wrap:anywhere}
-.bsg-copy{flex:none;padding:7px 12px;border-radius:10px;border:1px solid var(--c);background:rgba(0,229,255,.1);color:#7fe9ff;font:700 13px Poppins,sans-serif;cursor:pointer;min-width:74px}.bsg-copy:active{transform:scale(.96)}
-.bsg-prefix{margin-top:12px;padding:14px 16px;border-radius:14px;background:linear-gradient(120deg,rgba(0,229,255,.12),rgba(61,139,255,.1));border:1px solid rgba(0,229,255,.5);box-shadow:0 0 24px -10px var(--c)}
-.bsg-pfx-t{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between}.bsg-pfx-t em{font-style:normal;font-weight:800;font:700 15px Orbitron,sans-serif;letter-spacing:.08em;color:#fff}
-.bsg-prefix code,.bsg-chipc{padding:3px 9px;border-radius:8px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.45);color:#7fe9ff;font-weight:700;font-size:14px}
-.bsg-prefix p{margin:8px 0 0;color:#cfe0ff;font-size:14px;line-height:1.6}.bsg-prefix b{color:#fff}
-.bsg-more{margin-top:12px;padding:12px 16px;border-radius:14px;border:1px dashed rgba(0,229,255,.45);background:rgba(4,9,28,.6)}
-.bsg-more em{display:block;font-style:normal;font:700 13px Orbitron,sans-serif;letter-spacing:.1em;color:var(--c);margin-bottom:8px;text-transform:uppercase}
-.bsg-more div{display:flex;flex-wrap:wrap;gap:8px}.bsg-more small{display:block;margin-top:8px;color:var(--mute);font-size:13px}.bsg-more small b{color:#fff}
-.bsg-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding-top:12px;border-top:1px solid rgba(0,229,255,.2);color:var(--mute);font:700 12px Orbitron,sans-serif;letter-spacing:.18em;text-transform:uppercase}
-.bsg-foot .btn{letter-spacing:0;text-transform:none;font-family:Poppins,sans-serif}
-@media(max-width:820px){.bsg-cols{grid-template-columns:minmax(0,1fr)}.bsg-cmds{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:380px){.bsg-card li{font-size:14px}.bsg-cmd code{font-size:14px}}
-/* ===== Liquid glass buttons: liquid rises inside the button on hover / press and drains when released ===== */
-.btn{position:relative;overflow:hidden;isolation:isolate;-webkit-tap-highlight-color:transparent;transition:transform .25s cubic-bezier(.3,1.5,.5,1),box-shadow .4s,color .3s,border-color .3s}
-.btn::before{content:"";position:absolute;left:-40%;width:180%;height:240%;top:108%;z-index:-1;pointer-events:none;border-radius:48% 52% 0 0/10% 7% 0 0;
-background:linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.36));transition:top .85s cubic-bezier(.22,1,.36,1);animation:liqSlosh 2.4s ease-in-out infinite alternate paused}
-.btn::after{content:"";position:absolute;left:3px;right:3px;top:1px;height:48%;border-radius:inherit;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0));opacity:.75}
-.btn.ghost::before{background:linear-gradient(180deg,var(--cyan),var(--blue))}
-.btn.red::before{background:linear-gradient(180deg,#ff8aa0,#e0183f)}
-.btn.ghost{background-image:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.02))}
-.btn.liq::before,.btn:active::before{top:-14%;animation-play-state:running}
-.btn.liq,.btn:active{box-shadow:0 0 0 1px rgba(var(--p2),.55),0 0 24px rgba(var(--p2),.6),inset 0 0 14px rgba(255,255,255,.28)}
-.btn.red.liq,.btn.red:active{box-shadow:0 0 0 1px rgba(255,90,120,.6),0 0 24px rgba(255,70,100,.6),inset 0 0 14px rgba(255,255,255,.25)}
-.btn.ghost.liq,.btn.ghost:active,.btn.red.liq,.btn.red:active{color:var(--btntxt)!important;border-color:transparent}
-.btn:active{transform:translateY(0) scale(.97)}
-@media(hover:hover){.btn:hover::before{top:-14%;animation-play-state:running}.btn:hover{box-shadow:0 0 0 1px rgba(var(--p2),.55),0 0 24px rgba(var(--p2),.6),inset 0 0 14px rgba(255,255,255,.28)}.btn.red:hover{box-shadow:0 0 0 1px rgba(255,90,120,.6),0 0 24px rgba(255,70,100,.6),inset 0 0 14px rgba(255,255,255,.25)}.btn.ghost:hover,.btn.red:hover{color:var(--btntxt)!important;border-color:transparent}}
-.btn:focus-visible::before{top:-14%;animation-play-state:running}.btn:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
-.btn:disabled::before,.btn:disabled::after{display:none}
-@keyframes liqSlosh{0%{transform:translateX(-6%);border-radius:48% 52% 0 0/10% 7% 0 0}50%{transform:translateX(3%);border-radius:55% 45% 0 0/7% 11% 0 0}100%{transform:translateX(6%);border-radius:44% 56% 0 0/11% 8% 0 0}}
-@media(prefers-reduced-motion:reduce){.btn::before{animation:none;transition:none}.btn{transition:none}}
-/* ===== Tilted 3D glass tray holding the liquid buttons ===== */
-.gtray{position:relative;display:flex;align-items:center;justify-content:center;height:236px;margin:2px -14px 0;overflow:hidden;perspective:900px}
-.gtray-in{position:relative;z-index:1;flex:none;box-sizing:border-box;width:min(80%,340px);height:232px;display:flex;flex-direction:column;gap:12px;padding:24px 16px;border-radius:30px;transform:translateY(0) rotateX(50deg);animation:trayRock 5.5s ease-in-out infinite;
-background:linear-gradient(145deg,rgba(255,255,255,.38),rgba(255,255,255,.08) 55%,rgba(var(--p2),.2));border:1.5px solid rgba(255,255,255,.6);
-box-shadow:inset 0 0 26px rgba(255,255,255,.4),inset 0 -10px 22px rgba(var(--p1),.2),inset 0 2px 0 rgba(255,255,255,.75)}
-.gtray-in::before{content:"";position:absolute;inset:7px;border-radius:24px;border:1px solid rgba(255,255,255,.35);pointer-events:none}
-.gtray-in .btn{display:flex;align-items:center;gap:10px;width:100%;height:52px;flex:none;margin:0;padding:0 16px;border-radius:999px;font:600 14.5px Poppins,'Exo 2',system-ui,sans-serif;text-align:left;text-decoration:none;color:var(--ink);
-background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.06));border:1.2px solid rgba(255,255,255,.65);box-shadow:0 3px 8px rgba(var(--p1),.25),inset 0 0 12px rgba(255,255,255,.25)}
-.gtray-in .btn:hover{transform:none}
-.gtray-in .btn svg{width:20px;height:20px;flex:none}
-.gtray-in .btn span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gt-dots{flex:none;font-style:normal;font-weight:800;letter-spacing:.1em;opacity:.65}
-.gtray-in .btn.gt-on::before{top:-14%;animation-play-state:running}
-.gtray-in .btn.gt-on{color:var(--btntxt)!important;border-color:transparent;box-shadow:0 0 0 1px rgba(var(--p2),.55),0 0 22px rgba(var(--p2),.6),inset 0 0 14px rgba(255,255,255,.3)}
-.gtray-in .btn.gt-wa::before{background:linear-gradient(180deg,#7dffb8,#13a85a)}
-.gtray-in .btn.gt-wa:hover,.gtray-in .btn.gt-wa.liq,.gtray-in .btn.gt-wa:active{box-shadow:0 0 0 1px rgba(60,230,130,.6),0 0 22px rgba(40,220,120,.6),inset 0 0 14px rgba(255,255,255,.28)}
-.gtray::before,.gtray::after{content:"";position:absolute;left:50%;top:50%;box-sizing:border-box;width:min(80%,340px);height:232px;border-radius:30px;pointer-events:none}
-.gtray::before{background:linear-gradient(145deg,rgba(var(--p2),.42),rgba(var(--p1),.46));border:1.5px solid rgba(255,255,255,.5);transform:translate(-50%,-50%) translateY(9px) rotateX(50deg);animation:trayRockB 5.5s ease-in-out infinite}
-.gtray::after{background:rgba(var(--p1),.55);filter:blur(14px);opacity:.6;transform:translate(-50%,-50%) translateY(30px) rotateX(50deg);animation:trayRockC 5.5s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.gtray::before,.gtray::after{animation:none}}
-.gtray-home{margin:0 -14px 6px}
-@media(max-width:420px){.gt-dots{display:none}.gtray-in .btn{padding:0 14px}}
-@media(prefers-reduced-motion:reduce){.gtray-in{animation:none}}
-@keyframes trayRock{0%,100%{transform:translateY(0) rotateX(42deg)}50%{transform:translateY(-8px) rotateX(56deg)}}
-@keyframes trayRockB{0%,100%{transform:translate(-50%,-50%) translateY(9px) rotateX(42deg)}50%{transform:translate(-50%,-50%) translateY(1px) rotateX(56deg)}}
-@keyframes trayRockC{0%,100%{transform:translate(-50%,-50%) translateY(30px) rotateX(42deg)}50%{transform:translate(-50%,-50%) translateY(26px) rotateX(56deg)}}
-/* ticket screenshots */
-.shots{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}.shot{position:relative;width:74px;height:74px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}.shot img{width:100%;height:100%;object-fit:cover;display:block}
-.shot button{position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font-size:12px;line-height:22px;padding:0;cursor:pointer}
-.shotrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.shotimg{width:96px;height:96px;object-fit:cover;border-radius:12px;border:1px solid var(--line);cursor:zoom-in;background:var(--solid)}
-.shotd{width:min(94vw,900px);max-height:92vh;padding:12px;text-align:center}.shotd img{max-width:100%;max-height:78vh;border-radius:10px;display:block;margin:0 auto 10px}
-/* two-step login */
-.tfkey{display:block;padding:10px 12px;margin:6px 0;border-radius:10px;border:1px dashed var(--cyan);font:700 15px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;overflow-wrap:anywhere}
-.tfbk{margin-top:12px;padding:12px;border-radius:12px;border:1px solid var(--ok);background:rgba(45,255,154,.06)}.tfbk p{margin:4px 0 8px;font-size:13px;color:var(--mute)}.tfbk code{display:block;margin-bottom:8px;font:700 15px ui-monospace,Menlo,Consolas,monospace;line-height:1.7}
-/* visual settings editor */
-.vgrp{margin:12px 0;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(var(--p1),.06)}.vgrp h4{margin:0 0 6px;font:700 13px Orbitron,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
-.vrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line)}.vrow:first-of-type{border-top:0}.vrow.vcol{flex-direction:column;align-items:stretch}
-.vsw{position:relative;flex:none;width:52px;height:30px;border-radius:99px;border:1.5px solid var(--line);background:var(--solid);padding:0;cursor:pointer;transition:background .25s,box-shadow .25s}.vsw i{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--mute);transition:transform .25s,background .25s}
-.vsw.on{background:linear-gradient(135deg,var(--blue),var(--cyan));border-color:transparent;box-shadow:0 0 14px rgba(var(--p2),.55)}.vsw.on i{transform:translateX(22px);background:#fff}
-.vseg{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.vseg button{flex:1 1 auto;padding:9px 12px;border-radius:99px;border:1.5px solid var(--line);background:var(--solid);color:var(--ink);font:600 14px inherit;cursor:pointer;text-transform:capitalize}.vseg button.on{background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--btntxt);border-color:transparent;box-shadow:0 0 14px rgba(var(--p2),.5)}
-.vpfx{display:flex;gap:8px;margin-top:6px}.vpfx input{margin:0;max-width:110px;text-align:center}
-.vsheet{position:sticky;bottom:0;margin:12px 0;padding:12px 14px;border-radius:14px;border:1.5px solid var(--cyan);background:var(--solid);box-shadow:0 0 22px rgba(var(--p2),.45),0 -8px 24px rgba(0,0,0,.18);z-index:3}.vsheet small{display:block;color:var(--mute);font-size:12px}.vsheet code{display:inline-block;margin:6px 0 8px;padding:5px 12px;border-radius:8px;background:rgba(var(--p2),.12);border:1px solid rgba(var(--p2),.5);font:700 16px ui-monospace,Menlo,Consolas,monospace;overflow-wrap:anywhere}.vact{display:flex;gap:8px;flex-wrap:wrap}.vact a.btn,.tfbk a.btn,#tfBody a.btn{text-decoration:none}.vwarn{margin-top:6px;color:#ffb020!important}
-/* admin bots list: stacked on phones so Stop / Start / Update / Delete are always in view */
-@media(max-width:560px){
-table:has(#aDeps){display:table!important;width:100%;overflow:visible}.panel:has(#aDeps){max-height:72vh!important;overflow-y:auto!important}
-table:has(#aDeps) thead{display:none}
-#aDeps tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
-#aDeps td{border:0;padding:0;min-width:0}
-#aDeps td:nth-child(1){grid-column:1;grid-row:1;font-size:16px;overflow-wrap:anywhere}
-#aDeps td:nth-child(3){grid-column:2;grid-row:1;justify-self:end}
-#aDeps td:nth-child(2){grid-column:1;grid-row:2;color:var(--mute);font-size:13px;overflow-wrap:anywhere}
-#aDeps td:nth-child(4){grid-column:2;grid-row:2;justify-self:end;color:var(--mute);font-size:13px}#aDeps td:nth-child(4)::before{content:"Due "}
-#aDeps td:nth-child(5){grid-column:1/-1;grid-row:3;min-width:0!important;display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}#aDeps td:nth-child(5) .btn{flex:1 1 auto}
-}
-@media(prefers-reduced-motion:reduce){.fc{transition:none}}
-</style></head><body>
-<canvas id="bg" aria-hidden="true"></canvas>
-<nav><span class="logo"><svg class="lmark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f7bff"/><stop offset="1" stop-color="#19d9ff"/></linearGradient></defs><path d="M6 6h20c7 0 11 3.6 11 9 0 3.4-1.7 5.9-4.6 7.2C36.7 23.5 39 26.4 39 30.5 39 37 34 42 26 42H6z" fill="url(#lg1)"/><path d="M14 14h11c2.6 0 4 1.1 4 2.8S27.600 19.600 25 19.600H14zM14 27h13c2.800 0 4.300 1.200 4.300 3s-1.500 3.200-4.300 3.200H14z" fill="#030a1e"/><path d="M40 12l-8 10h6l-4 9" fill="none" stroke="#19d9ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Bot<b>Fleet</b></span></span><span class="sp"></span>
-<span id="navOut" class="out"><button class="gear" id="gearBtn" aria-label="Language and theme" aria-expanded="false" title="Language and theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button><button class="btn sm ghost" onclick="openAuth('login')">Log in</button><button class="btn sm" onclick="openAuth('register')">Sign up</button></span>
-<span id="navIn" class="inn"><button class="bellb" id="bellBtn" onclick="openAnn()" aria-label="Announcements">🔔<span class="dot hide" id="bellDot"></span></button> <button class="av" id="avBtn" onclick="openProfile()" aria-label="Your profile"></button> <span class="bal" id="bal" onclick="openPay()" role="button" tabindex="0" title="Add money"></span> </span>
-<div id="setPop" class="pop hide" role="dialog" aria-label="Language and theme"><b>Theme</b><div class="themes" id="themes" role="group" aria-label="Theme"></div><b>Language</b><div class="chips" id="langChips2" style="margin:0"><span class="chip" data-l="en" aria-pressed="false">English</span><span class="chip" data-l="sw" aria-pressed="false">Kiswahili</span></div></div></nav>
-<main>
-<div class="tabs inn" id="tabs" role="group" aria-label="Sections"><span class="chip" data-t="home" aria-pressed="true">Home</span><span class="chip" data-t="bots" aria-pressed="false">Bots</span><span class="chip" data-t="hist" aria-pressed="false">History</span><span class="chip" data-t="refs" aria-pressed="false">Refer &amp; earn</span><span class="chip" data-t="help" aria-pressed="false">📺 Tutorials</span><span class="chip" data-t="guide" aria-pressed="false">⚙️ Settings guide</span><span class="chip" data-t="support" aria-pressed="false">💬 Support</span><span class="chip hide" id="tabAdmin" data-t="admin" aria-pressed="false">Admin</span></div>
-<div id="banners" class="inn"></div>
-<section class="hero out lp"><div class="hcopy"><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>FAST • SECURE • RELIABLE</span>
-<h1>Your WhatsApp bot, <span>online in 60 seconds.</span></h1>
-<p>WhatsApp bot hosting Kenya. Enjoy seamless deployment, automated session management, real-time logs, instant restarts, and powerful bot controls on one streamlined dashboard. <b class="priceTxt"></b> Pay seamlessly with Card, M-Pesa and other Mobile Money options.</p>
-<div class="gtray" role="group" aria-label="Get started"><div class="gtray-in"><button class="btn ghost gt-on" type="button" onclick="openAuth('register')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4c3.5-1 6-1 6-1s0 2.5-1 6l-6 6-5-5z"/><path d="M9 14l-4 1 3 3-1 4 4-1M7 10l-3 .5L6 8l3-1"/><circle cx="15.2" cy="8.8" r="1.2"/></svg><span>Create free account</span><i class="gt-dots" aria-hidden="true">⋯</i></button><button class="btn ghost " type="button" onclick="openAuth('login')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span>Log in</span><i class="gt-dots" aria-hidden="true">⋯</i></button><a class="btn ghost gt-wa" href="https://wa.me/254114283550?text=Hello%20BotFleet%20support%2C%20I%20need%20help" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.4l1.4-4.2A8.5 8.5 0 1 1 20.5 11.6z"/><path d="M9 8.5c.3 3 2.5 5.2 5.6 6l1.2-1.4-2-1-.9.6c-.8-.4-1.5-1.1-1.9-1.9l.6-.9-1-2z"/></svg><span>WhatsApp support</span><i class="gt-dots" aria-hidden="true">⋯</i></a></div></div>
-<div class="paywith"><span>Pay with:</span><span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h4"/></svg>Card</span><span class="pm"><img class="pl" src="data:image/png;base64,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" alt="" width="30" height="30">M-Pesa</span><span class="pm"><img class="pl" src="data:image/png;base64,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" alt="" width="30" height="30">Airtel Money</span></div></div>
-<div class="phones" aria-hidden="true">
-<div class="phw wa"><i class="sb l1"></i><i class="sb l2"></i><i class="sb r1"></i><div class="ph pa"><div class="pn"></div><div class="pt"><span>10:31</span><span class="sts"><s class="sg"></s><s class="bt"></s></span></div>
-<div class="phd"><span class="pl">Bot<b>Fleet</b></span><span class="pcoin">🪙 KES 430 · <u></u>10</span></div>
-<div class="ptab"><i class="on">Home</i><i>Bots</i><i>History</i><i>Refer &amp; earn</i></div>
-<div class="pw1"><small>Wallet balance</small><b>KES 430</b><i class="pbtn">+ Add money</i><div class="pcr"><span><u></u> <b>10</b> coins</span><i class="pbtn g">+ Buy coins</i></div>
-<div class="pg3"><div><small>Bots running</small><b>2 / 2</b></div><div><small>Next renewal</small><b>Nov 13</b></div><div><small>Commission</small><b>KES 0</b></div></div></div>
-<div class="pst"><b>Your bots</b><i class="pbtn g">+ Deploy a bot</i></div>
-<div class="pdc"><div><b>supreme-02</b><small>BLACK MD BOT · renews 11/13/2026</small></div><em class="ok">running</em><div class="pbb l"><i>Renew</i><i class="g">Manage</i><i class="g">⟳</i><i class="g r">🗑</i></div></div>
-<div class="pdc"><div><b>blizz-01</b><small>BLACK MD BOT · renews 11/13/2026</small></div><em>building</em><div class="pbb l"><i>Deploy</i><i class="g">Manage</i><i class="g">⟳</i><i class="g r">🗑</i></div></div>
-<div class="pfb wa">WhatsApp support</div><div class="pfb ml">Email us</div></div></div>
-<div class="phw wb"><i class="sb l1"></i><i class="sb l2"></i><i class="sb r1"></i><div class="ph pb2"><div class="pn"></div><div class="pt"><span>10:31</span><span class="sts"><s class="sg"></s><s class="bt"></s></span></div>
-<div class="phd"><span class="pl">Bot<b>Fleet</b></span><span class="pcoin">🪙 KES 430 · <u></u>10</span></div>
-<div class="ptab"><i>Home</i><i class="on">Bots</i><i>History</i><i>Refer &amp; earn</i></div>
-<div class="pwk">🏆 Bot of the week: <small>BLACK MD BOT</small></div>
-<div class="pst"><b>Choose a bot</b><i class="pbtn">+ Add your own</i></div>
-<div class="pchips"><i>BLACK MD BOT</i><i>BWM-XMD</i><i>KEITH MD</i></div><div class="psr">🔍 Search bots</div>
-<div class="pgrid"><div class="pb"><div class="pimg i1"></div><b>BLACK MD BOT</b><small>Multi-device WhatsApp bot</small><div class="pbb"><i>Deploy</i><i class="g">Reviews</i></div></div><div class="pb"><div class="pimg i2"></div><b>BWM-XMD</b><small>Feature-packed WhatsApp bot</small><div class="pbb"><i>Deploy</i><i class="g">Reviews</i></div></div><div class="pb"><div class="pimg i3"></div><b>KEITH MD</b><small>Fast multi-device WhatsApp</small><div class="pbb"><i>Deploy</i><i class="g">Reviews</i></div></div><div class="pb"><div class="pimg i4"></div><b>WOLF BOT</b><small>Silent Wolf, powerful</small><div class="pbb"><i>Deploy</i><i class="g">Reviews</i></div></div></div></div></div></div></section>
 
+app.use(express.static("pixel"));
+app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
+app.get("/settings", async (req, res) => {
+ try {
+    const { botname, dev } = require('./set.js');
+    const fetchSettings = require('./database/fetchSettings');
+    const db = await fetchSettings();
+    res.json({
+      botname,
+      dev,
+      wapresence: db.wapresence || 'recording',
+      menutype: db.menutype || 'video',
+      mode:   db.mode   || 'public',
+      prefix: db.prefix || '.'
+    });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+      }
+  });
+app.get("/uptime", (req, res) => {
+  res.json({ uptime: Math.floor(process.uptime()) });
+});
+app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 
-<div class="lp out lpwrap"><section class="fsec"><span class="dash"><i></i><i></i><i></i></span><h2>Powerful Features for <span>Smarter Bot Hosting</span></h2><p class="fsub">Everything you need to deploy, manage, and grow your WhatsApp bots — all in one place.</p><div class="fgrid"><div class="fc"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><b>1-Click Deployment</b><p>Get your bot online in seconds with our simple setup.</p></div><div class="fc"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Secure Sessions</b><p>Your data and sessions are protected 24/7.</p></div><div class="fc"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M9.5 12h5M9.5 16h5"/></svg></span><b>Real-Time Logs</b><p>Monitor activity and troubleshoot instantly.</p></div><div class="fc"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14-4L4 9M4 4v5h5M4 13a8 8 0 0 0 14 4l2-2M20 20v-5h-5"/></svg></span><b>Instant Restarts</b><p>Keep your bot running without downtime.</p></div><div class="fc"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><b>Full Bot Control</b><p>Manage logs, settings, restart, and update your bot anytime.</p></div><div class="fc"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h4"/></svg></span><b>Flexible Payments</b><p>Pay with Card, M-Pesa, or Airtel Money.</p></div><div class="fc"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12"/></svg></span><b>Bring Your Own Bot</b><p>Use your own bot from GitHub or choose from our supported bots.</p></div><div class="fc"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4 1.7 4 4.5"/></svg></span><b>Referral Rewards</b><p>Earn wallet credit for referring friends.</p></div></div></section>
-<section class="gsp"><div class="gst"><span>Simple 4-Step Process</span><h3>Get Started in Minutes</h3></div><div class="sgrid"><div class="sp2"><span class="sn">1</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span><b>Create Account</b><p>Sign up for a free account in seconds.</p></div><span class="sa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></span><div class="sp2"><span class="sn">2</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h11v4"/><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="16.5" cy="13.5" r="1.3"/></svg></span><b>Add Wallet Money</b><p>Use M-Pesa or Airtel Money to fund your wallet.</p></div><span class="sa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></span><div class="sp2"><span class="sn">3</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9.5 13v1.5M14.5 13v1.5"/><circle cx="12" cy="3.5" r="1"/></svg></span><b>Pick a Bot</b><p>Get your session ID instantly.</p></div><span class="sa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></span><div class="sp2"><span class="sn">4</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4c3.5-1 6-1 6-1s0 2.5-1 6l-6 6-5-5z"/><path d="M9 14l-4 1 3 3-1 4 4-1M7 10l-3 .5L6 8l3-1M14 17l-.5 3 2.5-2 1-3"/><circle cx="15.2" cy="8.8" r="1.2"/></svg></span><b>Deploy</b><p>Name your bot, paste the session ID and go live!</p></div></div></section>
-<section class="ctap"><div><h3>Ready to deploy <span>your WhatsApp bot?</span></h3><p>Join thousands using BotFleet Host for fast, secure and reliable bot hosting.</p></div><div class="ctab"><button class="btn big" onclick="openAuth('register')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4c3.5-1 6-1 6-1s0 2.5-1 6l-6 6-5-5z"/><path d="M9 14l-4 1 3 3-1 4 4-1M7 10l-3 .5L6 8l3-1M14 17l-.5 3 2.5-2 1-3"/><circle cx="15.2" cy="8.8" r="1.2"/></svg><span>Create free account</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><a class="btn ghost big" href="https://wa.me/254114283550?text=Hello%20BotFleet%20support%2C%20I%20need%20help" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.4l1.4-4.2A8.5 8.5 0 1 1 20.5 11.6z"/><path d="M9 8.5c.3 3 2.5 5.2 5.6 6l1.2-1.4-2-1-.9.6c-.8-.4-1.5-1.1-1.9-1.9l.6-.9-1-2z"/></svg><span>WhatsApp support</span></a></div></section></div>
-<section id="home" class="inn">
-<div class="hsum"><div class="hbal"><small>Wallet balance</small><b id="hBal">KES 0</b><div class="hbtns"><button class="btn sm" onclick="openPay()">＋ Add money</button></div><div class="hcoin"><span>🪙 <b id="hCoins">0</b> coins</span><button class="btn sm ghost" onclick="openCoins()">＋ Buy coins</button></div></div>
-<div class="hgrid"><div><small>Bots running</small><b id="hRun">0 / 0</b></div><div><small>Next renewal</small><b id="hNext">None</b></div><div><small>Commission</small><b id="hCom">KES 0</b></div></div></div>
-<div class="panel gs hide" id="getStarted"><div class="gsh"><b>Get started</b><span class="gsr"><span id="gsPct">0%</span><button class="btn sm ghost" id="gsTog" onclick="toggleSteps()">Hide</button></span></div><div class="pbar"><i id="gsBar"></i></div><ul class="gsl" id="gsList"></ul>
-<div class="gsf"><span id="gsMsg"></span><span style="display:flex;gap:8px"><button class="btn sm" id="gsBtn"></button></span></div></div>
-<div class="gtray gtray-home" role="group" aria-label="Quick actions"><div class="gtray-in"><button class="btn ghost gt-on" type="button" onclick="openPay()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h11v4"/><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="16.5" cy="13.5" r="1.3"/></svg><span>Add money</span><i class="gt-dots" aria-hidden="true">⋯</i></button><button class="btn ghost " type="button" onclick="showTab('bots')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4c3.5-1 6-1 6-1s0 2.5-1 6l-6 6-5-5z"/><path d="M9 14l-4 1 3 3-1 4 4-1M7 10l-3 .5L6 8l3-1"/><circle cx="15.2" cy="8.8" r="1.2"/></svg><span>Deploy a bot</span><i class="gt-dots" aria-hidden="true">⋯</i></button><button class="btn ghost " type="button" onclick="openTk()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span>New ticket</span><i class="gt-dots" aria-hidden="true">⋯</i></button></div></div>
-<div class="shead"><h2>Your bots</h2><button class="btn sm ghost" onclick="showTab('bots')">＋ Deploy a bot</button></div>
-<div id="deps" class="dlist"></div><div id="noDeps" class="empty">No bots yet. <a href="#" onclick="showTab('bots');return false">Browse bots</a></div>
-</section>
-<section id="botsTab" class="inn hide"><div id="trend"></div>
-<div class="shead"><h2>Choose a bot</h2><button class="btn sm" onclick="openCb()">＋ Add your own</button></div>
-<div class="strip" id="topStrip"></div>
-<input id="botQ" placeholder="🔍 Search bots" oninput="filterBots()" aria-label="Search bots" style="margin:0 0 14px">
-<div class="grid" id="grid"></div></section>
-<section id="help" class="inn hide faq"><h2>Tutorials</h2><p class="sub">Watch short videos and read quick answers to get your bot running.</p>
-<h3 style="margin:6px 0 12px">Videos</h3><div class="vgrid" id="vids"></div><p class="sub" id="noVids">Videos are coming soon.</p>
-<h3 style="margin:22px 0 6px">Getting started</h3>
-<details><summary>How do I deploy my first bot?</summary><p>1) Tap Add money on the Home tab. 2) Open the Bots tab, pick a bot and tap Get session ID. 3) Scan the code on its pairing site and copy your session ID. 4) Tap Deploy, choose a plan, give your bot a name, paste the session ID and tap Pay and deploy. It goes live in 1 to 3 minutes.</p></details>
-<details><summary>How do I get a session ID?</summary><p>Every bot has its own pairing site. Tap Get session ID on the bot's card, scan the code with WhatsApp (Linked devices), and copy the session ID it gives you.</p></details>
-<details><summary>What name can I give my bot?</summary><p>3 to 30 characters: lowercase letters, numbers and dashes, starting with a letter, for example blackmd-01. Each name can only be used once.</p></details>
-<h3 style="margin:22px 0 6px">Payments</h3>
-<details><summary>How do I add money?</summary><p>Tap Add money on the Home tab, choose M-Pesa or Airtel Money, enter an amount and tap Pay now. Your wallet updates when the payment succeeds. If it does not, log in again and it is checked automatically, or message support with your payment reference.</p></details>
-<details><summary>How much does it cost?</summary><p>One bot costs KES 50 per month. Paying for 3 or 6 months at once gives you a discount.</p></details>
-<details><summary>How do promo codes and vouchers work?</summary><p>Tap Add money, type your promo or voucher code in the code box and tap Apply code. A promo code works once per account and may expire or run out. A voucher is prepaid wallet credit that can be used once.</p></details>
-<details><summary>Can I get a refund?</summary><p>Read our <a href="/refund" target="_blank">Refund policy</a>. If a deployment fails to start, your money is returned to your wallet automatically.</p></details>
-<h3 style="margin:22px 0 6px">Your bots</h3>
-<details><summary>My bot went offline. What do I do?</summary><p>Tap Manage on your bot, open Logs and read the last lines. If the session expired, get a new session ID, open the Session tab and paste it. You can also tap Restart.</p></details>
-<details><summary>My bot settings reset after a restart</summary><p>Open Manage, then the Database tab, and tap Enable database. After that, set your settings once and they will stay.</p></details>
-<details><summary>How do I renew my bot?</summary><p>Tap Renew on your bot and choose 1, 3 or 6 months. You can also leave Auto-renew ticked, and it renews from your wallet when it is due. We email you before it expires.</p></details>
-<details><summary>What happens if I do not renew?</summary><p>The bot stops when its time runs out. Top up your wallet and tap Renew to start it again.</p></details>
-<details><summary>Can I add my own bot?</summary><p>Yes. Open the Bots tab, tap Add your own and paste the link to a public GitHub repo. Once it is approved you can deploy it like any other bot.</p></details>
-<h3 style="margin:22px 0 6px">Your account</h3>
-<details><summary>How do I change my name, photo or password?</summary><p>Tap your profile picture at the top of the page.</p></details>
-<details><summary>How does Refer &amp; earn work?</summary><p>Open the Refer &amp; earn tab, copy your link and share it. When a friend signs up with it and makes their first top-up, you earn commission. Once it reaches KES 50 you can withdraw it to M-Pesa, or move it to your wallet to pay for bots.</p></details>
-<details><summary>How do I install the app on my phone?</summary><p>On Android Chrome, tap the menu (three dots) and choose Install app or Add to Home screen. On iPhone Safari, tap Share and choose Add to Home Screen. The BotFleet icon then opens the site like an app.</p></details>
-<details><summary>How do I contact support?</summary><p>Open the Support tab and tap New ticket. We reply there and email you. You can also chat with us on WhatsApp with the green button.</p></details>
-<div class="panel" style="margin-top:22px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap"><span>Still stuck? We are happy to help.</span><a class="btn sm" style="text-decoration:none" href="https://wa.me/254114283550?text=Hello%20BotFleet%20support%2C%20I%20need%20help%20with%20a%20tutorial" target="_blank" rel="noopener">Ask on WhatsApp</a></div></section>
-<section id="guide" class="inn hide"><div class="bsg" id="bsgPoster">
-<header class="bsg-hero"><span class="bsg-tag">BLACK MD BOT</span><h2>CONTROL PANEL</h2><p>Default settings &amp; how to change them</p></header>
-<div class="bsg-cols">
-<div class="bsg-card"><h3><i>🔒</i>Security</h3><ul><li><span>AntiLink</span><b class="bsg-p on">ON</b></li><li><span>AntiLinkAll</span><b class="bsg-p off">OFF</b></li><li><span>AntiDelete</span><b class="bsg-p on">ON</b></li><li><span>AntiCall</span><b class="bsg-p on">ON</b></li><li><span>AntiBot</span><b class="bsg-p off">OFF</b></li><li><span>AntiTag</span><b class="bsg-p on">ON</b></li><li><span>BadWord</span><b class="bsg-p on">ON</b></li></ul></div>
-<div class="bsg-card"><h3><i>🤖</i>Automation</h3><ul><li><span>AutoRead</span><b class="bsg-p off">OFF</b></li><li><span>AutoLike</span><b class="bsg-p off">OFF</b></li><li><span>AutoView</span><b class="bsg-p on">ON</b></li><li><span>AutoBio</span><b class="bsg-p off">OFF</b></li><li><span>WelcomeGoodbye</span><b class="bsg-p off">OFF</b></li></ul></div>
-<div class="bsg-card"><h3><i>💬</i>Bot behaviour</h3><ul><li><span>GPTDM</span><b class="bsg-p off">OFF</b></li><li><span>Mode</span><b class="bsg-p val">PUBLIC</b></li><li><span>Prefix</span><b class="bsg-p val">.</b></li><li><span>MenuType</span><b class="bsg-p val">VIDEO</b></li><li><span>WAPresence</span><b class="bsg-p val">ONLINE</b></li></ul></div>
-</div>
-<div class="bsg-sec"><h3><span>HOW TO CHANGE</span></h3><p class="bsg-sub">Send these to your bot on WhatsApp (you can even use “Message yourself”). Tap <b>Copy</b>, then paste.</p>
-<div class="bsg-cmds"><div class="bsg-cmd"><div><em>Stop the “recording” status</em><small>or .wapresence offline / .wapresence typing</small><code>.wapresence online</code></div><button type="button" class="bsg-copy" data-c=".wapresence online" onclick="bsgCopy(this)" aria-label="Copy command">Copy</button></div><div class="bsg-cmd"><div><em>Switch off anticall</em><code>.anticall off</code></div><button type="button" class="bsg-copy" data-c=".anticall off" onclick="bsgCopy(this)" aria-label="Copy command">Copy</button></div><div class="bsg-cmd"><div><em>Switch off autolike status</em><code>.autolike off</code></div><button type="button" class="bsg-copy" data-c=".autolike off" onclick="bsgCopy(this)" aria-label="Copy command">Copy</button></div><div class="bsg-cmd"><div><em>Switch off autoview</em><code>.autoview off</code></div><button type="button" class="bsg-copy" data-c=".autoview off" onclick="bsgCopy(this)" aria-label="Copy command">Copy</button></div><div class="bsg-cmd"><div><em>Change the menu type</em><small>or .menutype image / .menutype text</small><code>.menutype video</code></div><button type="button" class="bsg-copy" data-c=".menutype video" onclick="bsgCopy(this)" aria-label="Copy command">Copy</button></div></div>
-<div class="bsg-prefix"><div class="bsg-pfx-t"><em>Change your prefix</em><code>.prefix 🦅</code></div><p>Type <b>.prefix</b> then the symbol you want, like <b>★</b> <b>/</b> <b>*</b> <b>!</b> or any emoji. <code>.prefix 🦅</code> changes your prefix from <b>.</b> to <b>🦅</b>. After that, start every command with your new prefix.</p></div>
-<div class="bsg-more"><em>Same pattern for the other settings</em><div><code class="bsg-chipc">.antilink off</code><code class="bsg-chipc">.antilinkall on</code><code class="bsg-chipc">.antidelete off</code><code class="bsg-chipc">.antibot on</code><code class="bsg-chipc">.antitag off</code><code class="bsg-chipc">.badword off</code><code class="bsg-chipc">.autoread on</code><code class="bsg-chipc">.autobio on</code><code class="bsg-chipc">.welcomegoodbye on</code><code class="bsg-chipc">.gptdm on</code></div><small>Use <b>on</b> or <b>off</b> after the setting name. Then send <b>.settings</b> to see the new state.</small></div>
-</div>
-<div class="bsg-foot"><span>BotFleet Hub</span><a class="btn sm bsg-save" href="/blackmd-settings-poster.png" download="BlackMD-settings-poster.png">⬇ Save poster</a></div>
-</div></section>
-<section id="support" class="inn hide"><div class="shead"><h2>Support</h2><button class="btn sm" onclick="openTk()">＋ New ticket</button></div>
-<p class="sub">Send us a message and we will reply here. You can also chat with us on WhatsApp.</p>
-<div id="tkList" class="dlist"></div><div id="noTk" class="empty">No tickets yet.</div>
-<div class="panel" style="margin-top:16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap"><span>Prefer WhatsApp?</span><a class="btn sm" style="text-decoration:none" href="https://wa.me/254114283550?text=Hello%20BotFleet%20support%2C%20I%20need%20help" target="_blank" rel="noopener">Chat on WhatsApp</a></div></section>
-<section id="hist" class="inn hide"><h2>History</h2><div class="hbar"><select id="hRange" aria-label="Period"><option value="">All time</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option><option value="365">Last 12 months</option></select><button class="btn sm" onclick="dlStatement()">⬇ PDF statement</button><button class="btn sm ghost" onclick="dlCsv()">⬇ CSV export</button><button class="btn sm red" onclick="clearHist()">Clear history</button></div><p class="sub hnote">Download a statement or CSV of what is shown here. Clearing removes the list from this page; BotFleet keeps payment records for accounting.</p><div class="stats sc3" id="hsum" style="margin:12px 0"></div><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Date<th>Type<th>Amount<th>Note<th></tr></thead><tbody id="txs"></tbody></table><p class="sub" id="noTx" style="margin:14px 0 0">No activity yet.</p></div></section>
-<section id="refs" class="inn hide"><h2>Refer &amp; earn</h2><p class="sub">Share your link. When a friend signs up and makes their first top-up, you earn <b>KES <span id="rBonus">20</span></b> commission. Once it reaches the minimum you can withdraw it to M-Pesa, or move it to your wallet to pay for bots.</p>
-<div class="panel"><div class="copyrow"><input id="rLink" readonly aria-label="Your referral link"><button class="btn" onclick="copyRef()">Copy</button><a class="btn ghost" id="rWa" target="_blank" rel="noopener" style="text-decoration:none">Share on WhatsApp</a></div></div>
-<div class="panel"><b>Your commission</b><div style="font:800 28px Orbitron,sans-serif;margin:8px 0">KES <span id="cmAmt">0</span></div><p class="sub" id="cmNote" style="margin:0 0 12px"></p>
-<label>M-Pesa number for withdrawals</label><input id="cmPhone" inputmode="tel" placeholder="0712345678" maxlength="16"><div class="err" id="cmErr"></div>
-<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="cmBtn" onclick="withdraw()">Withdraw to M-Pesa</button><button class="btn ghost" onclick="cmToWallet()">Move to wallet</button></div><div id="wdList" style="margin-top:14px"></div></div>
-<h3 style="margin:6px 0 10px">Top referrers this month</h3><div class="panel"><table><thead><tr><th>#<th>Name<th>Referrals</tr></thead><tbody id="lb"></tbody></table><p class="sub" id="noLb" style="margin:12px 0 0">No referrals yet this month. Be the first!</p></div>
-<div class="stats sc3"><div class="sc"><span class="ic">🤝</span><div class="tx"><span class="lb">Friends joined</span><span class="vl" id="rJoined">0</span></div></div><div class="sc ok"><span class="ic">✅</span><div class="tx"><span class="lb">Friends who paid</span><span class="vl" id="rPaid">0</span></div></div><div class="sc gold"><span class="ic">💸</span><div class="tx"><span class="lb">You earned</span><span class="vl">KES <span id="rEarned">0</span></span></div></div></div></section>
-<section id="admin" class="inn hide"><h2>Admin</h2><div class="stats scg" id="aStats"></div>
-<h3 style="margin:10px 0">Bots</h3><div class="copyrow" style="margin:0 0 10px"><select id="aUpBot" aria-label="Bot type"></select><button class="btn sm" onclick="admUpdateAll()">Update all of this bot</button></div><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Name<th>Owner<th>Status<th>Due<th></tr></thead><tbody id="aDeps"></tbody></table></div>
-<div class="panel"><b>Last 30 days: top-ups (cyan) and sign-ups (dots)</b><svg id="aChart" viewBox="0 0 300 90" style="width:100%;height:150px;margin-top:8px"></svg></div>
-<div class="panel"><b>Announcements</b><div class="copyrow" style="margin:8px 0"><input id="annT" maxlength="600" placeholder="Write a new announcement for all users"><button class="btn" onclick="saveAnn()">Post</button></div><div id="annList"></div></div>
-<div class="panel"><b>Email all users</b><input id="bcS" maxlength="120" placeholder="Subject" style="margin-top:8px"><textarea id="bcB" rows="4" maxlength="5000" placeholder="Message"></textarea><button class="btn" onclick="broadcast()">Send to all verified users</button></div>
-<div class="panel" id="coinAdm"><b>BotFleet Coins</b> <small style="color:var(--mute)">1 coin = KES <span id="acKes">10</span></small>
-<p class="sub" style="margin:6px 0 4px;font-size:14px"><b>Deployment cost in coins</b> (leave a box empty to follow the KES price)</p>
-<div class="copyrow"><input id="acC1" placeholder="1 month"><input id="acC3" placeholder="3 months"><input id="acC6" placeholder="6 months"><button class="btn" onclick="acCosts()">Save costs</button></div>
-<p class="sub" style="margin:10px 0 4px;font-size:14px"><b>Packages</b> (price = coins x coin value; bonus coins are free)</p>
-<div style="overflow-x:auto;max-height:170px;overflow-y:auto"><table><thead><tr><th>Name<th>Coins<th>Bonus<th>Price<th>Order<th></tr></thead><tbody id="acPk"></tbody></table></div>
-<div class="copyrow" style="margin-top:6px"><input id="acPn" placeholder="Name"><input id="acPc" placeholder="Coins"><input id="acPb" placeholder="Bonus coins"><input id="acPs" type="number" placeholder="Order"><button class="btn" onclick="acSavePk()">Save package</button></div>
-<p class="sub" style="margin:10px 0 4px;font-size:14px"><b>What Paystack accepts</b> <span id="acProbeAt"></span></p>
-<div style="overflow-x:auto;max-height:170px;overflow-y:auto"><table><thead><tr><th>Currency<th>Status<th>Methods<th>Offer</tr></thead><tbody id="acCur"></tbody></table></div>
-<div class="copyrow" style="margin-top:6px"><button class="btn" onclick="acProbe()">Check Paystack now</button><button class="btn ghost" onclick="acTest()">Run self-test</button></div>
-<p class="sub" style="margin:10px 0 4px;font-size:14px"><b>Exchange rate</b> <span id="acFx"></span></p>
-<div class="copyrow"><input id="acUsd" placeholder="Manual: 1 KES in USD, e.g. 0.0077"><input id="acMk" type="number" step="0.5" placeholder="Markup %"><button class="btn" onclick="acFx(false)">Save</button><button class="btn ghost" onclick="acFx(true)">Refresh rate</button></div>
-<p class="sub" id="acMsg" style="margin:8px 0 0;font-size:14px"></p></div>
-<div class="panel"><b>Heroku accounts</b><p class="sub" style="margin:4px 0 8px;font-size:14px">Each month: add the new API key, then move the bots that are still paid for. Keep the old key here until all its bots are moved.</p>
-<div style="overflow-x:auto"><table><thead><tr><th>Account<th>Bots (live / all)<th></tr></thead><tbody id="hkList"></tbody></table></div>
-<div class="copyrow" style="margin:8px 0"><input id="hkL" placeholder="Label, e.g. November" maxlength="40"><input id="hkT" type="password" placeholder="New Heroku API key" autocomplete="off"><button class="btn" onclick="hkAdd()">Add &amp; use</button></div>
-<div class="copyrow"><select id="hkFrom" aria-label="Move bots from"></select><select id="hkTo" aria-label="Move bots to"></select></div>
-<div class="copyrow"><button class="btn" onclick="hkMigrate(0,0)">Move paid bots</button><button class="btn ghost" onclick="hkMigrate(1,0)">Test with 1 bot</button><button class="btn ghost" onclick="hkMigrate(0,1)">Retry failed</button></div>
-<p class="sub" id="hkMsg" style="margin:8px 0 0;font-size:14px"></p></div>
-<div class="panel"><b>Vouchers (prepaid wallet credit)</b><div class="copyrow" style="margin:8px 0"><input id="vcV" type="number" placeholder="Value KES, e.g. 500"><input id="vcN" type="number" placeholder="How many (1-100)"><input id="vcD" type="number" placeholder="Valid days (optional)"><button class="btn" onclick="genVouchers()">Generate</button></div>
-<textarea id="vcOut" class="hide" rows="5" readonly></textarea><button class="btn sm ghost hide" id="vcCopy" onclick="copyVch()" style="margin:8px 0">Copy codes</button>
-<div style="overflow-x:auto"><table><thead><tr><th>Code<th>Value<th>Status</tr></thead><tbody id="aVch"></tbody></table></div></div>
-<div class="panel"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>Promo codes</b><button class="btn sm red" onclick="clearPromos()">Delete closed codes</button></div><div class="copyrow" style="margin:8px 0"><input id="pcC" placeholder="CODE" maxlength="20" style="text-transform:uppercase"><select id="pcT" onchange="pcType()" aria-label="Code type"><option value="bonus">Wallet bonus (KES)</option><option value="percent">Discount (% off)</option></select><input id="pcB" type="number" placeholder="Bonus KES"><input id="pcM" type="number" placeholder="Max uses"><input id="pcD" type="number" placeholder="Valid days"><button class="btn" onclick="makePromo()">Create</button></div><table><thead><tr><th>Code<th>Value<th>Used<th>Status<th></tr></thead><tbody id="aPromos"></tbody></table></div>
-<div class="panel"><b>Export</b> <button class="btn sm ghost" onclick="exportCsv('users')">Users CSV</button> <button class="btn sm ghost" onclick="exportCsv('payments')">Payments CSV</button> <button class="btn sm ghost" onclick="exportCsv('vouchers')">Vouchers CSV</button> <button class="btn sm ghost" onclick="cleanSess()">Clean session settings</button></div>
-<div class="panel"><b>Tutorial videos</b><div class="copyrow" style="margin:8px 0"><input id="tuT" placeholder="Title" maxlength="80"><input id="tuU" placeholder="YouTube link"><input id="tuC" placeholder="Category, e.g. Getting started" maxlength="30"><button class="btn" onclick="addTut()">Add</button></div><div id="tuList"></div></div>
-<h3 class="ah" style="margin:10px 0">Activity log <button class="btn sm red" onclick="clearLog()">Clear log</button></h3><div class="panel" style="overflow-x:auto"><table><thead><tr><th>When<th>Admin<th>Action<th>Details</tr></thead><tbody id="aLog"></tbody></table></div>
-<h3 class="ah" style="margin:10px 0">Support tickets <button class="btn sm red" onclick="clearTickets()">Clear closed</button></h3><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Subject<th>User<th>Status<th>Updated<th></tr></thead><tbody id="aTk"></tbody></table></div>
-<h3 style="margin:10px 0">Withdrawal requests</h3><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Date<th>User<th>Amount<th>M-Pesa<th>Status<th></tr></thead><tbody id="aWd"></tbody></table></div>
-<h3 style="margin:10px 0">Bots: deployments and revenue</h3><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Bot<th>Deployments<th>Revenue (current bots)</tr></thead><tbody id="aBotRev"></tbody></table></div>
-<h3 style="margin:10px 0">New users per week</h3><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Week starting<th>New users</tr></thead><tbody id="aWeekly"></tbody></table></div>
-<h3 style="margin:10px 0">Reviews to moderate</h3><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Bot<th>User<th>Review<th></tr></thead><tbody id="aRev"></tbody></table></div>
-<h3 style="margin:10px 0">Custom bot requests</h3><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Bot<th>User<th>Status<th></tr></thead><tbody id="aCust"></tbody></table></div>
-<h3 class="ah" style="margin:10px 0">Payments <button class="btn sm red" onclick="clearPays()">Clear unpaid</button></h3><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Date<th>User<th>Amount<th>Status<th></tr></thead><tbody id="aPays"></tbody></table></div>
-<h3 style="margin:10px 0">Users</h3><input id="aSearch" placeholder="Search users by email" oninput="clearTimeout(window.__st);window.__st=setTimeout(()=>loadAdmin().catch(x=>toast(x.message)),350)"><div class="panel" style="overflow-x:auto"><table><thead><tr><th>Email<th>Balance<th>Bots<th></tr></thead><tbody id="aUsers"></tbody></table></div></section>
+authentication()
+  .then(() => fetchCore())
+  .then(() => startRaven());
 
-</main>
-<div class="fab"><a class="fb wa" href="https://wa.me/254114283550?text=Hello%20BotFleet%20support%2C%20I%20need%20help" target="_blank" rel="noopener" aria-label="WhatsApp support"><svg viewBox="0 0 24 24"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.4l1.4-4.2A8.5 8.5 0 1 1 20.5 11.6z"/><path d="M9 8.5c.3 3 2.5 5.2 5.6 6l1.2-1.4-2-1-.9.6c-.8-.4-1.5-1.1-1.9-1.9l.6-.9-1-2z"/></svg><span>WhatsApp support</span></a>
-<a class="fb mail" href="mailto:blueblizzardme22@gmail.com?subject=BotFleet%20support" aria-label="Email support"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Email us</span></a></div>
-<footer><span class="fl out"><svg class="lmark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f7bff"/><stop offset="1" stop-color="#19d9ff"/></linearGradient></defs><path d="M6 6h20c7 0 11 3.6 11 9 0 3.4-1.7 5.9-4.6 7.2C36.7 23.5 39 26.4 39 30.5 39 37 34 42 26 42H6z" fill="url(#lg2)"/><path d="M14 14h11c2.6 0 4 1.1 4 2.8S27.600 19.600 25 19.600H14zM14 27h13c2.800 0 4.300 1.200 4.300 3s-1.500 3.200-4.300 3.200H14z" fill="#030a1e"/><path d="M40 12l-8 10h6l-4 9" fill="none" stroke="#19d9ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="logo"><span>Bot<b>Fleet</b></span></span></span><span class="fm">BotFleet Hub Deploy and Run your Bot with One Click ©®blizzard.<br><small><a href="/terms" target="_blank">Terms</a> · <a href="/privacy" target="_blank">Privacy</a> · <a href="/refund" target="_blank">Refunds</a> · <a href="/status" target="_blank">Status</a></small></span><span class="fr out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span>Your Bots. Your Control. Your Automation.</span></span></footer>
-
-<dialog id="authD"><h2 id="authT">Log in</h2><form id="authF" style="margin-top:16px"><div id="savedW" class="hide"></div><div id="oaW" class="hide"><a class="obtn hide" id="oaG" href="/api/auth/google" data-u="/api/auth/google" onclick="this.href=this.dataset.u+'?ref='+encodeURIComponent(localStorage.bfref||'')"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23 12.3c0-.8-.1-1.5-.2-2.2H12v4.3h6.2a5.3 5.3 0 0 1-2.3 3.5v2.9h3.7c2.2-2 3.4-5 3.4-8.5z"/><path fill="#34A853" d="M12 23.5c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.3 1.1-3.9 1.1-3 0-5.5-2-6.4-4.7H1.8v3A11.5 11.5 0 0 0 12 23.5z"/><path fill="#FBBC05" d="M5.6 14.2a6.9 6.9 0 0 1 0-4.4v-3H1.8a11.5 11.5 0 0 0 0 10.4z"/><path fill="#EA4335" d="M12 5.4c1.7 0 3.2.6 4.4 1.7l3.3-3.3A11.5 11.5 0 0 0 1.8 6.8l3.8 3c.9-2.700 3.400-4.400 6.400-4.400z"/></svg><span>Continue with Google</span></a><a class="obtn hide" id="oaH" href="/api/auth/github" data-u="/api/auth/github" onclick="this.href=this.dataset.u+'?ref='+encodeURIComponent(localStorage.bfref||'')"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.200.7-3.900-1.400-3.900-1.400-.5-1.300-1.300-1.700-1.300-1.700-1-.7.100-.7.100-.7 1.200.1 1.800 1.200 1.800 1.200 1 1.800 2.800 1.300 3.400 1 .1-.8.400-1.300.8-1.600-2.600-.3-5.300-1.300-5.300-5.700 0-1.300.5-2.300 1.200-3.100-.1-.3-.5-1.500.1-3.100 0 0 1-.3 3.200 1.200a11 11 0 0 1 5.800 0c2.200-1.500 3.200-1.200 3.200-1.200.6 1.600.2 2.800.1 3.100.8.800 1.200 1.800 1.200 3.100 0 4.400-2.700 5.400-5.300 5.700.4.400.8 1.100.8 2.200v3.200c0 .3.2.7.8.6A11.500 11.500 0 0 0 12 .5z"/></svg><span>Continue with GitHub</span></a><p class="oterms">By continuing you agree to the <a href="/terms" target="_blank">Terms</a>, <a href="/privacy" target="_blank">Privacy</a> and <a href="/refund" target="_blank">Refund</a> policies.</p><p class="oor"><span>or use email</span></p></div>
-<div id="nameW" class="hide"><label>Your name</label><input id="aName" autocomplete="name"></div>
-<div id="ctW" class="hide"><label>Country</label><button type="button" class="ctbtn" id="rgCt"></button></div>
-<label>Email</label><input id="aEmail" type="email" required autocomplete="email">
-<label>Password</label><input id="aPass" type="password" required minlength="8" autocomplete="current-password">
-<div id="regW" class="hide"><div class="hp" aria-hidden="true"><input id="hp" tabindex="-1" autocomplete="off" placeholder="Leave empty"></div><div id="cf"></div><label class="legal"><input type="checkbox" id="agree">I agree to the <a href="/terms" target="_blank">Terms</a>, <a href="/privacy" target="_blank">Privacy</a> and <a href="/refund" target="_blank">Refund</a> policies.</label></div>
-<p id="fpW" class="hide" style="margin:-6px 0 12px;text-align:right"><a href="#" id="forgot">Forgot password?</a></p><div class="err" id="authE"></div><button class="btn" style="width:100%" id="authB">Log in</button></form>
-<form id="rstF" class="hide" style="margin-top:16px"><p class="sub" id="rstMsg"></p><label>Email</label><input id="rEmail" type="email" required autocomplete="email"><div id="rstMore" class="hide"><label>6-digit code</label><input id="rCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code"><label>New password</label><input id="rPass" type="password" minlength="8" autocomplete="new-password"></div><div class="err" id="rstE"></div><button class="btn" style="width:100%" id="rstB">Send code</button><p style="text-align:center;margin:12px 0 0"><a href="#" id="rstBack">Back to log in</a></p></form>
-<form id="verF" class="hide" style="margin-top:16px"><p class="sub" id="verMsg"></p><label>6-digit code</label><input id="vCode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required><div class="err" id="verE"></div><button class="btn" style="width:100%" id="verB">Verify and continue</button><p style="text-align:center;margin:12px 0 0"><a href="#" id="resend">Resend code</a></p></form>
-<form id="tfF" class="hide" style="margin-top:16px"><p class="sub">Open your authenticator app and type the 6-digit code for BotFleet. No phone with you? Use one of your backup codes.</p><label>Code</label><input id="tfCode" autocomplete="one-time-code" inputmode="text" maxlength="9" placeholder="123456" required><div class="err" id="tfE"></div><button class="btn" style="width:100%" id="tfB">Verify and log in</button><p style="text-align:center;margin:12px 0 0"><a href="#" id="tfBack">Back to log in</a></p></form>
-<p style="text-align:center;margin:14px 0 0"><a href="#" id="authSw"></a></p></dialog>
-
-<dialog id="depD"><h2 id="depT">Deploy</h2><p class="sub">Step 1: <a id="pairA" target="_blank" rel="noopener">open the pairing site</a> and scan with WhatsApp. Step 2: copy the session ID it gives you.</p>
-<form id="depF"><label>Plan</label><select id="dPlan"></select>
-<div id="dPay"></div>
-<div class="promo-row"><label>Promo code <small style="color:var(--mute)">(optional)</small></label><div class="copyrow" style="margin:0 0 6px"><input id="dPromo" placeholder="Enter code" autocomplete="off" autocapitalize="characters" oninput="promoEdit('d')"><button type="button" class="btn sm ghost" onclick="applyPromo('d')">Apply</button></div><div id="dPromoR" class="sres" aria-live="polite"></div></div>
-<label>Bot name</label><input id="dName" placeholder="blackmd-01" required pattern="[a-z][a-z0-9\-]{2,29}">
-<label>Session ID</label><input id="dSess" placeholder="Paste your session ID" required oninput="sessChk('dSess','dSessR',()=>({botId:cur&&cur.id}))"><div id="dSessR" class="sres" aria-live="polite"></div><div id="dDevW" class="hide"><label>Bot owner number(s) <small style="color:var(--mute)">(optional)</small></label><input id="dDev" inputmode="numeric" autocomplete="off" placeholder="254114283550,254768792955" oninput="devNorm(this)"><p class="sub" style="font-size:13px;margin:-6px 0 12px">Numbers that can change this bot's settings from WhatsApp. Up to 2, with country code, no + or spaces, separated by a comma.</p></div>
-<div class="err" id="depE"></div><div style="display:flex;gap:10px"><button class="btn" id="depB">Pay and deploy</button><button type="button" class="btn ghost" onclick="depD.close()">Cancel</button></div></form></dialog>
-<dialog id="rnD"><h2>Renew your bot</h2><p class="sub">Pay for more months at once and save. Time is added to what you have left.</p><div class="chips" id="rnPW" style="margin:0 0 10px"></div><div class="promo-row"><div class="copyrow" style="margin:0 0 6px"><input id="rPromo" placeholder="Promo code (optional)" autocomplete="off" autocapitalize="characters" oninput="promoEdit('r')"><button type="button" class="btn sm ghost" onclick="applyPromo('r')">Apply</button></div><div id="rPromoR" class="sres" aria-live="polite"></div></div><div id="rnB" style="display:grid;gap:10px"></div><div class="err" id="rnE"></div><button class="btn ghost" onclick="rnD.close()">Cancel</button></dialog>
-<dialog id="cbD"><h2>Add your own bot</h2><p class="sub">Paste the link to a public GitHub repo. Only add bots you trust and that follow WhatsApp's rules. New bots are checked before you can deploy them.</p>
-<form id="cbF"><label>GitHub repo link</label><input id="cbRepo" placeholder="https://github.com/owner/repo" required>
-<label>Bot name (optional)</label><input id="cbName" maxlength="40" placeholder="My Bot">
-<label>Session variable name (optional)</label><input id="cbVar" placeholder="SESSION_ID" maxlength="40">
-<label>Pairing site link (optional)</label><input id="cbPair" placeholder="https://...">
-<div class="err" id="cbE"></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="cbB">Add bot</button><button type="button" class="btn ghost" onclick="cbD.close()">Cancel</button></div></form></dialog>
-<dialog id="tkNew"><h2>New ticket</h2><label>Subject</label><input id="tkS" maxlength="100"><label>Message</label><textarea id="tkM" rows="5" maxlength="2000" placeholder="Describe the problem. Include your bot name if it is about a bot."></textarea><label>Attach bot logs (optional)</label><select id="tkBot"><option value="">No logs</option></select><label>Screenshots (optional)</label><div class="shots" id="tkNImgs"></div><button type="button" class="btn sm ghost" onclick="pickShots('N')">📎 Add screenshot</button>
-<div class="err" id="tkE"></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" onclick="sendTicket()">Send</button><button class="btn ghost" onclick="tkNew.close()">Cancel</button></div></dialog>
-<dialog id="tkD" style="width:min(560px,94vw)"><h2 id="tkT"></h2><div id="tkSt" style="margin:4px 0 10px"></div><div id="tkMsgs"></div><label>Reply</label><textarea id="tkR" rows="3" maxlength="2000"></textarea><div class="shots" id="tkRImgs"></div><button type="button" class="btn sm ghost" style="margin:6px 0" onclick="pickShots('R')">📎 Add screenshot</button><div class="err" id="tkRE"></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" onclick="replyTk()">Send</button><button class="btn ghost" id="tkClose" onclick="closeTk()">Close ticket</button><button class="btn ghost" onclick="tkD.close()">Close</button></div></dialog>
-<input type="file" id="shotF" accept="image/*" multiple hidden>
-<dialog id="shotD" class="shotd" onclick="this.close()"><img id="shotBig" alt="Screenshot"><button class="btn sm" onclick="shotD.close()">Close</button></dialog>
-<dialog id="uvD"><h2 id="uvT">User</h2><div id="uvB"></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><button class="btn" id="uvSus" onclick="toggleSuspend()">Suspend user</button><button class="btn ghost" onclick="admCredit(UVID)">Adjust balance</button><button class="btn ghost" onclick="admCoins(UVID)">Adjust coins</button><button class="btn ghost" onclick="admTfOff(UVID)">Turn off 2-step</button><button class="btn ghost" onclick="uvD.close()">Close</button></div></dialog>
-<dialog id="ctD"><h2>Choose your country</h2><p class="sub" style="font-size:14px;margin:4px 0 8px">It decides which currencies and payment methods we show.</p><div id="ctList" class="ctl" role="radiogroup" aria-label="Country"></div><div style="display:flex;gap:10px;margin-top:12px"><button class="btn" onclick="ctOk()">Select</button><button class="btn ghost" onclick="ctD.close()">Cancel</button></div></dialog>
-<dialog id="coinD" style="width:min(520px,94vw)"><h2>🪙 Buy BotFleet Coins</h2>
-<p class="sub" style="margin:2px 0 10px;font-size:14px">1 coin = KES <span id="cnKes">10</span>. Use coins to deploy and renew bots. You have <b id="cnHave">0</b> coins.</p>
-<label>Your country</label><button type="button" class="ctbtn" id="cnCt"></button>
-<div id="cnSrc" class="chips" style="margin:0 0 8px"></div><div id="cnCur" class="chips" style="margin:0 0 8px"></div><div id="cnPk" class="pkg"></div><div id="cnM" class="methods" style="margin:12px 0 8px"></div>
-<p class="sub" id="cnNote" style="font-size:13px;margin:6px 0"></p><div class="err" id="cnE"></div>
-<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="cnBtn" onclick="buyCoins()">Pay</button><button class="btn ghost" onclick="coinD.close()">Close</button></div></dialog>
-<dialog id="payD"><h2>Add money</h2><p class="sub" style="margin:4px 0 8px;font-size:14px">Choose a plan when you deploy or renew</p><div class="plans" id="plansRow2"></div>
-<label>Your country</label><button type="button" class="ctbtn" id="payCt" style="margin-bottom:6px"></button><p class="sub" style="font-size:13px;margin:0 0 10px">Wallet deposits are in KES. Prefer coins? <a href="#" onclick="payD.close();openCoins();return false">Buy BotFleet Coins</a></p><div class="chips" id="curChips" style="display:none"><span class="chip" data-c="KES" aria-pressed="true">Pay in KES</span><span class="chip" data-c="USD" aria-pressed="false">Pay in USD</span></div>
-<b id="howL">How do you want to pay?</b>
-<div class="methods" id="methods" role="radiogroup" aria-label="Payment method">
-<button type="button" class="m" role="radio" aria-checked="true" data-m="all"><span class="lg"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3" fill="none" stroke="#0057ff" stroke-width="2"/><path d="M2 10h20" stroke="#0057ff" stroke-width="2"/><circle cx="17" cy="15" r="1.5" fill="#00b8d9"/></svg></span>All methods</button>
-<button type="button" class="m" role="radio" aria-checked="false" data-m="mpesa"><span class="lg"><svg viewBox="0 0 92 28"><rect width="92" height="28" rx="6" fill="#43b02a"/><rect x="62" y="0" width="30" height="28" rx="6" fill="#e60000"/><rect x="62" y="0" width="8" height="28" fill="#e60000"/><text x="8" y="20" font-family="Arial,sans-serif" font-weight="800" font-size="15" fill="#fff">M-PESA</text></svg></span>M-Pesa</button>
-<button type="button" class="m" role="radio" aria-checked="false" data-m="airtel"><span class="lg"><svg viewBox="0 0 100 28"><rect width="100" height="28" rx="6" fill="#e40000"/><text x="9" y="19" font-family="Arial,sans-serif" font-weight="800" font-size="13" fill="#fff">airtel money</text></svg></span>Airtel Money</button>
-<button type="button" class="m" role="radio" aria-checked="false" data-m="till"><span class="lg"><svg viewBox="0 0 100 28"><rect width="100" height="28" rx="6" fill="#43b02a"/><text x="7" y="12" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#fff">LIPA NA M-PESA</text><text x="7" y="24" font-family="Arial,sans-serif" font-weight="800" font-size="12" fill="#fff">BUY GOODS TILL</text></svg></span>M-Pesa Till</button>
-<button type="button" class="m" role="radio" aria-checked="false" data-m="pesalink"><span class="lg"><svg viewBox="0 0 90 28"><text x="0" y="20" font-family="Arial,sans-serif" font-weight="800" font-size="19" fill="#12347a">pesa</text><text x="40" y="20" font-family="Arial,sans-serif" font-weight="800" font-size="19" fill="#f28c00">link</text></svg></span>Pesalink</button>
-<button type="button" class="m" role="radio" aria-checked="false" data-m="card"><span class="lg"><svg viewBox="0 0 56 20"><text x="0" y="16" font-family="Arial,sans-serif" font-style="italic" font-weight="900" font-size="17" fill="#1a1f71">VISA</text></svg><svg viewBox="0 0 34 22"><circle cx="11" cy="11" r="10" fill="#eb001b"/><circle cx="23" cy="11" r="10" fill="#f79e1b"/><path d="M17 3.2a10 10 0 0 1 0 15.6 10 10 0 0 1 0-15.6z" fill="#ff5f00"/></svg></span>Pay with card</button>
-</div>
-<b id="amtL">Add money (KES)</b><div class="chips" id="presets"><span class="chip" onclick="amt.value=50;tpUpdate()">50</span><span class="chip" onclick="amt.value=100;tpUpdate()">100</span><span class="chip" onclick="amt.value=250;tpUpdate()">250</span><span class="chip" onclick="amt.value=500;tpUpdate()">500</span></div>
-<div style="display:flex;gap:12px;flex-wrap:wrap"><input id="amt" type="number" min="50" placeholder="Amount in KES" style="max-width:240px;margin:0"><button class="btn" id="payBtn" onclick="pay()">Pay now</button></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><input id="promo" placeholder="Promo or voucher code" maxlength="20" style="max-width:220px;margin:0;text-transform:uppercase" oninput="if(TPROMO){TPROMO=null;tpUpdate()}"><button class="btn ghost" onclick="redeem()">Apply code</button></div><div id="tpromoR" class="sres" aria-live="polite"></div>
-<p class="sub" id="usdNote" style="margin:10px 0 0"></p><div class="err" id="payErr"></div><button class="btn ghost" style="margin-top:14px" onclick="payD.close()">Close</button></dialog>
-<dialog id="vdD" style="width:min(720px,94vw)"><h3 id="vdT" style="margin-bottom:10px"></h3><div class="vframe"><iframe id="vdF" title="Tutorial video" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe></div><button class="btn ghost" onclick="vdD.close()">Close</button></dialog>
-<dialog id="rvD"><h2 id="rvT">Reviews</h2><p class="sub" id="rvAvg"></p><div id="rvList" style="max-height:30vh;overflow:auto;margin-bottom:12px"></div>
-<div id="rvForm" class="hide"><label>Your rating</label><select id="rvStars"><option value="5">★★★★★ Excellent</option><option value="4">★★★★ Good</option><option value="3">★★★ Okay</option><option value="2">★★ Poor</option><option value="1">★ Bad</option></select><label>Your review (optional)</label><textarea id="rvText" rows="3" maxlength="300"></textarea><div class="err" id="rvE"></div><button class="btn" onclick="sendRv()">Submit review</button></div>
-<p class="sub hide" id="rvNote">Deploy this bot to leave a review.</p><button class="btn ghost" style="margin-top:10px" onclick="rvD.close()">Close</button></dialog>
-<dialog id="annD"><h2>📢 Announcements</h2><div id="annBody" style="margin:14px 0"></div><button class="btn" onclick="annD.close()">Dismiss</button></dialog>
-<dialog id="welD" style="text-align:center"><span class="av big" id="wAv" style="margin:0 auto 12px"></span><h2 id="wT"></h2><p class="sub" id="wS"></p><div class="stats" id="wStats"></div><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" onclick="welGo('dash')">Add money</button><button class="btn ghost" onclick="welGo('bots')">Browse bots</button><button class="btn ghost" onclick="welTut()">📺 Tutorials</button></div><p style="margin:14px 0 0"><a href="#" onclick="welD.close();return false">Close</a></p></dialog>
-<dialog id="profD"><h2>Your profile</h2>
-<div style="display:flex;align-items:center;gap:14px;margin:8px 0"><span class="av big" id="pAv"></span><div><button type="button" class="btn sm ghost" onclick="pFile.click()">Change photo</button> <button type="button" class="btn sm red" onclick="rmPhoto()">Remove</button><p class="sub" style="margin:6px 0 0;font-size:14px">JPG or PNG. We resize it for you.</p></div></div>
-<input type="file" id="pFile" accept="image/*" class="hide">
-<label>Name</label><input id="pName" maxlength="40" autocomplete="name">
-<label>Phone (optional)</label><input id="pPhone" inputmode="tel" maxlength="16" placeholder="+2547...">
-<label>Country</label><button type="button" class="ctbtn" id="pCt"></button>
-<label>Email</label><input id="pEmail" readonly>
-<div class="err" id="pErr"></div><button class="btn" onclick="saveProfile()">Save profile</button>
-<hr style="border:0;border-top:1px solid var(--line);margin:12px 0">
-<div class="prow"><h3>Appearance</h3><div class="themes" id="themes2" role="group" aria-label="Theme"></div></div>
-<div class="prow"><h3>Language</h3><div class="chips" id="langChips"><span class="chip" data-l="en" aria-pressed="false">English</span><span class="chip" data-l="sw" aria-pressed="false">Kiswahili</span></div></div>
-<details class="pfold" id="accD"><summary>Switch account</summary><div id="accL"></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0"><button class="btn sm" onclick="accAdd()">+ Add another account</button><button class="btn sm ghost" onclick="accAll()">Log out of all</button></div><p class="sub" style="font-size:13px;margin:0">Accounts you add stay signed in on this device. Only add accounts on a phone or computer you trust.</p></details>
-<details class="pfold" id="tfD"><summary>Two-step login</summary><div id="tfBody"></div></details>
-<details class="pfold"><summary>Notifications</summary><p class="sub" id="pnNote"></p><p class="sub">We remind you by email and notification 3 days and 1 day before a bot is due.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" id="pnOn" onclick="pushOn()">Turn on notifications</button><button class="btn sm ghost hide" id="pnOff" onclick="pushOff()">Turn off</button></div></details>
-<details class="pfold"><summary>Recent logins</summary><p class="sub" style="margin:0 0 10px;font-size:15px">We alert you by email and notification when a new device signs in. Not you? Change your password. Removing a device means you are alerted when it signs in again.</p><div id="devL"></div></details>
-<details class="pfold"><summary>Change password</summary><label>Current password</label><input id="cpOld" type="password" autocomplete="current-password"><label>New password (8+ characters)</label><input id="cpNew" type="password" minlength="8" autocomplete="new-password"><div class="err" id="cpErr"></div><button class="btn ghost" onclick="changePw()">Update password</button></details>
-<details class="pfold"><summary style="color:var(--bad)">Delete account</summary><p class="sub" style="font-size:15px;margin:0 0 8px">This removes your bots and personal data. Any wallet balance or commission is lost. It cannot be undone.</p><label>Your password</label><input id="delPw" type="password" autocomplete="current-password"><div class="err" id="delE"></div><button class="btn red" onclick="deleteAccount()">Delete my account</button></details>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="btn ghost" onclick="profD.close()">Close</button><button class="btn red" onclick="profD.close();logout()">Log out</button></div>
-</dialog>
-<dialog id="manD"><h2 id="manT">Manage</h2><div class="chips"><span class="chip" data-p="logs" aria-pressed="false">Logs</span><span class="chip" data-p="cfg" aria-pressed="false">Settings</span><span class="chip hide" data-p="vis" aria-pressed="false">Visual</span><span class="chip" data-p="ses" aria-pressed="false">Session</span><span class="chip" data-p="db" aria-pressed="false">Database</span><span class="chip" data-p="upd" aria-pressed="false">Update</span></div><div id="manB"></div><div class="err" id="manE"></div><button class="btn ghost" onclick="manD.close()">Close</button></dialog>
-<div id="toast" class="hide"></div>
-
-<script>
-(()=>{const m=/[#&]oauth=([^&]+)/.exec(location.hash),t2=/[#&]twostep=([^&]+)/.exec(location.hash);if(m){try{localStorage.bf=decodeURIComponent(m[1])}catch{}history.replaceState(null,'',location.pathname+location.search)}if(t2){try{window.__tf=decodeURIComponent(t2[1])}catch{}history.replaceState(null,'',location.pathname+location.search)}})();
-const $=id=>document.getElementById(id);let T=localStorage.bf,USER=null,AV=null,PRICE=50,BOTS=[],cur=null,mode='login';
-const api=async(p,o={})=>{const r=await fetch('/api'+p,{...o,headers:{'Content-Type':'application/json',...(T?{Authorization:'Bearer '+T}:{})},body:o.body&&JSON.stringify(o.body)});const j=await r.json().catch(()=>({}));if(!r.ok){if((r.status==401||(r.status==403&&/suspended/.test(j.error||'')))&&T){logout(true);if(r.status==403)toast(j.error)}const er=new Error(j.error||'Something went wrong');er.data=j;throw er}return j};
-const toast=m=>{const t=$('toast');t.textContent=m;t.classList.remove('hide');setTimeout(()=>t.classList.add('hide'),3800)};
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-function openAuth(m){mode=m;renderSaved();const L=m=='login';$('authT').textContent=L?'Log in':'Create account';$('authB').textContent=L?'Log in':'Sign up';$('nameW').classList.toggle('hide',L);$('ctW').classList.toggle('hide',L);$('regW').classList.toggle('hide',L);if(!L)loadTs();$('authSw').textContent=L?'New here? Create an account':'Have an account? Log in';$('authE').textContent='';$('authF').classList.remove('hide');$('verF').classList.add('hide');$('tfF').classList.add('hide');$('authSw').parentElement.classList.remove('hide');$('rstF').classList.add('hide');$('fpW').classList.toggle('hide',!L);if(!$('authD').open)$('authD').showModal()}
-$('authSw').onclick=e=>{e.preventDefault();openAuth(mode=='login'?'register':'login')};
-$('authF').onsubmit=async e=>{e.preventDefault();$('authB').disabled=true;try{const j=await api('/auth/'+mode,{method:'POST',body:{email:aEmail.value,password:aPass.value,name:aName.value,country:rgCountry,ref:localStorage.bfref||'',agree:$('agree').checked,website:$('hp').value,cf:(TS&&window.turnstile)?turnstile.getResponse(window.__ts):''}});if(j.needsVerify)return showVerify(j.email);if(j.twoStep)return showTwoStep(j.ticket);T=j.token;localStorage.bf=T;$('authD').close();setUser(j.user);await load()}catch(x){if(x.data&&x.data.needsVerify)showVerify(x.data.email);else{$('authE').textContent=x.message;if(TS&&window.turnstile)try{turnstile.reset(window.__ts)}catch{}}}finally{$('authB').disabled=false}};
-let TFT='';
-function showTwoStep(tk){TFT=tk;$('authF').classList.add('hide');$('verF').classList.add('hide');$('rstF').classList.add('hide');$('authSw').parentElement.classList.add('hide');$('tfF').classList.remove('hide');$('authT').textContent='Two-step login';$('tfCode').value='';$('tfE').textContent='';if(!$('authD').open)$('authD').showModal();setTimeout(()=>$('tfCode').focus(),120)}
-$('tfF').onsubmit=async e=>{e.preventDefault();$('tfB').disabled=true;try{const j=await api('/auth/2fa',{method:'POST',body:{ticket:TFT,code:$('tfCode').value}});T=j.token;localStorage.bf=T;$('authD').close();setUser(j.user);await load()}catch(x){$('tfE').textContent=x.message}finally{$('tfB').disabled=false}};
-$('tfBack').onclick=e=>{e.preventDefault();openAuth('login')};
-let rStep=1;
-$('forgot').onclick=e=>{e.preventDefault();rStep=1;$('authF').classList.add('hide');$('authSw').parentElement.classList.add('hide');$('rstF').classList.remove('hide');$('rstMore').classList.add('hide');$('rCode').required=false;$('rPass').required=false;$('rEmail').readOnly=false;$('rstB').textContent='Send code';$('rstMsg').textContent="Enter your email and we'll send you a code.";$('rstE').textContent='';$('rEmail').value=$('aEmail').value;$('authT').textContent='Reset password'};
-$('rstBack').onclick=e=>{e.preventDefault();openAuth('login')};
-$('rstF').onsubmit=async e=>{e.preventDefault();$('rstB').disabled=true;$('rstE').textContent='';try{if(rStep==1){await api('/auth/forgot',{method:'POST',body:{email:$('rEmail').value}});rStep=2;$('rstMore').classList.remove('hide');$('rCode').required=true;$('rPass').required=true;$('rEmail').readOnly=true;$('rstB').textContent='Reset password';$('rstMsg').textContent='If that email has an account, we sent a 6-digit code. It expires in 15 minutes. Check spam too.';$('rCode').focus()}else{const j=await api('/auth/reset',{method:'POST',body:{email:$('rEmail').value,code:$('rCode').value.trim(),password:$('rPass').value}});T=j.token;localStorage.bf=T;$('authD').close();setUser(j.user);toast('Password updated');await load()}}catch(x){$('rstE').textContent=x.message}finally{$('rstB').disabled=false}};
-let VE='';function showVerify(email){VE=email;$('authF').classList.add('hide');$('authSw').parentElement.classList.add('hide');$('verF').classList.remove('hide');$('authT').textContent='Check your email';$('verMsg').textContent='We sent a 6-digit code to '+email+'. It expires in 15 minutes. Check your spam folder too.';$('verE').textContent='';$('vCode').value='';$('vCode').focus()}
-$('verF').onsubmit=async e=>{e.preventDefault();$('verB').disabled=true;try{const j=await api('/auth/verify',{method:'POST',body:{email:VE,code:$('vCode').value.trim()}});T=j.token;localStorage.bf=T;$('authD').close();setUser(j.user);await load()}catch(x){$('verE').textContent=x.message}finally{$('verB').disabled=false}};
-$('resend').onclick=async e=>{e.preventDefault();$('verE').textContent='';try{await api('/auth/resend',{method:'POST',body:{email:VE}});toast('New code sent')}catch(x){$('verE').textContent=x.message}};
-/* ---- switch accounts: several accounts stay signed in on this device ---- */
-function accList(){try{const a=JSON.parse(localStorage.bfAcc||'[]');return Array.isArray(a)?a.filter(x=>x&&x.token&&x.email):[]}catch{return[]}}
-function accStore(a){try{localStorage.bfAcc=JSON.stringify(a)}catch{}}
-function accRemember(u){const a=accList(),e={id:u.id,email:u.email,name:u.name||'',token:T},i=a.findIndex(x=>x.id===u.id);if(i>=0)a[i]=e;else a.push(e);while(a.length>5){const k=a.findIndex(x=>x.token!==T);a.splice(k<0?0:k,1)}accStore(a)}
-function accDrop(tok){if(tok)accStore(accList().filter(x=>x.token!==tok))}
-function accSwitch(id){const x=accList().find(a=>a.id===id);if(!x)return;localStorage.bf=x.token;try{sessionStorage.removeItem('bfw');sessionStorage.removeItem('bfa')}catch{}location.href='/'}
-function accAdd(){try{sessionStorage.bfAdd='1'}catch{}localStorage.removeItem('bf');location.href='/'}
-function accRemove(id){const x=accList().find(a=>a.id===id);if(!x)return;if(USER&&USER.id===id){if(confirm('Log out of this account?')){profD.close();logout()}return}accStore(accList().filter(a=>a.id!==id));renderAccs()}
-function accAll(){if(!confirm('Log out of all accounts on this device?'))return;try{localStorage.removeItem('bfAcc')}catch{}profD.close();logout()}
-function renderAccs(){const o=$('accL');if(!o)return;const a=accList();o.innerHTML=a.map(x=>{const me=USER&&USER.id===x.id;return `<div class="dev"><div><b>${esc(x.name||x.email)}</b>${me?' <span class="tag running">Current</span>':''}<small>${esc(x.email)}</small></div><div class="acts">${me?'':`<button class="btn sm" onclick="accSwitch(${+x.id})">Switch</button>`}<button class="btn sm ghost" aria-label="Remove account" onclick="accRemove(${+x.id})">✕</button></div></div>`}).join('')||'<p class="sub" style="font-size:15px">Only this account is saved on this device.</p>'}
-function renderSaved(){const w=$('savedW');if(!w)return;const a=accList();if(!a.length||mode!='login'){w.classList.add('hide');w.innerHTML='';return}w.innerHTML='<p class="sub" style="margin:0 0 6px;font-size:14px">Saved on this device</p>'+a.map(x=>`<button type="button" class="obtn" onclick="accSwitch(${+x.id})"><span>Continue as ${esc(x.name||x.email)}</span></button>`).join('');w.classList.remove('hide')}
-function logout(q){accDrop(T);localStorage.removeItem('bf');try{sessionStorage.removeItem('bfw');sessionStorage.removeItem('bfa')}catch{}AV=null;T=null;USER=null;setUser(null);if(!q)toast('Logged out')}
-function setUser(u){USER=u;document.body.classList.toggle('in',!!u);if(u){if(T)accRemember(u);renderHome();if('avatar' in u)AV=u.avatar||null;paintAv($('avBtn'),u);$('bal').textContent='KES '+u.balance+(u.coins?' · 🪙 '+fmtC(u.coins):'');$('tabAdmin').classList.toggle('hide',!u.isAdmin)}}
-const cta=()=>USER?showTab('bots'):openAuth('register');
-
-let method='all';document.querySelectorAll('.m').forEach(b=>b.onclick=()=>{method=b.dataset.m;document.querySelectorAll('.m').forEach(x=>x.setAttribute('aria-checked',x==b))});
-async function pay(){payErr.textContent='';payBtn.disabled=true;try{const j=await api('/pay/init',{method:'POST',body:{amount:+amt.value,method:CUR=='USD'?'card':method,currency:CUR,promo:TPROMO?TPROMO.code:''}});location.href=j.url}catch(e){payErr.textContent=e.message;payBtn.disabled=false}}
-async function deps(){const d=await api('/deployments');$('noDeps').classList.toggle('hide',d.length>0);
-$('deps').innerHTML=d.map(x=>{const b=BOTS.find(b=>b.id==x.bot_id)||{name:x.bot_id};return`<div class="dcard"><div class="dtop"><b>${esc(x.app_name)}</b><span class="tag ${x.status}">${x.status}</span></div><div class="dmeta">${esc(b.name)} · renews ${new Date(x.due).toLocaleDateString()}${(()=>{const n=Math.ceil((new Date(x.due)-Date.now())/864e5);return x.status!='suspended'&&n<=3?` · <span class="due">⏰ ${n<=0?'due today':n+(n==1?' day':' days')+' left'}</span>`:''})()}</div><div class="dact"><label class="sw2"><input type="checkbox" ${x.auto_renew?'checked':''} onchange="autoRenew(${x.id},this.checked)" aria-label="Auto-renew"><span>Auto-renew</span></label><span class="dbtn"><button class="btn sm" onclick="openRenew(${x.id})">Renew</button><button class="btn sm ghost" onclick="openMan(${x.id},'${esc(x.app_name)}','${esc(x.bot_id)}')">Manage</button><button class="btn sm ghost" onclick="act(${x.id},'restart')" title="Restart" aria-label="Restart">↻</button><button class="btn sm red" onclick="del(${x.id})" title="Delete" aria-label="Delete">🗑</button></span></div></div>`}).join('');
-lowBal(d);const nd=d.filter(x=>['running','crashed'].includes(x.status)).map(x=>+new Date(x.due)).sort((p,q)=>p-q)[0];MS.running=d.filter(x=>['running','building'].includes(x.status)).length;MS.total=d.length;MS.next_due=nd?new Date(nd).toISOString():null;renderHome();return d}
-async function act(id,a){try{await api(`/deployments/${id}/${a}`,{method:'POST'});toast(a=='renew'?'Renewed for 30 days':'Restarting bot');const j=await api('/me');setUser(j.user);deps()}catch(e){toast(e.message)}}
-async function del(id){if(!confirm('Delete this bot? This cannot be undone and no refund is given.'))return;try{await api('/deployments/'+id,{method:'DELETE'});deps()}catch(e){toast(e.message)}}
-
-function devNorm(el){el.value=el.value.replace(/[^\d,]/g,'').replace(/,{2,}/g,',')}
-function openDeploy(id){if(!USER)return openAuth('register');if($('dSessR'))$('dSessR').innerHTML='';cur=BOTS.find(b=>b.id==id);if($('dDevW')){$('dDevW').classList.toggle('hide',!(cur&&cur.devVar));const ph=String(USER.phone||'').replace(/\D/g,'');$('dDev').value=/^254\d{9}$/.test(ph)?ph:''}if(USER.balance<PRICE&&(USER.coins||0)<(COSTS[1]||1e9)){return toast(`Add at least KES ${PRICE} to your wallet first`)}
-$('depT').textContent='Deploy '+cur.name;$('dPlan').innerHTML=PLANS.map(p=>`<option value="${p.m}">${p.m} month${p.m>1?'s':''}: KES ${p.cost}${p.m>1?' (save KES '+(PRICE*p.m-p.cost)+')':''} · ${fmtC(COSTS[p.m]||0)} coins</option>`).join('');$('dPlan').onchange=updatePayWith;promoReset('d');updatePayWith();$('pairA').href=cur.pairingUrl;$('dName').value='';$('dName').placeholder=(cur.namePrefix||'bot-')+'01';$('dSess').value='';$('depE').textContent='';$('depD').showModal()}
-$('depF').onsubmit=async e=>{e.preventDefault();depB.disabled=true;depE.textContent='';try{await api('/deploy',{method:'POST',body:{botId:cur.id,appName:dName.value,session:dSess.value,devNumbers:cur.devVar?$('dDev').value:'',months:+$('dPlan').value,payWith:payChoice(),promo:PROMO?PROMO.code:''}});PROMO=null;$('depD').close();toast('Deploying. It goes live in 1–3 minutes.');const j=await api('/me');setUser(j.user);poll()}catch(x){depE.textContent=x.message}depB.disabled=false};
-let pt;function poll(){clearInterval(pt);const f=async()=>{const d=await deps().catch(()=>[]);if(!d.some(x=>x.status=='building'))clearInterval(pt)};f();pt=setInterval(f,8000)}
-
-async function loadBots(){const j=await api('/bots');PRICE=j.price;BOTS=j.bots;document.querySelectorAll('.priceTxt').forEach(e=>e.textContent=PRICE);
-$('grid').innerHTML=BOTS.map(b=>{const ok=!b.custom||b.status=='approved';return`<article class="card"><img src="${b.image}" alt="${esc(b.name)} logo" loading="lazy" onerror="this.onerror=null;this.src='${b.fallback}'"><div class="in"><h3>${esc(b.name)}</h3><p>${esc(b.tagline)}</p>${popTag(b)}${b.custom?`<span class="tag ${b.status=='approved'?'running':b.status=='rejected'?'failed':'building'}" style="align-self:flex-start">${b.status=='approved'?'Your bot':b.status=='rejected'?'Not approved':'Waiting for approval'}</span>`:''}<div class="row">${ok?`<button class="btn" onclick="openDeploy('${b.id}')">Deploy</button>`:''}${b.pairingUrl?`<a class="btn ghost" style="text-decoration:none" href="${esc(b.pairingUrl)}" target="_blank" rel="noopener">Get session ID</a>`:''}${b.custom?`<button class="btn ghost red" onclick="rmBot('${b.id.split(':')[1]}')">Remove</button>`:''}</div>${rvBtn(b)}</div></article>`}).join('');filterBots()}
-async function load(){if(!T)return;try{const j=await api('/me');PRICE=j.price;RATE=j.usdRate||0;PLANS=j.plans||[];COSTS=j.coinCosts||{};renderPlans();$('curChips').style.display=RATE?'flex':'none';setUser(j.user);await loadStats();await loadBots();poll();await welcome(j.user).catch(()=>{});checkAnn();showInstall()}catch{}}
-(async()=>{const rf=new URLSearchParams(location.search).get('ref');if(rf)try{localStorage.bfref=rf}catch{}try{if(sessionStorage.bfAdd){sessionStorage.removeItem('bfAdd');if(!T)setTimeout(()=>openAuth('login'),50)}}catch{}if(window.__tf)setTimeout(()=>showTwoStep(window.__tf),80);const oe=new URLSearchParams(location.search).get('oauth_error');if(oe){toast(oe);history.replaceState(null,'',location.pathname)}fetch('/api/auth/providers').then(r=>r.json()).then(j=>{$('oaG').classList.toggle('hide',!j.google);$('oaH').classList.toggle('hide',!j.github);$('oaW').classList.toggle('hide',!(j.google||j.github))}).catch(()=>{});
-const ref=new URLSearchParams(location.search).get('paid');await load();
-if(ref&&T){history.replaceState({},'','/');try{const v=await api('/pay/verify/'+ref);setUser(v.user);toast(v.ok?(v.kind=='coins'?'Payment received. Coins added to your balance.':'Payment received. Wallet updated.'):'Payment not completed yet. Refresh in a minute.')}catch(e){toast(e.message)}}})();
-
-
-// Tabs
-const PANELS={home:'home',bots:'botsTab',hist:'hist',refs:'refs',help:'help',guide:'guide',support:'support',admin:'admin'};
-function bsgCopy(b){const t=b.dataset.c;const done=()=>{b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy',1500)};try{navigator.clipboard.writeText(t).then(done,()=>fb())}catch{fb()}function fb(){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch{}a.remove();done()}}
-document.addEventListener('pointerdown',e=>{const b=e.target.closest&&e.target.closest('.btn:not(:disabled)');if(!b)return;b.classList.add('liq');clearTimeout(b._lq);b._lq=setTimeout(()=>b.classList.remove('liq'),1100)},{passive:true});
-function showTab(t){const id=PANELS[t]||'home';document.querySelectorAll('#tabs .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.t==t));Object.values(PANELS).forEach(p=>$(p).classList.toggle('hide',p!=id));scrollTo(0,0);if(t=='home')deps().catch(()=>{});if(t=='hist')loadHist();if(t=='help')loadTut();if(t=='support')loadTickets();if(t=='refs')loadRefs();if(t=='admin')loadAdmin().catch(x=>toast(x.message))}
-document.querySelectorAll('#tabs .chip').forEach(c=>c.onclick=()=>showTab(c.dataset.t));
-const money=n=>(n>0?'+':'')+n;
-async function dl(p,name){try{const r=await fetch('/api'+p,{headers:T?{Authorization:'Bearer '+T}:{}});if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.error||'Download failed')}const b=await r.blob(),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}catch(e){toast(e.message)}}
-function hRange(){const d=+$('hRange').value;return d?'?from='+new Date(Date.now()-d*864e5).toISOString().slice(0,10):''}
-const dlStatement=()=>dl('/history/statement.pdf'+hRange(),'BotFleet-statement.pdf'),dlCsv=()=>dl('/history/export.csv'+hRange(),'BotFleet-history.csv');
-async function clearHist(){if(!TXS.length)return toast('Your history is already empty');if(!confirm('Clear your history? It will be removed from this page. Download your statement first if you want a copy. BotFleet keeps payment records for accounting.'))return;try{await api('/history/clear',{method:'POST'});toast('History cleared');loadHist()}catch(e){toast(e.message)}}
-let _sct;function sessChk(inp,out,body){clearTimeout(_sct);const v=$(inp).value.trim(),o=$(out);if(v.length<4){o.innerHTML='';return}_sct=setTimeout(async()=>{try{const j=await api('/session/check',{method:'POST',body:{...body(),session:v}});o.innerHTML=j.notes.map(n=>`<div class="sr ${n.t}">${n.t=='ok'?'✅':n.t=='bad'?'❌':n.t=='warn'?'⚠️':'ℹ️'} ${esc(n.m)}</div>`).join('')}catch(e){o.textContent=''}},600)}
-let TFS=null;
-function tfCopy(t){navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>toast('Copied'),()=>toast('Copy failed'))}
-function renderTf(){const o=$('tfBody');if(!o)return;
-if(USER&&USER.twoStep)o.innerHTML='<p class="sub" style="font-size:15px">✅ On. When you log in you also enter a code from your authenticator app.</p><label>Password</label><input id="tfOffPw" type="password" autocomplete="current-password"><label>Code from the app (or a backup code)</label><input id="tfOffCode" maxlength="9" autocomplete="one-time-code"><div class="err" id="tfMsg"></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm red" onclick="tfOff()">Turn off</button><button class="btn sm ghost" onclick="tfNewBackup()">New backup codes</button></div><div id="tfCodes"></div>';
-else if(TFS)o.innerHTML=`<p class="sub" style="font-size:15px"><b>1.</b> Open Google Authenticator, Microsoft Authenticator or Authy and add an account.<br><b>2.</b> On this phone tap the button below, or choose "Enter a setup key" and paste the key.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0"><a class="btn sm" href="${esc(TFS.uri)}">Open in authenticator app</a><button class="btn sm ghost" onclick="tfCopy('${esc(TFS.secret)}')">Copy key</button></div><code class="tfkey">${esc(TFS.secret.replace(/(.{4})/g,'$1 ').trim())}</code><p class="sub" style="font-size:15px;margin-top:10px"><b>3.</b> Enter the 6-digit code the app shows:</p><input id="tfOnCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456"><div class="err" id="tfMsg"></div><div style="display:flex;gap:8px"><button class="btn sm" onclick="tfOn()">Turn on</button><button class="btn sm ghost" onclick="TFS=null;renderTf()">Cancel</button></div>`;
-else o.innerHTML='<p class="sub" style="font-size:15px">Add a second step to logging in: a 6-digit code from an authenticator app. Even if someone learns your password, they cannot get in.</p><div class="err" id="tfMsg"></div><button class="btn sm" onclick="tfSetup()">Set up</button>'}
-function tfCodes(c){const el=$('tfCodes');if(el)el.innerHTML=`<div class="tfbk"><b>Save your backup codes</b><p>Each code works once if you lose your phone. They are not shown again.</p><code>${c.map(esc).join('<br>')}</code><button class="btn sm ghost" onclick="tfCopy('${c.join(' ')}')">Copy codes</button></div>`}
-async function tfSetup(){try{TFS=await api('/2fa/setup',{method:'POST'});renderTf()}catch(e){$('tfMsg').textContent=e.message}}
-async function tfOn(){try{const j=await api('/2fa/enable',{method:'POST',body:{code:$('tfOnCode').value}});USER.twoStep=true;TFS=null;renderTf();tfCodes(j.backup);toast('Two-step login is on')}catch(e){$('tfMsg').textContent=e.message}}
-async function tfOff(){try{await api('/2fa/disable',{method:'POST',body:{password:$('tfOffPw').value,code:$('tfOffCode').value}});USER.twoStep=false;renderTf();toast('Two-step login is off')}catch(e){$('tfMsg').textContent=e.message}}
-async function tfNewBackup(){try{const j=await api('/2fa/backup-new',{method:'POST',body:{code:$('tfOffCode').value}});tfCodes(j.backup);$('tfMsg').textContent=''}catch(e){$('tfMsg').textContent=e.message}}
-async function admTfOff(id){if(!confirm('Turn off two-step login for this user? Only do this after you are sure it is really them.'))return;try{await api(`/admin/users/${id}/2fa-off`,{method:'POST'});toast('Two-step login turned off')}catch(e){toast(e.message)}}
-async function loadDevices(){const o=$('devL');if(!o)return;try{const d=await api('/devices');o.innerHTML=d.length?d.map(x=>`<div class="dev"><div><b>${esc(x.label||'Device')}</b>${x.current?' <span class="tag running">This device</span>':''}<small>Last used ${new Date(x.last).toLocaleString()} · IP ${esc(x.ip)}</small></div>${x.current?'':`<button class="btn sm ghost" onclick="rmDev('${esc(x.id)}')">Remove</button>`}</div>`).join(''):'<p class="sub" style="font-size:15px">No logins recorded yet.</p>'}catch(e){o.textContent=''}}
-async function rmDev(id){try{await api('/devices/'+id,{method:'DELETE'});loadDevices()}catch(e){toast(e.message)}}
-let TXS=[];async function loadHist(){try{const d=await api('/transactions');TXS=d;$('noTx').classList.toggle('hide',d.length>0);$('txs').innerHTML=d.map(x=>`<tr><td>${new Date(x.created).toLocaleString()}<td>${esc(x.type)}<td class="${x.amount>0?'pos':'neg'}">${x.wallet=='coins'?'🪙 '+(x.amount>0?'+':'')+fmtC(x.amount)+' coins':'KES '+money(x.amount)}<td>${esc(x.note||'')}<td>${x.id?`<button class="btn sm ghost" onclick="dl('/receipts/${x.id}','BotFleet-receipt-${x.id}.pdf')">Receipt</button>`:''}</tr>`).join('')}catch(e){toast(e.message)}}
-async function loadRefs(){try{const r=await api('/referrals');$('rBonus').textContent=r.bonus;renderCm(r);$('rLink').value=r.link;$('rJoined').textContent=r.joined;$('rPaid').textContent=r.paid;$('rEarned').textContent=r.earned;api('/leaderboard').then(l=>{$('noLb').classList.toggle('hide',l.length>0);$('lb').innerHTML=l.map((r,i)=>`<tr><td>${i+1}<td>${esc(r.who)}<td>${r.n}</tr>`).join('')}).catch(()=>{});$('rWa').href='https://wa.me/?text='+encodeURIComponent('Host your WhatsApp bot on BotFleet: '+r.link)}catch(e){toast(e.message)}}
-async function copyRef(){try{await navigator.clipboard.writeText($('rLink').value);toast('Link copied')}catch{$('rLink').select();toast('Press copy on your keyboard')}}
-
-// Admin
-async function loadAdmin(){const a=await api('/admin/stats?q='+encodeURIComponent($('aSearch').value||''));
-$('tuList').innerHTML=a.tutList.map(v=>`<div class="copyrow" style="align-items:center;margin:6px 0"><span style="flex:1"><b>${esc(v.title)}</b> <small style="color:var(--mute)">${esc(v.category)}</small></span><button class="btn sm red" onclick="delTut(${v.id})">Delete</button></div>`).join('')||'<small>No tutorials yet.</small>';
-$('aWd').innerHTML=a.withdrawList.map(w=>`<tr><td>${new Date(w.created).toLocaleDateString()}<td>${esc(w.email)}<td>KES ${w.amount}<td>${esc(w.phone)}<td><span class="tag ${w.status=='paid'?'running':w.status=='pending'?'building':'failed'}">${w.status}</span><td style="white-space:nowrap">${w.status=='pending'?`<button class="btn sm" onclick="admWd(${w.id},'paid')">Mark paid</button> <button class="btn sm red" onclick="admWd(${w.id},'reject')">Reject</button>`:''}</tr>`).join('')||'<tr><td colspan="6">No requests yet</tr>';
-api('/admin/tickets').then(l=>{$('aTk').innerHTML=l.map(t=>`<tr><td>${esc(t.subject)}<td>${esc(t.email)}<td><span class="tag ${tkTag(t.status)}">${t.status}</span><td>${new Date(t.updated).toLocaleDateString()}<td><button class="btn sm" onclick="openThread(${t.id})">Open</button></tr>`).join('')||'<tr><td colspan="5">No tickets</tr>'}).catch(()=>{});
-$('aVch').innerHTML=a.voucherList.map(v=>`<tr><td><code>${esc(v.code)}</code><td>KES ${v.value}<td>${v.used_at?`<span class="tag failed">used by ${esc(v.used_email||'')}</span>`:'<span class="tag running">unused</span>'}</tr>`).join('')||'<tr><td colspan="3">No vouchers yet</tr>';
-api('/admin/log').then(l=>{$('aLog').innerHTML=l.map(x=>`<tr><td>${new Date(x.created).toLocaleString()}<td>${esc(x.admin_email)}<td>${esc(x.action)}<td><small>${esc(x.details||'')}</small></tr>`).join('')||'<tr><td colspan="4">Nothing yet</tr>'}).catch(()=>{});
-loadHeroku();loadCoinsAdmin();
-const bn=id=>(BOTS.find(b=>b.id==id)||{}).name||id;
-$('aBotRev').innerHTML=a.botRev.map(r=>`<tr><td>${esc(bn(r.bot_id))}<td>${r.deploys}<td>KES ${r.revenue}</tr>`).join('')||'<tr><td colspan="3">No data yet</tr>';
-$('aWeekly').innerHTML=a.weekly.map(w=>`<tr><td>${new Date(w.week).toLocaleDateString()}<td>${w.n}</tr>`).join('');
-$('aRev').innerHTML=a.reviewList.map(r=>`<tr><td>${esc(bn(r.bot_id))}<td>${esc(r.email)}<td>${'★'.repeat(r.rating)} ${esc(r.text||'')}${r.flagged?' <span class="tag failed">reported</span>':''}${r.hidden?' <span class="tag building">hidden</span>':''}<td style="white-space:nowrap"><button class="btn sm ghost" onclick="admRv(${r.id},'${r.hidden?'show':'hide'}')">${r.hidden?'Show':'Hide'}</button> <button class="btn sm red" onclick="admRv(${r.id},'delete')">Delete</button></tr>`).join('')||'<tr><td colspan="4">No reviews yet</tr>';
-{const mx=Math.max(1,...a.daily.map(d=>d.topups)),ms=Math.max(1,...a.daily.map(d=>d.signups));$('aChart').innerHTML=a.daily.map((d,i)=>{const h=d.topups/mx*70,y=88-h;return`<rect x="${i*10+1}" y="${y}" width="8" height="${h}" rx="1.5" fill="var(--cyan)"><title>${new Date(d.day).toLocaleDateString()}: KES ${d.topups}, ${d.signups} sign-ups</title></rect><circle cx="${i*10+5}" cy="${88-d.signups/ms*70-4}" r="2" fill="var(--blue)"/>`}).join('');}
-$('annList').innerHTML=a.annList.map(x=>`<div class="copyrow" style="align-items:center;margin:6px 0"><span style="flex:1">${esc(x.text)} <small style="color:var(--mute)">${new Date(x.created).toLocaleDateString()}</small></span><button class="btn sm red" onclick="delAnn(${x.id})">Delete</button></div>`).join('')||'<small>No announcements yet.</small>';
-$('aPromos').innerHTML=a.promoList.map(p=>`<tr><td><b>${esc(p.code)}</b><td>${p.percent?p.percent+'% off':'KES '+p.bonus}<td>${p.uses}${p.max_uses?' / '+p.max_uses:''}<td><span class="tag ${p.active?'running':'failed'}">${p.active?'active':'off'}</span><td><button class="btn sm ghost" onclick="togPromo('${esc(p.code)}')">${p.active?'Turn off':'Turn on'}</button></tr>`).join('');$('aCust').innerHTML=a.customList.map(c=>`<tr><td><b>${esc(c.name)}</b><br><a href="https://github.com/${esc(c.repo)}" target="_blank" rel="noopener">${esc(c.repo)}</a><td>${esc(c.email)}<td><span class="tag ${c.status=='approved'?'running':c.status=='rejected'?'failed':'building'}">${c.status}</span><td style="white-space:nowrap"><button class="btn sm" onclick="admBot(${c.id},'approve')">Approve</button> <button class="btn sm red" onclick="admBot(${c.id},'reject')">Reject</button></tr>`).join('');$('aPays').innerHTML=a.payList.map(p=>`<tr><td>${new Date(p.created).toLocaleString()}<td>${esc(p.email)}<td>KES ${p.amount}<td><span class="tag ${p.status=='success'?'running':'building'}">${p.status}</span><td>${p.status=='success'?'':`<button class="btn sm ghost" onclick="verifyPay('${esc(p.ref)}')">Check with Paystack</button>`}</tr>`).join('');$('aStats').innerHTML=[['Users',a.users,'👥',''],['Running bots',a.running,'🤖','ok'],['Failed deploys',a.failed,'⚠️',a.failed>0?'bad':'ok'],['Total top-ups','KES '+a.topups,'💰','gold'],['Wallets hold','KES '+a.held,'👛','']].map(([k,v,ic,c])=>`<div class="sc ${c}"><span class="ic">${ic}</span><div class="tx"><span class="lb">${k}</span><span class="vl">${v}</span></div></div>`).join('');
-$('aDeps').innerHTML=a.depList.map(d=>`<tr><td><b>${esc(d.app_name)}</b><td>${esc(d.email)}<td><span class="tag ${d.status}">${d.status}</span><td>${new Date(d.due).toLocaleDateString()}<td style="min-width:200px"><button class="btn sm ghost" onclick="adm(${d.id},'stop')">Stop</button> <button class="btn sm ghost" onclick="adm(${d.id},'start')">Start</button> <button class="btn sm" onclick="adm(${d.id},'update')">Update</button> <button class="btn sm red" onclick="adm(${d.id},'delete')">Delete</button></tr>`).join('');$('aUpBot').innerHTML=(BOTS||[]).map(b=>`<option value="${esc(b.id)}">${esc(b.name)}</option>`).join('');
-$('aUsers').innerHTML=a.userList.map(u=>`<tr><td>${esc(u.email)}<td>KES ${u.balance}<td>${u.bots}<td>${u.suspended?'<span class="tag failed">suspended</span> ':''}<button class="btn sm ghost" onclick="viewUser(${u.id})">View</button> <button class="btn sm ghost" onclick="admCredit(${u.id})">Adjust</button></tr>`).join('')}
-async function verifyPay(ref){try{const j=await api('/admin/payments/'+encodeURIComponent(ref)+'/verify',{method:'POST'});toast(j.ok?'Payment found and wallet credited':'Paystack says this payment is not successful');loadAdmin()}catch(e){toast(e.message)}}
-async function admBot(id,a){try{await api(`/admin/custom-bots/${id}/${a}`,{method:'POST'});toast('Done');loadAdmin()}catch(e){toast(e.message)}}
-async function admUpdateAll(){const id=$('aUpBot').value,nm=$('aUpBot').selectedOptions[0].textContent;if(!id||!confirm('Update every running '+nm+' to the latest version? They rebuild and restart one after another.'))return;try{const j=await api(`/admin/bots/${encodeURIComponent(id)}/update-all`,{method:'POST'});toast(j.queued?`Updating ${j.queued} bot${j.queued>1?'s':''} one by one`:'No running bots of this type')}catch(e){toast(e.message)}}
-async function adm(id,a){if(a=='delete'&&!confirm('Delete this bot?'))return;if(a=='update'&&!confirm('Update this bot to the latest version? It rebuilds and restarts.'))return;try{await api(`/admin/deployments/${id}/${a}`,{method:'POST'});toast('Done');loadAdmin()}catch(e){toast(e.message)}}
-async function admCredit(id){const v=prompt('Amount in KES (use a minus sign to deduct)');if(!v)return;try{await api(`/admin/users/${id}/credit`,{method:'POST',body:{amount:+v,note:'Admin adjustment'}});toast('Balance updated');loadAdmin()}catch(e){toast(e.message)}}
-
-// Manage a bot
-let MID=0;
-let MVIS='',VCMD='',VPEND=null;
-const VIS={blackmd:{prefix:'.',groups:[['🔒 Security',[['antilink','AntiLink',1],['antilinkall','AntiLinkAll',0],['antidelete','AntiDelete',1],['anticall','AntiCall',1],['antibot','AntiBot',0],['antitag','AntiTag',1],['badword','BadWord',1]]],['🤖 Automation',[['autoread','AutoRead',0],['autolike','AutoLike',0],['autoview','AutoView',1],['autobio','AutoBio',0],['welcomegoodbye','WelcomeGoodbye',0]]],['💬 Behaviour',[['gptdm','GPTDM',0]]]],pick:[['menutype','MenuType',['image','video','text'],'video'],['wapresence','WAPresence',['online','offline','typing'],'online']]}};
-const visKey=()=>'bfv'+MID,visGet=()=>{try{return JSON.parse(localStorage[visKey()]||'{}')}catch{return{}}},visPut=o=>{try{localStorage[visKey()]=JSON.stringify(o)}catch{}};
-const visNum=()=>String(localStorage.bfvNum||(USER&&USER.phone)||'').replace(/\D/g,'');
-function visRender(){const cfg=VIS[MVIS];if(!cfg){$('manB').innerHTML='<p class="sub">Not available for this bot.</p>';return}
-const st=visGet(),P=st.pfx||cfg.prefix,on=(k,d)=>k in st?!!st[k]:!!d;
-let h=`<p class="sub">Tap a switch, then send the command to your bot on WhatsApp. This shows what you last set here. Send <b>${esc(P)}settings</b> to your bot to see its live settings.</p><label>Your WhatsApp number (the one linked to the bot)</label><input id="vNum" inputmode="numeric" placeholder="2547…" value="${esc(visNum())}" oninput="localStorage.bfvNum=this.value.replace(/\D/g,'')">`;
-for(const [g,items] of cfg.groups)h+=`<div class="vgrp"><h4>${g}</h4>`+items.map(([k,l,d])=>`<div class="vrow"><span>${l}</span><button type="button" class="vsw ${on(k,d)?'on':''}" role="switch" aria-checked="${on(k,d)}" aria-label="${l}" onclick="visToggle('${k}')"><i></i></button></div>`).join('')+'</div>';
-h+='<div class="vgrp"><h4>🎛 Options</h4>'+cfg.pick.map(([k,l,opts,d])=>`<div class="vrow vcol"><span>${l}</span><div class="vseg">${opts.map(o=>`<button type="button" class="${(st[k]||d)==o?'on':''}" onclick="visPick('${k}','${o}')">${o}</button>`).join('')}</div></div>`).join('')+`<div class="vrow vcol"><span>Prefix</span><div class="vpfx"><input id="vPfx" maxlength="4" value="${esc(P)}" aria-label="New prefix"><button type="button" class="btn sm" onclick="visPrefix()">Change</button></div></div></div>`;
-h+='<div id="vSheet" class="vsheet hide" aria-live="polite"></div><button class="btn sm ghost" onclick="localStorage.removeItem(visKey());visRender()">Reset this view to defaults</button>';$('manB').innerHTML=h}
-function visToggle(k){const cfg=VIS[MVIS],st=visGet(),P=st.pfx||cfg.prefix;let d=0;cfg.groups.forEach(g=>g[1].forEach(i=>{if(i[0]==k)d=i[2]}));const cur=k in st?!!st[k]:!!d;st[k]=cur?0:1;visPut(st);visRender();visSheet(`${P}${k} ${st[k]?'on':'off'}`)}
-function visPick(k,o){const st=visGet(),P=st.pfx||VIS[MVIS].prefix;st[k]=o;visPut(st);visRender();visSheet(`${P}${k} ${o}`)}
-function visPrefix(){const st=visGet(),P=st.pfx||VIS[MVIS].prefix,n=($('vPfx').value||'').trim();if(!n||/\s/.test(n))return toast('Type your new prefix without spaces');visSheet(`${P}prefix ${n}`,n)}
-function visSheet(cmd,pend){VPEND=pend||null;VCMD=cmd;const n=visNum(),url=n?'https://wa.me/'+n+'?text='+encodeURIComponent(cmd):'',el=$('vSheet');if(!el)return;el.classList.remove('hide');el.innerHTML=`<small>Send this to your bot</small><code>${esc(cmd)}</code><div class="vact">${url?`<a class="btn sm" href="${url}" target="_blank" rel="noopener" onclick="visCommit()">Open WhatsApp</a>`:''}<button type="button" class="btn sm ghost" onclick="visCopy()">Copy</button></div>${url?'':'<small class="vwarn">Enter your WhatsApp number above to get the one-tap WhatsApp button.</small>'}`}
-function visCopy(){navigator.clipboard&&navigator.clipboard.writeText(VCMD).then(()=>toast('Copied'),()=>toast('Copy failed'));visCommit()}
-function visCommit(){if(VPEND){const st=visGet();st.pfx=VPEND;visPut(st);VPEND=null;setTimeout(visRender,400)}}
-function openMan(id,name,bid){MID=id;MVIS=((BOTS||[]).find(b=>b.id==bid)||{}).visual||'';document.querySelector('#manD .chip[data-p=vis]').classList.toggle('hide',!MVIS);$('manT').textContent='Manage '+name;$('manD').showModal();manTab('logs')}
-document.querySelectorAll('#manD .chip').forEach(c=>c.onclick=()=>manTab(c.dataset.p));
-async function manTab(p){document.querySelectorAll('#manD .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.p==p));$('manE').textContent='';const B=$('manB');
-if(p=='logs'){B.innerHTML='<pre id="logBox">Loading…</pre><button class="btn sm ghost" style="margin:10px 0" onclick="manTab(\'logs\')">Refresh</button>';try{const j=await api(`/deployments/${MID}/logs`);$('logBox').textContent=j.logs||'No logs yet.';$('logBox').scrollTop=1e9}catch(e){$('logBox').textContent=e.message}}
-else if(p=='vis'){visRender()}
-else if(p=='cfg'){B.innerHTML='<p class="sub">Loading…</p>';try{const c=await api(`/deployments/${MID}/config`);B.innerHTML='<p class="sub">Bot settings. Saving restarts your bot. Clear a value to delete it.</p>'+c.map(v=>`<label>${esc(v.key)}</label><input data-k="${esc(v.key)}" data-o="${esc(v.value)}" value="${esc(v.value)}">`).join('')+'<label>Add a setting</label><div style="display:flex;gap:8px"><input id="nk" placeholder="NAME" style="margin:6px 0 14px"><input id="nv" placeholder="value" style="margin:6px 0 14px"></div><button class="btn" onclick="saveCfg()">Save settings</button><div style="height:12px"></div>'}catch(e){B.innerHTML='';$('manE').textContent=e.message}}
-else if(p=='ses')B.innerHTML='<p class="sub">If WhatsApp logged your bot out, get a fresh session ID from the bot\'s pairing site and paste it here. You are not charged again.</p><label>New session ID</label><input id="ns" placeholder="Paste session ID" oninput="sessChk(\'ns\',\'nsR\',()=>({deploymentId:MID}))"><div id="nsR" class="sres" aria-live="polite"></div><button class="btn" onclick="saveSes()">Update session</button><div style="height:12px"></div>';
-else if(p=='db')B.innerHTML='<p class="sub">Gives your bot its own private database so its settings survive restarts. Turning it on restarts the bot once. New deployments get this automatically, so you only need it for bots deployed earlier.</p><button class="btn" onclick="enableDb()">Enable database</button><div style="height:12px"></div>';
-else B.innerHTML='<p class="sub">Rebuild your bot from the latest version of its code. It restarts and takes 1 to 3 minutes. You are not charged.</p><button class="btn" onclick="rebuild()">Update bot now</button><div style="height:12px"></div>'}
-async function saveCfg(){const vars={};document.querySelectorAll('#manB [data-k]').forEach(i=>{if(i.value!==i.dataset.o)vars[i.dataset.k]=i.value===''?null:i.value});const k=$('nk').value.trim();if(k)vars[k]=$('nv').value;if(!Object.keys(vars).length)return toast('Nothing changed');try{await api(`/deployments/${MID}/config`,{method:'PUT',body:{vars}});toast('Saved. Bot restarting');manTab('cfg')}catch(e){$('manE').textContent=e.message}}
-async function enableDb(){try{await api(`/deployments/${MID}/database`,{method:'POST'});toast('Database enabled. Bot restarting')}catch(e){$('manE').textContent=e.message}}
-async function saveSes(){try{await api(`/deployments/${MID}/session`,{method:'POST',body:{session:$('ns').value}});toast('Session updated. Bot restarting');$('ns').value='';if($('nsR'))$('nsR').innerHTML=''}catch(e){$('manE').textContent=e.message}}
-async function rebuild(){try{await api(`/deployments/${MID}/rebuild`,{method:'POST'});$('manD').close();toast('Updating your bot');poll()}catch(e){$('manE').textContent=e.message}}
-
-
-// Profile + welcome
-const initial=u=>((u.name||u.email||'?')[0]||'?').toUpperCase(),paintAv=(el,u)=>{el.innerHTML=AV?`<img src="${AV}" alt="">`:esc(initial(u))};
-let PA;
-function openProfile(){loadDevices();renderAccs();TFS=null;renderTf();pushState();PA=undefined;pCtry=USER.country||'';ctBtn('pCt',pCtry);$('pName').value=USER.name||'';$('pPhone').value=USER.phone||'';$('pEmail').value=USER.email;$('pErr').textContent='';$('cpErr').textContent='';paintAv($('pAv'),USER);$('profD').showModal()}
-function rmPhoto(){PA=null;$('pAv').textContent=initial(USER)}
-$('pFile').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;if(!f.type.startsWith('image/'))return $('pErr').textContent='Choose an image file';const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d'),s=Math.min(im.width,im.height);x.fillStyle='#fff';x.fillRect(0,0,256,256);x.drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,256,256);PA=c.toDataURL('image/jpeg',.82);$('pAv').innerHTML=`<img src="${PA}" alt="">`;$('pErr').textContent=''};im.onerror=()=>$('pErr').textContent='Could not read that image';im.src=r.result};r.readAsDataURL(f)};
-async function saveProfile(){$('pErr').textContent='';try{const j=await api('/profile',{method:'PUT',body:{name:$('pName').value,phone:$('pPhone').value,avatar:PA,country:pCtry}});PA=undefined;setUser(j.user);toast('Profile saved');$('profD').close()}catch(e){$('pErr').textContent=e.message}}
-async function changePw(){$('cpErr').textContent='';try{await api('/profile/password',{method:'POST',body:{current:$('cpOld').value,password:$('cpNew').value}});$('cpOld').value=$('cpNew').value='';toast('Password updated')}catch(e){$('cpErr').textContent=e.message}}
-async function welcome(u){try{if(sessionStorage.bfw)return;sessionStorage.bfw=1}catch{return}
-const d=await api('/deployments').catch(()=>[]),run=d.filter(x=>x.status=='running').length,nm=u.name||u.email.split('@')[0];
-paintAv($('wAv'),u);$('wT').textContent=(d.length||u.balance?'Welcome back, ':'Welcome, ')+nm+'!';
-$('wS').textContent=d.length?'Your fleet is ready. Here is where things stand.':u.balance>=PRICE?'You have credit. Pick a bot and deploy it.':'Start by adding money, then pick a bot and deploy it.';
-$('wStats').innerHTML=`<div class="step"><b>Wallet</b>KES ${u.balance}</div><div class="step"><b>Bots running</b>${run}</div>`;if(!$('welD').open)$('welD').showModal()}
-function welGo(id){$('welD').close();if(id=='dash'){showTab('home');openPay()}else showTab('bots')}
-
-
-// Add your own bot
-function openCb(){$('cbF').reset();$('cbE').textContent='';$('cbD').showModal()}
-$('cbF').onsubmit=async e=>{e.preventDefault();$('cbB').disabled=true;$('cbE').textContent='';try{const j=await api('/custom-bots',{method:'POST',body:{repo:$('cbRepo').value,name:$('cbName').value,sessionVar:$('cbVar').value,pairingUrl:$('cbPair').value}});$('cbD').close();toast(j.status=='approved'?'Bot added. You can deploy it now.':'Bot added. We will review it shortly.');await loadBots()}catch(x){$('cbE').textContent=x.message}finally{$('cbB').disabled=false}};
-async function rmBot(id){if(!confirm('Remove this bot from your list?'))return;try{await api('/custom-bots/'+id,{method:'DELETE'});await loadBots()}catch(e){toast(e.message)}}
-
-
-// USD top-ups (card only, converted to KES at the fixed rate from the server)
-let CUR='KES',RATE=0;amt.step='any';
-function setCur(c){CUR=c;const U=c=='USD';document.querySelectorAll('#curChips .chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.c==c));$('howL').classList.toggle('hide',U);$('methods').classList.toggle('hide',U);$('amtL').textContent=U?'Add money (USD)':'Add money (KES)';amt.placeholder=U?'Amount in USD':'Amount in KES';$('presets').innerHTML=(U?[1,2,5,10]:[50,100,250,500]).map(v=>`<span class="chip" onclick="amt.value=${v};amtNote()">${v}</span>`).join('');amtNote()}
-function amtNote(){tpUpdate();const v=Math.round(+amt.value*100)/100;$('usdNote').textContent=CUR=='USD'?`USD payments are by card. Rate: USD 1 = KES ${RATE}.`+(v>0?` You will get KES ${Math.floor(v*RATE)} in your wallet.`:''):''}
-document.querySelectorAll('#curChips .chip').forEach(c=>c.onclick=()=>setCur(c.dataset.c));amt.addEventListener('input',amtNote);
-
-
-// Human check (Cloudflare Turnstile, only if the site has keys), banners, promo, renew plans, receipts, admin tools
-let TS='',PLANS=[];fetch('/api/config').then(r=>r.json()).then(j=>{TS=j.turnstile||''}).catch(()=>{});
-function loadTs(){if(!TS)return;const go=()=>{$('cf').innerHTML='';window.__ts=turnstile.render('#cf',{sitekey:TS})};if(window.turnstile)return go();const sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';sc.onload=go;document.head.appendChild(sc)}
-document.addEventListener('submit',e=>{if(e.target.id=='authF'&&mode=='register'&&!$('agree').checked){e.stopImmediatePropagation();e.preventDefault();$('authE').textContent='Please accept the Terms, Privacy and Refund policies'}},true);
-function showAnn(t){const ex=document.getElementById('annB');if(ex)ex.remove();if(!t)return;try{if(sessionStorage.annx==t)return}catch{}const d=document.createElement('div');d.className='banner';d.id='annB';d.innerHTML=`<span>📢 ${esc(t)}</span><button class="btn sm ghost">Dismiss</button>`;d.querySelector('button').onclick=()=>{try{sessionStorage.annx=t}catch{}d.remove()};$('banners').prepend(d)}
-function lowBal(d){const ex=document.getElementById('lowB');if(ex)ex.remove();const due=d.filter(x=>['running','crashed'].includes(x.status)&&x.auto_renew&&(new Date(x.due)-Date.now())<3*864e5);const need=due.length*PRICE-USER.balance;if(!due.length||need<=0)return;const b=document.createElement('div');b.className='banner warn';b.id='lowB';b.innerHTML=`<span>⚠️ ${due.length} bot${due.length>1?'s':''} renew${due.length>1?'':'s'} within 3 days. Add at least <b>KES ${need}</b> so ${due.length>1?'they stay':'it stays'} online.</span><button class="btn sm">Add money</button>`;b.querySelector('button').onclick=openPay;$('banners').appendChild(b)}
-async function autoRenew(id,on){try{await api(`/deployments/${id}/autorenew`,{method:'POST',body:{on}});toast(on?'Auto-renew on':'Auto-renew off')}catch(e){toast(e.message);deps()}}
-let TPROMO=null;
-function tpUpdate(){const b=$('payBtn'),o=$('tpromoR');if(!b||!o)return;const v=+amt.value;if(!TPROMO){b.textContent='Pay now';o.innerHTML='';return}const U=CUR=='USD',full=U?Math.round(v*100)/100:Math.floor(v),sym=U?'USD ':'KES ';if(v>0){const net=U?Math.max(0.01,Math.round(full*(100-TPROMO.pct))/100):Math.max(1,Math.round(full*(100-TPROMO.pct)/100));o.innerHTML=`<div class="sr ok">✅ ${TPROMO.pct}% off: you pay ${sym}${net} to add ${sym}${full}</div>`;b.textContent=`Pay ${sym}${net} now`}else{o.innerHTML=`<div class="sr ok">✅ ${TPROMO.pct}% off applied. Enter an amount to see your price.</div>`;b.textContent='Pay now'}}
-async function redeem(){const c=$('promo').value.trim();if(!c)return toast('Enter a promo code');const v=/^BF-/i.test(c);
-if(!v){try{const k=await api('/promo-check',{method:'POST',body:{code:c}});if(k.type=='percent'){TPROMO={code:k.code,pct:k.percent};tpUpdate();return toast(`${k.percent}% off applied to this top-up`)}}catch(e){TPROMO=null;tpUpdate();return toast(e.message)}}
-try{const j=await api(v?'/voucher':'/promo',{method:'POST',body:{code:c}});$('promo').value='';const m=await api('/me');setUser(m.user);toast(`${v?'Voucher':'Code'} applied. KES ${v?j.value:j.bonus} added`)}catch(e){toast(e.message)}}
-let RID=0,RPW='wallet';
-let PROMO=null;
-const fin=c=>PROMO?Math.max(1,Math.round(c*(100-PROMO.pct)/100)):c;
-function promoReset(w){PROMO=null;const i=$(w+'Promo'),o=$(w+'PromoR');if(i)i.value='';if(o)o.innerHTML=''}
-function promoEdit(w){const i=$(w+'Promo');i.value=i.value.toUpperCase().replace(/[^A-Z0-9_-]/g,'');if(PROMO){PROMO=null;$(w+'PromoR').innerHTML='';w=='d'?updatePayWith():renderRenew()}}
-async function applyPromo(w){const out=$(w+'PromoR'),code=$(w+'Promo').value.trim();if(!code){PROMO=null;out.innerHTML='';return w=='d'?updatePayWith():renderRenew()}try{const j=await api('/promo-check',{method:'POST',body:{code}});if(j.type!='percent')throw new Error('That code adds wallet credit. Enter it under Add money instead.');PROMO={code:j.code,pct:j.percent};out.innerHTML=`<div class="sr ok">✅ ${j.percent}% off applied</div>`}catch(e){PROMO=null;out.innerHTML=`<div class="sr bad">❌ ${esc(e.message)}</div>`}w=='d'?updatePayWith():renderRenew()}
-function openRenew(id){RID=id;RPW='wallet';promoReset('r');$('rnE').textContent='';renderRenew();$('rnD').showModal()}
-function renderRenew(){$('rnPW').innerHTML=`<span class="chip" aria-pressed="${RPW=='wallet'}" onclick="RPW='wallet';renderRenew()">👛 Wallet (KES ${USER.balance})</span><span class="chip" aria-pressed="${RPW=='coins'}" onclick="RPW='coins';renderRenew()">🪙 Coins (${fmtC(USER.coins||0)})</span>`;
-$('rnB').innerHTML=PLANS.map(p=>`<button class="btn ${p.m>1?'':'ghost'}" onclick="doRenew(${p.m})">${p.m} month${p.m>1?'s':''}: ${RPW=='coins'?fmtC(fin(COSTS[p.m]||0))+' coins':'KES '+fin(p.cost)}${PROMO?' (was '+(RPW=='coins'?fmtC(COSTS[p.m]||0):'KES '+p.cost)+')':(p.m>1&&RPW!='coins'?' (save KES '+(PRICE*p.m-p.cost)+')':'')}</button>`).join('')}
-async function doRenew(m){try{await api(`/deployments/${RID}/renew`,{method:'POST',body:{months:m,payWith:RPW,promo:PROMO?PROMO.code:''}});PROMO=null;$('rnD').close();toast('Renewed');const j=await api('/me');setUser(j.user);deps()}catch(e){$('rnE').textContent=e.message}}
-function receipt(i){const x=TXS[i];if(!x)return;const w=open('','_blank');if(!w)return toast('Allow pop-ups to open the receipt');w.document.write(`<!doctype html><title>Receipt</title><body style="font-family:Arial;max-width:480px;margin:40px auto;color:#07122e"><h2 style="color:#0057ff">BotFleet Hub</h2><h3>Payment receipt</h3><p><b>Customer:</b> ${esc(USER.name||'')} ${esc(USER.email)}</p><p><b>Date:</b> ${esc(new Date(x.created).toLocaleString())}</p><p><b>Amount added to wallet:</b> KES ${x.amount}</p><p><b>Reference:</b> ${esc(x.note||'')}</p><p><small>Paid through Paystack. Thank you!</small></p><button onclick="print()">Print</button></body>`);w.document.close()}
-async function saveAnn(){try{await api('/admin/announcements',{method:'POST',body:{text:$('annT').value}});$('annT').value='';toast('Posted');loadAdmin()}catch(e){toast(e.message)}}
-async function delAnn(id){if(!confirm('Delete this announcement?'))return;try{await api('/admin/announcements/'+id,{method:'DELETE'});loadAdmin()}catch(e){toast(e.message)}}
-async function broadcast(){if(!confirm('Email every verified user?'))return;try{const j=await api('/admin/broadcast',{method:'POST',body:{subject:$('bcS').value,body:$('bcB').value}});toast(`Sending to ${j.count} users`);$('bcS').value=$('bcB').value=''}catch(e){toast(e.message)}}
-function pcType(){$('pcB').placeholder=$('pcT').value=='percent'?'Percent off (1-90)':'Bonus KES'}
-async function makePromo(){try{await api('/admin/promos',{method:'POST',body:{code:$('pcC').value,type:$('pcT').value,bonus:$('pcB').value,maxUses:$('pcM').value,days:$('pcD').value}});toast('Code saved');loadAdmin()}catch(e){toast(e.message)}}
-async function togPromo(c){try{await api('/admin/promos/'+encodeURIComponent(c)+'/toggle',{method:'POST'});loadAdmin()}catch(e){toast(e.message)}}
-async function exportCsv(w){try{const r=await fetch('/api/admin/export/'+w,{headers:{Authorization:'Bearer '+T}});if(!r.ok)throw new Error((await r.json().catch(()=>({}))).error||'Export failed');const b=await r.blob(),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=w+'.csv';a.click()}catch(e){toast(e.message)}}
-
-function renderPlans(){$('plansRow2').innerHTML=PLANS.map(p=>{const save=PRICE*p.m-p.cost,pct=Math.round(save/(PRICE*p.m)*100);return`<div class="plan${p.m==6?' best':''}">${p.m==6?'<span class="rb">Best value</span>':''}<b>${p.m} month${p.m>1?'s':''}</b><span class="pp">KES ${p.cost}</span>${p.m==1?'<small>per month</small>':`<small>Save KES ${save}</small><small>${pct}% off</small>`}</div>`}).join('')}
-function openPay(){TPROMO=null;$('promo').value='';tpUpdate();ctBtn('payCt',USER&&USER.country);$('payErr').textContent='';if(!$('payD').open)$('payD').showModal()}
-function filterBots(){const q=$('botQ').value.trim().toLowerCase();document.querySelectorAll('#grid .card').forEach(c=>c.style.display=!q||c.textContent.toLowerCase().includes(q)?'':'none')}
-addEventListener('resize',()=>document.documentElement.style.setProperty('--navh',document.querySelector('nav').offsetHeight+'px'));
-
-
-// Announcements: bell button, unread dot, and a pop-up once per login
-let ANNS=[],ANN_PEND=false;
-let ANN_SEEN0=0;
-async function markSeen(id){if(!id||id<=(USER.annSeen||0))return;USER.annSeen=id;try{localStorage.bfAnnSeen=id}catch{}api('/announcements/seen',{method:'POST',body:{id}}).catch(()=>{})}
-async function checkAnn(){try{ANNS=await api('/announcements')}catch{return}
-let seen=USER.annSeen||0;const ls=+(localStorage.bfAnnSeen||0);if(ls>seen){seen=ls;markSeen(ls)}
-ANN_SEEN0=seen;const top=ANNS[0]?ANNS[0].id:0,unread=top>seen;$('bellDot').classList.toggle('hide',!unread);
-try{if(!unread||sessionStorage.bfa)return;sessionStorage.bfa=1}catch{return}
-if($('welD').open)ANN_PEND=true;else openAnn(true)}
-$('welD').addEventListener('close',()=>{if(ANN_PEND){ANN_PEND=false;openAnn(true)}});
-async function openAnn(unreadOnly){if(!ANNS.length)try{ANNS=await api('/announcements')}catch{}
-const list=unreadOnly?ANNS.filter(a=>a.id>ANN_SEEN0):ANNS;
-$('annBody').innerHTML=list.length?list.map(a=>`<div class="panel" style="margin-bottom:10px"><div>${esc(a.text)}</div><small style="color:var(--mute)">${new Date(a.created).toLocaleDateString()}</small></div>`).join(''):'<p class="sub">No announcements right now.</p>';
-if(ANNS[0]){markSeen(ANNS[0].id);$('bellDot').classList.add('hide')}if(!$('annD').open)$('annD').showModal()}
-
-
-// Community and personal stats, popularity badges on bot cards
-let POP={},RAT={};
-const rankLabel=n=>n==1?'🔥 Most deployed':n==2?'🥈 2nd most deployed':n==3?'🥉 3rd most deployed':n+'th most deployed';
-const popTag=b=>{if(b.custom)return'';const p=POP[b.id];return p?`<span class="tag ${p.rank==1?'running':'building'}" style="align-self:flex-start">${rankLabel(p.rank)}</span>`:''};
-const rvBtn=b=>{if(b.custom)return'';const r=RAT[b.id];return`<button class="btn ghost" style="width:100%;margin-top:6px;padding:9px 8px;font-size:14px" onclick="openRv('${b.id}')">${r?'⭐ '+r.avg+' ('+r.n+')':'⭐ Reviews'}</button>`};
-const ago=d=>{const m=Math.max(1,Math.round((Date.now()-new Date(d))/6e4));return m<60?m+' min ago':m<1440?Math.round(m/60)+' h ago':Math.round(m/1440)+' days ago'};
-let MS={};
-function renderHome(){if(!USER)return;$('hBal').textContent='KES '+USER.balance;$('hCoins').textContent=fmtC(USER.coins||0);$('hRun').textContent=(MS.running||0)+' / '+(MS.total||0);$('hNext').textContent=MS.next_due?new Date(MS.next_due).toLocaleDateString(undefined,{day:'numeric',month:'short'}):'None';$('hCom').textContent='KES '+(USER.commission||0);renderSteps()}
-async function loadStats(){try{const [c,m]=await Promise.all([api('/stats'),api('/my-stats')]);MS=m;
-RAT=c.ratings||{};POP={};c.bots.forEach((b,i)=>POP[b.id]={rank:i+1});
-$('trend').innerHTML=c.trending?`<div class="banner"><span>🏆 <b>Bot of the week:</b> ${esc(c.trending)}</span></div>`:'';
-$('topStrip').innerHTML=c.bots.slice(0,5).map((b,i)=>`<span class="rk" title="${rankLabel(i+1)}">${['🔥','🥈','🥉'][i]||(i+1)+'.'} ${esc(b.name)}</span>`).join('');
-$('hsum').innerHTML=[['Total spent','KES '+m.spent,'🧾',''],['Total top-ups','KES '+m.topups,'💰','gold'],['Referral earnings','KES '+m.referral,'🎁','ok']].map(([k,v,ic,c])=>`<div class="sc ${c}"><span class="ic">${ic}</span><div class="tx"><span class="lb">${k}</span><span class="vl">${v}</span></div></div>`).join('');renderHome()}catch{}}
-
-
-// Reviews
-let RVID='';
-async function openRv(id){RVID=id;$('rvE').textContent='';$('rvT').textContent=((BOTS.find(b=>b.id==id)||{}).name||'Bot')+' reviews';$('rvList').innerHTML='<p class="sub">Loading…</p>';$('rvD').showModal();
-try{const j=await api('/reviews/'+id);$('rvAvg').textContent=j.n?`⭐ ${j.avg} out of 5 from ${j.n} review${j.n>1?'s':''}`:'No reviews yet.';
-$('rvList').innerHTML=j.list.map(r=>`<div class="panel" style="margin-bottom:8px;padding:12px"><div>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)} <b>${esc(r.who)}</b> <small style="color:var(--mute)">${new Date(r.created).toLocaleDateString()}</small></div>${r.text?`<div>${esc(r.text)}</div>`:''}${r.who!='You'?`<small><a href="#" onclick="flagRv(${r.id});return false">Report</a></small>`:''}</div>`).join('');
-$('rvForm').classList.toggle('hide',!j.canReview);$('rvNote').classList.toggle('hide',j.canReview);if(j.mine){$('rvStars').value=j.mine.rating;$('rvText').value=j.mine.text||''}else{$('rvStars').value=5;$('rvText').value=''}}catch(e){$('rvList').innerHTML='';$('rvE').textContent=e.message}}
-async function sendRv(){$('rvE').textContent='';try{await api('/reviews',{method:'POST',body:{botId:RVID,rating:+$('rvStars').value,text:$('rvText').value}});toast('Thanks for your review');await loadStats();await loadBots();openRv(RVID)}catch(e){$('rvE').textContent=e.message}}
-async function flagRv(id){try{await api(`/reviews/${id}/flag`,{method:'POST'});toast('Reported. We will take a look')}catch(e){toast(e.message)}}
-async function admRv(id,a){if(a=='delete'&&!confirm('Delete this review?'))return;try{await api(`/admin/reviews/${id}/${a}`,{method:'POST'});loadAdmin()}catch(e){toast(e.message)}}
-
-
-// Tutorials
-let TUTS=[];
-const ytId=u=>{try{const x=new URL(u);if(x.hostname=='youtu.be')return x.pathname.slice(1,12);if(/youtube\.com$/.test(x.hostname))return x.searchParams.get('v')||((x.pathname.match(/\/(shorts|embed)\/([\w-]{11})/)||[])[2])||''}catch{}return''};
-async function loadTut(){try{TUTS=await api('/tutorials');$('noVids').classList.toggle('hide',TUTS.length>0);$('vids').innerHTML=TUTS.map(v=>{const id=ytId(v.url);return`<div class="vcard" onclick="playVid(${v.id})"><div class="vth" ${id?`style="background-image:url('https://i.ytimg.com/vi/${id}/hqdefault.jpg')"`:''}><span>▶</span></div><div class="vin"><span class="tag building">${esc(v.category)}</span><b>${esc(v.title)}</b></div></div>`}).join('')}catch(e){toast(e.message)}}
-function playVid(id){const v=TUTS.find(x=>x.id==id);if(!v)return;const y=ytId(v.url);if(!y)return void window.open(v.url,'_blank','noopener');$('vdT').textContent=v.title;$('vdF').src='https://www.youtube-nocookie.com/embed/'+y+'?autoplay=1&rel=0';$('vdD').showModal()}
-$('vdD').addEventListener('close',()=>{$('vdF').src=''});
-function welTut(){$('welD').close();showTab('help')}
-async function addTut(){try{await api('/admin/tutorials',{method:'POST',body:{title:$('tuT').value,url:$('tuU').value,category:$('tuC').value}});$('tuT').value=$('tuU').value=$('tuC').value='';toast('Tutorial added');loadAdmin()}catch(e){toast(e.message)}}
-async function delTut(id){if(!confirm('Delete this tutorial?'))return;try{await api('/admin/tutorials/'+id,{method:'DELETE'});loadAdmin()}catch(e){toast(e.message)}}
-
-
-// Referral commission
-function renderCm(r){$('cmAmt').textContent=r.commission;const pend=r.withdrawals.some(w=>w.status=='pending');
-$('cmNote').textContent=pend?'You have a withdrawal waiting to be paid.':r.commission>=r.min?'You can withdraw now.':`Withdraw from KES ${r.min}. You need KES ${r.min-r.commission} more.`;
-$('cmBtn').disabled=pend||r.commission<r.min;if(!$('cmPhone').value&&USER&&USER.phone)$('cmPhone').value=USER.phone;
-$('wdList').innerHTML=r.withdrawals.length?'<small style="color:var(--mute)">Withdrawals</small>'+r.withdrawals.map(w=>`<div style="display:flex;justify-content:space-between;gap:10px;margin-top:6px"><span>${new Date(w.created).toLocaleDateString()} · KES ${w.amount}</span><span class="tag ${w.status=='paid'?'running':w.status=='pending'?'building':'failed'}">${w.status}</span></div>`).join(''):''}
-async function withdraw(){$('cmErr').textContent='';try{const j=await api('/withdraw',{method:'POST',body:{phone:$('cmPhone').value}});toast(`Request sent for KES ${j.amount}. We will pay it to your M-Pesa soon`);api('/me').then(m=>setUser(m.user));loadRefs()}catch(e){$('cmErr').textContent=e.message}}
-async function cmToWallet(){$('cmErr').textContent='';try{const j=await api('/commission/transfer',{method:'POST'});const m=await api('/me');setUser(m.user);toast(`KES ${j.amount} moved to your wallet`);loadRefs()}catch(e){$('cmErr').textContent=e.message}}
-async function admWd(id,a){if(!confirm(a=='paid'?'Have you sent the money to this M-Pesa number?':'Reject this withdrawal and return the commission?'))return;try{await api(`/admin/withdrawals/${id}/${a}`,{method:'POST'});loadAdmin()}catch(e){toast(e.message)}}
-
-// Show / hide password buttons on every password box
-document.querySelectorAll('input[type=password]').forEach(i=>{const w=document.createElement('div');w.className='pw';i.parentNode.insertBefore(w,i);w.appendChild(i);const b=document.createElement('button');b.type='button';
-const set=show=>{i.type=show?'text':'password';b.textContent=show?'🙈':'👁';b.setAttribute('aria-label',show?'Hide password':'Show password');b.setAttribute('aria-pressed',show)};
-set(false);b.onclick=()=>set(i.type=='password');w.appendChild(b);i._pwReset=()=>set(false)});
-['authD','profD'].forEach(id=>$(id).addEventListener('close',()=>document.querySelectorAll('#'+id+' input').forEach(i=>i._pwReset&&i._pwReset())));
-
-
-// Support tickets
-let TKID=0;const tkTag=st=>st=='answered'?'running':st=='open'?'building':'failed';
-async function loadTickets(){try{const l=await api('/tickets');$('noTk').classList.toggle('hide',l.length>0);$('tkList').innerHTML=l.map(t=>`<div class="dcard" onclick="openThread(${t.id})" style="cursor:pointer"><div class="dtop"><b>${esc(t.subject)}</b><span class="tag ${tkTag(t.status)}">${t.status}</span></div><div class="dmeta" style="margin:2px 0 0">${new Date(t.updated).toLocaleDateString()}</div></div>`).join('')}catch(e){toast(e.message)}}
-async function openTk(){SHOTS.N=[];drawShots('N');$('tkS').value='';$('tkM').value='';$('tkE').textContent='';$('tkBot').innerHTML='<option value="">No logs</option>';$('tkNew').showModal();try{(await api('/deployments')).forEach(d=>$('tkBot').insertAdjacentHTML('beforeend',`<option value="${d.id}">Attach logs of ${esc(d.app_name)}</option>`))}catch{}}
-async function sendTicket(){$('tkE').textContent='';try{await api('/tickets',{method:'POST',body:{subject:$('tkS').value,message:$('tkM').value,deploymentId:$('tkBot').value,images:SHOTS.N}});SHOTS.N=[];$('tkNew').close();toast('Ticket sent');loadTickets()}catch(e){$('tkE').textContent=e.message}}
-const SHOTS={N:[],R:[]};let SHOTW='N';
-function pickShots(w){SHOTW=w;$('shotF').value='';$('shotF').click()}
-function shrinkImg(f){return new Promise((ok,no)=>{const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{URL.revokeObjectURL(u);const k=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));c.getContext('2d').drawImage(im,0,0,c.width,c.height);let q=.82,d=c.toDataURL('image/jpeg',q);while(d.length>900000&&q>.4){q-=.12;d=c.toDataURL('image/jpeg',q)}ok(d)};im.onerror=()=>{URL.revokeObjectURL(u);no(new Error('That file is not an image'))};im.src=u})}
-async function onShots(files){const w=SHOTW,err=$(w=='N'?'tkE':'tkRE');err.textContent='';for(const f of [...files]){if(SHOTS[w].length>=3){err.textContent='You can add up to 3 screenshots';break}try{SHOTS[w].push(await shrinkImg(f))}catch(e){err.textContent=e.message}}drawShots(w)}
-function drawShots(w){const o=$('tk'+w+'Imgs');if(o)o.innerHTML=SHOTS[w].map((d,i)=>`<span class="shot"><img src="${d}" alt="Screenshot ${i+1}"><button type="button" aria-label="Remove screenshot" onclick="SHOTS['${w}'].splice(${i},1);drawShots('${w}')">✕</button></span>`).join('')}
-$('shotF').onchange=e=>onShots(e.target.files);
-async function loadShotImgs(){for(const im of document.querySelectorAll('#tkMsgs img[data-f]')){if(im.getAttribute('src'))continue;try{const r=await fetch('/api/tickets/files/'+im.dataset.f,{headers:{Authorization:'Bearer '+T}});if(!r.ok)throw 0;im.src=URL.createObjectURL(await r.blob())}catch{im.alt='Screenshot unavailable'}}}
-function viewShot(im){if(!im.getAttribute('src'))return;$('shotBig').src=im.src;$('shotD').showModal()}
-async function openThread(id){TKID=id;SHOTS.R=[];drawShots('R');$('tkR').value='';$('tkRE').textContent='';if(!$('tkD').open)$('tkD').showModal();await refreshThread()}
-async function refreshThread(){try{const t=await api('/tickets/'+TKID);$('tkT').textContent=t.subject;$('tkSt').innerHTML=`<span class="tag ${tkTag(t.status)}">${t.status}</span>`+(t.email?` <small>${esc(t.email)}</small>`:'');
-$('tkMsgs').innerHTML=t.msgs.map(m=>`<div class="msg ${m.sender}"><small>${m.sender=='admin'?(t.email?'Support (you)':'Support'):(t.email?esc(t.email):'You')} · ${new Date(m.created).toLocaleString()}</small><div>${esc(m.text).replace(/\n/g,'<br>')}</div>${m.files&&m.files.length?`<div class="shotrow">${m.files.map(f=>`<img class="shotimg" data-f="${f}" alt="Screenshot" onclick="viewShot(this)">`).join('')}</div>`:''}${m.attachment?`<details style="margin-top:6px"><summary>Attached bot logs</summary><pre class="logbox">${esc(m.attachment)}</pre></details>`:''}</div>`).join('');$('tkMsgs').scrollTop=1e9;loadShotImgs();$('tkClose').classList.toggle('hide',t.status=='closed')}catch(e){$('tkRE').textContent=e.message}}
-function tkRefreshLists(){if(!$('support').classList.contains('hide'))loadTickets();if(!$('admin').classList.contains('hide'))loadAdmin().catch(()=>{})}
-async function replyTk(){$('tkRE').textContent='';try{await api(`/tickets/${TKID}/reply`,{method:'POST',body:{text:$('tkR').value,images:SHOTS.R}});$('tkR').value='';SHOTS.R=[];drawShots('R');await refreshThread();tkRefreshLists()}catch(e){$('tkRE').textContent=e.message}}
-async function closeTk(){try{await api(`/tickets/${TKID}/close`,{method:'POST'});await refreshThread();tkRefreshLists()}catch(e){$('tkRE').textContent=e.message}}
-// Vouchers (admin)
-async function cleanSess(){if(!confirm('Remove the extra session setting from existing bots with a confirmed setting? Each changed bot restarts once.'))return;try{const j=await api('/admin/clean-session-vars',{method:'POST'});toast(j.cleaned+' bots cleaned')}catch(e){toast(e.message)}}
-async function genVouchers(){try{const j=await api('/admin/vouchers',{method:'POST',body:{value:$('vcV').value,count:$('vcN').value,days:$('vcD').value}});$('vcOut').value=j.codes.join('\n');$('vcOut').classList.remove('hide');$('vcCopy').classList.remove('hide');toast(j.codes.length+' vouchers created');loadAdmin()}catch(e){toast(e.message)}}
-async function copyVch(){try{await navigator.clipboard.writeText($('vcOut').value);toast('Codes copied')}catch{$('vcOut').select();toast('Select and copy the codes')}}
-// Install as an app
-let DEFER=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();DEFER=e;showInstall()});
-function showInstall(){if(!DEFER||!USER||document.getElementById('instB'))return;try{if(sessionStorage.instx)return}catch{}const d=document.createElement('div');d.className='banner';d.id='instB';d.innerHTML='<span>📲 Install BotFleet on your phone for quick access.</span><span style="display:flex;gap:8px"><button class="btn sm">Install</button><button class="btn sm ghost">Not now</button></span>';const bs=d.querySelectorAll('button');bs[0].onclick=async()=>{DEFER.prompt();await DEFER.userChoice.catch(()=>{});DEFER=null;d.remove()};bs[1].onclick=()=>{try{sessionStorage.instx=1}catch{}d.remove()};$('banners').appendChild(d)}
-addEventListener('appinstalled',()=>{DEFER=null;const b=document.getElementById('instB');if(b)b.remove()});
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
-
-// Language and theme menu for visitors
-$('gearBtn').onclick=e=>{e.stopPropagation();const hidden=$('setPop').classList.toggle('hide');$('gearBtn').setAttribute('aria-expanded',!hidden)};
-document.addEventListener('click',e=>{if(!e.target.closest('#setPop,#gearBtn')){$('setPop').classList.add('hide');$('gearBtn').setAttribute('aria-expanded','false')}});
-document.addEventListener('keydown',e=>{if(e.key=='Escape'){$('setPop').classList.add('hide');$('gearBtn').setAttribute('aria-expanded','false')}});
-
-
-// Push notifications, delete account, admin user view
-const b64u=s=>{const p='='.repeat((4-s.length%4)%4),r=atob((s+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(r,c=>c.charCodeAt(0))};
-async function pushState(){const ok='serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window;
-if(!ok){$('pnNote').textContent='This browser cannot show notifications. On iPhone, install the app to your Home Screen first, then open it from there.';$('pnOn').classList.add('hide');return}
-try{const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription(),on=!!sub&&Notification.permission=='granted';
-$('pnNote').textContent=Notification.permission=='denied'?'Notifications are blocked in your browser settings.':on?'Notifications are on for this device: bot problems, renewals, support replies and payouts.':'Get alerts on this device for bot problems, renewals, support replies and payouts.';
-$('pnOn').classList.toggle('hide',on||Notification.permission=='denied');$('pnOff').classList.toggle('hide',!on)}catch{}}
-async function pushOn(){try{const perm=await Notification.requestPermission();if(perm!='granted')return pushState();const k=(await api('/push/key')).key,reg=await navigator.serviceWorker.ready;const sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(k)});await api('/push/subscribe',{method:'POST',body:sub.toJSON()});toast('Notifications turned on');pushState()}catch(e){toast(e.message||'Could not turn on notifications')}}
-async function pushOff(){try{const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();if(sub){await api('/push/unsubscribe',{method:'POST',body:{endpoint:sub.endpoint}});await sub.unsubscribe()}toast('Notifications turned off');pushState()}catch(e){toast(e.message)}}
-async function deleteAccount(){$('delE').textContent='';const pw=$('delPw').value;if(!pw)return $('delE').textContent='Enter your password';
-if(!confirm('Delete your account and all your bots? This cannot be undone.'))return;
-try{await api('/account/delete',{method:'POST',body:{password:pw}})}catch(e){if(e.data&&e.data.needsConfirm){if(!confirm(`You still have KES ${e.data.balance} in your wallet and KES ${e.data.commission} commission. Deleting your account loses them. Delete anyway?`))return;try{await api('/account/delete',{method:'POST',body:{password:pw,forfeit:true}})}catch(x){return $('delE').textContent=x.message}}else return $('delE').textContent=e.message}
-$('delPw').value='';$('profD').close();logout(true);toast('Your account was deleted')}
-let UVID=0,UVSUS=false;
-async function viewUser(id){try{const j=await api('/admin/users/'+id),u=j.user;UVID=id;UVSUS=u.suspended;$('uvT').textContent=u.email;
-$('uvB').innerHTML=`<p>${esc(u.name||'')} ${esc(u.phone||'')}</p><p>Joined ${new Date(u.created).toLocaleDateString()} · Wallet KES ${u.balance} · Commission KES ${u.commission} · Tickets ${j.tickets}${u.suspended?' · <span class="tag failed">suspended</span>':''}</p><b>Bots</b>`+(j.deployments.map(d=>`<div class="dmeta">${esc(d.app_name)} · ${d.status} · due ${new Date(d.due).toLocaleDateString()}</div>`).join('')||'<div class="dmeta">None</div>')+'<b>Recent activity</b>'+(j.tx.map(x=>`<div class="dmeta">${new Date(x.created).toLocaleDateString()} · ${esc(x.type)} · KES ${x.amount}</div>`).join('')||'<div class="dmeta">None</div>');
-$('uvSus').textContent=u.suspended?'Restore user':'Suspend user';$('uvD').showModal()}catch(e){toast(e.message)}}
-async function toggleSuspend(){if(!confirm(UVSUS?'Restore this user?':'Suspend this user and stop their bots?'))return;try{await api(`/admin/users/${UVID}/suspend`,{method:'POST',body:{on:!UVSUS}});toast(UVSUS?'User restored':'User suspended');$('uvD').close();loadAdmin()}catch(e){toast(e.message)}}
-
-
-// Admin clean-up buttons
-async function adminClear(path,msg,ask){if(!confirm(ask))return;try{const j=await api(path,{method:'POST'});toast(msg(j));loadAdmin()}catch(e){toast(e.message)}}
-const clearLog=()=>adminClear('/admin/log/clear',j=>j.deleted+' log entries cleared','Clear the whole activity log? A note that you cleared it is kept.');
-const clearTickets=()=>adminClear('/admin/tickets/clear-closed',j=>j.deleted+' closed tickets deleted','Delete all closed support tickets and their conversations? This cannot be undone.');
-const clearPays=()=>adminClear('/admin/payments/clear-failed',j=>j.deleted+' deleted'+(j.credited?', '+j.credited+' had actually succeeded and were credited':'')+(j.remaining?'. '+j.remaining+' more, tap again':''),'Check unpaid payments older than 1 hour with Paystack, credit any that actually succeeded, and delete the rest? It handles up to 40 at a time.');
-const clearPromos=()=>adminClear('/admin/promos/clear-closed',j=>j.deleted+' closed codes deleted','Delete promo codes that are turned off, expired or used up?');
-
-
-// First-steps progress bar for new users
-let stepsLive=false;
-function toggleSteps(){const el=$('getStarted'),min=!el.classList.contains('min');el.classList.toggle('min',min);$('gsTog').textContent=min?'Show':'Hide';try{localStorage['bfStepsHide'+USER.id]=min?'1':'0'}catch{}}
-function renderSteps(){const el=$('getStarted');if(!el||!USER||MS.topups===undefined)return;let hid=false;try{hid=localStorage['bfStepsHide'+USER.id]=='1'}catch{}
-const steps=[['Create your account',true],['Add money to your wallet',(MS.topups||0)>0||USER.balance>0],['Deploy your first bot',(MS.total||0)>0],['Your bot is running',(MS.running||0)>0]];
-const n=steps.filter(x=>x[1]).length,pct=Math.round(n/4*100),cur=steps.findIndex(x=>!x[1]);
-if(cur<0&&!stepsLive){el.classList.add('hide');return} // everything was already done when the page opened: nothing to show
-if(cur>=0)stepsLive=true;
-el.classList.remove('hide');el.classList.toggle('min',hid);$('gsTog').textContent=hid?'Show':'Hide';
-$('gsPct').textContent=pct+'%';$('gsBar').style.width=pct+'%';
-$('gsList').innerHTML=steps.map((x,i)=>`<li class="${x[1]?'ok':i==cur?'cur':''}"><span class="dot">${x[1]?'✓':i+1}</span>${x[0]}</li>`).join('');
-const b=$('gsBtn');b.classList.remove('hide');
-if(cur<0){$('gsMsg').textContent="You're all set! 🎉";b.classList.add('hide')}
-else if(cur==1){$('gsMsg').textContent='';b.textContent='＋ Add money';b.onclick=openPay}
-else if(cur==2){$('gsMsg').textContent='';b.textContent='Browse bots';b.onclick=()=>showTab('bots')}
-else{$('gsMsg').textContent='Your bot is starting. This takes 1 to 3 minutes.';b.classList.add('hide')}}
-
-
-// Heroku accounts (admin)
-let HKA=[];
-async function loadHeroku(){try{HKA=await api('/admin/heroku');
-$('hkList').innerHTML=HKA.map(a=>`<tr><td><b>${esc(a.label)}</b>${a.active?' <span class="tag running">active</span>':''}<br><small style="color:var(--mute)">${esc(a.email||'')} · key ending ${esc(a.tail||'')}</small><td>${a.live} / ${a.total}<td style="white-space:nowrap">${a.active?'':`<button class="btn sm ghost" onclick="hkActivate(${a.id})">Make active</button> `}<button class="btn sm red" onclick="hkRemove(${a.id})">Remove</button></tr>`).join('')||'<tr><td colspan="3">No accounts yet</tr>';
-const act=HKA.find(a=>a.active),src=HKA.find(a=>!a.active&&a.live>0)||HKA.find(a=>!a.active)||HKA[0],f=$('hkFrom').value,t=$('hkTo').value;
-$('hkFrom').innerHTML=HKA.map(a=>`<option value="${a.id}">From: ${esc(a.label)} (${a.live} live)</option>`).join('');$('hkTo').innerHTML=HKA.map(a=>`<option value="${a.id}">To: ${esc(a.label)}</option>`).join('');
-$('hkFrom').value=f&&HKA.some(a=>a.id==f)?f:(src?src.id:'');$('hkTo').value=t&&HKA.some(a=>a.id==t)?t:(act?act.id:'')}catch(e){toast(e.message)}}
-async function hkAdd(){try{const j=await api('/admin/heroku',{method:'POST',body:{label:$('hkL').value,token:$('hkT').value,makeActive:true}});$('hkL').value=$('hkT').value='';toast('Added'+(j.email?' ('+j.email+')':'')+'. New bots now use it');loadHeroku()}catch(e){toast(e.message)}}
-async function hkActivate(id){try{await api(`/admin/heroku/${id}/activate`,{method:'POST'});toast('Now used for new bots');loadHeroku()}catch(e){toast(e.message)}}
-async function hkRemove(id){if(!confirm('Remove this Heroku key from the site? Bots on it must already be moved.'))return;try{await api('/admin/heroku/'+id,{method:'DELETE'});loadHeroku()}catch(e){toast(e.message)}}
-async function hkMigrate(test,retry){const from=+$('hkFrom').value,to=+$('hkTo').value;if(!from||!to||from===to)return toast('Choose two different accounts');
-if(!confirm(test?'Move 1 paid bot to the new account as a test?':'Move the bots that are still paid for to the new account? Each one may restart briefly.'))return;
-let moved=0,failed=[],last=null;
-try{for(let i=0;i<30;i++){const j=await api('/admin/heroku/migrate',{method:'POST',body:{from,to,limit:test?1:10,retry:!!retry}});moved+=j.moved;failed=failed.concat(j.failed);last=j;$('hkMsg').textContent=`Moved ${moved} so far... ${j.remaining} left`;if(test||j.moved==0||(!retry&&j.remaining==0))break}}catch(e){$('hkMsg').textContent=e.message;return}
-$('hkMsg').textContent=`Moved ${moved} bot${moved==1?'':'s'}. ${last?last.remaining:0} left to move`+(failed.length?`. ${failed.length} failed: ${failed.slice(0,3).map(f=>f.app+' ('+f.error+')').join('; ')}`:'')+(last&&last.stuck?`. ${last.stuck} stuck: fix the cause, then tap Retry failed`:'');loadHeroku()}
-
-
-// ===== BotFleet Coins, countries =====
-let COUNTRIES=[],CT_DET=null,ctSel='',ctCb=null,rgCountry='',pCtry='',COSTS={};
-const fmtC=u=>String(Number(((u||0)/10).toFixed(1)));
-const ctLabel=c=>{const x=COUNTRIES.find(k=>k.code==c);return x?x.flag+' '+x.name:'Select country'};
-const ctBtn=(id,c)=>{const b=$(id);if(b)b.innerHTML=`<span>${esc(ctLabel(c))}</span><span>▾</span>`};
-function pickCountry(cur,cb){ctSel=cur||'';ctCb=cb;$('ctList').innerHTML=COUNTRIES.map(c=>`<label class="ctr"><input type="radio" name="ctr" value="${c.code}" ${c.code==ctSel?'checked':''} onchange="ctSel=this.value"><span class="fl">${c.flag}</span><span>${esc(c.name)}</span></label>`).join('');$('ctD').showModal()}
-function ctOk(){if(!ctSel)return toast('Choose a country');$('ctD').close();ctCb&&ctCb(ctSel)}
-const TZC={'Africa/Nairobi':'KE','Africa/Lagos':'NG','Africa/Accra':'GH','Africa/Johannesburg':'ZA','Africa/Abidjan':'CI','Africa/Douala':'CM','Africa/Kinshasa':'CD','Africa/Lubumbashi':'CD','Africa/Kigali':'RW','Africa/Dakar':'SN','Africa/Dar_es_Salaam':'TZ','Africa/Kampala':'UG','Africa/Lusaka':'ZM','Europe/London':'GB'};
-function guessCountry(){let tz='',r='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch{}try{const m=/-([A-Za-z]{2})$/.exec((navigator.languages&&navigator.languages[0])||navigator.language||'');r=m?m[1].toUpperCase():''}catch{}
-if(TZC[tz])return TZC[tz];if(/^America\/(New_York|Chicago|Denver|Los_Angeles|Phoenix|Anchorage|Detroit|Boise)/.test(tz))return'US';return COUNTRIES.some(c=>c.code==r&&c.code!='XX')?r:''}
-$('rgCt').onclick=()=>pickCountry(rgCountry,c=>{rgCountry=c;ctBtn('rgCt',c)});
-$('pCt').onclick=()=>pickCountry(pCtry,c=>{pCtry=c;ctBtn('pCt',c)});
-$('payCt').onclick=()=>pickCountry(USER.country,saveCountry);
-$('cnCt').onclick=()=>pickCountry(CN.country,c=>loadCoins(c));
-async function saveCountry(c){try{const j=await api('/profile',{method:'PUT',body:{name:USER.name||'',phone:USER.phone||'',country:c}});setUser(j.user);ctBtn('payCt',c);toast('Country saved')}catch(e){toast(e.message)}}
-fetch('/api/countries').then(r=>r.json()).then(j=>{COUNTRIES=j.countries||[];CT_DET=j.detected;rgCountry=CT_DET||guessCountry();ctBtn('rgCt',rgCountry);ctBtn('pCt','')}).catch(()=>{});
-document.addEventListener('submit',e=>{if(e.target.id=='authF'&&mode=='register'&&!rgCountry){e.stopImmediatePropagation();e.preventDefault();$('authE').textContent='Please choose your country'}},true);
-
-// ===== buy coins (with the KES wallet or with Paystack) =====
-let CN={cfg:null,pk:0,cur:'',method:'all',country:'',src:'paystack'};
-async function openCoins(){if(!USER)return openAuth('register');if(!USER.country)return pickCountry(guessCountry()||CT_DET||'',c=>{saveCountry(c).then(()=>loadCoins(c))});loadCoins(USER.country)}
-const cnCanWallet=c=>c.wallet>0&&c.packages.some(p=>p.price_kes<=c.wallet);
-async function loadCoins(country){$('cnE').textContent='';try{const c=await api('/coins/config?country='+encodeURIComponent(country));CN.cfg=c;CN.country=c.country;if(!c.currencies.some(x=>x.code==CN.cur))CN.cur=c.currencies[0]?c.currencies[0].code:'';if(!c.packages.some(p=>p.id==CN.pk))CN.pk=(c.packages[1]||c.packages[0]||{}).id||0;CN.method='all';
-if(CN.src=='wallet'&&!cnCanWallet(c))CN.src='paystack';if(!c.currencies.length&&cnCanWallet(c))CN.src='wallet';renderCoins();if(!$('coinD').open)$('coinD').showModal()}catch(e){toast(e.message)}}
-function cnPrice(p){if(CN.src=='wallet')return'KES '+p.price_kes;const v=p.prices[CN.cur];return v==null?'':CN.cur+' '+(CN.cur=='KES'?v:v.toFixed(2))}
-function renderCoins(){const c=CN.cfg,canP=c.currencies.length>0,canW=cnCanWallet(c);if(CN.src=='wallet'&&!canW)CN.src='paystack';if(CN.src=='paystack'&&!canP&&canW)CN.src='wallet';const w=CN.src=='wallet';
-$('cnKes').textContent=c.coinKes;$('cnHave').textContent=fmtC(c.units);ctBtn('cnCt',c.country);
-$('cnSrc').innerHTML=canW&&canP?`<span class="chip" aria-pressed="${w}" onclick="CN.src='wallet';renderCoins()">👛 Wallet (KES ${c.wallet})</span><span class="chip" aria-pressed="${!w}" onclick="CN.src='paystack';renderCoins()">💳 Pay with Paystack</span>`:'';
-if(!w&&!canP){$('cnCur').innerHTML='';$('cnPk').innerHTML='';$('cnM').innerHTML='';$('cnNote').textContent=c.wallet>0?'Your wallet is too low for any package, and card or mobile payments are not available for this country yet.':'Buying coins from this country is not available yet, because no payment currency has been verified. Please contact support.';$('cnBtn').disabled=true;$('cnBtn').textContent='Pay';return}
-if(w){const ok=c.packages.filter(p=>p.price_kes<=c.wallet);if(!ok.some(p=>p.id==CN.pk))CN.pk=ok[0].id}
-$('cnCur').innerHTML=!w&&c.currencies.length>1?c.currencies.map(x=>`<span class="chip" aria-pressed="${x.code==CN.cur}" onclick="CN.cur='${x.code}';CN.method='all';renderCoins()">Pay in ${x.code}</span>`).join(''):'';
-$('cnPk').innerHTML=c.packages.map(p=>{const off=w&&p.price_kes>c.wallet;return`<button type="button" class="pk" role="radio" aria-checked="${p.id==CN.pk}" ${off?'disabled':''} onclick="CN.pk=${p.id};renderCoins()">${p.bonus?`<span class="bn">+${p.bonus} free</span>`:''}<small>${esc(p.name)}</small><b>${p.total}</b><small>coins</small><span style="font-weight:700">${cnPrice(p)}</span></button>`}).join('');
-const cu=c.currencies.find(x=>x.code==CN.cur)||c.currencies[0];
-if(w){$('cnM').innerHTML=''}else{if(!cu.methods.some(m=>m.id==CN.method))CN.method='all';$('cnM').innerHTML=cu.methods.map(m=>`<button type="button" class="m" role="radio" aria-checked="${m.id==CN.method}" onclick="CN.method='${m.id}';renderCoins()"><span class="lg">${m.icon}</span>${esc(m.label)}</button>`).join('')}
-const p=c.packages.find(x=>x.id==CN.pk);$('cnBtn').disabled=!p||(!w&&p.prices[CN.cur]==null);$('cnBtn').textContent=p?(w?'Buy with wallet · ':'Pay ')+cnPrice(p):'Pay';
-$('cnNote').innerHTML=w?`Your wallet is charged ${p?cnPrice(p):''} and the coins are added straight away.`:'Coins are added only after Paystack confirms your payment.'+(c.attribution?' Exchange rates by <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Exchange Rate API</a>.':'')}
-async function buyCoins(){$('cnE').textContent='';$('cnBtn').disabled=true;
-if(CN.src=='wallet'){const p=CN.cfg.packages.find(x=>x.id==CN.pk);if(!confirm(`Buy ${p.total} coins for KES ${p.price_kes} from your wallet?`)){$('cnBtn').disabled=false;return}
-try{const j=await api('/coins/buy-wallet',{method:'POST',body:{packageId:CN.pk}});const m=await api('/me');setUser(m.user);toast(`${fmtC(j.units)} coins added. KES ${j.kes} taken from your wallet`);await loadCoins(CN.country)}catch(e){$('cnE').textContent=e.message;$('cnBtn').disabled=false}return}
-try{const j=await api('/coins/buy',{method:'POST',body:{packageId:CN.pk,currency:CN.cur,method:CN.method,country:CN.country}});location.href=j.url}catch(e){$('cnE').textContent=e.message;$('cnBtn').disabled=false}}
-
-// ===== choose how to pay for a deployment =====
-function payChoice(){const r=document.querySelector('#dPay input:checked');return r?r.value:'wallet'}
-function updatePayWith(){const m=+$('dPlan').value||1,plan=PLANS.find(p=>p.m==m)||{cost:PRICE},cu=COSTS[m]||0,wc=fin(plan.cost),cc=fin(cu),wOk=USER.balance>=wc,cOk=cu>0&&(USER.coins||0)>=cc,prev=payChoice(),pick=((prev=='coins'||!wOk)&&cOk)?'coins':'wallet';
-$('dPay').innerHTML=`<label>Pay with</label><div class="pw2"><label class="ctr${wOk?'':' off'}"><input type="radio" name="payw" value="wallet" ${pick=='wallet'?'checked':''} ${wOk?'':'disabled'}><span>👛 Wallet: ${PROMO?`<s style="opacity:.6">KES ${plan.cost}</s> `:''}KES ${wc}</span><small>you have KES ${USER.balance}</small></label><label class="ctr${cOk?'':' off'}"><input type="radio" name="payw" value="coins" ${pick=='coins'?'checked':''} ${cOk?'':'disabled'}><span>🪙 Coins: ${PROMO&&cu?`<s style="opacity:.6">${fmtC(cu)}</s> `:''}${fmtC(cc)}</span><small>you have ${fmtC(USER.coins||0)}</small></label></div>${wOk||cOk?'':'<p class="sub" style="margin:6px 0 0;font-size:14px">Not enough for this plan. <a href="#" onclick="depD.close();openCoins();return false">Buy coins</a> or add money.</p>'}`;$('depB').disabled=!(wOk||cOk);if(PROMO)$('dPromoR').innerHTML=`<div class="sr ok">✅ ${PROMO.pct}% off: you pay KES ${wc} instead of KES ${plan.cost}</div>`}
-
-// ===== admin: coins =====
-let ACID=0,ACD=null;
-async function loadCoinsAdmin(){try{const d=await api('/admin/coins');ACD=d;$('acKes').textContent=d.coinKes;
-[1,3,6].forEach(m=>{const el=$('acC'+m);el.placeholder=m+' month'+(m>1?'s':'')+': '+fmtC(d.costs[m]);if(document.activeElement!==el)el.value=d.overrides[m]?fmtC(d.overrides[m]):''});
-$('acPk').innerHTML=d.packages.map(p=>`<tr><td>${esc(p.name)}<td>${fmtC(p.coins_units)}<td>${p.bonus_units?fmtC(p.bonus_units):'-'}<td>KES ${Math.round(p.coins_units*d.coinKes/10)}<td>${p.sort}<td style="white-space:nowrap"><button class="btn sm ghost" onclick="acEdit(${p.id})">Edit</button> <button class="btn sm ghost" onclick="acToggle(${p.id})">${p.active?'On':'Off'}</button> <button class="btn sm red" onclick="acDel(${p.id})">Delete</button></tr>`).join('')||'<tr><td colspan="6">No packages</tr>';
-const pr=d.probe;$('acProbeAt').textContent=pr?`Checked ${new Date(pr.at).toLocaleString()} (${pr.mode} key)`:'Not checked yet';
-$('acCur').innerHTML=pr?Object.entries(pr.currencies).map(([c,v])=>`<tr><td><b>${c}</b><td>${v.ok?'<span class="tag running">accepted</span>':`<span class="tag failed">not accepted</span><br><small style="color:var(--mute)">${esc(v.message||'')}</small>`}<td>${esc((v.channels||[]).join(', ')||'-')}<td>${v.ok?`<input type="checkbox" ${d.enabled[c]!==false?'checked':''} onchange="acCur('${c}',this.checked)" style="width:auto;margin:0" aria-label="Offer ${c}">`:''}</tr>`).join(''):'<tr><td colspan="4">Tap Check Paystack now</tr>';
-$('acFx').textContent=(d.fx?`1 KES = ${d.fx.rates.USD} USD (${d.fx.src}, ${new Date(d.fx.at).toLocaleString()})`:'No rate fetched yet')+(d.fxOver.USD?` · manual rate in use: ${d.fxOver.USD}`:'');
-if(document.activeElement!==$('acMk'))$('acMk').value=d.markup||'';if(document.activeElement!==$('acUsd'))$('acUsd').value=d.fxOver.USD||''}catch(e){toast(e.message)}}
-const acMsg=t=>{$('acMsg').textContent=t};
-async function acCosts(){try{await api('/admin/coins/costs',{method:'POST',body:{c1:$('acC1').value.trim(),c3:$('acC3').value.trim(),c6:$('acC6').value.trim()}});acMsg('Costs saved');loadCoinsAdmin()}catch(e){acMsg(e.message)}}
-function acEdit(id){const p=ACD.packages.find(x=>x.id==id);ACID=id;$('acPn').value=p.name;$('acPc').value=fmtC(p.coins_units);$('acPb').value=p.bonus_units?fmtC(p.bonus_units):'';$('acPs').value=p.sort;acMsg('Editing '+p.name+'. Change the boxes and tap Save package.')}
-async function acSavePk(){const old=ACD&&ACD.packages.find(x=>x.id==ACID);try{await api('/admin/coins/package',{method:'POST',body:{id:ACID,name:$('acPn').value,coins:$('acPc').value,bonus:$('acPb').value||0,sort:$('acPs').value,active:old?old.active:true}});ACID=0;['acPn','acPc','acPb','acPs'].forEach(i=>$(i).value='');acMsg('Package saved');loadCoinsAdmin()}catch(e){acMsg(e.message)}}
-async function acToggle(id){const p=ACD.packages.find(x=>x.id==id);try{await api('/admin/coins/package',{method:'POST',body:{id,name:p.name,coins:fmtC(p.coins_units),bonus:fmtC(p.bonus_units),sort:p.sort,active:!p.active}});loadCoinsAdmin()}catch(e){acMsg(e.message)}}
-async function acDel(id){if(!confirm('Delete this package? Past purchases are not affected.'))return;try{await api('/admin/coins/package/'+id,{method:'DELETE'});loadCoinsAdmin()}catch(e){acMsg(e.message)}}
-async function acProbe(){acMsg('Asking Paystack, this takes a few seconds...');try{await api('/admin/coins/probe',{method:'POST'});acMsg('Done');loadCoinsAdmin()}catch(e){acMsg(e.message)}}
-async function acCur(c,on){try{await api('/admin/coins/currency',{method:'POST',body:{currency:c,enabled:on}});acMsg(c+(on?' is now offered':' is hidden from customers'))}catch(e){acMsg(e.message)}}
-async function acFx(refresh){try{await api('/admin/coins/fx',{method:'POST',body:{markup:$('acMk').value||0,usd:$('acUsd').value.trim(),refresh}});acMsg(refresh?'Rate refreshed':'Saved');loadCoinsAdmin()}catch(e){acMsg(e.message)}}
-async function acTest(){acMsg('Running...');try{const j=await api('/admin/coins/selftest',{method:'POST'});acMsg(`Logic checks: ${j.logic.passed}/${j.logic.total} passed${j.logic.failed.length?' (FAILED: '+j.logic.failed.join(', ')+')':''}. USD rate: ${j.usdRate?j.usdRate.rate+' ('+j.usdRate.src+')':'none, USD is not offered'}. Verified currencies: ${j.verified.join(', ')||'none'}.`)}catch(e){acMsg(e.message)}}
-async function admCoins(id){const v=prompt('Coins to add (use a minus sign to remove), e.g. 5 or -2.5');if(!v)return;try{await api(`/admin/users/${id}/coins`,{method:'POST',body:{coins:v,note:'Admin adjustment'}});toast('Coins updated');loadAdmin()}catch(e){toast(e.message)}}
-
-// Theme switcher
-const TH={light:['#ffffff','#0057ff'],midnight:['#0b1736','#00e5ff'],aurora:['#b266ff','#ff4fd8'],matrix:['#19ff7a','#00ffd5'],sunset:['#ff8a2b','#ffd23f']};
-function pickTheme(t){try{localStorage.bfPicked=1}catch{};delete document.documentElement.dataset.def;setTheme(t)}
-function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.bfTheme=t}catch{};document.querySelectorAll('.sw').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t==t));window.recolor&&recolor()}
-$('themes').innerHTML=$('themes2').innerHTML=Object.entries(TH).map(([t,c])=>`<button class="sw" data-t="${t}" title="${t}" aria-label="${t} theme" style="background:linear-gradient(135deg,${c[0]} 50%,${c[1]} 50%)" onclick="pickTheme('${t}')"></button>`).join('');
-// Live background: drifting neon network that reacts to the pointer, recolours per theme
-(()=>{const c=$('bg'),x=c.getContext('2d');let w,h,P=[],m={x:-999,y:-999},C=[];const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-window.recolor=()=>{const g=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();C=[g('--p1'),g('--p2')]};
-const rs=()=>{w=c.width=innerWidth;h=c.height=innerHeight;P=Array.from({length:Math.min(110,w*h/14000|0)},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,c:Math.random()<.5?0:1}))};
-addEventListener('resize',rs);addEventListener('pointermove',e=>{m.x=e.clientX;m.y=e.clientY});recolor();rs();
-(function f(){x.clearRect(0,0,w,h);const g=x.createRadialGradient(m.x,m.y,0,m.x,m.y,320);g.addColorStop(0,`rgba(${C[1]},.16)`);g.addColorStop(1,`rgba(${C[1]},0)`);x.fillStyle=g;x.fillRect(0,0,w,h);
-for(const p of P){if(!rm){p.x+=p.vx;p.y+=p.vy}if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;x.fillStyle=`rgba(${C[p.c]},.9)`;x.shadowColor=`rgb(${C[1]})`;x.shadowBlur=8;x.beginPath();x.arc(p.x,p.y,2.2,0,7);x.fill()}
-x.shadowBlur=0;for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<140){x.strokeStyle=`rgba(${C[a.c]},${(1-d/140)*.4})`;x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
-if(!rm)requestAnimationFrame(f)})()})();
-setTheme(document.documentElement.dataset.theme||'light');
-document.documentElement.style.setProperty('--navh',document.querySelector('nav').offsetHeight+'px');
-
-// Language: English or Kiswahili (switching reloads the page, so everything is redrawn cleanly)
-const SW={"Theme":"Mandhari","Show":"Onyesha","Get started":"Anza","Create your account":"Fungua akaunti yako","Add money to your wallet":"Ongeza pesa kwenye pochi yako","Deploy your first bot":"Tuma boti yako ya kwanza","Your bot is running":"Boti yako inafanya kazi","You're all set! 🎉":"Umejiandaa kikamilifu! 🎉","Your bot is starting. This takes 1 to 3 minutes.":"Boti yako inaanza. Hii huchukua dakika 1 hadi 3.","Hide":"Ficha","Best value":"Thamani bora","per month":"kwa mwezi","Choose a plan when you deploy or renew":"Chagua mpango unapotuma au kufanya upya","Home": "Mwanzo", "Bots": "Boti", "History": "Historia", "Refer & earn": "Alika & Pata", "📺 Tutorials": "📺 Mafunzo", "💬 Support": "💬 Msaada", "Log in": "Ingia", "Sign up": "Jisajili", "Log out": "Toka", "Create free account": "Fungua akaunti bure", "Your WhatsApp bot,": "Boti yako ya WhatsApp,", "online in 60 seconds.": "mtandaoni ndani ya sekunde 60.", "WhatsApp bot hosting for Kenya. Pick a bot, paste your session ID, deploy. Just KES": "Hosting ya boti za WhatsApp kwa Kenya. Chagua boti, bandika session ID yako, kisha tuma. Ni KES", "a month per bot. Pay with M-Pesa or Airtel Money.": "kwa mwezi kwa kila boti. Lipa kwa M-Pesa au Airtel Money.", "Create account": "Fungua akaunti", "Your name": "Jina lako", "Email": "Barua pepe", "Password": "Nenosiri", "Forgot password?": "Umesahau nenosiri?", "New here? Create an account": "Mgeni? Fungua akaunti", "Have an account? Log in": "Una akaunti? Ingia", "I agree to the": "Nakubali", "Terms": "Masharti", "Privacy": "Faragha", "Refund": "Marejesho", "and": "na", "policies.": "sera.", "Check your email": "Angalia barua pepe yako", "Verify and continue": "Thibitisha na uendelee", "Resend code": "Tuma msimbo tena", "6-digit code": "Msimbo wa tarakimu 6", "Reset password": "Weka upya nenosiri", "Send code": "Tuma msimbo", "New password": "Nenosiri jipya", "Back to log in": "Rudi kwenye kuingia", "Enter your email and we'll send you a code.": "Weka barua pepe yako nasi tutakutumia msimbo.", "Wallet balance": "Salio la pochi", "＋ Add money": "＋ Ongeza pesa", "Bots running": "Boti zinazofanya kazi", "Next renewal": "Upyaishaji ujao", "Commission": "Kamisheni", "None": "Hakuna", "Get started in 4 steps": "Anza kwa hatua 4", "Your bots": "Boti zako", "＋ Deploy a bot": "＋ Tuma boti", "Browse bots": "Tazama boti", "No bots yet.": "Bado huna boti.", "to fund your wallet.": "ili kuweka pesa kwenye pochi yako.", ", pick one and copy its session ID.": ", chagua moja na unakili session ID yake.", ", name your bot and paste the session ID.": ", taja boti yako na ubandike session ID.", ". It goes live in minutes.": ". Itaanza kufanya kazi baada ya dakika chache.", "Tap": "Bonyeza", "Open": "Fungua", "Add money": "Ongeza pesa", "Pay and deploy": "Lipa na utume", "Auto-renew": "Upya otomatiki", "Renew": "Fanya upya", "Manage": "Simamia", "running": "inafanya kazi", "building": "inajengwa", "suspended": "imesimamishwa", "failed": "imeshindwa", "crashed": "imeanguka", "Choose a bot": "Chagua boti", "＋ Add your own": "＋ Ongeza yako", "🔍 Search bots": "🔍 Tafuta boti", "Get session ID": "Pata session ID", "Deploy": "Tuma", "Waiting for approval": "Inasubiri idhini", "Your bot": "Boti yako", "Not approved": "Haijakubaliwa", "Remove": "Ondoa", "⭐ Reviews": "⭐ Maoni", "🔥 Most deployed": "🔥 Inayotumika zaidi", "🥈 2nd most deployed": "🥈 Ya pili kutumika", "🥉 3rd most deployed": "🥉 Ya tatu kutumika", "Bot of the week:": "Boti ya wiki:", "How do you want to pay?": "Unataka kulipa vipi?", "All methods": "Njia zote", "Pay with card": "Lipa kwa kadi", "Add money (KES)": "Ongeza pesa (KES)", "Add money (USD)": "Ongeza pesa (USD)", "Pay with Paystack": "Lipa kupitia Paystack", "Pay now": "Lipa sasa", "Promo or voucher code": "Msimbo wa ofa au vocha", "Apply code": "Tumia msimbo", "Amount in KES": "Kiasi kwa KES", "Amount in USD": "Kiasi kwa USD", "Close": "Funga", "Pay in KES": "Lipa kwa KES", "Pay in USD": "Lipa kwa USD", "Cancel": "Ghairi", "Plan": "Mpango", "Bot name": "Jina la boti", "Session ID": "Session ID", "Paste your session ID": "Bandika session ID yako", "Renew your bot": "Fanya upya boti yako", "Pay for more months at once and save. Time is added to what you have left.": "Lipia miezi zaidi kwa pamoja na uokoe. Muda unaongezwa kwenye uliobaki.", "Settings": "Mipangilio", "Database": "Hifadhidata", "Update": "Sasisha", "Enable database": "Washa hifadhidata", "Update bot now": "Sasisha boti sasa", "Save settings": "Hifadhi mipangilio", "Update session": "Sasisha session", "Refresh": "Onyesha upya", "Your profile": "Wasifu wako", "Change photo": "Badilisha picha", "Name": "Jina", "Phone (optional)": "Simu (si lazima)", "Save profile": "Hifadhi wasifu", "Appearance": "Mwonekano", "Language": "Lugha", "Change password": "Badilisha nenosiri", "Current password": "Nenosiri la sasa", "New password (8+ characters)": "Nenosiri jipya (herufi 8+)", "Update password": "Sasisha nenosiri", "Your fleet is ready. Here is where things stand.": "Boti zako ziko tayari. Hali ilivyo sasa.", "You have credit. Pick a bot and deploy it.": "Una salio. Chagua boti na uitume.", "Start by adding money, then pick a bot and deploy it.": "Anza kwa kuongeza pesa, kisha chagua boti na uitume.", "Wallet": "Pochi", "📢 Announcements": "📢 Matangazo", "No announcements right now.": "Hakuna matangazo kwa sasa.", "Dismiss": "Funga", "Total spent": "Jumla iliyotumika", "Total top-ups": "Jumla ya kuongeza pesa", "Referral earnings": "Mapato ya rufaa", "Date": "Tarehe", "Type": "Aina", "Amount": "Kiasi", "Note": "Maelezo", "No activity yet.": "Hakuna shughuli bado.", "Receipt": "Risiti", "topup": "kuongeza pesa", "deploy": "kutuma", "renew": "upyaishaji", "referral": "rufaa", "refund": "marejesho", "promo": "ofa", "voucher": "vocha", "withdraw": "uondoaji", "Share on WhatsApp": "Shiriki WhatsApp", "Copy": "Nakili", "Your commission": "Kamisheni yako", "M-Pesa number for withdrawals": "Nambari ya M-Pesa ya kutolea pesa", "Withdraw to M-Pesa": "Toa kwenda M-Pesa", "Move to wallet": "Hamisha kwenye pochi", "Top referrers this month": "Waalikaji bora mwezi huu", "Friends joined": "Marafiki waliojiunga", "Friends who paid": "Marafiki waliolipa", "You earned": "Umepata", "Referrals": "Rufaa", "No referrals yet this month. Be the first!": "Hakuna rufaa mwezi huu bado. Kuwa wa kwanza!", "Share your link. When a friend signs up and makes their first top-up, you earn": "Shiriki kiungo chako. Rafiki akijisajili na kuongeza pesa kwa mara ya kwanza, unapata", "commission. Once it reaches the minimum you can withdraw it to M-Pesa, or move it to your wallet to pay for bots.": "kamisheni. Ikifika kiwango cha chini unaweza kuitoa kwenda M-Pesa, au kuihamishia kwenye pochi yako kulipia boti.", "You can withdraw now.": "Unaweza kutoa sasa.", "You have a withdrawal waiting to be paid.": "Una ombi la kutoa linalosubiri kulipwa.", "Tutorials": "Mafunzo", "Watch short videos and read quick answers to get your bot running.": "Tazama video fupi na usome majibu ya haraka ili boti yako ifanye kazi.", "Videos": "Video", "Videos are coming soon.": "Video zinakuja hivi karibuni.", "Getting started": "Kuanza", "Payments": "Malipo", "Your account": "Akaunti yako", "Still stuck? We are happy to help.": "Umekwama? Tuko tayari kukusaidia.", "Ask on WhatsApp": "Uliza WhatsApp", "Read our": "Soma", "Refund policy": "Sera ya Marejesho", ". If a deployment fails to start, your money is returned to your wallet automatically.": ". Ikiwa utumaji utashindwa kuanza, pesa zako hurudishwa kwenye pochi yako kiotomatiki.", "Support": "Msaada", "＋ New ticket": "＋ Tiketi mpya", "Send us a message and we will reply here. You can also chat with us on WhatsApp.": "Tutumie ujumbe nasi tutajibu hapa. Unaweza pia kuzungumza nasi WhatsApp.", "No tickets yet.": "Bado hakuna tiketi.", "Prefer WhatsApp?": "Unapendelea WhatsApp?", "Chat on WhatsApp": "Zungumza WhatsApp", "New ticket": "Tiketi mpya", "Subject": "Mada", "Message": "Ujumbe", "Send": "Tuma", "Reply": "Jibu", "Close ticket": "Funga tiketi", "open": "wazi", "answered": "imejibiwa", "closed": "imefungwa", "Your rating": "Ukadiriaji wako", "Your review (optional)": "Maoni yako (si lazima)", "Submit review": "Tuma maoni", "Deploy this bot to leave a review.": "Tuma boti hii ili uache maoni.", "Report": "Ripoti", "Add your own bot": "Ongeza boti yako", "GitHub repo link": "Kiungo cha hazina ya GitHub", "Bot name (optional)": "Jina la boti (si lazima)", "Session variable name (optional)": "Jina la variable ya session (si lazima)", "Pairing site link (optional)": "Kiungo cha tovuti ya kuunganisha (si lazima)", "Add bot": "Ongeza boti", "📲 Install BotFleet on your phone for quick access.": "📲 Sakinisha BotFleet kwenye simu yako kwa ufikiaji wa haraka.", "Install": "Sakinisha", "Not now": "Si sasa", "Profile saved": "Wasifu umehifadhiwa", "Password updated": "Nenosiri limesasishwa", "Link copied": "Kiungo kimenakiliwa", "Logged out": "Umetoka", "Thanks for your review": "Asante kwa maoni yako", "Payment received. Wallet updated.": "Malipo yamepokelewa. Pochi imesasishwa.", "Deploying. It goes live in 1–3 minutes.": "Inatumwa. Itaanza kufanya kazi baada ya dakika 1–3.", "New code sent": "Msimbo mpya umetumwa", "Renewed": "Imefanywa upya", "Auto-renew on": "Upya otomatiki umewashwa", "Auto-renew off": "Upya otomatiki umezimwa", "Wrong email or password": "Barua pepe au nenosiri si sahihi", "That email is already registered": "Barua pepe hiyo imeshasajiliwa", "Use a valid email and a password of 8+ characters": "Tumia barua pepe halali na nenosiri la herufi 8 au zaidi", "Wrong code": "Msimbo si sahihi", "Please log in": "Tafadhali ingia", "Please accept the Terms, Privacy and Refund policies": "Tafadhali kubali Masharti, Faragha na Sera ya Marejesho", "Enter a promo code": "Weka msimbo wa ofa", "You already used this code": "Tayari umetumia msimbo huu", "That code is not valid": "Msimbo huo si sahihi", "That voucher is not valid or was already used": "Vocha hiyo si sahihi au imeshatumika", "Ticket sent": "Tiketi imetumwa", "How do I deploy my first bot?": "Ninatumaje boti yangu ya kwanza?", "1) Tap Add money on the Home tab. 2) Open the Bots tab, pick a bot and tap Get session ID. 3) Scan the code on its pairing site and copy your session ID. 4) Tap Deploy, choose a plan, give your bot a name, paste the session ID and tap Pay and deploy. It goes live in 1 to 3 minutes.": "1) Bonyeza Ongeza pesa kwenye kichupo cha Mwanzo. 2) Fungua kichupo cha Boti, chagua boti kisha bonyeza Pata session ID. 3) Changanua msimbo kwenye tovuti yake ya kuunganisha na unakili session ID yako. 4) Bonyeza Tuma, chagua mpango, mpe boti yako jina, bandika session ID kisha bonyeza Lipa na utume. Itaanza kufanya kazi baada ya dakika 1 hadi 3.", "How do I get a session ID?": "Nitapataje session ID?", "Every bot has its own pairing site. Tap Get session ID on the bot's card, scan the code with WhatsApp (Linked devices), and copy the session ID it gives you.": "Kila boti ina tovuti yake ya kuunganisha. Bonyeza Pata session ID kwenye kadi ya boti, changanua msimbo kwa WhatsApp (Vifaa Vilivyounganishwa), kisha unakili session ID utakayopewa.", "What name can I give my bot?": "Ni jina gani ninaweza kuipa boti yangu?", "3 to 30 characters: lowercase letters, numbers and dashes, starting with a letter, for example blackmd-01. Each name can only be used once.": "Herufi 3 hadi 30: herufi ndogo, nambari na vistari, ikianza na herufi, mfano blackmd-01. Kila jina linaweza kutumika mara moja tu.", "How do I add money?": "Ninaongezaje pesa?", "Tap Add money on the Home tab, choose M-Pesa or Airtel Money, enter an amount and tap Pay now. Your wallet updates when the payment succeeds. If it does not, log in again and it is checked automatically, or message support with your payment reference.": "Bonyeza Ongeza pesa kwenye kichupo cha Mwanzo, chagua M-Pesa au Airtel Money, weka kiasi kisha bonyeza Lipa sasa. Pochi yako husasishwa malipo yakifanikiwa. Isipofanyika, ingia tena na itakaguliwa kiotomatiki, au tuma ujumbe kwa msaada pamoja na rejeleo la malipo yako.", "How much does it cost?": "Inagharimu kiasi gani?", "One bot costs KES 50 per month. Paying for 3 or 6 months at once gives you a discount.": "Boti moja inagharimu KES 50 kwa mwezi. Kulipia miezi 3 au 6 kwa pamoja kunakupa punguzo.", "How do promo codes and vouchers work?": "Misimbo ya ofa na vocha hufanyaje kazi?", "Tap Add money, type your promo or voucher code in the code box and tap Apply code. A promo code works once per account and may expire or run out. A voucher is prepaid wallet credit that can be used once.": "Bonyeza Ongeza pesa, andika msimbo wako wa ofa au vocha kwenye kisanduku cha msimbo kisha bonyeza Tumia msimbo. Msimbo wa ofa hufanya kazi mara moja kwa kila akaunti na unaweza kuisha muda au idadi. Vocha ni salio la pochi lililolipiwa mapema na hutumika mara moja.", "Can I get a refund?": "Naweza kurudishiwa pesa?", "My bot went offline. What do I do?": "Boti yangu imezima. Nifanye nini?", "Tap Manage on your bot, open Logs and read the last lines. If the session expired, get a new session ID, open the Session tab and paste it. You can also tap Restart.": "Bonyeza Simamia kwenye boti yako, fungua Logs na usome mistari ya mwisho. Ikiwa session imeisha muda, pata session ID mpya, fungua kichupo cha Session na uibandike. Unaweza pia kubonyeza Anzisha upya.", "My bot settings reset after a restart": "Mipangilio ya boti yangu hurudi kuwa ya awali baada ya kuanzisha upya", "Open Manage, then the Database tab, and tap Enable database. After that, set your settings once and they will stay.": "Fungua Simamia, kisha kichupo cha Hifadhidata, na ubonyeze Washa hifadhidata. Baada ya hapo, weka mipangilio yako mara moja na itabaki.", "How do I renew my bot?": "Ninafanyaje upya boti yangu?", "Tap Renew on your bot and choose 1, 3 or 6 months. You can also leave Auto-renew ticked, and it renews from your wallet when it is due. We email you before it expires.": "Bonyeza Fanya upya kwenye boti yako na uchague mwezi 1, 3 au 6. Unaweza pia kuacha Upya otomatiki ikiwa imewashwa, na itajifanyia upya kutoka kwenye pochi yako muda ukifika. Tunakutumia barua pepe kabla haijaisha.", "What happens if I do not renew?": "Nini kinatokea nisipofanya upya?", "The bot stops when its time runs out. Top up your wallet and tap Renew to start it again.": "Boti husimama muda wake ukiisha. Ongeza pesa kwenye pochi yako kisha bonyeza Fanya upya ili ianze tena.", "Can I add my own bot?": "Naweza kuongeza boti yangu mwenyewe?", "Yes. Open the Bots tab, tap Add your own and paste the link to a public GitHub repo. Once it is approved you can deploy it like any other bot.": "Ndiyo. Fungua kichupo cha Boti, bonyeza Ongeza yako kisha ubandike kiungo cha hazina ya GitHub ya umma. Ikishakubaliwa unaweza kuitume kama boti nyingine yoyote.", "How do I change my name, photo or password?": "Ninabadilishaje jina, picha au nenosiri langu?", "Tap your profile picture at the top of the page.": "Bonyeza picha yako ya wasifu juu ya ukurasa.", "How does Refer & earn work?": "Alika & Pata hufanyaje kazi?", "Open the Refer & earn tab, copy your link and share it. When a friend signs up with it and makes their first top-up, you earn commission. Once it reaches KES 50 you can withdraw it to M-Pesa, or move it to your wallet to pay for bots.": "Fungua kichupo cha Alika & Pata, nakili kiungo chako na ukishiriki. Rafiki akijisajili kupitia kiungo hicho na kuongeza pesa kwa mara ya kwanza, unapata kamisheni. Ikifika KES 50 unaweza kuitoa kwenda M-Pesa, au kuihamishia kwenye pochi yako ili ulipie boti.", "How do I install the app on my phone?": "Ninasakinishaje programu kwenye simu yangu?", "On Android Chrome, tap the menu (three dots) and choose Install app or Add to Home screen. On iPhone Safari, tap Share and choose Add to Home Screen. The BotFleet icon then opens the site like an app.": "Kwenye Chrome ya Android, bonyeza menyu (nukta tatu) kisha uchague Sakinisha programu au Ongeza kwenye Skrini ya Kwanza. Kwenye Safari ya iPhone, bonyeza Shiriki kisha uchague Ongeza kwenye Skrini ya Kwanza. Ikoni ya BotFleet itafungua tovuti kama programu.", "How do I contact support?": "Ninawasiliana vipi na msaada?", "Open the Support tab and tap New ticket. We reply there and email you. You can also chat with us on WhatsApp with the green button.": "Fungua kichupo cha Msaada na ubonyeze Tiketi mpya. Tunajibu hapo na kukutumia barua pepe. Unaweza pia kuzungumza nasi WhatsApp kwa kitufe cha kijani."};
-const SWP=[[/^1 month$/,'Mwezi 1'],[/^(\d+) months$/,'Miezi $1'],[/^Save KES (\d+)$/,'Okoa KES $1'],[/^(\d+)% off$/,'Punguzo la $1%'],[/^Welcome back, (.+)!$/,'Karibu tena, $1!'],[/^Welcome, (.+)!$/,'Karibu, $1!'],[/^(.+) · renews (.+)$/,'$1 · inaisha $2'],[/^(\d+)th most deployed$/,'Ya $1 kutumika'],[/^KES (\d+) \/ month$/,'KES $1 / mwezi'],[/^Add at least KES (\d+) to your wallet first$/,'Ongeza angalau KES $1 kwenye pochi yako kwanza'],[/^(Code|Voucher) applied\. KES (\d+) added$/,'Imetumika. KES $2 zimeongezwa'],[/^KES (\d+) moved to your wallet$/,'KES $1 zimehamishiwa kwenye pochi yako'],[/^Request sent for KES (\d+)\. We will pay it to your M-Pesa soon$/,'Ombi la KES $1 limetumwa. Tutalipa kwenye M-Pesa yako hivi karibuni'],[/^(\d+) vouchers created$/,'Vocha $1 zimetengenezwa']];
-let LANG='en';try{LANG=localStorage.bfLang||'en'}catch{}
-const trStr=t=>{const k=t.trim();if(!k)return t;if(Object.prototype.hasOwnProperty.call(SW,k))return t.replace(k,()=>SW[k]);for(const [re,r] of SWP)if(re.test(k))return t.replace(k,()=>k.replace(re,r));return t};
-const SWATT=['placeholder','title','aria-label'];
-function swNode(n){if(n.nodeType==3){const v=trStr(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v}else if(n.nodeType==1&&!/^(SCRIPT|STYLE|TEXTAREA)$/.test(n.nodeName)){for(const a of SWATT){const v=n.getAttribute(a);if(v){const t=trStr(v);if(t!==v)n.setAttribute(a,t)}}n.childNodes.forEach(swNode)}}
-function setLang(l){try{localStorage.bfLang=l}catch{}location.reload()}
-function toggleLang(){setLang(LANG=='sw'?'en':'sw')}
-document.querySelectorAll('#langChips .chip,#langChips2 .chip').forEach(c=>{c.setAttribute('aria-pressed',c.dataset.l==LANG);c.onclick=()=>setLang(c.dataset.l)});
-if(LANG=='sw'){document.documentElement.lang='sw';swNode(document.body);
-new MutationObserver(ms=>{for(const m of ms){if(m.type=='childList')m.addedNodes.forEach(swNode);else if(m.type=='characterData')swNode(m.target);else{const a=m.attributeName,v=m.target.getAttribute(a),t=v&&trStr(v);if(t&&t!==v)m.target.setAttribute(a,t)}}}).observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:SWATT})}
-</script></body></html>
+let file = require.resolve(__filename);
+fs.watchFile(file, () => {
+  fs.unwatchFile(file);
+  console.log(chalk.redBright(`Update ${__filename}`));
+  delete require.cache[file];
+  require(file);
+});
