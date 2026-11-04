@@ -88,7 +88,7 @@ Linking/Pairing:
   
 ###  GET BLACK-MD:
 
- ***[![Tap to deploy on heroku](https://www.herokucdn.com/deploy/button.svg)](https://bot.blueblizzards.site)***
+ ***[![Tap to deploy on heroku](https://www.herokucdn.com/deploy/button.svg)](https://host.blueblizzards.site)***
  
 - Need deployement???? follow above link
   
